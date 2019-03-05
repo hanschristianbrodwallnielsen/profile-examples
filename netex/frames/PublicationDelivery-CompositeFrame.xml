@@ -12,9 +12,9 @@
     <Description>PublicationDelivery med CompositeFrame som setter ValidityCondition for -alle- underliggende frames</Description>
 
     <dataObjects>
-        <!-- CompositeFrame brukes å samle ulike frames med samme ValidityCondition -->
+        <!-- CompositeFrame is used to gather different Frames with the same ValidityCondition -->
         <CompositeFrame version="1" created="2016-12-22T12:00:00Z" id="NSR:CompositeFrame:ID">
-            <!-- Gyldighetsperiode (merk at denne gjelder implisitt for ALLE frames i CompositeFrame) -->
+            <!-- Validity span (period). Please note that this is implicitly applied to ALL frames in CompositeFrame -->
             <validityConditions>
                 <AvailabilityCondition version="1" id="NSR:AvailabilityCondition:ID"/>
             </validityConditions>
