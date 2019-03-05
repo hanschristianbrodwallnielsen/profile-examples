@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-Eksempel-implementasjon for enkel bestillingsrute med fri transport innefor samme område (Flexible Area).
 
+<!--
+Example-implementation for simple flexible line with unrestricted transport within an area.
 -->
+
 <PublicationDelivery
         version="1.08:NO-NeTEx-networktimetable:1.3"
         xmlns="http://www.netex.org.uk/netex"
@@ -31,7 +32,7 @@ Eksempel-implementasjon for enkel bestillingsrute med fri transport innefor samm
                 <!-- =========================================== -->
                 <ResourceFrame version="1" id="RUT:ResourceFrame:1">
                     <organisations>
-                        <!-- TODO her er ting kun splittet i authority og operator. Normalt er strukturen mer kompleks, og informasjon rundt f.eks hittegods må modelleres korrekt -->
+                        <!-- This structure can be more complex when for example adding lost & found information -->
                         <Authority version="1" id="RUT:Authority:Ruter">
                             <CompanyNumber>991609407</CompanyNumber>
                             <!-- Organisasjonsnummer -->
@@ -39,7 +40,7 @@ Eksempel-implementasjon for enkel bestillingsrute med fri transport innefor samm
                             <LegalName>RUTER AS</LegalName>
                             <OrganisationType>authority</OrganisationType>
                         </Authority>
-                        <!-- Antar her at Unibuss er selskapet som kjører turen. Ikke nødvendigvis korrekt, men fremgår ikke av rutetabellen -->
+                        <!-- Presumed operator is Unibus -->
                         <Operator version="1" id="RUT:Operator:Unibuss">
                             <CompanyNumber>985615616</CompanyNumber>
                             <Name>Unibuss</Name>
@@ -87,12 +88,12 @@ Eksempel-implementasjon for enkel bestillingsrute med fri transport innefor samm
 
                 <ServiceFrame version="1" id="RUT:ServiceFrame:1">
                     <Network version="1" id="RUT:Network:RuterBestillingslinjer">
-                        <Name>Ruter# bestillingslinjer</Name>
+                        <Name>Ruter bestillingslinjer</Name>
                         <AuthorityRef version="1" ref="RUT:Authority:Ruter"/>
                     </Network>
 
                     <routePoints>
-                        <!-- Flexi-sone Hanaborg Nord -->
+                        <!-- Flexible zone "Hanaborg Nord" -->
                         <RoutePoint version="1" id="RUT:RoutePoint:ID-HANABORG-NORD">
                             <projections>
                                 <PointProjection version="1" id="RUT:PointProjection:ID-HANABORG_ST-NORD">
@@ -186,7 +187,7 @@ Eksempel-implementasjon for enkel bestillingsrute med fri transport innefor samm
                     </journeyPatterns>
 
                     <notices>
-                        <!-- Fotnote som gjelder for linjen -->
+                        <!-- Notice applied to the entire Line -->
                         <Notice version="1" id="RUT:Notice:1">
                             <Text>
                                 Denne bestillingslinjen kjører i området
