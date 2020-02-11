@@ -74,7 +74,7 @@
                         <AccessRightInProduct id="RUT:AccessRightInProduct:SingleTripOutbound" version="1" order="1">
                             <ValidableElementRef ref="RUT:ValidableElement:SingleTrip" version="1"/>
                         </AccessRightInProduct>
-                        <AccessRightInProductRef ref="RUT:AccessRightInProduct:Exhibition" version="1" order="2"/>
+                        <AccessRightInProductRef ref="RUT:AccessRightInProduct:Exhibition" version="1" order="1"/>
                         <AccessRightInProduct id="RUT:AccessRightInProduct:SingleTripInbound" version="1" order="3">
                             <ValidableElementRef ref="RUT:ValidableElement:SingleTrip" version="1"/>
                         </AccessRightInProduct>
@@ -237,6 +237,11 @@
         -->
         <SalesTransactionFrame id="ENT:SalesTransactionFrame:Case1" version="1">
             
+            <customerAccounts>
+                <CustomerAccount id="ENT:CustomerAccount:1" version="1">
+                </CustomerAccount>
+            </customerAccounts>
+            
             <fareContracts>
                 <FareContract id="ENT:FareContract:1" version="1">
                     
@@ -330,6 +335,7 @@
                                     <LimitationGroupingType>AND</LimitationGroupingType>
                                     <limitations>
                                         <UsageValidityPeriod id="ENT:UsageValidityPeriod:1" version="1">
+                                            
                                             <StartDate>2018-09-04</StartDate>
                                             <StartTime>12:00:00</StartTime>
                                             <EndDate>2018-09-05</EndDate>
@@ -408,6 +414,22 @@
             <customerPurchasePackages>
                 <CustomerPurchasePackage id="ENT:CustomerPurchasePackage:SingleTrip2Zones" version="1">
                     <SalesOfferPackageRef ref="ENT:SalesOfferPackage:SingleTrip2Zones" version="1"/>
+                    <validityParameterAssignments>
+                        <CustomerPurchaseParameterAssignment id="ENT:CustomerPurchaseParameterAssignment:CPPWide" version="1" order="1">
+                            <limitations>
+                                <Transferability id="ENT:Transferability:1" version="1">
+                                    
+                                    <CanTransfer>true</CanTransfer>
+                                    <HasTransferFee>true</HasTransferFee> <!-- Ikke tillate overføring fra sluttbruker - må gå via backoffice/betaling -->
+                                    <SharedUsage>singleUser</SharedUsage>
+                                </Transferability>
+                                <FrequencyOfUse id="ENT:FrequencyOfUse:10Times" version="1">
+                                    <MaximalFrequency>10</MaximalFrequency> <!-- Frequency of use på CPP sier antall ganger CPP kan benyttes -->
+                                </FrequencyOfUse>
+                            </limitations>
+                        </CustomerPurchaseParameterAssignment>
+                    </validityParameterAssignments>
+                    
                     <customerPurchasePackageElements>
                         <CustomerPurchasePackageElement id="ENT:CustomerPurchasePackageElement:SingleTrip2Zones" version="1" order="1">
                             
@@ -450,12 +472,15 @@
                         </CustomerPurchasePackageElement>
                         
                     </customerPurchasePackageElements>
+                    
                     <prices>
                         <CustomerPurchasePackagePrice id="ENT:CustomerPurchasePackagePrice:1">
                             <Amount>57</Amount>
                             <Currency>NOK</Currency>
                         </CustomerPurchasePackagePrice>
                     </prices>
+                    
+                    
                 </CustomerPurchasePackage>
             </customerPurchasePackages>
             
@@ -613,7 +638,6 @@
             
             <customerPurchasePackages>
                 <CustomerPurchasePackage id="ENT:CustomerPurchasePackage:Combined2LegsGJB" version="1">
-                    
                     <SalesOfferPackageRef ref="ENT:SalesOfferPackage:Combined2Legs" version="1"/>
                     <customerPurchasePackageElements>
                         <CustomerPurchasePackageElement id="ENT:CustomerPurchasePackageElement:Combined2LegsGJB" version="1" order="1">
@@ -664,7 +688,7 @@
                                             <EndDate>2018-09-04</EndDate>
                                             <EndTime>16:00:00</EndTime>
                                         </UsageValidityPeriod>
-                                        
+
                                     </limitations>
                                     <validityParameters>
                                         <ServiceJourneyRef ref="GJB:ServiceJourney:OsloNittedal" version="1"/>
@@ -1027,9 +1051,9 @@
                     <fareContractEntries>
                         
                         <SalesTransaction version="1" id="ENT:SalesTransaction:10">
-                            <Name>Enkeltbillett 2 soner</Name>
+                            <Name>Klippekort Enkeltbillett 2 soner</Name>
                             <Date>2018-09-06T01:07:00</Date>
-                            <Amount>57</Amount>
+                            <Amount>570</Amount>
                             <Currency>NOK</Currency>
                             <PaymentMethod>debitCard</PaymentMethod>
                             <customerPurchasePackages>
@@ -1044,7 +1068,19 @@
             
             <customerPurchasePackages>
                 <CustomerPurchasePackage id="ENT:CustomerPurchasePackage:10Trips" version="1">
+                    
                     <SalesOfferPackageRef ref="ENT:SalesOfferPackage:10Trips" version="1"/>
+                    <validityParameterAssignments>
+                        <CustomerPurchaseParameterAssignment id="ENT:CustomerParameterAssignment:1233" version="1" order="1">
+                            <!-- Validable element that can be activated multiple times -->
+                            <ValidableElementRef ref="RUT:ValidableElement:SingleTrip" version="1"/>
+                            <limitations>
+                                <FrequencyOfUse id="ENT:FrequencyOfUse:1" version="1">
+                                    <MaximalFrequency>10</MaximalFrequency> <!-- USABLE 10 TIMES, must be activated each time -->
+                                </FrequencyOfUse>
+                            </limitations>
+                        </CustomerPurchaseParameterAssignment>
+                    </validityParameterAssignments>
                     <customerPurchasePackageElements>
                         <CustomerPurchasePackageElement id="ENT:CustomerPurchasePackageElement:10Trips" version="1" order="1">
                            
@@ -1056,14 +1092,59 @@
                                 <CustomerPurchasePackageElementAccess id="ENT:CustomerPurchasePackageElementAccess:11" version="1" created="2019-01-01T00:00:00">
                                     <ValidableElementRef ref="RUT:ValidableElement:SingleTrip" version="1"/>
                                     <MarkedAs>activated</MarkedAs>
+                                    <validityParameterAssignments>
+                                        <CustomerPurchaseParameterAssignment id="ENT:CustomerPurchaseParameterAssignment:Usage1" version="1" order="1">
+                                            <limitations>
+                                                <!-- Usage validity period kalkulert basert på Timeband og starttid -->
+                                                <UsageValidityPeriod id="UsageValidityPeriod:Usage1" version="1">
+                                                    <StartDate>2019-01-01</StartDate>
+                                                    <StartTime>12:00:00</StartTime>
+                                                    <EndDate>2019-01-01</EndDate>
+                                                    <EndTime>13:00:00</EndTime>
+                                                </UsageValidityPeriod>
+                                            </limitations>
+                                        </CustomerPurchaseParameterAssignment>
+                                    </validityParameterAssignments>
+                                </CustomerPurchasePackageElementAccess>
+                                <CustomerPurchasePackageElementAccess id="ENT:CustomerPurchasePackageElementAccess:11" version="1" created="2019-01-01T00:30:00">
+                                    <ValidableElementRef ref="RUT:ValidableElement:SingleTrip" version="1"/>
+                                    <!-- Validated 30 minutes after validation, no new parameter assignments as there is already an activated access -->
+                                    <MarkedAs>marked</MarkedAs>
                                 </CustomerPurchasePackageElementAccess>
                                 <CustomerPurchasePackageElementAccess id="ENT:CustomerPurchasePackageElementAccess:12" version="1" created="2019-01-02T00:00:00">
                                     <ValidableElementRef ref="RUT:ValidableElement:SingleTrip" version="1"/>
                                     <MarkedAs>activated</MarkedAs>
+                                    <validityParameterAssignments>
+                                        <CustomerPurchaseParameterAssignment id="ENT:CustomerPurchaseParameterAssignment:Usage2" version="1" order="1">
+                                            <limitations>
+                                                <!-- Usage validity period kalkulert basert på Timeband og starttid -->
+                                                <UsageValidityPeriod id="UsageValidityPeriod:Usage2" version="1">
+                                                    <StartDate>2019-01-02</StartDate>
+                                                    <StartTime>12:00:00</StartTime>
+                                                    <EndDate>2019-01-02</EndDate>
+                                                    <EndTime>13:00:00</EndTime>
+                                                </UsageValidityPeriod>
+                                            </limitations>
+                                        </CustomerPurchaseParameterAssignment>
+                                    </validityParameterAssignments>
                                 </CustomerPurchasePackageElementAccess>
                                 <CustomerPurchasePackageElementAccess id="ENT:CustomerPurchasePackageElementAccess:13" version="1" created="2019-01-03T00:00:00">
                                     <ValidableElementRef ref="RUT:ValidableElement:SingleTrip" version="1"/>
-                                    <MarkedAs>activated</MarkedAs>
+                                   <!-- Direct activation through validation - setting usage validity parameter -->
+                                    <MarkedAs>marked</MarkedAs>
+                                    <validityParameterAssignments>
+                                        <CustomerPurchaseParameterAssignment id="ENT:CustomerPurchaseParameterAssignment:Usage3" version="1" order="1">
+                                            <limitations>
+                                                <!-- Usage validity period kalkulert basert på Timeband og starttid -->
+                                                <UsageValidityPeriod id="UsageValidityPeriod:Usage3" version="1">
+                                                    <StartDate>2019-01-03</StartDate>
+                                                    <StartTime>12:00:00</StartTime>
+                                                    <EndDate>2019-01-03</EndDate>
+                                                    <EndTime>13:00:00</EndTime>
+                                                </UsageValidityPeriod>
+                                            </limitations>
+                                        </CustomerPurchaseParameterAssignment>
+                                    </validityParameterAssignments>
                                 </CustomerPurchasePackageElementAccess>
                             </elementAccesses>
                             <!-- Hvis amount of price unit
@@ -1074,10 +1155,12 @@
                                    -->
                                 
                             
+                            
                             <validityParameterAssignments>
                                 
                                 <CustomerPurchaseParameterAssignment version="1" id="ENT:CustomerPurchaseParameterAssignment:13" order="1">
-                                <!--
+                               
+                                    <!--
                                     
                                     Which type to use depends on type given in <accessRightInProduct>?
                                     
@@ -1088,18 +1171,21 @@
                                     <!-- Will check Amount field of AmountOfPriceUnitProductRef.accessrightsinproduct.accessnumber to see how many UNITS this contains -->
                                     <!-- Usage validity period must be calculated for each activation event -->
                                     
+                                    
+                                    
                                     <AmountOfPriceUnitProductRef ref="RUT:AmountOfPriceUnitProduct:10Trips" version="1"/>
                                     <LimitationGroupingType>AND</LimitationGroupingType>
                                    <limitations>
-                                      
+                                     
                                        <UserProfileRef ref="RUT:UserProfile:Anyone" version="1"/>
+                                      
                                     </limitations>
                                     <validityParameters>
-                                   
+                                     
                                         <TariffZoneRef ref="RUT:TariffZone:1" version="1"/>
                                        
                                     </validityParameters>
-                                    <TimeIntervalRef ref="RUT:TimeInterval:1Hour" version="1"/>
+                                    <TimeIntervalRef ref="RUT:TimeInterval:1Hour" version="1"/> <!-- Each activation gives 60 minutes of usdage -->
                                 </CustomerPurchaseParameterAssignment>
                             </validityParameterAssignments>
                         </CustomerPurchasePackageElement>
