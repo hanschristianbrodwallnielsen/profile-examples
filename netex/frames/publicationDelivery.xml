@@ -11,20 +11,20 @@
     <ParticipantRef>RUT</ParticipantRef>
     <Description>Generell PublicationDelivery</Description>
 
-    <!-- Relevante frames legges under dataObjects, bør legges inn i enklest mulig lesbar rekkefølge -->
+    <!-- Relevant Frames are placed under dataObjects, but should be ordered in the most read-friendly order. -->
     <dataObjects>
 
-        <!-- CompositeFrame brukes å samle ulike frames inn i objekt -->
+        <!-- CompositeFrame used to gather different Frames -->
         <CompositeFrame version="1" created="2016-05-30T12:00:00Z" id="NSR:CompositeFrame:NUMBER">
-            <!-- Gyldighetsperiode (gjelder alle underliggende frames) -->
+            <!-- Validity period (inherited by all subordinate Frames) -->
             <validityConditions>
                 <AvailabilityCondition version="1" id="NSR:AvailabilityCondition:NUMBER"/>
             </validityConditions>
             <codespaces>
-                <!-- Codespace, f.eks. for Nasjonalt Stoppestedsregister -->
-                <Codespace id="nhr">
+                <!-- Codespace -->
+                <Codespace id="nsr">
                     <Xmlns>NSR</Xmlns>
-                    <XmlnsUrl>http://www.rutebanken.no/nasjonltstoppestedsregister</XmlnsUrl>
+                    <XmlnsUrl>http://stoppested.entur.org</XmlnsUrl>
                 </Codespace>
             </codespaces>
 
@@ -32,34 +32,34 @@
 
                 <ResourceFrame id="NSR:ResourceFrame:NUMBER" version="1">
                     <FrameDefaults>
-                        <!-- Alle elementer med id-attributt blir prefixet med dette codespacet (dvs RUT:) -->
+                        <!-- All elements with an id-attribute are prefixed with this codespace (in this case "RUT"). -->
                         <DefaultCodespaceRef ref="NSR"/>
                         <DefaultLocale>
                             <TimeZone>CET</TimeZone>
                             <SummerTimeZone>CEST</SummerTimeZone>
-                            <!-- Alle tekster er på norsk om ikke eksplisitt spesifisert -->
+                            <!-- All texts are by default in Norwegian, unless otherwise stated. -->
                             <DefaultLanguage>no</DefaultLanguage>
                         </DefaultLocale>
-                        <!-- Alle koordinater leveres i henhold til WGS84, ref. "EPSG:4326" -->
+                        <!-- All coordinates must be WGS84, ref. "EPSG:4326" -->
                         <DefaultLocationSystem>EPSG:4326</DefaultLocationSystem>
                     </FrameDefaults>
                     <organisations>
                         <Authority version="1" id="NSR:Authority">
                             <CompanyNumber>NUMBER</CompanyNumber>
                             <Name>Nasjonalt stoppestedsregister</Name>
-                            <LegalName>RUTEBANKEN AS</LegalName>
+                            <LegalName>ENTUR AS</LegalName>
                             <ContactDetails>
-                                <Url>http://www.nasjonalreiseplanlegger.com/</Url>
+                                <Url>http://en-tur.no/</Url>
                             </ContactDetails>
                             <OrganisationType>authority</OrganisationType>
                         </Authority>
                     </organisations>
                 </ResourceFrame>
 
-                <!-- SiteFrame innholder stops, quays og PoI (point of interest) -->
+                <!-- SiteFrame contains stops, quays and PoI (point of interest) -->
                 <SiteFrame id="NSR:SiteFrame" version="1">
                     <stopPlaces>
-                        <!-- Merk at her brukes det codespace NSR som viser at disse elementene eies av Nasjonalt Stoppestedsregister -->
+                        <!-- Stops use the codespace NSR since they are "owned" by the national stop place registry -->
                         <StopPlace version="1" id="NSR:StopPlace:NUMBER">
                             <Name>Navn</Name>
                             <quays>
@@ -69,11 +69,13 @@
                     </stopPlaces>
                 </SiteFrame>
 
-                <!-- ServiceFrame definerer en service, som networks, routePoints, routes, lines, schedulesStopPoints, stop assignments og destinationDisplays som brukes av et Service Pattern -->
+                <!-- 
+                ServiceFrame defines a service, like networks, routePoints, routes, lines, schedulesStopPoints, stop assignments 
+                and destinationDisplays which are used by a Service Pattern -->
                 <ServiceFrame id="NSR:ServiceFrame" version="1">
-                    <!-- Beskrivelse av nettverk, hvis relevant -->
+                    <!-- Description of the network, if relevant -->
                     <Network version="1" id="NSR:Network:NUMBER"/>
-                    <!-- Beskrivelse av linjen(e) som leveres i filen -->
+                    <!-- Description of the lines(s) in the file -->
                     <routePoints>
                         <RoutePoint version="1" id="NSR:RoutePoint:NUMBER">
                             <projections>
@@ -81,13 +83,13 @@
                             </projections>
                         </RoutePoint>
                     </routePoints>
-                    <!-- Beskrivelse av overordnet rute -->
+                    <!-- Description of Route -->
                     <routes>
                         <Route version="1" id="NSR:Route:NUMBER">
                             <Name>NAME</Name>
                             <LineRef ref="NSR:Line:NUMBER"/>
                             <DirectionType>outbound</DirectionType>
-                            <!-- rutepunkter (minimum to) -->
+                            <!-- Route points (minimum two) -->
                             <pointsInSequence>
                                 <PointOnRoute version="1" id="NSR:PointOnRoute:NUMBER-1" order="1">
                                     <RoutePointRef version="1" ref="NSR:RoutePoint:NUMBER"/>
@@ -98,7 +100,7 @@
                             </pointsInSequence>
                         </Route>
                     </routes>
-                    <!-- Beskrive av linjen ruten tilhører -->
+                    <!-- Description of the Line to which the Route belongs -->
                     <lines>
                         <Line version="1" id="NSR:Line:NUMBER">
                             <Name>LINJENAVN</Name>
@@ -106,15 +108,15 @@
                             <OperatorRef ref="NSR:Authority"/>
                         </Line>
                     </lines>
-                    <!-- Skiltkasser -->
+                    <!-- Destination displays -->
                     <destinationDisplays>
                         <DestinationDisplay version="1" id="NSR:DestinationDisplay:NAME"/>
                     </destinationDisplays>
-                    <!-- Definisjon av rutens stoppunkter -->
+                    <!-- Stops in the route -->
                     <scheduledStopPoints>
                         <ScheduledStopPoint version="1" id="NSR:ScheduledStopPoint:NUMBER"/>
                     </scheduledStopPoints>
-                    <!-- Knytting av rutens stoppunkter til fysisk stoppested -->
+                    <!-- References from the stop points in the route to the phyiscal stops -->
                     <stopAssignments>
                         <PassengerStopAssignment version="1" id="NSR:PassengerStopAssignment:NUMBER" order="1">
                             <ScheduledStopPointRef version="1" ref="NSR:ScheduledStopPoint:NUMBER"/>
@@ -122,13 +124,12 @@
                             <QuayRef version="1" ref="NSR:Quay:NUMBER"/>
                         </PassengerStopAssignment>
                     </stopAssignments>
-                    <!-- Turmønster -->
                     <journeyPatterns>
                         <JourneyPattern version="1" id="NRH:JourneyPattern:NUMBER"/>
                     </journeyPatterns>
                 </ServiceFrame>
 
-                <!-- ServiceCalendarFrame definerer kalenderobjekter (dager, dagtyper, operasjonsperioder, tidspunkt etc.) -->
+                <!-- ServiceCalendarFrame defines calendar objects (days, daytypes, periods, specific times etc.) -->
                 <ServiceCalendarFrame id="NRH:ServiceCalendarFrame" version="1">
                     <ServiceCalendar version="1" id="RUT:ServiceCalendar:NUMBER"/>
                     <dayTypes>
@@ -136,16 +137,16 @@
                     </dayTypes>
                 </ServiceCalendarFrame>
 
-                <!-- TimetableFrame definerer ServiceJourney, dvs avgang(er) for en gitt dag/periode. -->
+                <!-- TimetableFrame defines ServiceJourney, that is, departure at a time, or in a period. -->
                 <TimetableFrame id="NSR:TimetableFrame:NUMBER" version="1">
-                    <!-- Turer -->
+                    <!-- Trips -->
                     <vehicleJourneys>
                         <ServiceJourney version="1" id="NRH:ServiceJourney:NUMBER">
                             <dayTypes>
                                 <DayTypeRef ref="NRH:JourneyPattern:NUMBER"/>
                             </dayTypes>
                             <JourneyPatternRef ref="NRH:JourneyPattern:NUMBER"/>
-                            <!-- turens stopp (minimum to) -->
+                            <!-- Stops in the trip (minimum two) -->
                             <passingTimes>
                                 <TimetabledPassingTime version="1" id="NSR:TimetabledPassingTime:NUMBER"/>
                             </passingTimes>
