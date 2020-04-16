@@ -23,6 +23,9 @@ This fare product consists of nearly all local bus lines in this county, with so
 
 Stop point data is not included in this xml file, but all lines are included. As regards the fare table there are just a few zones registered here (geographic intervals). 
 The fare products included are the product "Single ticket bus" ("Enkeltbillett Buss") and three monthly pass products (adult/child/senior).
+
+NOTE: THIS IS A PRELIMINARY MAPPING
+
 -->
 
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri"
