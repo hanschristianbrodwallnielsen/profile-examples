@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-Eksempel-implementasjon for enkel bestillingstransport (Flexible Journey).
+Example-implementation of a simple flexible (on-demand) journey.
 
-https://rutebanken.atlassian.net/wiki/display/PUBLIC/Bestillingstransport
-https://rutebanken.atlassian.net/wiki/display/PUBLIC/Multimodal+overgang
+[TODO - the URL's may be changed, see https://enturas.atlassian.net/wiki/spaces/PUBLIC]
+https://enturas.atlassian.net/wiki/display/PUBLIC/Bestillingstransport
+https://enturas.atlassian.net/wiki/display/PUBLIC/Multimodal+overgang
 
-Modellert som "Flexible zone without fixed stops"
-"The service is defined by one or several zones (in sequence).
-A stop can occur anywhere in each Zone. 
-Stops served, and stop order will be defined four each vehicle journey according to the reservations. 
+Modelled as a flexible zone without any fixed stops.
+The service is defined by one or several zones (in sequence).
+Stops for boardin/alighting are possible anywhere in each Zone. 
+Where the vehicle will stop is defined by the prior booking arrangements made with the operator. 
 Passing times may be defined for each zone (entry and exit time), or for each stop."
 
-Se også NeTEx-eksempel:
+Also see this NeTEx-eksample:
 https://github.com/NeTEx-CEN/NeTEx/blob/master/examples/functions/timetable/Netex_07.2_Bus_FlexibleTimetable_WithPattern.xml
 -->
 <PublicationDelivery 
@@ -37,18 +38,18 @@ https://github.com/NeTEx-CEN/NeTEx/blob/master/examples/functions/timetable/Nete
 					<Xmlns>RUT</Xmlns>
 					<XmlnsUrl>http://www.rutebanken.org/ns/rut</XmlnsUrl>
 				</Codespace>
-				<!-- Codespace for nasjonalt stoppestedregister -->
+				<!-- Codespace for national stop place registry-->
 				<Codespace id="NSR">
 					<Xmlns>NSR</Xmlns>
 					<XmlnsUrl>http://www.rutebanken.org/ns/nsr</XmlnsUrl>
 				</Codespace>
 			</codespaces>
 			<frames>
-				<!-- Test fristilt Zone, konstruksjon ikke ihht. NeTEx profil Norge -->
+				<!-- TODO: Test fristilt Zone, konstruksjon ikke ihht. NeTEx profil Norge -->
 				<GeneralFrame version="1" id="NSR:GeneralFrame:1">
 					<members>
 						<Zone version="1" id="NSR:Zone:1">
-							<!-- merk at GML er eksternt definert datatype med andre tekniske krav til ID en NeTEx profil Norge -->
+							<!-- Please note that GML is an externally defined datatype -->
 							<gml:Polygon gml:id="NSR-Polygon-1">
 								<gml:exterior>
 									<gml:LinearRing>
@@ -69,7 +70,7 @@ https://github.com/NeTEx-CEN/NeTEx/blob/master/examples/functions/timetable/Nete
 				<!-- =========================================== -->
 				<ResourceFrame version="1" id="RUT:ResourceFrame:1">
 					<organisations>
-						<!-- TODO her er ting kun splittet i authority og operator. Normalt er strukturen mer kompleks, og informasjon rundt f.eks hittegods må modelleres korrekt -->
+						<!-- This structure can be more complex when for example adding lost & found information -->
 						<Authority version="1" id="RUT:Authority:Ruter">
 							<CompanyNumber>991609407</CompanyNumber>
 							<!-- Organisasjonsnummer -->
@@ -77,7 +78,7 @@ https://github.com/NeTEx-CEN/NeTEx/blob/master/examples/functions/timetable/Nete
 							<LegalName>RUTER AS</LegalName>
 							<OrganisationType>authority</OrganisationType>
 						</Authority>
-						<!-- Antar her at Unibuss er selskapet som kjører turen. Ikke nødvendigvis korrekt, men fremgår ikke av rutetabellen -->
+						<!-- Presumed operator is Unibuss -->
 						<Operator version="1" id="RUT:Operator:Unibuss">
 							<CompanyNumber>985615616</CompanyNumber>
 							<Name>Unibuss</Name>
@@ -94,8 +95,8 @@ https://github.com/NeTEx-CEN/NeTEx/blob/master/examples/functions/timetable/Nete
 							<PrivateContactDetails>
 								<Email/>
 								<Phone>0047 177</Phone>
-								<Url>http://www.ruter.no</Url>
-								<FurtherDetails>Kontaktskjema på websider</FurtherDetails>
+								<Url>http://www.nsb.no</Url>
+								<FurtherDetails>Kontaktskjema på websider</FurtherDetails>								
 							</PrivateContactDetails>
 							<CustomerServiceContactDetails>
 								<Phone>815 00 888</Phone>
@@ -106,10 +107,10 @@ https://github.com/NeTEx-CEN/NeTEx/blob/master/examples/functions/timetable/Nete
 				</ResourceFrame>
 
 
-				<!-- Referanser til stoppestedregisteret (kun tatt med for å illustrere oppbygning av SiteFrame) -->
+				<!-- References to the national stop place registry (only included in order to illustrate the structure of SiteFrame) -->
 				<SiteFrame version="1" id="RUT:SiteFrame:1">
 					<stopPlaces>
-						<!-- Alle codespace er NSR pga data fra sentralt stoppestedregister -->
+						<!-- Stops use the codespace NSR since they are "owned" by the national stop place registry -->
 						<StopPlace version="1" id="NSR:StopPlace:ID-LORENSKOGSENTRUM">
 							<!-- Lørenskog sentrum (59.927963, 10.954812) -->
 							<Name>Lørenskog sentrum</Name>
@@ -119,7 +120,7 @@ https://github.com/NeTEx-CEN/NeTEx/blob/master/examples/functions/timetable/Nete
 						</StopPlace>
 						<StopPlace version="1" id="NSR:StopPlace:ID-TRIADEN-ENTRANCE">
 							<Name>Triaden</Name>
-							<!-- Gamleveien 88C, 1476 Rasta (utenfor hovdeinngang Triaden: 59.919880, 10.953399) -->
+							<!-- Gamleveien 88C, 1476 Rasta (outside the main entrance of "Triaden": 59.919880, 10.953399) -->
 							<quays>
 								<Quay version="1" id="NSR:Quay:ID-TRIADEN-ENTRANCE-QUAY"/>
 							</quays>
@@ -131,9 +132,9 @@ https://github.com/NeTEx-CEN/NeTEx/blob/master/examples/functions/timetable/Nete
 								<Quay version="1" id="NSR:Quay:ID-HANABORG_ST-QUAY"/>
 							</quays>
 						</StopPlace>
-					</stopPlaces>
-
-					<!-- Angivelse av område hvor fleksibel transport kan bestilles fra/til -->
+					</stopPlaces>				
+					
+					<!-- Definition of the area where flexible transport can be ordered. -->
 					<flexibleStopPlaces>
 						<FlexibleStopPlace version="1" id="NSR:FlexibleStopPlace:ID-HANABORG-NORD">
 							<Name>Fleksisone for linje 316</Name>
@@ -173,7 +174,7 @@ https://github.com/NeTEx-CEN/NeTEx/blob/master/examples/functions/timetable/Nete
 					</Network>
 
 					<routePoints>
-						<!-- Flexi-sone Hanaborg Nord -->
+						<!-- Flexible zone "Hanaborg Nord" -->
 						<RoutePoint version="1" id="RUT:RoutePoint:ID-HANABORG-NORD">
 							<projections>
 								<PointProjection version="1"
@@ -343,10 +344,8 @@ https://github.com/NeTEx-CEN/NeTEx/blob/master/examples/functions/timetable/Nete
 							<Name>316 til Lørenskog</Name>
 							<RouteRef version="1" ref="RUT:Route:316-TilLorenskog"/>
 							<pointsInSequence>
-								<!-- Flexi-sone -->
-								<StopPointInJourneyPattern version="1"
-									id="RUT:StopPointInJourneyPattern:ID-HANABORG-NORD-tilLorenskog"
-									order="1">
+								<!-- Flexible zone -->
+								<StopPointInJourneyPattern version="1" id="RUT:StopPointInJourneyPattern:ID-HANABORG-NORD-tilLorenskog" order="1">
 									<ScheduledStopPointRef version="1" ref="RUT:ScheduledStopPoint:ID-HANABORG_ST-NORD"/>
 									<ForAlighting>false</ForAlighting>
 									<DestinationDisplayRef version="1" ref="RUT:DestinationDisplay:Triaden"/>
@@ -398,13 +397,13 @@ https://github.com/NeTEx-CEN/NeTEx/blob/master/examples/functions/timetable/Nete
 									<ScheduledStopPointRef version="1" ref="RUT:ScheduledStopPoint:ID-HANABORG_ST-NORD"/>
 									<ForBoarding>false</ForBoarding>
 								</StopPointInJourneyPattern>
-								<!-- (flexi-sone slutt) -->
+								<!-- End of flexible zone. -->
 							</pointsInSequence>
 						</JourneyPattern>
 					</journeyPatterns>
 
 					<notices>
-						<!-- Fotnote som gjelder for linjen -->
+						<!-- Notice in regard to the entire Line -->
 						<Notice version="1" id="RUT:Notice:316">
 							<Text>
 								Denne bestillingslinjen kjører i området 
@@ -562,17 +561,16 @@ https://github.com/NeTEx-CEN/NeTEx/blob/master/examples/functions/timetable/Nete
 					</vehicleJourneys>
 
 					<journeyInterchanges>
-						<!-- JourneyPatternInterchange pdd. ikke i bruk -->
+					  <!-- JourneyPatternInterchange CURRENTLY NOT IN USE -->
 						<!--ServiceJourneyPatternInterchange>
 							<FromPointRef ref=""></FromPointRef>
 							<ToPointRef ref=""></ToPointRef>
 							<FromJourneyPatternRef ref=""></FromJourneyPatternRef>
 							<ToJourneyPatternRef ref=""></ToJourneyPatternRef>
 						</ServiceJourneyPatternInterchange-->
-
-						<!-- Overganger Tog -->
-						<ServiceJourneyInterchange version="1"
-							id="RUT:ServiceJourneyInterchange:ID-HANABORG_ST-316-to-L1-C">
+            
+						<!-- Interchanges, train -->
+						<ServiceJourneyInterchange version="1" id="RUT:ServiceJourneyInterchange:ID-HANABORG_ST-316-to-L1-C">
 							<Description>2Ø Tog fra Oslo 1219</Description>
 							<Priority>0</Priority>
 							<StaySeated>false</StaySeated>
