@@ -349,7 +349,31 @@
                 </PointOnRoute>
               </pointsInSequence>
             </Route>
-           </routes>
+          </routes>
+          
+          
+          
+          <!-- Test of General Section for use with TEN distancing -->
+          <generalSections>
+            <GeneralSection id="ENT:GeneralSection:1" version="1">
+              <Name>Genral section test</Name>
+              <pointsOnSection>
+                <PointOnSection id="ENT:PointOnSection:1" version="1" order="1">
+                  <ScheduledStopPointRef ref="SJN:ScheduledStopPoint:TND-1" version="0"/>
+                </PointOnSection>
+                <PointOnLineSection id="ENT:PointOnLineSection:1" version="1">
+                  <ScheduledStopPointRef ref="SJN:ScheduledStopPoint:TND-3" version="0"/>
+                </PointOnLineSection>
+              </pointsOnSection>
+              
+              <linksOnSection>
+                <LinkOnSection id="ENT:LinkOnSection:1" version="1" order="1">
+                  <RailwayLinkRef ref="ref"/>
+                </LinkOnSection>
+
+              </linksOnSection>
+            </GeneralSection>
+          </generalSections>
           
           
           <lines>
@@ -625,7 +649,7 @@
                 </StopPointInJourneyPattern>
               </pointsInSequence>
             </JourneyPattern>
-          </journeyPatterns>   
+          </journeyPatterns>
  
         </ServiceFrame>
         
