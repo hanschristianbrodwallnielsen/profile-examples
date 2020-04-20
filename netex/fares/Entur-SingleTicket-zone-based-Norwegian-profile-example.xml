@@ -206,12 +206,12 @@
 
 
         <ServiceFrame id="RUT:ServiceFrame:1" version="1">
-            <!-- only provided as NeTEx frame structure reference -->
+            <!-- only included as NeTEx frame structure reference -->
         </ServiceFrame>
 
 
         <TimetableFrame id="RUT:TimetableFrame:1" version="1">
-            <!-- only provided as NeTEx frame structure reference -->
+            <!-- only included as NeTEx frame structure reference -->
         </TimetableFrame>
 
 
