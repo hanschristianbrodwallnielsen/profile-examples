@@ -169,7 +169,6 @@
                                         </Transferability>
                                         <FrequencyOfUse id="NSB:FrequencyOfUse:Unlimited60min" version="1">
                                             <FrequencyOfUseType>unlimited</FrequencyOfUseType>
-
                                         </FrequencyOfUse>
                                     </limitations>
                                 </GenericParameterAssignment>
