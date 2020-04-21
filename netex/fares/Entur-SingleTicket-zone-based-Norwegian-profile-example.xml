@@ -10,6 +10,28 @@
     <dataObjects>
 
 
+        <!-- Non-compliant organisation data included only for readability of example -->
+        <ResourceFrame id="ENT:ResourceFrame:1" version="1">
+            <organisations>
+                <GeneralOrganisation id="ENT:GeneralOrganisation:Entur" version="1">
+                    <Name>Entur</Name>
+                    <ContactDetails>
+                        <Url>https://www.entur.org</Url>
+                    </ContactDetails>
+                    <OrganisationType>statutoryBody</OrganisationType>
+                </GeneralOrganisation>
+                <Authority id="RUT:Authority:Ruter" version="1">
+                    <Name>Ruter#</Name>
+                    <ContactDetails>
+                        <Url>https://www.ruter.no</Url>
+                    </ContactDetails>
+                    <OrganisationType>operator</OrganisationType>
+                    <!-- (simplified) acts as both operator and authority for this example -->
+                </Authority>
+            </organisations>
+        </ResourceFrame>
+
+
         <!-- Fare data for Ruter# codespace "RUT" (greater Oslo region) -->
 
         <FareFrame id="RUT:FareFrame:1" version="1">
@@ -43,7 +65,10 @@
                 </TimeInterval>
             </timeIntervals>
             
+            
             <fareStructureElements>
+                
+                <!--
                 <FareStructureElement id="RUT:FareStructureElement:1zone60min" version="1">
                     <validityParameterAssignments>
                         <GenericParameterAssignment id="RUT:GenericParameterAssignment:1zone60min" version="1" order="0">
@@ -64,22 +89,54 @@
                         </GenericParameterAssignment>
                     </validityParameterAssignments>
                 </FareStructureElement>
+                -->
+            
+                <FareStructureElement id="RUT:FareStructureElement:1" version="1">
+                    <GenericParameterAssignment id="RUT:GenericParameterAssignment:1" version="1" order="0">
+                        <limitations>
+                            <FrequencyOfUse id="RUT:FrequencyOfUse:1" version="1">
+                                <FrequencyOfUseType>unlimited</FrequencyOfUseType>
+                            </FrequencyOfUse>
+                        </limitations>
+                        <validityParameters>
+                            <AuthorityRef ref="RUT:Authority:Ruter" version="1"/>
+                            <TariffZoneRef ref="RUT:TariffZone:1" version="1"/>
+                        </validityParameters>
+                        <TimeIntervalRef ref="RUT:TimeInterval:60min" version="1"/>
+                    </GenericParameterAssignment>
+                </FareStructureElement>
+                
+                <FareStructureElement id="RUT:FareStructureElement:2" version="1">
+                    <GenericParameterAssignment id="RUT:GenericParameterAssignment:2" version="1" order="0">
+                        <limitations>
+                            <FrequencyOfUseRef ref="RUT:FrequencyOfUse:1" version="1"/>
+                        </limitations>
+                        <validityParameters>
+                            <AuthorityRef ref="RUT:Authority:Ruter" version="1"/>
+                            <TariffZoneRef ref="RUT:TariffZone:2V" version="1"/>
+                        </validityParameters>
+                        <TimeIntervalRef ref="RUT:TimeInterval:90min" version="1"/>
+                    </GenericParameterAssignment>
+                </FareStructureElement>
+                
             </fareStructureElements>
             
+            
             <validableElements>
-                <ValidableElement id="RUT:ValidableElement:SingleTrip1Zone" version="1">
+                <ValidableElement id="RUT:ValidableElement:1" version="1">
                     <Name>Single trip within one zone</Name>
                     <fareStructureElements>
-                        <FareStructureElementRef ref="RUT:FareStructureElement:1zone60min" version="1"/>
+                        <FareStructureElementRef ref="RUT:FareStructureElement:1" version="1"/>
                     </fareStructureElements>
                 </ValidableElement>
-                <ValidableElement id="RUT:ValidableElement:SingleTrip2Zones" version="1">
+                <ValidableElement id="RUT:ValidableElement:2" version="1">
                     <Name>Single trip within two zones</Name>
                     <fareStructureElements>
-                        <FareStructureElementRef ref="RUT:FareStructureElement:2zones90min" version="1"/>
+                        <FareStructureElementRef ref="RUT:FareStructureElement:2" version="1"/>
                     </fareStructureElements>
                 </ValidableElement>
             </validableElements>
+            
             
             <usageParameters>
                 <UserProfile id="RUT:UserProfile:NormalFare" version="1">
@@ -97,13 +154,13 @@
                 <PreassignedFareProduct id="RUT:PreassignedFareProduct:SingleTrip1Zone" version="1">
                     <Name lang="en">Single trip valid within one zone</Name>
                     <accessRightsInProduct>
-                        <AccessRightInProductRef ref="RUT:ValidableElement:SingleTrip2Zones" version="1"/>
+                        <AccessRightInProductRef ref="RUT:ValidableElement:1" version="1"/>
                     </accessRightsInProduct>
                 </PreassignedFareProduct>
                 <PreassignedFareProduct id="RUT:PreassignedFareProduct:SingleTrip2Zones" version="1">
                     <Name lang="en">Single trip valid within two zones</Name>
                     <accessRightsInProduct>
-                        <AccessRightInProductRef ref="RUT:ValidableElement:SingleTrip2Zones" version="1"/>
+                        <AccessRightInProductRef ref="RUT:ValidableElement:1" version="1"/>
                     </accessRightsInProduct>
                 </PreassignedFareProduct>
             </fareProducts>
@@ -142,7 +199,7 @@
                             <Name lang="en">Single trip valid within one fare zone valid for one hour</Name>
                             <PreassignedFareProductRef ref="RUT:PreassignedFareProduct:SingleTrip1Zone" version="1"/>
                             <validityParameterAssignments>
-                                <GenericParameterAssignment id="RUT:GenericParameterAssignment:1" version="1" order="0">
+                                <GenericParameterAssignment id="RUT:GenericParameterAssignment:10" version="1" order="0">
                                     <limitations>
                                         <Transferability id="RUT:Transferability:1" version="1">
                                             <CanTransfer>true</CanTransfer>
@@ -166,7 +223,7 @@
                             <Name lang="en">Single trip valid within two fare zones valid for one and a halv hours</Name>
                             <PreassignedFareProductRef ref="RUT:PreassignedFareProduct:SingleTrip2Zones" version="1"/>
                             <validityParameterAssignments>
-                                <GenericParameterAssignment id="RUT:GenericParameterAssignment:2" version="1" order="0">
+                                <GenericParameterAssignment id="RUT:GenericParameterAssignment:11" version="1" order="0">
                                     <limitations>
                                         <Transferability id="RUT:Transferability:2" version="1">
                                             <CanTransfer>true</CanTransfer>
@@ -274,7 +331,7 @@
                             
                             <elementAccesses>
                                 <CustomerPurchasePackageElementAccess id="RUT:CustomerPurchasePackageElementAccess:1" version="1" created="2020-04-20T11:00:00">
-                                    <ValidableElementRef ref="RUT:ValidableElement:SingleTrip1Zone" version="1"/>
+                                    <ValidableElementRef ref="RUT:ValidableElement:1" version="1"/>
                                     <MarkedAs>activated</MarkedAs>
                                     <validityParameterAssignments>
                                         <CustomerPurchaseParameterAssignment id="RUT:CustomerPurchasePackageElementAccess:1" version="1" order="1">
@@ -366,7 +423,7 @@
                             
                             <elementAccesses>
                                 <CustomerPurchasePackageElementAccess id="RUT:CustomerPurchasePackageElementAccess:2" version="1" created="2019-01-01T00:00:00">
-                                    <ValidableElementRef ref="RUT:ValidableElement:SingleTrip2Zones" version="1"/>
+                                    <ValidableElementRef ref="RUT:ValidableElement:2" version="1"/>
                                     <MarkedAs>unused</MarkedAs>
                                 </CustomerPurchasePackageElementAccess>
                             </elementAccesses>
@@ -396,7 +453,7 @@
                             
                             <elementAccesses>
                                 <CustomerPurchasePackageElementAccess id="RUT:CustomerPurchasePackageElementAccess:3" version="1" created="2020-04-20T13:10:00">
-                                    <ValidableElementRef ref="RUT:ValidableElement:SingleTrip2Zones" version="1"/>
+                                    <ValidableElementRef ref="RUT:ValidableElement:2" version="1"/>
                                     <MarkedAs>activated</MarkedAs>
                                 </CustomerPurchasePackageElementAccess>
                             </elementAccesses>
