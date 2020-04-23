@@ -300,11 +300,31 @@
                     <OvernightParkingPermitted>true</OvernightParkingPermitted>
                     <RechargingAvailable>true</RechargingAvailable>
                     <ParkingReservation>reservationAllowed</ParkingReservation>
-                    <parkingProperties>
-                        <ParkingProperties id="NSR:ParkingProperties:1" version="1">
-                            <ParkingUserTypes>all</ParkingUserTypes>
-                        </ParkingProperties>
-                    </parkingProperties>
+                    <parkingAreas>
+                        <ParkingArea id="NSR:ParkingArea:1" version="1">
+                            <ParkingProperties id="NSR:ParkingProperties:1" version="1">
+                                <ParkingUserTypes>registered</ParkingUserTypes>
+                                <MaximumStay>PT3H</MaximumStay>
+                                <spaces>
+                                    <ParkingCapacity id="NSR:ParkingCapacity:1" version="1">
+                                        <NumberOfSpaces>25</NumberOfSpaces>
+                                        <NumberOfSpacesWithRechargePoint>10</NumberOfSpacesWithRechargePoint>
+                                    </ParkingCapacity>
+                                </spaces>
+                            </ParkingProperties>
+                        </ParkingArea>
+                        <ParkingArea id="NSR:ParkingArea:2" version="1">
+                            <ParkingProperties id="NSR:ParkingProperties:2" version="1">
+                                <ParkingUserTypes>all</ParkingUserTypes>
+                                <spaces>
+                                    <ParkingCapacity id="NSR:ParkingCapacity:2" version="1">
+                                        <NumberOfSpaces>100</NumberOfSpaces>
+                                        <NumberOfSpacesWithRechargePoint>0</NumberOfSpacesWithRechargePoint>
+                                    </ParkingCapacity>
+                                </spaces>
+                            </ParkingProperties>
+                        </ParkingArea>
+                    </parkingAreas>
                 </Parking>
 
                 <!-- Sykkelparkering (utendørs) -->
@@ -332,6 +352,11 @@
                     <OvernightParkingPermitted>true</OvernightParkingPermitted>
                     <ParkingReservation>registrationRequired</ParkingReservation>
                     <BookingUrl>http://www.banenor.no/Jernbanen/Sykle-til-stasjonen-/</BookingUrl>
+                    <parkingProperties>
+                        <ParkingProperties id="NSR:ParkingProperties:3" version="1">
+                            <MaximumStay>P30D</MaximumStay>
+                        </ParkingProperties>
+                    </parkingProperties>
                 </Parking>
             </parkings>
 
