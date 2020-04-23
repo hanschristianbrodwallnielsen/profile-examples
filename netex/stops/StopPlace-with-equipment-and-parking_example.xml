@@ -318,7 +318,7 @@
                                 <ParkingUserTypes>all</ParkingUserTypes>
                                 <spaces>
                                     <ParkingCapacity id="NSR:ParkingCapacity:2" version="1">
-                                        <NumberOfSpaces>100 </NumberOfSpaces>
+                                        <NumberOfSpaces>100</NumberOfSpaces>
                                         <NumberOfSpacesWithRechargePoint>0</NumberOfSpacesWithRechargePoint>
                                     </ParkingCapacity>
                                 </spaces>
