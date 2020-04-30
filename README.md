@@ -1,4 +1,4 @@
-# profile-norway-examples
+# NeTEx and SIRI profile examples
 
 Examples for the Nordic NeTEx and Norwegian SIRI profiles.
 
