@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!-- ==== Simple Stop Example ====== 
-The example is shows a stop with two roadside quays without any special facilities
+
+This example shows a STOP PLACE with two roadside QUAYs with a bus sign (traffic sign "512"), atimetable poster, a line/network plan and a fare table 
      The object consists of
        (i)   STOP PLACE      NSR:StopPlace:12345678       Bryn skole (Ole Deviks vei)
        (ii)  QUAY            NSR:Quay:12345679            Bryn skole southbound (to city center)
        (iii) QUAY            NSR:Quay:12345670            Bryn skole northbound (from city center)
+     as well as related FACILITIES / EQUIPMENT and SUITABILITIES
 
-Frames
+NeTEx frames:
 	The COMPOSITE FRAME is used for specifying validity as well as grouping of the example objects
-	STOP PLACE and QUAYs is defined in SITE FRAME
+	STOP PLACE and QUAY objects are defined in the SITE FRAME
 -->
 
 <PublicationDelivery 
@@ -60,10 +62,6 @@ Frames
 									<Suitability version="1" id="suitability">
 										<MobilityNeed>assistedWheelchair</MobilityNeed>
 										<Suitable>suitable</Suitable>
-									</Suitability>
-									<Suitability version="1" id="suitability2">
-										<MedicalNeed>allergic</MedicalNeed>
-										<Suitable>notSuitable</Suitable>
 									</Suitability>
 								</suitabilities>
 							</AccessibilityAssessment>
