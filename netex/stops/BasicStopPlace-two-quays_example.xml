@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!-- ==== Simple Stop Example ====== 
-Eksempelet er basert på offisielle NeTEx-XML eksempler og viser et stoppested med to quays i gaten uten spesielle fasiliteter 
-    Objektet består av
-       (i)   STOP PLACE		NSR:StopPlace:12345678		Bryn skole (i Ole Deviks vei)
-       (ii)  QUAY			NSR:Quay:12345679			Bryn skole southbound (to city center)
-       (iii) QUAY			NSR:Quay:12345670			Bryn skole northbound (from city center)
+The example is shows a stop with two roadside quays without any special facilities
+     The object consists of
+       (i)   STOP PLACE      NSR:StopPlace:12345678       Bryn skole (Ole Deviks vei)
+       (ii)  QUAY            NSR:Quay:12345679            Bryn skole southbound (to city center)
+       (iii) QUAY            NSR:Quay:12345670            Bryn skole northbound (from city center)
 
-Frames (gruppering)
-	En COMPOSITE FRAME brukes for å gruppere (og versjonere) eksempelet
-	STOP PLACE og QUAYs er definert i SITE FRAME
-	SERVICE FRAME er tatt med kun for å vise hvordan stoppestedet kan refereres
-	
-(RESOURCE FRAME med FrameDefaults og organization er utelatt for å forenkle eksempelet)
+Frames
+	The COMPOSITE FRAME is used for specifying validity as well as grouping of the example objects
+	STOP PLACE and QUAYs is defined in SITE FRAME
 -->
 
 <PublicationDelivery 
@@ -42,9 +39,9 @@ Frames (gruppering)
 				<SiteFrame version="1" id="NSR:SiteFrame:1">
 					<!-- ===Stoppesteder=== -->
 					<stopPlaces>
-						<!-- Merk: Holdeplass-ID vil komme fra Holdeplassregisteret -->
+						<!-- Merk: StopPlace ID from the National Stop Registry (NSR) in Norway -->
 						<StopPlace version="1" id="NSR:StopPlace:12345678">
-							<Name>Navn</Name>
+							<Name>Bryn Skole (Ole Deviks vei)</Name>
 							<Centroid>
 								<Location srsName="WGS84" id="NSR:Location:1">
 									<Longitude>10.824609</Longitude>
@@ -118,7 +115,6 @@ Frames (gruppering)
 					
 					
 					<siteFacilitySets>
-						<!-- TODO: Rapportert forslag til utvidelse av NeTEx slik at dette... -->
 						<SiteFacilitySet id="NSR:SiteFacilitySet:timetablePoster" version="1">
 							<PassengerInformationEquipmentList>timetablePoster</PassengerInformationEquipmentList>
 						</SiteFacilitySet>
@@ -129,14 +125,6 @@ Frames (gruppering)
 							<PassengerInformationEquipmentList>fareInformation</PassengerInformationEquipmentList>
 						</SiteFacilitySet>
 					</siteFacilitySets>
-					<!-- ...kan modellers enda mer eksplisitt/presist som Equipment:
-							<placeEquipments>
-								<PassengerInformationEquipment id="passengerinformationequipment" version="1">
-									alt 1: <PassengerInformationFacilityList>[dataset]</PassengerInformationFacilityList>
-									alt 2: <PassengerInformationEquipmentList>[dataset]</PassengerInformationEquipmentList>
-								</PassengerInformationEquipment>
-							</placeEquipments>
-							-->
 				</SiteFrame>
 			</frames>
 		</CompositeFrame>
