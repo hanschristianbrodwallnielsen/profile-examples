@@ -45,8 +45,8 @@ NeTEx frames:
 							<Name>Bryn Skole (Ole Deviks vei)</Name>
 							<Centroid>
 								<Location srsName="WGS84" id="NSR:Location:1">
-									<Longitude>10.824609</Longitude>
-									<Latitude>59.913915</Latitude>
+									<Longitude>59.913915</Longitude>
+									<Latitude>10.824609</Latitude>
 								</Location>
 							</Centroid>
 							<AccessibilityAssessment version="1" id="NSR:AccessibilityAssessment:1">
