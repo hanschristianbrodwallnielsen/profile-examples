@@ -89,7 +89,7 @@ NeTEx frames:
 										<SiteFacilitySetRef ref="NSR:SiteFacilitySet:timetablePoster"/>
 										<SiteFacilitySetRef ref="NSR:SiteFacilitySet:fareInformation"/>
 									</facilities>
-									<PublicCode>Sør</PublicCode>
+									<PublicCode>Southbound</PublicCode>
 									<CompassBearing>200</CompassBearing>
 								</Quay>
 								<Quay version="1" id="NSR:Quay:12345670">
@@ -103,7 +103,7 @@ NeTEx frames:
 									<facilities>
 										<SiteFacilitySetRef ref="NSR:SiteFacilitySet:timetablePoster"/>
 									</facilities>
-									<PublicCode>Nord</PublicCode>
+									<PublicCode>Northbound</PublicCode>
 									<CompassBearing>020</CompassBearing>
 								</Quay>
 							</quays>
