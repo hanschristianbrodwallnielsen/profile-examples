@@ -37,9 +37,8 @@ Frames
 			
 			<frames>
 				<SiteFrame version="1" id="NSR:SiteFrame:1">
-					<!-- ===Stoppesteder=== -->
+					<!-- Remark: StopPlace ID from the National Stop Registry (NSR) in Norway -->
 					<stopPlaces>
-						<!-- Merk: StopPlace ID from the National Stop Registry (NSR) in Norway -->
 						<StopPlace version="1" id="NSR:StopPlace:12345678">
 							<Name>Bryn Skole (Ole Deviks vei)</Name>
 							<Centroid>
