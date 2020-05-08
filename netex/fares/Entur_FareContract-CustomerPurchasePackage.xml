@@ -21,6 +21,7 @@
             </timeIntervals>
             
             
+            
             <validableElements>
                 <ValidableElement id="NSB:ValidableElement:SingleTrip" version="1">
                     <Name>Enkelttur NSB</Name>
@@ -63,7 +64,11 @@
                         <AccessRightInProductRef ref="NSB:ValidableElement:SingleTrip" version="1"/>
                     </accessRightsInProduct>
                 </PreassignedFareProduct>
-
+                <PreassignedFareProduct id="ATB:PreassignedFareProduct:SingleTrip" version="1">
+                    <Name lang="no">Enkelttur AtB</Name>
+                    <!-- skipped validable element  - same structure as for Ruter -->
+                </PreassignedFareProduct>
+                
                 <ThirdPartyProduct id="RUT:ThirdPartyProduyct:OyafestivalenLordag" version="1">
                     <accessRightsInProduct>
                         <AccessRightInProduct id="RUT:AccessRightInProduct:Exhibition" version="1" order="1">
@@ -97,6 +102,7 @@
                         <AccessRightInProductRef ref="RUT:ValidableElement:SingleTrip" version="1"/>
                     </accessRightsInProduct>
                 </PreassignedFareProduct>
+
                 <AmountOfPriceUnitProduct id="RUT:AmountOfPriceUnitProduct:10Trips" version="1">
                     <Name>Klippekort 10 turer</Name>
                     <accessRightsInProduct>
@@ -108,11 +114,165 @@
                 </AmountOfPriceUnitProduct>
             </fareProducts>
 
+            <distributionChannels>
+                <DistributionChannel id="ENT:DistributionChannel:EnturApp" version="1">
+                    <Description>Sold by Entur mobile app</Description>
+                    <DistributionChannelType>mobileDevice</DistributionChannelType>
+                </DistributionChannel>
+                <DistributionChannel id="ENT:DistributionChannel:EnturTVM" version="1">
+                        <Description>Sld by any Entur ticket vending machines</Description>
+                    <DistributionChannelType>atStop</DistributionChannelType>
+                </DistributionChannel>
+                <DistributionChannel id="ENT:DistributionChannel:EnturMT" version="1">
+                    <Description>Sold by ny Entur owned MT / handheld unit used on board trains</Description>
+                    <DistributionChannelType>onBoard</DistributionChannelType>
+                </DistributionChannel>
+                <DistributionChannel id="ENT:DistributionChannel:AtbApp" version="1">
+                    <Description>Sold by AtB mobile app</Description>
+                    <DistributionChannelType>mobileDevice</DistributionChannelType>
+                </DistributionChannel>
+                <DistributionChannel id="ENT:DistributionChannel:AtbMT" version="1">
+                    <Description>Sold by AtB operated MT handheld units on board vehicles</Description>
+                    <DistributionChannelType>onBoard</DistributionChannelType>
+                </DistributionChannel>
+            </distributionChannels>
+            
+            <fulfilmentMethods>
+                <FulfilmentMethod id="ENT:FulfilmentMethod:EnturApp-IdBasert" version="1">
+                    <Name>Entur App Kontobasert</Name>
+                    <Description>Leveranse til Entur app som ID-basert billett</Description>
+                    <FulfilmentMethodType>customerAccount</FulfilmentMethodType> <!-- new enum value 'customerAccount' -->
+                    <typesOfTravelDocument>
+                        <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:abtSmartphoneToken" version="1"/>
+                    </typesOfTravelDocument>
+                    <prices>
+                        <FulfilmentMethodPrice id="ENT:FulfilmentMethodPrice:1" version="1">
+                            <Amount>0</Amount>
+                        </FulfilmentMethodPrice>
+                    </prices>
+                </FulfilmentMethod>
+                <FulfilmentMethod id="ENT:FulfilmentMethod:EnturApp-NOD-basert" version="1">
+                    <Name>Entur App NOD-basert</Name>
+                    <Description>Leveranse til Entur app som NOD-basert billett som i dag</Description>
+                    <FulfilmentMethodType>mobileApp</FulfilmentMethodType> <!-- new enum value 'customerAccount' -->
+                    <typesOfTravelDocument>
+                        <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:nodQRMobile" version="1"/> <!-- Nod qr code -->
+                    </typesOfTravelDocument>
+                    <prices>
+                        <FulfilmentMethodPrice id="ENT:FulfilmentMethodPrice:2" version="1">
+                            <Amount>0</Amount>
+                        </FulfilmentMethodPrice>
+                    </prices>
+                </FulfilmentMethod>
+                <FulfilmentMethod id="ENT:FulfilmentMethod:AtbApp-IdBasert" version="1">
+                    <Name>AtB App Kontobasert</Name>
+                    <Description>Leveranse til AtB app som ID-basert billett</Description>
+                    <FulfilmentMethodType>customerAccount</FulfilmentMethodType> <!-- new enum value 'customerAccount' -->
+                    <typesOfTravelDocument>
+                        <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:abtSmartphoneToken" version="1"/>
+                    </typesOfTravelDocument>
+                    <prices>
+                        <FulfilmentMethodPrice id="ENT:FulfilmentMethodPrice:3" version="1">
+                            <Amount>0</Amount>
+                        </FulfilmentMethodPrice>
+                    </prices>
+                </FulfilmentMethod>
+                <FulfilmentMethod id="ENT:FulfilmentMethod:AtbMT-IdBasert" version="1">
+                    <Name>AtB MT Kontobasert</Name>
+                    <Description>Leveranse til kunde som ID-basert billett på enten papir (token) eller reisekort (token)</Description>
+                    <FulfilmentMethodType>customerAccount</FulfilmentMethodType> <!-- new enum value 'customerAccount' -->
+                    <typesOfTravelDocument>
+                        <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:abtQrPaperMT" version="1"/>
+                        <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:abtTravelCard" version="1"/>
+                    </typesOfTravelDocument>
+                    <prices>
+                        <FulfilmentMethodPrice id="ENT:FulfilmentMethodPrice:4" version="1">
+                            <Amount>0</Amount>
+                        </FulfilmentMethodPrice>
+                    </prices>
+                </FulfilmentMethod>
+                <FulfilmentMethod id="ENT:FulfilmentMethod:EnturMT-IdBasert" version="1">
+                    
+                    <Name>Entur MT Kontobasert</Name>
+                    <Description>Leveranse til kunde som ID-basert billett på enten papir (token) eller reisekort (token)</Description>
+                    <FulfilmentMethodType>customerAccount</FulfilmentMethodType> <!-- new enum value 'customerAccount' -->
+                    
+                    <typesOfTravelDocument>
+                        <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:abtQrPaperMT" version="1"/>
+                        <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:abtTravelCard" version="1"/>
+                    </typesOfTravelDocument>
+                    <prices>
+                        <FulfilmentMethodPrice id="ENT:FulfilmentMethodPrice:5" version="1">
+                            <Amount>0</Amount>
+                        </FulfilmentMethodPrice>
+                    </prices>
+                </FulfilmentMethod>
+                <FulfilmentMethod id="ENT:FulfilmentMethod:EnturMT-NODBasert" version="1">
+                    <Name>Entur MT NOD-basert</Name>
+                    <Description>Leveranse til kunde som NOD-basert billett på enten papir eller reisekort</Description>
+                    <FulfilmentMethodType>conductor</FulfilmentMethodType> <!-- new enum value 'customerAccount' -->
+                    <typesOfTravelDocument>
+                        <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:nodQrPaperMT" version="1"/>
+                        <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:nodTravelCard" version="1"/>
+                    </typesOfTravelDocument>
+                    <prices>
+                        <FulfilmentMethodPrice id="ENT:FulfilmentMethodPrice:6" version="1">
+                            <Amount>0</Amount>
+                        </FulfilmentMethodPrice>
+                    </prices>
+                </FulfilmentMethod>
+            </fulfilmentMethods>
+            
             <typesOfTravelDocuments>
-                <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:abtQrPaper" version="1">
-                    <Name>ID-basert QR-kode på papir</Name>
+                <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:abtQrPaperPdf" version="1">
+                    <Name>ID-basert QR-kode på PDF</Name>
+                    <MediaType>selfPrintPaperTicket</MediaType>
+                    <MachineReadable>barCode</MachineReadable>
+                </TypeOfTravelDocument>
+                <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:abtQrPaperMT" version="1">
+                    <Name>ID-basert QR-kode på MT-kvittering</Name>
                     <MediaType>paperTicket</MediaType>
                     <MachineReadable>barCode</MachineReadable>
+                </TypeOfTravelDocument>
+                <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:abtQrPaperTVM" version="1">
+                    <Name>ID-basert QR-kode på TVM-kvittering</Name>
+                    <MediaType>paperTicket</MediaType>
+                    <MachineReadable>barCode</MachineReadable>
+                </TypeOfTravelDocument>
+                <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:abtReferenceCode" version="1">
+                    <Name>ID-basert Refereansekode</Name>
+                    <MediaType>paperTicket</MediaType>
+                    <MachineReadable>ocr</MachineReadable>
+                </TypeOfTravelDocument>
+                <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:abtTravelCard" version="1">
+                    <Name>ID-basert reisekort</Name>
+                    <MediaType>card</MediaType>
+                    <MachineReadable>nfc</MachineReadable>
+                </TypeOfTravelDocument>
+                <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:abtEmv" version="1">
+                    <Name>Bankkort/EMV-kort som token</Name>
+                    <MediaType>card</MediaType>
+                    <MachineReadable>nfc</MachineReadable>
+                </TypeOfTravelDocument>
+                <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:abtSmartphoneToken" version="1"> <!-- Mobile token presented as QR or NFC -->
+                    <Name>ID-basert token mobiltelefon</Name>
+                    <MediaType>mobileApp</MediaType>
+                    <MachineReadable>barCode nfc</MachineReadable>
+                </TypeOfTravelDocument>
+                <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:nodQRMobile" version="1"> <!-- Standard QR code from NOD -->
+                    <Name>NOD QR mobiltelefon</Name>
+                    <MediaType>mobileApp</MediaType>
+                    <MachineReadable>barCode</MachineReadable>
+                </TypeOfTravelDocument>
+                <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:nodQrPaperMT" version="1">
+                    <Name>NOD QR-kode på MT-kvittering</Name>
+                    <MediaType>paperTicket</MediaType>
+                    <MachineReadable>barCode</MachineReadable>
+                </TypeOfTravelDocument>
+                <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:nodTravelCard" version="1">
+                    <Name>Reisekort</Name>
+                    <MediaType>card</MediaType>
+                    <MachineReadable>nfc</MachineReadable>
                 </TypeOfTravelDocument>
             </typesOfTravelDocuments>
             
@@ -137,13 +297,39 @@
                     </salesOfferPackageElements>
                 </SalesOfferPackage>
                 <SalesOfferPackage id="ENT:SalesOfferPackage:SingleTrip" version="1">
-                    <Name lang="no">Enkelttur</Name>
+                    <Name lang="no">Enkelttur Ruter</Name>
+                    <distributionAssignments>
+                        <DistributionAssignment id="ENT:DistributionAssignment:EnturApp1" version="1" order="1">
+                            <DistributionChannelRef ref="ENT:DistributionChannel:EnturApp" version="1"/>
+                            <FulfilmentMethodRef ref="ENT:FulfilmentMethod:EnturApp-IdBasert" version="1"/>
+                        </DistributionAssignment>
+                    </distributionAssignments>
                     <salesOfferPackageElements>
                         <SalesOfferPackageElement id="ENT:SalesOfferPackageElement:SingleTripRuterX" version="1" order="1">
                             <Name lang="no">Enkelttur</Name>
+                            <PreassignedFareProductRef ref="RUT:PreassignedFareProduct:SingleTrip" version="1"/>
                         </SalesOfferPackageElement>
                     </salesOfferPackageElements>
+                    
                 </SalesOfferPackage>
+
+                <SalesOfferPackage id="ENT:SalesOfferPackage:AtBSingleTrip" version="1">
+                    <Name lang="no">Enkelttur Ruter</Name>
+                    <distributionAssignments>
+                        <DistributionAssignment id="ENT:DistributionAssignment:AtbApp1" version="1" order="1">
+                            <DistributionChannelRef ref="ENT:DistributionChannel:AtbApp" version="1"/>
+                            <FulfilmentMethodRef ref="ENT:FulfilmentMethod:AtbApp-IdBasert" version="1"/>
+                        </DistributionAssignment>
+                    </distributionAssignments>
+                    <salesOfferPackageElements>
+                        <SalesOfferPackageElement id="ENT:SalesOfferPackageElement:SingleTripAtb" version="1" order="1">
+                            <Name lang="no">Enkelttur</Name>
+                            <PreassignedFareProductRef ref="ATB:PreassignedFareProduct:SingleTrip" version="1"/>
+                        </SalesOfferPackageElement>
+                    </salesOfferPackageElements>
+                    
+                </SalesOfferPackage>
+
                 <SalesOfferPackage id="ENT:SalesOfferPackage:Combined2Legs" version="1">
                     <Name lang="no">Enkelttur</Name>
                     <salesOfferPackageElements>
@@ -285,7 +471,6 @@
 
             <customerPurchasePackages>
                 <CustomerPurchasePackage id="ENT:CustomerPurchasePackage:SingleTripSpecificJourney" version="1">
-                    
                     <SalesOfferPackageRef ref="ENT:SalesOfferPackage:SingleRailTripWithMandatorySeat" version="1"/>
                     <customerPurchasePackageElements>
                         <CustomerPurchasePackageElement id="ENT:CustomerPurchasePackageElement:SingleTripSpecificJourney" version="1" order="1">
