@@ -8,6 +8,8 @@
 
         <FareFrame id="ENT:FareFrame:1" version="1">
 
+
+
             <geographicalIntervals>
                 <GeographicalInterval id="RUT:GeographicalInterval:1" version="1">
                     <NumberOfUnits>2</NumberOfUnits>
@@ -114,6 +116,7 @@
                 </AmountOfPriceUnitProduct>
             </fareProducts>
 
+
             <distributionChannels>
                 <DistributionChannel id="ENT:DistributionChannel:EnturApp" version="1">
                     <Description>Sold by Entur mobile app</Description>
@@ -137,14 +140,20 @@
                 </DistributionChannel>
             </distributionChannels>
             
+            
             <fulfilmentMethods>
                 <FulfilmentMethod id="ENT:FulfilmentMethod:EnturApp-IdBasert" version="1">
                     <Name>Entur App Kontobasert</Name>
                     <Description>Leveranse til Entur app som ID-basert billett</Description>
                     <FulfilmentMethodType>customerAccount</FulfilmentMethodType> <!-- new enum value 'customerAccount' -->
-                    <typesOfTravelDocument>
+                    
+                    <canIssueTypesOfTravelDocument>
                         <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:abtSmartphoneToken" version="1"/>
-                    </typesOfTravelDocument>
+                    </canIssueTypesOfTravelDocument>
+                    <canReuseTypesOfTravelDocument>
+                        <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:abtSmartphoneToken" version="1"/>
+                    </canReuseTypesOfTravelDocument>
+                    <!-- Eksempel: kan ha pris på fulfilmentmethod - eks for å dekke portokostnader -->
                     <prices>
                         <FulfilmentMethodPrice id="ENT:FulfilmentMethodPrice:1" version="1">
                             <Amount>0</Amount>
@@ -158,11 +167,6 @@
                     <typesOfTravelDocument>
                         <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:nodQRMobile" version="1"/> <!-- Nod qr code -->
                     </typesOfTravelDocument>
-                    <prices>
-                        <FulfilmentMethodPrice id="ENT:FulfilmentMethodPrice:2" version="1">
-                            <Amount>0</Amount>
-                        </FulfilmentMethodPrice>
-                    </prices>
                 </FulfilmentMethod>
                 <FulfilmentMethod id="ENT:FulfilmentMethod:AtbApp-IdBasert" version="1">
                     <Name>AtB App Kontobasert</Name>
@@ -171,11 +175,6 @@
                     <typesOfTravelDocument>
                         <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:abtSmartphoneToken" version="1"/>
                     </typesOfTravelDocument>
-                    <prices>
-                        <FulfilmentMethodPrice id="ENT:FulfilmentMethodPrice:3" version="1">
-                            <Amount>0</Amount>
-                        </FulfilmentMethodPrice>
-                    </prices>
                 </FulfilmentMethod>
                 <FulfilmentMethod id="ENT:FulfilmentMethod:AtbMT-IdBasert" version="1">
                     <Name>AtB MT Kontobasert</Name>
@@ -183,37 +182,26 @@
                     <FulfilmentMethodType>customerAccount</FulfilmentMethodType> <!-- new enum value 'customerAccount' -->
                     <typesOfTravelDocument>
                         <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:abtQrPaperMT" version="1"/>
-                        <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:abtTravelCard" version="1"/>
+                        <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:travelCard" version="1"/>
                     </typesOfTravelDocument>
-                    <prices>
-                        <FulfilmentMethodPrice id="ENT:FulfilmentMethodPrice:4" version="1">
-                            <Amount>0</Amount>
-                        </FulfilmentMethodPrice>
-                    </prices>
                 </FulfilmentMethod>
                 <FulfilmentMethod id="ENT:FulfilmentMethod:EnturMT-IdBasert" version="1">
-                    
                     <Name>Entur MT Kontobasert</Name>
                     <Description>Leveranse til kunde som ID-basert billett på enten papir (token) eller reisekort (token)</Description>
                     <FulfilmentMethodType>customerAccount</FulfilmentMethodType> <!-- new enum value 'customerAccount' -->
-                    
                     <typesOfTravelDocument>
                         <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:abtQrPaperMT" version="1"/>
-                        <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:abtTravelCard" version="1"/>
+                        <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:travelCard" version="1"/>
                     </typesOfTravelDocument>
-                    <prices>
-                        <FulfilmentMethodPrice id="ENT:FulfilmentMethodPrice:5" version="1">
-                            <Amount>0</Amount>
-                        </FulfilmentMethodPrice>
-                    </prices>
                 </FulfilmentMethod>
                 <FulfilmentMethod id="ENT:FulfilmentMethod:EnturMT-NODBasert" version="1">
+                    
                     <Name>Entur MT NOD-basert</Name>
                     <Description>Leveranse til kunde som NOD-basert billett på enten papir eller reisekort</Description>
                     <FulfilmentMethodType>conductor</FulfilmentMethodType> <!-- new enum value 'customerAccount' -->
                     <typesOfTravelDocument>
                         <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:nodQrPaperMT" version="1"/>
-                        <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:nodTravelCard" version="1"/>
+                        <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:travelCard" version="1"/>
                     </typesOfTravelDocument>
                     <prices>
                         <FulfilmentMethodPrice id="ENT:FulfilmentMethodPrice:6" version="1">
@@ -241,11 +229,12 @@
                 </TypeOfTravelDocument>
                 <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:abtReferenceCode" version="1">
                     <Name>ID-basert Refereansekode</Name>
-                    <MediaType>paperTicket</MediaType>
+                    <MediaType>none</MediaType>
                     <MachineReadable>ocr</MachineReadable>
                 </TypeOfTravelDocument>
-                <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:abtTravelCard" version="1">
-                    <Name>ID-basert reisekort</Name>
+                <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:travelCard" version="1">
+                    <Name>Reisekort</Name>
+                    <Description>Kan brukes både til vanlige NOD-billetter og til ID-baserte token</Description>
                     <MediaType>card</MediaType>
                     <MachineReadable>nfc</MachineReadable>
                 </TypeOfTravelDocument>
@@ -269,16 +258,12 @@
                     <MediaType>paperTicket</MediaType>
                     <MachineReadable>barCode</MachineReadable>
                 </TypeOfTravelDocument>
-                <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:nodTravelCard" version="1">
-                    <Name>Reisekort</Name>
-                    <MediaType>card</MediaType>
-                    <MachineReadable>nfc</MachineReadable>
-                </TypeOfTravelDocument>
             </typesOfTravelDocuments>
             
             <salesOfferPackages>
                 <SalesOfferPackage id="ENT:SalesOfferPackage:SingleRailTripWithMandatorySeat" version="1">
                     <Name lang="no">Enkelttur spesifikk avgang obligatorisk setereservasjon</Name>
+                    
                     <salesOfferPackageElements>
                         <SalesOfferPackageElement id="ENT:SalesOfferPackageElement:SingleTrip" version="1" order="1">
                             <Name lang="no">Togtur</Name>
@@ -287,6 +272,7 @@
                             <Name lang="no">Setereservasjon</Name>
                         </SalesOfferPackageElement>
                     </salesOfferPackageElements>
+                    
                 </SalesOfferPackage>
                 <SalesOfferPackage id="ENT:SalesOfferPackage:SingleTrip2Zones" version="1">
                     <Name lang="no">Enkelttur</Name>
