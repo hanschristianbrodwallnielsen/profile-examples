@@ -312,8 +312,9 @@
                 </SalesOfferPackage>
 
                 <SalesOfferPackage id="ENT:SalesOfferPackage:AtBSingleTrip" version="1">
-                    <Name lang="no">Enkelttur Ruter</Name>
+                    <Name lang="no">Enkelttur AtB</Name>
                     <distributionAssignments>
+                        <!-- AtB tickets may be sold in all ID based apps -->
                         <GroupOfDistributionAssignmentsRef ref="ENT:GroupOfDistributionAssignments:AllIDBasedApps" version="1"/>
                     </distributionAssignments>
                     <salesOfferPackageElements>
