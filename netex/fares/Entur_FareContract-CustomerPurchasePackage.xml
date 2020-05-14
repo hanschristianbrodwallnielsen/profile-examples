@@ -210,7 +210,8 @@
                     </prices>
                 </FulfilmentMethod>
             </fulfilmentMethods>
-            
+
+
             <typesOfTravelDocuments>
                 <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:abtQrPaperPdf" version="1">
                     <Name>ID-basert QR-kode på PDF</Name>
@@ -285,10 +286,7 @@
                 <SalesOfferPackage id="ENT:SalesOfferPackage:SingleTrip" version="1">
                     <Name lang="no">Enkelttur Ruter</Name>
                     <distributionAssignments>
-                        <DistributionAssignment id="ENT:DistributionAssignment:EnturApp1" version="1" order="1">
-                            <DistributionChannelRef ref="ENT:DistributionChannel:EnturApp" version="1"/>
-                            <FulfilmentMethodRef ref="ENT:FulfilmentMethod:EnturApp-IdBasert" version="1"/>
-                        </DistributionAssignment>
+                        <DistributionAssignmentRef ref="ENT:DistributionAssignment:EnturApp1ID" version="1"/>
                     </distributionAssignments>
                     <salesOfferPackageElements>
                         <SalesOfferPackageElement id="ENT:SalesOfferPackageElement:SingleTripRuterX" version="1" order="1">
@@ -300,12 +298,10 @@
                 </SalesOfferPackage>
 
                 <SalesOfferPackage id="ENT:SalesOfferPackage:AtBSingleTrip" version="1">
-                    <Name lang="no">Enkelttur Ruter</Name>
+                    <Name lang="no">Enkelttur AtB</Name>
                     <distributionAssignments>
-                        <DistributionAssignment id="ENT:DistributionAssignment:AtbApp1" version="1" order="1">
-                            <DistributionChannelRef ref="ENT:DistributionChannel:AtbApp" version="1"/>
-                            <FulfilmentMethodRef ref="ENT:FulfilmentMethod:AtbApp-IdBasert" version="1"/>
-                        </DistributionAssignment>
+                        <!-- AtB tickets may be sold in all ID based apps -->
+                        <GroupOfDistributionAssignmentsRef ref="ENT:GroupOfDistributionAssignments:AllIDBasedApps" version="1"/>
                     </distributionAssignments>
                     <salesOfferPackageElements>
                         <SalesOfferPackageElement id="ENT:SalesOfferPackageElement:SingleTripAtb" version="1" order="1">
@@ -359,6 +355,27 @@
                 </SalesOfferPackage>
             </salesOfferPackages>
 
+            <distributionAssignments>
+                <DistributionAssignment id="ENT:DistributionAssignment:EnturApp1ID" version="1" order="1">
+                    <DistributionChannelRef ref="ENT:DistributionChannel:EnturApp" version="1"/>
+                    <FulfilmentMethodRef ref="ENT:FulfilmentMethod:EnturApp-IdBasert" version="1"/>
+                </DistributionAssignment>
+                <DistributionAssignment id="ENT:DistributionAssignment:AtbApp1ID" version="1" order="1">
+                    <DistributionChannelRef ref="ENT:DistributionChannel:AtbApp" version="1"/>
+                    <FulfilmentMethodRef ref="ENT:FulfilmentMethod:AtbApp-IdBasert" version="1"/>
+                </DistributionAssignment>
+            </distributionAssignments>
+            
+            <groupOfDistributionAssignments>
+                <GroupOfDistributionAssignments id="ENT:GroupOfDistributionAssignments:AllIDBasedApps" version="1">
+                    <members>
+                        <DistributionAssignmentRef ref="ENT:DistributionAssignment:EnturApp1ID" version="1"/>
+                        <DistributionAssignmentRef ref="ENT:DistributionAssignment:AtbApp1ID" version="1"/>
+                    </members>
+                </GroupOfDistributionAssignments>
+            </groupOfDistributionAssignments>
+            
+            
         </FareFrame>
 
 
