@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery
-        xmlns="http://www.netex.org.uk/netex"
-        xmlns:gis="http://www.opengis.net/gml/3.2"
-        xmlns:siri="http://www.siri.org.uk/siri"
-        version="1.10:NO-NeTEx-fares:0.9">
+<PublicationDelivery 
+    xmlns="http://www.netex.org.uk/netex"
+    xmlns:gis="http://www.opengis.net/gml/3.2" 
+    xmlns:siri="http://www.siri.org.uk/siri"
+    version="1.10:NO-NeTEx-fares:0.9">
 
     <PublicationTimestamp>2020-04-23T06:00:00</PublicationTimestamp>
     <ParticipantRef>SAM</ParticipantRef>
@@ -55,25 +55,27 @@
                     <Duration>PT90M</Duration>
                 </TimeInterval>
             </timeIntervals>
-            
-            
+
+
             <fareStructureElements>
 
-<!-- Entur addition (proposal) --> 
-                    <FareStructureElement id="BOB:FareStructureElement:1" version="1">
-                        <GenericParameterAssignment id="BOB:GenericParameterAssignment:Cancellation" version="1" order="0">
-                            <limitations>
-                                <Cancelling></Cancelling>
-                                <!-- Cancelling describes HOW TO CANCEL (when allowed), i.e. redundant per next limitation Refunding (which given this is probably not correcly defined?) --> 
-                                <Cancelling id="BOB:Cancelling:1" version="1">
-                                    <BookingArrangements>
-                                        <MinimumBookingPeriod>P1D</MinimumBookingPeriod> <!-- exasmple -->
-                                    </BookingArrangements>
-                                </Cancelling>
-                            </limitations>
-                        </GenericParameterAssignment>
-                    </FareStructureElement>
-                    
+                <!-- Entur addition (proposal) -->
+                <FareStructureElement id="BOB:FareStructureElement:1" version="1">
+                    <GenericParameterAssignment id="BOB:GenericParameterAssignment:Cancellation"
+                        version="1" order="0">
+                        <limitations>
+                            <Cancelling/>
+                            <!-- Cancelling describes HOW TO CANCEL (when allowed), i.e. redundant per next limitation Refunding (which given this is probably not correcly defined?) -->
+                            <Cancelling id="BOB:Cancelling:1" version="1">
+                                <BookingArrangements>
+                                    <MinimumBookingPeriod>P1D</MinimumBookingPeriod>
+                                    <!-- exasmple -->
+                                </BookingArrangements>
+                            </Cancelling>
+                        </limitations>
+                    </GenericParameterAssignment>
+                </FareStructureElement>
+
                 <!--
                 <FareStructureElement id="BOB:FareStructureElement:1zone60min" version="1">
                     <validityParameterAssignments>
@@ -98,12 +100,13 @@
                 -->
 
                 <FareStructureElement id="BOB:FareStructureElement:2" version="1">
-                    <GenericParameterAssignment id="BOB:GenericParameterAssignment:2" version="1" order="0">
+                    <GenericParameterAssignment id="BOB:GenericParameterAssignment:2" version="1"
+                        order="0">
                         <limitations>
-                            
+
                             <!-- Purpose/intention of this limitation? -->
-                            
-                            <FrequencyOfUseRef ref="BOB:FrequencyOfUse:1" /> 
+
+                            <FrequencyOfUseRef ref="BOB:FrequencyOfUse:1"/>
                         </limitations>
                         <validityParameters>
                             <AuthorityRef ref="BOB:Authority:OpenBoB" version="1"/>
@@ -113,7 +116,7 @@
                     </GenericParameterAssignment>
                 </FareStructureElement>
             </fareStructureElements>
-            
+
 
             <validableElements>
                 <ValidableElement id="BOB:ValidableElement:2" version="1">
@@ -133,7 +136,8 @@
                 <UserProfile id="BOB:UserProfile:ReducedFare" version="1">
                     <Name lang="en">Reduced</Name>
                     <Description>Child, Concessionary, Military</Description>
-                    <ProofRequired>passport birthCertificate drivingLicence identityDocument medicalDocument studentCard other</ProofRequired>
+                    <ProofRequired>passport birthCertificate drivingLicence identityDocument
+                        medicalDocument studentCard other</ProofRequired>
                 </UserProfile>
             </usageParameters>
 
@@ -141,17 +145,21 @@
                 <PreassignedFareProduct id="4ca0ca87-493d-415a-abcc-51bdaa0bb58d" version="1">
                     <Name>Single Ticket</Name>
                     <Description>A single ticket</Description>
-                    <ChargingMomentType>beforeTravel</ChargingMomentType> <!-- "BOB:ChargingMoment:Prepaid" -->
+                    <ChargingMomentType>beforeTravel</ChargingMomentType>
+                    <!-- "BOB:ChargingMoment:Prepaid" -->
                     <validityParameterAssignments>
-                        <GenericParameterAssignment id="BOB:GenericParameterAssignment:Cancellation" version="1" order="1">
+                        <GenericParameterAssignment id="BOB:GenericParameterAssignment:Cancellation"
+                            version="1" order="1">
                             <limitations>
-                                <CancellingRef ref="HSL:Cancelling:1" />  <!-- Not really shure what the intention/purpose of this reference was in the given context (Cancelling object not defined) -->
+                                <CancellingRef ref="HSL:Cancelling:1"/>
+                                <!-- Not really shure what the intention/purpose of this reference was in the given context (Cancelling object not defined) -->
                             </limitations>
                         </GenericParameterAssignment>
                     </validityParameterAssignments>
                     <accessRightsInProduct>
-                        <AccessRightInProduct id="BOB:AccessRightInProduct:Single" version="1" order="1">
-                            <ValidableElementRef ref="BOB:ValidableElement:2" version="1" />
+                        <AccessRightInProduct id="BOB:AccessRightInProduct:Single" version="1"
+                            order="1">
+                            <ValidableElementRef ref="BOB:ValidableElement:2" version="1"/>
                         </AccessRightInProduct>
                     </accessRightsInProduct>
                 </PreassignedFareProduct>
@@ -169,7 +177,8 @@
                     <MediaType>card</MediaType>
                     <MachineReadable>nfc</MachineReadable>
                 </TypeOfTravelDocument>
-                <TypeOfTravelDocument id="BOB:TypeOfTravelDocument:SingleUseElectronicTicket" version="1">
+                <TypeOfTravelDocument id="BOB:TypeOfTravelDocument:SingleUseElectronicTicket"
+                    version="1">
                     <Name>Single use electronic ticet</Name>
                     <Description>OpenBoB disposable travel card compatible electronic ticket</Description>
                     <MediaType>card</MediaType>
@@ -186,18 +195,21 @@
                 <SalesOfferPackage id="BOB:SalesOfferPackage:SingleTrip2Zones" version="1">
                     <Name lang="en">Single trip valid within two zones</Name>
                     <salesOfferPackageElements>
-                        <SalesOfferPackageElement id="BOB:SalesOfferPackageElement:SingleTrip2Zones" version="1" order="1">
+                        <SalesOfferPackageElement id="BOB:SalesOfferPackageElement:SingleTrip2Zones"
+                            version="1" order="1">
                             <Name lang="en">Single trip valid within two fare zones valid for one and a half hours</Name>
-                            <FareProductRef ref="ref4ca0ca87-493d-415a-abcc-51bdaa0bb58d" />
+                            <FareProductRef ref="ref4ca0ca87-493d-415a-abcc-51bdaa0bb58d"/>
                             <validityParameterAssignments>
-                                <GenericParameterAssignment id="BOB:GenericParameterAssignment:11" version="1" order="0">
+                                <GenericParameterAssignment id="BOB:GenericParameterAssignment:11"
+                                    version="1" order="0">
                                     <limitations>
                                         <Transferability id="BOB:Transferability:2" version="1">
                                             <CanTransfer>true</CanTransfer>
                                             <HasTransferFee>false</HasTransferFee>
                                             <SharedUsage>singleUser</SharedUsage>
                                         </Transferability>
-                                        <FrequencyOfUse id="BOB:FrequencyOfUse:Unlimited90min" version="1">
+                                        <FrequencyOfUse id="BOB:FrequencyOfUse:Unlimited90min"
+                                            version="1">
                                             <FrequencyOfUseType>unlimited</FrequencyOfUseType>
                                             <TimeIntervalRef ref="BOB:TimeInterval:90min" version="1"/>
                                         </FrequencyOfUse>
@@ -205,12 +217,9 @@
                                 </GenericParameterAssignment>
                             </validityParameterAssignments>
                             <prices>
-                                <SalesOfferPackagePrice id="BOB:SalesOfferPackagePrice:1" version="1">
-                                    
-                                    
+                                <SalesOfferPackagePrice id="BOB:SalesOfferPackagePrice:1"
+                                    version="1">
                                     <!-- TODO Fyll i pris -->
-                                    
-                                    
                                 </SalesOfferPackagePrice>
                             </prices>
                         </SalesOfferPackageElement>
@@ -291,23 +300,31 @@
             </travelDocuments>
 
             <customerPurchasePackages>
-                <CustomerPurchasePackage id="BOB:CustomerPurchasePackage:SingleTrip2ZonesActivated" version="1">
+                <CustomerPurchasePackage id="BOB:CustomerPurchasePackage:SingleTrip2ZonesActivated"
+                    version="1">
                     <SalesOfferPackageRef ref="BOB:SalesOfferPackage:SingleTrip2Zones" version="1"/>
                     <customerPurchasePackageElements>
-                        <CustomerPurchasePackageElement id="BOB:CustomerPurchasePackageElement:SingleTrip2ZonesActivated" version="1" order="1">
+                        <CustomerPurchasePackageElement
+                            id="BOB:CustomerPurchasePackageElement:SingleTrip2ZonesActivated"
+                            version="1" order="1">
                             <SalesOfferPackageElementRef ref="BOB:SalesOfferPackageElement:SingleTrip2Zones" version="1"/>
                             <elementAccesses>
-                                <CustomerPurchasePackageElementAccess id="BOB:CustomerPurchasePackageElementAccess:1" version="1" created="2020-04-23T06:28:00">
+                                <CustomerPurchasePackageElementAccess
+                                    id="BOB:CustomerPurchasePackageElementAccess:1" version="1"
+                                    created="2020-04-23T06:28:00">
                                     <ValidableElementRef ref="BOB:ValidableElement:2" version="1"/>
                                     <MarkedAs>activated</MarkedAs>
                                     <validityParameterAssignments>
-                                        <CustomerPurchaseParameterAssignment id="BOB:CustomerPurchasePackageElementAccess:1" version="1" order="1">
+                                        <CustomerPurchaseParameterAssignment
+                                            id="BOB:CustomerPurchasePackageElementAccess:1"
+                                            version="1" order="1">
                                             <limitations>
-                                                <UsageValidityPeriod id="BOB:UsageValidityPeriod:1" version="1">
-                                                    <StartDate>2020-04-23</StartDate>
-                                                    <StartTime>06:28:00</StartTime>
-                                                    <EndDate>2020-04-23</EndDate>
-                                                    <EndTime>07:58:00</EndTime>
+                                                <UsageValidityPeriod id="BOB:UsageValidityPeriod:1"
+                                                  version="1">
+                                                  <StartDate>2020-04-23</StartDate>
+                                                  <StartTime>06:28:00</StartTime>
+                                                  <EndDate>2020-04-23</EndDate>
+                                                  <EndTime>07:58:00</EndTime>
                                                 </UsageValidityPeriod>
                                                 <UserProfileRef ref="BOB:UserProfile:NormalFare" version="1"/>
                                             </limitations>
