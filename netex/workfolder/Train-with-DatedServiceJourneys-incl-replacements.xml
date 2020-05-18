@@ -493,7 +493,17 @@
             </ServiceJourney>
             
             
-            <!-- NB: *ExternalVehicleJourneyRef* USED DUE TO LACK OF "(Base)ServiceJourneyRef" (or similar reference back to the "generic" ServiceJourney) --> 
+            <!-- REMARK: 
+              Due to lack of "(Base)ServiceJourneyRef" (or similar reference back to the "generic" ServiceJourney) 
+              the following references are used
+              
+                ExternalVehicleJourneyRef (element) = Reference to the ServiceJourney (aggregate) which the DatedServiceJourney realizes (i.e. the "template" defining the DatedServiceJourney)
+                
+                derivedFromObjectRef (attribute) = Reference to the DatedServiceJourney which the current is replacing/supplementing
+                  derivedFromVersionRef (attribute) = version of the referred DatedServiceJourney
+                
+                
+            -->
             
             
             
