@@ -78,6 +78,7 @@
 				
 				<!-- === FareFrame === -->
 				<FareFrame version="1" id="ENT:FareFrame:DTA">
+					
 					<FrameDefaults>
 						<DefaultCurrency>NOK</DefaultCurrency>
 					</FrameDefaults>
@@ -158,6 +159,41 @@
 							</validityParameterAssignments>
 						</FareStructureElement>
 					</fareStructureElements>
+					
+					
+					
+					<tariffs>
+						<Tariff id="tfl:FareStructureElement:Zone_1or2or2-3_TravelTimes" version="1">
+							<distanceMatrixElements>
+								<DistanceMatrixElement version="any" id="myfares:SSP_001+SSP_002">
+									<Name>Alpha to Bravo</Name>
+									<StartStopPointRef ref="mybus:SSP_001"/>
+									<EndStopPointRef ref="mybus:SSP_002"/>
+									<structureFactors>
+										<GeographicalStructureFactorRef ref="myfares:1click"/>
+									</structureFactors>
+								</DistanceMatrixElement>
+								<DistanceMatrixElement version="any" id="myfares:SSP_002+SSP_077">
+									<Name>Bravo to Charley</Name>
+									<StartStopPointRef ref="mybus:SSP_002"/>
+									<EndStopPointRef ref="mybus:SSP_077"/>
+									<structureFactors>
+										<GeographicalStructureFactorRef ref="myfares:2click"/>
+									</structureFactors>
+								</DistanceMatrixElement>
+								<DistanceMatrixElement version="any" id="myfares:SSP_077+SSP_078">
+									<Name>Charley to Delta</Name>
+									<StartStopPointRef ref="mybus:SSP_077"/>
+									<EndStopPointRef ref="mybus:SSP_078"/>
+									<structureFactors>
+										<GeographicalStructureFactorRef  ref="myfares:1click"/>
+									</structureFactors>
+								</DistanceMatrixElement>
+							</distanceMatrixElements>
+						</Tariff>
+					</tariffs>
+					
+					
 					
 					
 
@@ -259,7 +295,9 @@
 						</UserProfile>
 						
 					</usageParameters>
-										
+					
+
+
 					
 					
 					<fareProducts>
@@ -332,6 +370,8 @@
 					</fareProducts>
 					
 					
+					
+					
 					<priceGroups>
 						<PriceGroup id="pg-1" version="1">
 							<Description>test</Description>
@@ -368,6 +408,8 @@
 							</members>
 						</PriceGroup>
 					</priceGroups>
+					
+					
 					
 					
 					<distributionChannels>
@@ -483,6 +525,7 @@
 				
 				<!-- === SalesTransactionFrame === -->
 				<SalesTransactionFrame id="stf" version="1">
+					
 					<customers>
 						<Customer version="any" id="tfl:Customer:122222">
 							<Surname>Johnson</Surname>
