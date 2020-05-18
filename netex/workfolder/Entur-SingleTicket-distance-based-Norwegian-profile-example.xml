@@ -47,7 +47,7 @@
                     <NumberOfUnits>2</NumberOfUnits>
                     <IntervalType>section</IntervalType>
                     <prices>
-                        <GeographicalIntervalPrice id="NSB:GeographicalInterval:1" version="1">
+                        <GeographicalIntervalPrice id="NSB:GeographicalIntervalPrice:1" version="1">
                             <GeographicalUnitPriceRef ref="NSB:GeographicalUnitPrice:TEN" version="1"/>
                         </GeographicalIntervalPrice>
                     </prices>
