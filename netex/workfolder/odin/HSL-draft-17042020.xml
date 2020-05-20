@@ -71,7 +71,7 @@
                     <geographicalIntervals>
                         <GeographicalInterval id="HSL:geographicalInterval:Zone1" version="1">
                             <Name>Zone 1</Name>
-                            <!-- Tarkista NetEx speksistä StartGeographicalValue -->
+                            <!-- Check NetEx specs for StartGeographicalValue -->
                             <StartGeographicalValue>0.1</StartGeographicalValue>
                             <EndGeographicalValue>1</EndGeographicalValue>
                             <NumberOfUnits>1</NumberOfUnits>
@@ -155,7 +155,7 @@
                             <geographicalIntervals>
                                 <GeographicalInterval id="HSL:GeographicalInterval:1Zone"
                                     version="1">
-                                    <!-- miten vyöhykekombo määritellään -->
+                                    <!-- Figure out to describe zone combos, the number of zones is not relevant -->
                                     <Name>1 Zone</Name>
                                     <StartGeographicalValue>0</StartGeographicalValue>
                                     <EndGeographicalValue>1</EndGeographicalValue>
@@ -225,13 +225,13 @@
                                 <limitations>
                                     <UsageValidityPeriod version="1"
                                         id="HSL:UsageValidityPeriod:1Hour">
-                                        <!-- Eri vyöhykeväleillä eri mittainen -->
+                                        <!-- Depends on the zone combo -->
                                         <Name> 1 Hour </Name>
                                         <UsageTrigger>startOutboundRide</UsageTrigger>
-                                        <!-- Alkaa myynnistä tai ajastettu -->
+                                        <!-- Either from purchase or a set time within 24 hrs -->
                                         <UsageEnd>standardDuration</UsageEnd>
                                         <StandardDuration>PT1H</StandardDuration>
-                                        <!-- Eri vyöhykeväleillä eri mittainen, Miten minuutit merkitään? -->
+                                        <!-- Depends on the zone combo -->
                                     </UsageValidityPeriod>
                                 </limitations>
                             </GenericParameterAssignment>
@@ -338,7 +338,7 @@
 
 
                     <fareTables>
-                        <!--Selvitä miten erihintaiset vyöhykekombinaatiot kuvataan -->
+                        <!-- Price depends on the zone combo -->
                         <FareTable id="HSL:FareTable:Single" version="1">
                             <cells>
                                 <Cell id="HSL:Cell:1" version="1" order="1">
