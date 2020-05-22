@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery 
+  xmlns="http://www.netex.org.uk/netex"
+  xmlns:gis="http://www.opengis.net/gml/3.2" 
+  xmlns:siri="http://www.siri.org.uk/siri"
+  version="1.10:NO-NeTEx-fares:0.9">
+
+    <PublicationTimestamp>2020-04-28T22:00:00</PublicationTimestamp>
+    <ParticipantRef>LMJ_HSL</ParticipantRef>
+
+    <Description>Example of simple point to point fares</Description>
+    <!--- =============== RESULTS =========== -->
+    <dataObjects>
+
+        <CompositeFrame version="1" id="myfares:DTA@z2Z">
+            <validityConditions>
+                <ValidBetween>
+                    <FromDate>2011-01-01T00:00:00Z</FromDate>
+                    <ToDate>2011-07-01T00:00:00Z</ToDate>
+                </ValidBetween>
+            </validityConditions>
+
+            <codespaces>
+                <Codespace id="HSL">
+                    <Xmlns>HSL</Xmlns>
+                    <XmlnsUrl>http://www.hsl.fi/</XmlnsUrl>
+                    <Description>Helsingin seudun liikenne</Description>
+                </Codespace>
+            </codespaces>
+
+            <FrameDefaults>
+                <DefaultCodespaceRef ref="HSL"/>
+                <DefaultLocale>
+                    <TimeZone>EET</TimeZone>
+                    <SummerTimeZone>EEST</SummerTimeZone>
+                    <DefaultLanguage>fi</DefaultLanguage>
+                    <languages>
+                        <LanguageUsage>
+                            <Language>fi</Language>
+                            <LanguageUse>allUses</LanguageUse>
+                        </LanguageUsage>
+                        <LanguageUsage>
+                            <Language>se</Language>
+                            <LanguageUse>understood</LanguageUse>
+                        </LanguageUsage>
+                        <!--
+                        <LanguageUsage>
+                            <Language>en</Language>
+                            <LanguageUse>understood</LanguageUse>
+                        </LanguageUsage>
+                        -->
+                </languages>
+                </DefaultLocale>
+                <DefaultLocationSystem>EPSG:4326</DefaultLocationSystem>
+                <DefaultSystemOfUnits>SiKilometresAndMetres</DefaultSystemOfUnits>
+                <DefaultCurrency>EUR</DefaultCurrency>
+            </FrameDefaults>
+            
+            
+            <frames>
+                <ResourceFrame id="ENT:ResourceFrame:1" version="1">
+                    <organisations>
+                        <Authority id="HSL:Authority:HSL" version="1">
+                            <Name>Helsinki Region Transport (HSL)</Name>
+                            <Description>
+                                Helsinki Region Transport (HSL) is a joint local authority whose member municipalities are Helsinki, Espoo, Vantaa, Kauniainen, Kerava, Kirkkonummi, Sipoo, Siuntio and Tuusula. HSL began its operations in 2010.
+                                
+                                Some 370 million journeys are made on HSL's transport services annually. HSL’s annual operating income is over €640 million, of which ticket revenue accounts for about €330 million (about 46% in 2016). HSL has 373 employees.
+                                
+                                HSL:
+                                
+                                * Plans and organizes public transport in the region and improves its operating conditions
+                                * Procures bus, tram, Metro, ferry and commuter train services
+                                * Is responsible for the preparation of the Helsinki Region Transport System Plan (HLJ)
+                                * Approves the public transport fare and ticketing system as well as ticket prices
+                                * Is responsible for public transport marketing and passenger information
+                                * Organizes ticket sales and is responsible for ticket inspections
+                            </Description>
+                            <ContactDetails>
+                                <Phone>09 4766 4000</Phone>
+                                <Url>https://www.hsl.fi/en/helsinki-regional-transport-authority</Url>
+                            </ContactDetails>
+                        </Authority>
+                    </organisations>
+                </ResourceFrame>
+                
+                
+                <FareFrame id="HSL:FareFrame:1" version="1">
+                    <validityConditions>
+                        <AvailabilityCondition id="HSL:AvailabilityCondition:1" version="1">
+                            <FromDate>2020-01-01T00:00:00</FromDate>
+                        </AvailabilityCondition>
+                    </validityConditions>
+                    
+                    <Description>https://www.hsl.fi/en/tickets</Description>
+                    
+                    
+                    <timeIntervals>
+                        <TimeInterval id="HSL:TimeInterval:80min" version="1">
+                            <Description>Duration for AB, BC and D zone single ticket</Description>
+                            <Duration>PT1H20M</Duration>
+                        </TimeInterval>
+                        <TimeInterval id="HSL:TimeInterval:90min" version="1">
+                            <Description>Duration for ABC and CD zone single ticket</Description>
+                            <Duration>PT1H30M</Duration>
+                        </TimeInterval>
+                        <TimeInterval id="HSL:TimeInterval:100min" version="1">
+                            <Description>Duration for BCD zone single ticket</Description>
+                            <Duration>PT1H</Duration>
+                        </TimeInterval>
+                        <TimeInterval id="HSL:TimeInterval:110min" version="1">
+                            <Description>Duration for ABCD zone single ticket</Description>
+                            <Duration>PT1H</Duration>
+                        </TimeInterval>
+                    </timeIntervals>
+                    
+                    <fareStructureElements>
+                        <!-- Valid for zone combos AB, BC, D -->
+                        <FareStructureElement id="HSL:FareStructureElement:1" version="1">
+                            <GenericParameterAssignment id="HSL:GenericParameterAssignment:1" version="1" order="0">
+                                <limitations>
+                                    <FrequencyOfUse id="HSL:FrequencyOfUse:1" version="1">
+                                        <FrequencyOfUseType>unlimited</FrequencyOfUseType>
+                                    </FrequencyOfUse>
+                                </limitations>
+                                <validityParameters>
+                                    <AuthorityRef ref="HSL:Authority:HSL" version="1"/>
+                                    
+                                    <!-- Where are TariffZones described? :
+                                        See SiteFrame at bottom of file -->
+                                    
+                                    <TariffZoneRef ref="HSL:TariffZone:AB-BC-D" version="1"/> 
+                                </validityParameters>
+                                <TimeIntervalRef ref="HSL:TimeInterval:80min" version="1"/>
+                            </GenericParameterAssignment>
+                        </FareStructureElement>
+                        <FareStructureElement id="HSL:FareStructureElement:2" version="1"> 
+                            <GenericParameterAssignment id="HSL:GenericParameterAssignment:2" version="1" order="0">
+                                <limitations>
+                                    <FrequencyOfUseRef ref="HSL:FrequencyOfUse:1" version="1"/>
+                                </limitations>
+                                <validityParameters>
+                                    <AuthorityRef ref="HSL:Authority:HSL" version="1"/>
+                                    <TariffZoneRef ref="HSL:TariffZone:ABC" /> <!-- have removed version to avoid validation agains undefined data object --> 
+                                </validityParameters>
+                                <TimeIntervalRef ref="HSL:TimeInterval:90min" version="1"/>
+                            </GenericParameterAssignment>
+                        </FareStructureElement>
+                        <FareStructureElement id="HSL:FareStructureElement:3" version="1">
+                            <GenericParameterAssignment id="HSL:GenericParameterAssignment:3" version="1" order="0">
+                                <limitations>
+                                    <FrequencyOfUseRef ref="HSL:FrequencyOfUse:1" version="1"/>
+                                </limitations>
+                                <validityParameters>
+                                    <AuthorityRef ref="HSL:Authority:HSL" version="1"/>
+                                    <TariffZoneRef ref="HSL:TariffZone:CD" /> <!-- have removed version to avoid validation agains undefined data object --> 
+                                </validityParameters>
+                                <TimeIntervalRef ref="HSL:TimeInterval:90min" version="1"/>
+                            </GenericParameterAssignment>
+                        </FareStructureElement>
+                        <FareStructureElement id="HSL:FareStructureElement:4" version="1">
+                            <GenericParameterAssignment id="HSL:GenericParameterAssignment:4" version="1" order="0">
+                                <limitations>
+                                    <FrequencyOfUseRef ref="HSL:FrequencyOfUse:1" version="1"/>
+                                </limitations>
+                                <validityParameters>
+                                    <AuthorityRef ref="HSL:Authority:HSL" version="1"/>
+                                    <TariffZoneRef ref="HSL:TariffZone:BCD" /> <!-- have removed version to avoid validation agains undefined data object -->
+                                </validityParameters>
+                                <TimeIntervalRef ref="HSL:TimeInterval:100min" version="1"/>
+                            </GenericParameterAssignment>
+                        </FareStructureElement>
+                        <FareStructureElement id="HSL:FareStructureElement:5" version="1">
+                            <GenericParameterAssignment id="HSL:GenericParameterAssignment:5" version="1" order="0">
+                                <limitations>
+                                    <FrequencyOfUseRef ref="HSL:FrequencyOfUse:1" version="1"/>
+                                </limitations>
+                                <validityParameters>
+                                    <AuthorityRef ref="HSL:Authority:HSL" version="1"/>
+                                    <TariffZoneRef ref="HSL:TariffZone:ABCD" /> <!-- have removed version to avoid validation agains undefined data object -->
+                                </validityParameters>
+                                <TimeIntervalRef ref="HSL:TimeInterval:110min" version="1"/>
+                            </GenericParameterAssignment>
+                        </FareStructureElement>
+                    </fareStructureElements>
+                    
+                    <validableElements>
+                        <ValidableElement id="HSL:ValidableElement:1" version="1">
+                            <Name>Single trip within zone combos AB, BC or D</Name>
+                            <fareStructureElements>
+                                <FareStructureElementRef ref="HSL:FareStructureElement:1" version="1"/>
+                            </fareStructureElements>
+                        </ValidableElement>
+                        <ValidableElement id="HSL:ValidableElement:2" version="1">
+                            <Name>Single trip within zone combo ABC</Name>
+                            <fareStructureElements>
+                                <FareStructureElementRef ref="HSL:FareStructureElement:2" version="1"/>
+                            </fareStructureElements>
+                        </ValidableElement>
+                        <ValidableElement id="HSL:ValidableElement:3" version="1">
+                            <Name>Single trip within zone combo CD</Name>
+                            <fareStructureElements>
+                                <FareStructureElementRef ref="HSL:FareStructureElement:3" version="1"/>
+                            </fareStructureElements>
+                        </ValidableElement>
+                        <ValidableElement id="HSL:ValidableElement:4" version="1">
+                            <Name>Single trip within zone combo BCD</Name>
+                            <fareStructureElements>
+                                <FareStructureElementRef ref="HSL:FareStructureElement:4" version="1"/>
+                            </fareStructureElements>
+                        </ValidableElement>
+                        <ValidableElement id="HSL:ValidableElement:5" version="1">
+                            <Name>Single trip within zone combo ABCD</Name>
+                            <fareStructureElements>
+                                <FareStructureElementRef ref="HSL:FareStructureElement:5" version="1"/>
+                            </fareStructureElements>
+                        </ValidableElement>
+                    </validableElements>
+                    
+                    <usageParameters>
+                        <UserProfile id="HSL:UserProfile:AdultFare" version="1">
+                            <Name lang="en">Adult</Name>
+                            <Description>Adult</Description>
+                        </UserProfile>
+                        <UserProfile id="HSL:UserProfile:ChildFare" version="1">
+                            <Name lang="en">Child</Name>
+                            <Description>Child 7-17 yrs</Description>
+                            <!-- proof isn't required at the time of purchase -->
+                            <ProofRequired>passport identityDocument</ProofRequired> 
+                        </UserProfile>
+                    </usageParameters>
+                    
+                    
+                    <!-- used in salesOfferPackages : We need 5 of these? -->
+                    <fareProducts>
+                        <PreassignedFareProduct id="HSL:PreassignedFareProduct:SingleTripAB-BC-D" version="1">
+                            <Name lang="en">Single trip valid within chosen zones</Name>
+                            <accessRightsInProduct>
+                                <AccessRightInProductRef ref="HSL:ValidableElement:1" version="1"/>
+                            </accessRightsInProduct>
+                        </PreassignedFareProduct>
+                    </fareProducts>
+                    
+                    <typesOfTravelDocuments>
+                        <TypeOfTravelDocument id="HSL:TypeOfTravelDocument:AppHSL" version="1">
+                            <Name>HSL mobile app</Name>
+                            <MediaType>mobileApp</MediaType>
+                            <MachineReadable>other</MachineReadable>
+                        </TypeOfTravelDocument>
+                        <TypeOfTravelDocument id="HSL:TypeOfTravelDocument:Travelcard" version="1">
+                            <Name>Travelcard</Name>
+                            <Description>HSL card</Description>
+                            <MediaType>card</MediaType>
+                            <MachineReadable>nfc</MachineReadable>
+                        </TypeOfTravelDocument>
+                        <TypeOfTravelDocument id="HSL:TypeOfTravelDocument:AppMaaS" version="1">
+                            <Name>MaaS mobile app</Name>
+                            <Description>Mobile ticket sold via MaaS app</Description>
+                            <MediaType>mobileApp</MediaType>
+                            <MachineReadable>other</MachineReadable>
+                        </TypeOfTravelDocument>  
+                    </typesOfTravelDocuments>
+                    
+                    <!-- We need 5 of these? -->
+                    <salesOfferPackages>
+                        <SalesOfferPackage id="HSL:SalesOfferPackage:SingleTripAB-BC-D" version="1">              
+                            <Name lang="en">Single trip within zone combos AB, BC or D</Name>
+                            <salesOfferPackageElements>
+                                <SalesOfferPackageElement id="HSL:SalesOfferPackageElement:SingleTripAB-BC-D" version="1" order="1">
+                                    <Name lang="en">Single trip valid within zone combos AB, BC or D valid for 80 minutes</Name>
+                                    <PreassignedFareProductRef ref="HSL:PreassignedFareProduct:SingleTripAB-BC-D" version="1"/>
+                                    <validityParameterAssignments>
+                                        <GenericParameterAssignment id="HSL:GenericParameterAssignment:6" version="1" order="0">
+                                            <limitations>
+                                                <Transferability id="HSL:Transferability:1" version="1">
+                                                    <CanTransfer>true</CanTransfer>
+                                                    <HasTransferFee>false</HasTransferFee>
+                                                    <SharedUsage>singleUser</SharedUsage>
+                                                </Transferability>
+                                                <FrequencyOfUse id="HSL:FrequencyOfUse:Unlimited80min" version="1">
+                                                    <FrequencyOfUseType>unlimited</FrequencyOfUseType>
+                                                    <TimeIntervalRef ref="HSL:TimeInterval:80min" version="1"/>
+                                                </FrequencyOfUse>
+                                            </limitations>
+                                        </GenericParameterAssignment>
+                                    </validityParameterAssignments>
+                                </SalesOfferPackageElement>
+                            </salesOfferPackageElements>
+                        </SalesOfferPackage>
+                    </salesOfferPackages>
+                </FareFrame>
+                
+                
+                
+                
+                
+                <SiteFrame id="RUT:SiteFrame:1" version="1">
+                    <validityConditions>
+                        <AvailabilityCondition id="HSL:AvailabilityCondition:2" version="1">
+                            <FromDate>2020-01-01T00:00:00</FromDate>
+                        </AvailabilityCondition>
+                    </validityConditions>
+                    <Description>https://www.hsl.fi/en/tickets/zones</Description>
+                    <tariffZones>
+                        <TariffZone id="RUT:TariffZone:A" version="1">
+                            <Name lang="en">HSL area zone A</Name>
+                        </TariffZone>
+                        <TariffZone id="RUT:TariffZone:B" version="1">
+                            <Name lang="en">HSL area zone B</Name>
+                        </TariffZone>
+                        <TariffZone id="RUT:TariffZone:C" version="1">
+                            <Name lang="en">HSL area zone C</Name>
+                        </TariffZone>
+                        <TariffZone id="RUT:TariffZone:D" version="1">
+                            <Name lang="en">HSL area zone D</Name>
+                        </TariffZone>
+                        
+                        <!-- please add zone objects as referenced in the FareFrame -->
+                        <TariffZone id="HSL:TariffZone:AB-BC-D" version="1">
+                            <Name lang="en">see comment below!</Name>
+                        </TariffZone>
+                        <!-- NOTE: From my assumption of the structuring here, this should maybe rather be modeled as 
+                           geographicalIntervals ("A geographical interval specifying access rights for the FARE STRUCTURE ELEMENTs within the range of this interval: “20-5 km”, “4-6 zones”, etc"), potentially with GeographicalIntervalPrice added
+                              and/or
+                           geographicalStructureFactors ("The value of a GEOGRAPHICAL INTERVAL or a DISTANCE MATRIX ELEMENT expressed by a GEOGRAPHICAL UNIT")
+                        -->
+                    </tariffZones>
+                </SiteFrame>
+            
+            </frames>
+
+        </CompositeFrame>
+    </dataObjects>
+</PublicationDelivery>
