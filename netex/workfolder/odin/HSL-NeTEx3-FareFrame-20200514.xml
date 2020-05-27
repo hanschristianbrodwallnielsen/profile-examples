@@ -106,11 +106,11 @@
                         </TimeInterval>
                         <TimeInterval id="HSL:TimeInterval:100min" version="1">
                             <Description>Duration for BCD zone single ticket</Description>
-                            <Duration>PT1H</Duration>
+                            <Duration>PT1H40M</Duration>
                         </TimeInterval>
                         <TimeInterval id="HSL:TimeInterval:110min" version="1">
                             <Description>Duration for ABCD zone single ticket</Description>
-                            <Duration>PT1H</Duration>
+                            <Duration>PT1H50M</Duration>
                         </TimeInterval>
                     </timeIntervals>
                     
