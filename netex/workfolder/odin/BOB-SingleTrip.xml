@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ==== BoB single trip zone-count and zone based example ======
+This example shows how the product data with its zones, product categories, traveller categories and fares may be 
+encoded using NeTEx part 3.
+
+1. OVERVIEW
+============
+
+There are three zones.
+- Zone 1
+- Zone 2
+- Zone SL
+
+Tickets for the following combinations can be purchased.
+- Zone 1
+- Zone 2
+- Zone 1 and 2
+- Zone 2 and SL
+- Zone 1, 2 and SL
+
+2. FARES FRAMES
+===============
+
+There are two FARE FRAMEs, one Common and one for SingleTrip. This split is done to make it possible to merge both a SingleTrip FARE FRAME and MonthlyPass FARE FRAME
+into the same file where the Common FARE FRAME declares things that are common for the two.
+
+3. FARES
+========
+
+Fares are determined using a FARE TABLE in two ways.
+- First, by explicit reference to the valid zones using a fare associated with the appropriate FARE STRUCTURE.
+- Secondly, if no explicit zone reference exists, by identifying the zone count and using a fare associated with a GEOGRAPHICAL INTERVAL.
+
+Examples:
+1. There is no fare associated with the FARE STRUCTURE for zone 1 and zone 2. Instead there is a fare of 52 SEK associated with the zone count 2 (GEOGRAPHICAL INTERVAL).
+2. There is a fare associated with the FARE STRUCTURE for zone 2 and zone SL of 63 SEK. This can be viewed as an exception to the base rule of 52 SEK for a two-zones trip.
+
+4. PREASSIGNED FARE PRODUCTS
+============================
+
+We have chosen a normalized approach where we have only a single PREASSIGNED FARE PRODUCT encompassing all possible single trip variants of zone validity,
+USER PROFILE (adult, youth, ...) or TIME INTERVAL (60 min, 90 min, ...). An alternative would be to have separate PREASSIGNED FARE PRODUCTs for each combination, i.e. 
+SingleTrip/zone1,zone2/Adult/60min, SingleTrip/zone1,zone2/Adult/90min, SingleTrip/zone1,zone2/Youth/60min, ... with the consequence of having a large number of 
+PREASSIGNED FARE PRODUCTs.
+-->
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gis="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" version="1.10:NO-NeTEx-fares:0.9">
+	<PublicationTimestamp>2020-04-23T06:00:00</PublicationTimestamp>
+	<ParticipantRef>SAM</ParticipantRef>
+	<dataObjects>
+		<ResourceFrame id="SAM:ResourceFrame:1" version="1">
+			<typesOfValue>
+				<ValueSet version="1" id="BOB:ValueSet:1" classOfValues="TypeOfConcession">
+					<Name>Types of concession</Name>
+					<values>
+						<TypeOfConcession version="1" id="BOB:TypeOfConcession:Adult">
+							<Name>Adult</Name>
+						</TypeOfConcession>
+						<TypeOfConcession version="1" id="BOB:TypeOfConcession:Youth">
+							<Name>Youth</Name>
+						</TypeOfConcession>
+						<TypeOfConcession version="1" id="BOB:TypeOfConcession:Student">
+							<Name>Student</Name>
+						</TypeOfConcession>
+						<TypeOfConcession version="1" id="BOB:TypeOfConcession:Senior">
+							<Name>Senior</Name>
+						</TypeOfConcession>
+					</values>
+				</ValueSet>
+			</typesOfValue>
+			<organisations>
+				<GeneralOrganisation id="SAM:GeneralOrganisation:Samtrafiken" version="1">
+					<Name>Samtrafiken i Sverige AB</Name>
+					<ContactDetails>
+						<Url>https://www.samtrafiken.se</Url>
+					</ContactDetails>
+					<OrganisationType>statutoryBody</OrganisationType>
+				</GeneralOrganisation>
+				<Authority id="BOB:Authority:OpenBoB" version="1">
+					<Name>OpenBoB</Name>
+					<ContactDetails>
+						<Url>https://www.openbob.demo</Url>
+					</ContactDetails>
+					<OrganisationType>operator</OrganisationType>
+				</Authority>
+			</organisations>
+		</ResourceFrame>
+		<FareFrame id="BOB:FareFrame:Common" version="1">
+			<prerequisites>
+				<ResourceFrameRef version="1" ref="SAM:ResourceFrame:1"/>
+				<SiteFrameRef version="1" ref="BOB:SiteFrame:1"/>
+			</prerequisites>
+			<geographicalIntervals>
+				<GeographicalInterval version="1" id="BOB:GeographicalInterval:1zone">
+					<Name>Same zone</Name>
+					<NumberOfUnits>1</NumberOfUnits>
+					<IntervalType>tariffZone</IntervalType>
+				</GeographicalInterval>
+				<GeographicalInterval version="1" id="BOB:GeographicalInterval:2zones">
+					<Name>Two Zones</Name>
+					<NumberOfUnits>2</NumberOfUnits>
+					<IntervalType>tariffZone</IntervalType>
+				</GeographicalInterval>
+			</geographicalIntervals>
+			<fareStructureElements>
+				<FareStructureElement version="1" id="BOB:FareStructureElement:UseOfZone1">
+					<Name>Use of Zone 1</Name>
+					<validityParameterAssignments>
+						<GenericParameterAssignment id="BOB:GenericParameterAssignment:8" version="1" order="1">
+							<Name>Use of Zone 1</Name>
+							<validityParameters>
+								<TariffZoneRef version="1" ref="BOB:TariffZone:1"/>
+							</validityParameters>
+						</GenericParameterAssignment>
+					</validityParameterAssignments>
+				</FareStructureElement>
+				<FareStructureElement version="1" id="BOB:FareStructureElement:UseOfZone2">
+					<Name>Use of Zone 2</Name>
+					<validityParameterAssignments>
+						<GenericParameterAssignment id="BOB:GenericParameterAssignment:9" version="1" order="1">
+							<Name>Use of Zone 2</Name>
+							<validityParameters>
+								<TariffZoneRef version="1" ref="BOB:TariffZone:2"/>
+							</validityParameters>
+						</GenericParameterAssignment>
+					</validityParameterAssignments>
+				</FareStructureElement>
+				<FareStructureElement version="1" id="BOB:FareStructureElement:UseOfZoneSL">
+					<Name>Use of Zone SL</Name>
+					<validityParameterAssignments>
+						<GenericParameterAssignment id="BOB:GenericParameterAssignment:10" version="1" order="1">
+							<Name>Use of Zone 2</Name>
+							<validityParameters>
+								<TariffZoneRef version="1" ref="BOB:TariffZone:SL"/>
+							</validityParameters>
+						</GenericParameterAssignment>
+					</validityParameterAssignments>
+				</FareStructureElement>
+			</fareStructureElements>
+			<usageParameters>
+				<FrequencyOfUse id="BOB:FrequencyOfUse:unlimited" version="1">
+					<FrequencyOfUseType>unlimited</FrequencyOfUseType>
+				</FrequencyOfUse>
+				<UserProfile id="BOB:UserProfile:Adult" version="1">
+					<Name lang="en">Adult</Name>
+					<Description>Adult</Description>
+					<TypeOfConcessionRef version="1" ref="BOB:TypeOfConcession:Adult"/>
+				</UserProfile>
+				<UserProfile id="BOB:UserProfile:Youth" version="1">
+					<Name lang="en">Youth</Name>
+					<Description>Youth up to 19 years old</Description>
+					<TypeOfConcessionRef version="1" ref="BOB:TypeOfConcession:Youth"/>
+					<MaximumAge>19</MaximumAge>
+				</UserProfile>
+				<UserProfile id="BOB:UserProfile:Student" version="1">
+					<Name lang="en">Student</Name>
+					<Description>Student</Description>
+					<TypeOfConcessionRef version="1" ref="BOB:TypeOfConcession:Student"/>
+				</UserProfile>
+				<UserProfile id="BOB:UserProfile:Senior" version="1">
+					<Name lang="en">Senior</Name>
+					<Description>Senior citizen at least 65 years old</Description>
+					<TypeOfConcessionRef version="1" ref="BOB:TypeOfConcession:Senior"/>
+					<MinimumAge>65</MinimumAge>
+				</UserProfile>
+			</usageParameters>
+			<typesOfTravelDocuments>
+				<TypeOfTravelDocument id="BOB:TypeOfTravelDocument:AppOpenBoBTicket" version="1">
+					<Name>OpenBoB mobile app</Name>
+					<MediaType>mobileApp</MediaType>
+					<MachineReadable>other</MachineReadable>
+				</TypeOfTravelDocument>
+			</typesOfTravelDocuments>
+		</FareFrame>
+		<FareFrame id="BOB:FareFrame:SingleTrip" version="1">
+			<validityConditions>
+				<AvailabilityCondition id="BOB:AvailabilityCondition:1" version="1">
+					<FromDate>2020-01-09T00:00:00</FromDate>
+				</AvailabilityCondition>
+			</validityConditions>
+			<Description>https://openbob.demo/en/buying-tickets/tickets-and-fares/</Description>
+			<prerequisites>
+				<FareFrameRef version="1" ref="BOB:FareFrame:Common"/>
+			</prerequisites>
+			<timeIntervals>
+				<TimeInterval id="BOB:TimeInterval:75min" version="1">
+					<Duration>PT75M</Duration>
+				</TimeInterval>
+				<TimeInterval id="BOB:TimeInterval:90min" version="1">
+					<Duration>PT90M</Duration>
+				</TimeInterval>
+				<TimeInterval id="BOB:TimeInterval:120min" version="1">
+					<Duration>PT120M</Duration>
+				</TimeInterval>
+				<TimeInterval id="BOB:TimeInterval:150min" version="1">
+					<Duration>PT150M</Duration>
+				</TimeInterval>
+			</timeIntervals>
+			<fareStructureElements>
+				<FareStructureElement id="BOB:FareStructureElement:SingleTrip" version="1">
+					<GenericParameterAssignment id="BOB:GenericParameterAssignment:1" version="1" order="0">
+						<limitations>
+							<FrequencyOfUseRef ref="BOB:FrequencyOfUse:unlimited"/>
+						</limitations>
+						<IncludesGroupingType>XOR</IncludesGroupingType>
+						<includes>
+							<GenericParameterAssignment id="BOB:GenericParameterAssignment:2" version="1" order="6">
+								<FareStructureElementRef version="1" ref="BOB:FareStructureElement:75minZone1"/>
+							</GenericParameterAssignment>
+							<GenericParameterAssignment id="BOB:GenericParameterAssignment:3" version="1" order="7">
+								<FareStructureElementRef version="1" ref="BOB:FareStructureElement:75minZone2"/>
+							</GenericParameterAssignment>
+							<GenericParameterAssignment id="BOB:GenericParameterAssignment:4" version="1" order="3">
+								<FareStructureElementRef version="1" ref="BOB:FareStructureElement:90minZone12"/>
+							</GenericParameterAssignment>
+							<GenericParameterAssignment id="BOB:GenericParameterAssignment:5" version="1" order="4">
+								<FareStructureElementRef version="1" ref="BOB:FareStructureElement:120minZone2SL"/>
+							</GenericParameterAssignment>
+							<GenericParameterAssignment id="BOB:GenericParameterAssignment:6" version="1" order="5">
+								<FareStructureElementRef version="1" ref="BOB:FareStructureElement:150minZone12SL"/>
+							</GenericParameterAssignment>
+						</includes>
+					</GenericParameterAssignment>
+				</FareStructureElement>
+				<FareStructureElement version="1" id="BOB:FareStructureElement:TravellerSingleTrip">
+					<Name>Traveller category</Name>
+					<GenericParameterAssignment order="1" id="BOB:GenericParameterAssignment:7" version="1">
+						<LimitationGroupingType>XOR</LimitationGroupingType>
+						<limitations>
+							<UserProfileRef version="1" ref="BOB:UserProfile:Adult"/>
+							<UserProfileRef version="1" ref="BOB:UserProfile:Youth"/>
+							<UserProfileRef version="1" ref="BOB:UserProfile:Student"/>
+							<UserProfileRef version="1" ref="BOB:UserProfile:Senior"/>
+						</limitations>
+					</GenericParameterAssignment>
+				</FareStructureElement>
+				<FareStructureElement version="1" id="BOB:FareStructureElement:75minZone1">
+					<Name>Zone 1 only</Name>
+					<fareStructureElementsInSequence>
+						<FareStructureElementInSequence version="1" order="1">
+							<IsFirstInSequence>true</IsFirstInSequence>
+							<IsLastInSequence>true</IsLastInSequence>
+							<FareStructureElementRef version="1" ref="BOB:FareStructureElement:UseOfZone1"/>
+						</FareStructureElementInSequence>
+					</fareStructureElementsInSequence>
+					<validityParameterAssignments>
+						<GenericParameterAssignment id="BOB:GenericParameterAssignment:11" version="1" order="1">
+							<TimeIntervalRef ref="BOB:TimeInterval:75min" version="1"/>
+						</GenericParameterAssignment>
+					</validityParameterAssignments>
+				</FareStructureElement>
+				<FareStructureElement version="1" id="BOB:FareStructureElement:75minZone2">
+					<Name>Zone 2 only</Name>
+					<fareStructureElementsInSequence>
+						<FareStructureElementInSequence version="1" order="1">
+							<IsFirstInSequence>true</IsFirstInSequence>
+							<IsLastInSequence>true</IsLastInSequence>
+							<FareStructureElementRef version="1" ref="BOB:FareStructureElement:UseOfZone2"/>
+						</FareStructureElementInSequence>
+					</fareStructureElementsInSequence>
+					<validityParameterAssignments>
+						<GenericParameterAssignment id="BOB:GenericParameterAssignment:12" version="1" order="1">
+							<TimeIntervalRef ref="BOB:TimeInterval:75min" version="1"/>
+						</GenericParameterAssignment>
+					</validityParameterAssignments>
+				</FareStructureElement>
+				<FareStructureElement version="1" id="BOB:FareStructureElement:90minZone12">
+					<Name>Zone 1 and 2</Name>
+					<fareStructureElementsInSequence>
+						<FareStructureElementInSequence version="1" order="1">
+							<IsFirstInSequence>true</IsFirstInSequence>
+							<FareStructureElementRef version="1" ref="BOB:FareStructureElement:UseOfZone1"/>
+						</FareStructureElementInSequence>
+						<FareStructureElementInSequence version="1" order="2">
+							<IsLastInSequence>true</IsLastInSequence>
+							<FareStructureElementRef version="1" ref="BOB:FareStructureElement:UseOfZone2"/>
+						</FareStructureElementInSequence>
+					</fareStructureElementsInSequence>
+					<validityParameterAssignments>
+						<GenericParameterAssignment id="BOB:GenericParameterAssignment:13" version="1" order="1">
+							<TimeIntervalRef ref="BOB:TimeInterval:90min" version="1"/>
+						</GenericParameterAssignment>
+					</validityParameterAssignments>
+				</FareStructureElement>
+				<FareStructureElement version="1" id="BOB:FareStructureElement:120minZone2SL">
+					<Name>Zone 2 and SL</Name>
+					<fareStructureElementsInSequence>
+						<FareStructureElementInSequence version="1" order="1">
+							<IsFirstInSequence>true</IsFirstInSequence>
+							<FareStructureElementRef version="1" ref="BOB:FareStructureElement:UseOfZone2"/>
+						</FareStructureElementInSequence>
+						<FareStructureElementInSequence version="1" order="2">
+							<IsLastInSequence>true</IsLastInSequence>
+							<FareStructureElementRef version="1" ref="BOB:FareStructureElement:UseOfZoneSL"/>
+						</FareStructureElementInSequence>
+					</fareStructureElementsInSequence>
+					<validityParameterAssignments>
+						<GenericParameterAssignment id="BOB:GenericParameterAssignment:14" version="1" order="1">
+							<TimeIntervalRef ref="BOB:TimeInterval:120min" version="1"/>
+						</GenericParameterAssignment>
+					</validityParameterAssignments>
+				</FareStructureElement>
+				<FareStructureElement version="1" id="BOB:FareStructureElement:150minZone12SL">
+					<Name>Zone 1, 2 and SL</Name>
+					<fareStructureElementsInSequence>
+						<FareStructureElementInSequence version="1" order="1">
+							<IsFirstInSequence>true</IsFirstInSequence>
+							<FareStructureElementRef version="1" ref="BOB:FareStructureElement:UseOfZone1"/>
+						</FareStructureElementInSequence>
+						<FareStructureElementInSequence version="1" order="2">
+							<FareStructureElementRef version="1" ref="BOB:FareStructureElement:UseOfZone2"/>
+						</FareStructureElementInSequence>
+						<FareStructureElementInSequence version="1" order="3">
+							<IsLastInSequence>true</IsLastInSequence>
+							<FareStructureElementRef version="1" ref="BOB:FareStructureElement:UseOfZoneSL"/>
+						</FareStructureElementInSequence>
+					</fareStructureElementsInSequence>
+					<validityParameterAssignments>
+						<GenericParameterAssignment id="BOB:GenericParameterAssignment:15" version="1" order="1">
+							<TimeIntervalRef ref="BOB:TimeInterval:150min" version="1"/>
+						</GenericParameterAssignment>
+					</validityParameterAssignments>
+				</FareStructureElement>
+			</fareStructureElements>
+			<validableElements>
+				<ValidableElement id="BOB:ValidableElement:SingleTrip" version="1">
+					<Name>Single trip in a single zone or a number of zones for an adult, youth, student or senior</Name>
+					<fareStructureElements>
+						<FareStructureElementRef ref="BOB:FareStructureElement:SingleTrip" version="1"/>
+						<FareStructureElementRef ref="BOB:FareStructureElement:TravellerSingleTrip" version="1"/>
+					</fareStructureElements>
+				</ValidableElement>
+			</validableElements>
+			<fareProducts>
+				<PreassignedFareProduct id="BOB:PreassignedFareProduct:SingleTrip" version="1">
+					<Name>Single trip Ticket</Name>
+					<Description>A single ticket trip for travel in a single zone or a number of zones</Description>
+					<accessRightsInProduct>
+						<AccessRightInProduct id="BOB:AccessRightInProduct:SingleTrip" version="1" order="1">
+							<ValidableElementRef ref="BOB:ValidableElement:SingleTrip"/>
+						</AccessRightInProduct>
+					</accessRightsInProduct>
+				</PreassignedFareProduct>
+			</fareProducts>
+			<fareTables>
+				<FareTable id="BOB:FareTable:1" version="1">
+					<pricesFor>
+						<PreassignedFareProductRef version="1" ref="BOB:PreassignedFareProduct:SingleTrip"/>
+						<UserProfileRef version="1" ref="BOB:UserProfile:Adult"/>
+					</pricesFor>
+					<cells>
+						<FareStructureElementPrice version="1" id="BOB:FareStructureElementPrice:4">
+							<Amount>63</Amount>
+							<Currency>SEK</Currency>
+							<FareStructureElementRef version="1" ref="BOB:FareStructureElement:120minZone2SL"/>
+						</FareStructureElementPrice>
+						<FareStructureElementPrice version="1" id="BOB:FareStructureElementPrice:5">
+							<Amount>90</Amount>
+							<Currency>SEK</Currency>
+							<FareStructureElementRef version="1" ref="BOB:FareStructureElement:150minZone12SL"/>
+						</FareStructureElementPrice>
+						<GeographicalIntervalPrice version="1" id="BOB:GeographicalIntervalPrice:1">
+							<Amount>26</Amount>
+							<Currency>SEK</Currency>
+							<GeographicalIntervalRef version="1" ref="BOB:GeographicalInterval:1zone"/>
+						</GeographicalIntervalPrice>
+						<GeographicalIntervalPrice version="1" id="BOB:GeographicalIntervalPrice:2">
+							<Amount>52</Amount>
+							<Currency>SEK</Currency>
+							<GeographicalIntervalRef version="1" ref="BOB:GeographicalInterval:2zones"/>
+						</GeographicalIntervalPrice>
+					</cells>
+				</FareTable>
+				<FareTable id="BOB:FareTable:2" version="1">
+					<pricesFor>
+						<PreassignedFareProductRef version="1" ref="BOB:PreassignedFareProduct:SingleTrip"/>
+						<UserProfileRef version="1" ref="BOB:UserProfile:Youth"/>
+						<UserProfileRef version="1" ref="BOB:UserProfile:Student"/>
+						<UserProfileRef version="1" ref="BOB:UserProfile:Senior"/>
+					</pricesFor>
+					<cells>
+						<FareStructureElementPrice version="1" id="BOB:FareStructureElementPrice:9">
+							<Amount>41</Amount>
+							<Currency>SEK</Currency>
+							<FareStructureElementRef version="1" ref="BOB:FareStructureElement:120minZone2SL"/>
+						</FareStructureElementPrice>
+						<FareStructureElementPrice version="1" id="BOB:FareStructureElementPrice:10">
+							<Amount>57</Amount>
+							<Currency>SEK</Currency>
+							<FareStructureElementRef version="1" ref="BOB:FareStructureElement:150minZone12SL"/>
+						</FareStructureElementPrice>
+						<GeographicalIntervalPrice version="1" id="BOB:GeographicalIntervalPrice:3">
+							<Amount>16</Amount>
+							<Currency>SEK</Currency>
+							<GeographicalIntervalRef version="1" ref="BOB:GeographicalInterval:1zone"/>
+						</GeographicalIntervalPrice>
+						<GeographicalIntervalPrice version="1" id="BOB:GeographicalIntervalPrice:4">
+							<Amount>32</Amount>
+							<Currency>SEK</Currency>
+							<GeographicalIntervalRef version="1" ref="BOB:GeographicalInterval:2zones"/>
+						</GeographicalIntervalPrice>
+					</cells>
+				</FareTable>
+			</fareTables>
+			<salesOfferPackages>
+				<SalesOfferPackage id="BOB:SalesOfferPackage:1" version="1">
+					<Name lang="en">Single trip valid within one fare zone or any valid combination of fare zones</Name>
+					<salesOfferPackageElements>
+						<SalesOfferPackageElement id="BOB:SalesOfferPackageElement:1" version="1" order="1">
+							<Name lang="en">Single trip valid within one fare zone or any valid combination of fare zones</Name>
+							<PreassignedFareProductRef ref="BOB:PreassignedFareProduct:SingleTrip"/>
+						</SalesOfferPackageElement>
+					</salesOfferPackageElements>
+				</SalesOfferPackage>
+			</salesOfferPackages>
+		</FareFrame>
+		<SiteFrame id="BOB:SiteFrame:1" version="1">
+			<validityConditions>
+				<AvailabilityCondition id="BOB:AvailabilityCondition:0" version="1">
+					<FromDate>2020-01-09T00:00:00</FromDate>
+				</AvailabilityCondition>
+			</validityConditions>
+			<Description>https://openbob.demo/en/buying-tickets/zones/</Description>
+			<tariffZones>
+				<TariffZone id="BOB:TariffZone:1" version="1">
+					<Name lang="en">Zone 1 (Uppsala city zone)</Name>
+				</TariffZone>
+				<TariffZone id="BOB:TariffZone:2" version="1">
+					<Name lang="en">Zone 2 (Outside Uppsala city)</Name>
+				</TariffZone>
+				<TariffZone id="BOB:TariffZone:SL" version="1">
+					<Name lang="en">Zone SL (Stockholm zone)</Name>
+				</TariffZone>
+			</tariffZones>
+		</SiteFrame>
+		<SalesTransactionFrame id="BOB:SalesTransactionFrame:1" version="1">
+			<validityConditions>
+				<AvailabilityCondition id="BOB:AvailabilityCondition:3" version="1">
+					<FromDate>2020-06-16T00:00:00</FromDate>
+				</AvailabilityCondition>
+			</validityConditions>
+			<fareContracts>
+				<FareContract id="BOB:FareContract:1" version="1">
+					<Name lang="en">Adult single ticket for an anonymous traveller for travel within zone 1 and 2</Name>
+					<StartDate>2020-06-16T06:28:00</StartDate>
+					<EndDate>2020-06-16T07:58:00</EndDate>
+					<fareContractEntries>
+						<SalesTransaction id="BOB:SalesTransaction:1" version="1">
+							<Name lang="en">Purchase of adult single ticket for travel within zone 1 and 2</Name>
+							<Date>2020-06-16T06:28:00</Date>
+							<Amount>52</Amount>
+							<Currency>SEK</Currency>
+							<!-- <PaymentMethod>mobilePhone</PaymentMethod> -->
+							<customerPurchasePackages>
+								<CustomerPurchasePackageRef ref="BOB:CustomerPurchasePackage:1" version="1"/>
+							</customerPurchasePackages>
+							<travelDocuments>
+								<TravelDocumentRef ref="BOB:TravelDocument:1"/>
+							</travelDocuments>
+						</SalesTransaction>
+					</fareContractEntries>
+				</FareContract>
+			</fareContracts>
+			<travelDocuments>
+				<TravelDocument id="BOB:TravelDocument:1" version="1">
+					<TypeOfTravelDocumentRef ref="BOB:TypeOfTravelDocument:AppOpenBoBTicket" version="1"/>
+				</TravelDocument>
+				<TravelDocument id="BOB:TravelDocument:2" version="1">
+					<TypeOfTravelDocumentRef ref="BOB:TypeOfTravelDocument:AppOpenBoBTicket" version="1"/>
+				</TravelDocument>
+			</travelDocuments>
+			<customerPurchasePackages>
+				<CustomerPurchasePackage id="BOB:CustomerPurchasePackage:1" version="1">
+					<SalesOfferPackageRef ref="BOB:SalesOfferPackage:1" version="1"/>
+					<customerPurchasePackageElements>
+						<CustomerPurchasePackageElement id="BOB:CustomerPurchasePackageElement:1" version="1" order="1">
+							<SalesOfferPackageElementRef ref="BOB:SalesOfferPackageElement:1" version="1"/>
+							<elementAccesses>
+								<CustomerPurchasePackageElementAccess id="BOB:CustomerPurchasePackageElementAccess:1" version="1" created="2020-06-23T06:28:00">
+									<ValidableElementRef ref="BOB:ValidableElement:SingleTrip" version="1"/>
+									<MarkedAs>activated</MarkedAs>
+									<validityParameterAssignments>
+										<CustomerPurchaseParameterAssignment id="BOB:CustomerPurchaseParameterAssignment:1" version="1" order="1">
+											<FareStructureElementRef version="1" ref="BOB:FareStructureElement:90minZone12"/>
+											<limitations>
+												<UsageValidityPeriod id="BOB:UsageValidityPeriod:1" version="1">
+													<StartDate>2020-06-16</StartDate>
+													<StartTime>06:28:00</StartTime>
+													<EndDate>2020-06-16</EndDate>
+													<EndTime>07:58:00</EndTime>
+												</UsageValidityPeriod>
+												<UserProfileRef ref="BOB:UserProfile:Adult" version="1"/>
+											</limitations>
+											<validityParameters>
+												<TariffZoneRef ref="BOB:TariffZone:1"/>
+												<TariffZoneRef ref="BOB:TariffZone:2"/>
+											</validityParameters>
+										</CustomerPurchaseParameterAssignment>
+									</validityParameterAssignments>
+								</CustomerPurchasePackageElementAccess>
+							</elementAccesses>
+						</CustomerPurchasePackageElement>
+					</customerPurchasePackageElements>
+				</CustomerPurchasePackage>
+			</customerPurchasePackages>
+		</SalesTransactionFrame>
+	</dataObjects>
+</PublicationDelivery>
