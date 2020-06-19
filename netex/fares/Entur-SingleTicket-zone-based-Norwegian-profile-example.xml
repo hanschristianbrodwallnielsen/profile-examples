@@ -32,6 +32,50 @@
         </ResourceFrame>
 
 
+
+        <!-- Supplementary site frame for defining Tariff Zones (often managed in separate XML) -->
+        <SiteFrame id="RUT:SiteFrame:1" version="1">
+            <validityConditions>
+                <AvailabilityCondition id="RUT:AvailabilityCondition:2" version="1">
+                    <FromDate>2020-01-26T00:00:00</FromDate>
+                </AvailabilityCondition>
+            </validityConditions>
+            <Description>https://ruter.no/en/buying-tickets/zones/</Description>
+            <tariffZones>
+                <TariffZone id="RUT:TariffZone:1" version="1">
+                    <Name lang="en">Ruter# tariff zone 1 (sentral Oslo region)</Name>
+                </TariffZone>
+                <TariffZone id="RUT:TariffZone:2V" version="1">
+                    <Name lang="en">Ruter# tariff zone 2V (west incl Asker)</Name>                 
+                </TariffZone>
+                <TariffZone id="RUT:TariffZone:3V" version="1">
+                    <Name lang="en">Ruter# tariff zone 3V (west incl Slemmestad)</Name>                 
+                </TariffZone>
+                <TariffZone id="RUT:TariffZone:4V" version="1">
+                    <Name lang="en">Ruter# tariff zone 4V (west incl Tofte)</Name>         
+                </TariffZone>
+                <TariffZone id="RUT:TariffZone:2S" version="1">
+                    <Name lang="en">Ruter# tariff zone 2S (south incl Ski)</Name> 
+                </TariffZone>
+                <TariffZone id="RUT:TariffZone:3S" version="1">
+                    <Name lang="en">Ruter# tariff zone 3S (south incl Son)</Name>                 
+                </TariffZone>
+            </tariffZones>
+        </SiteFrame>
+        
+        
+        <ServiceFrame id="RUT:ServiceFrame:1" version="1">
+            <!-- only included as NeTEx frame structure reference -->
+        </ServiceFrame>
+        
+        
+        <TimetableFrame id="RUT:TimetableFrame:1" version="1">
+            <!-- only included as NeTEx frame structure reference -->
+        </TimetableFrame>
+
+
+
+
         <!-- Fare data for Ruter# codespace "RUT" (greater Oslo region) -->
 
         <FareFrame id="RUT:FareFrame:1" version="1">
@@ -44,14 +88,47 @@
             <Description>https://ruter.no/en/buying-tickets/tickets-and-fares/</Description>
             
             
-            <!-- 
+            <!-- Spec: 7.5.3.4.1 GeographicalUnit – Model Element 
+                "A unit for calculating geographical graduated fares." 
+            (page 124) -->
+            <geographicalUnits>
+                <GeographicalUnit id="RUT:GeographicalUnit:1" version="1">
+                    <!-- todo -->
+                    <prices>
+                        <GeographicalUnitPrice id="RUT:GeographicalUnitPrice:1" version="1">
+                            
+                        </GeographicalUnitPrice>
+                    </prices>
+                </GeographicalUnit>
+            </geographicalUnits>
+            
+            <!-- Spec: ﻿7.5.3.4.3 GeographicalInterval – Model Element 
+                "A geographical interval specifying access rights for the FARE STRUCTURE ELEMENTs within the range of this interval: '20-5 km', '4-6 zones', etc." 
+            (page 126) -->
             <geographicalIntervals>
                 <GeographicalInterval id="RUT:GeographicalInterval:1" version="1">
+                    
                     <NumberOfUnits>2</NumberOfUnits>
                     <IntervalType>tariffZone</IntervalType>
                 </GeographicalInterval>
             </geographicalIntervals>
-            -->
+            
+            
+            
+            
+            
+            
+            <!-- README (ODIN) -->
+            
+            <!-- HSL har 4 soner med 4 ulike faktorer 7 mulige kombinasjoner (med ulike interval) -->
+            
+            
+            <!-- 
+                
+                BoB har issues med formatkompleksistet  
+            
+            --> 
+
             
             
             <timeIntervals>
@@ -242,34 +319,6 @@
                 </SalesOfferPackage>
             </salesOfferPackages>
         </FareFrame>
-
-
-        <SiteFrame id="RUT:SiteFrame:1" version="1">
-            <validityConditions>
-                <AvailabilityCondition id="RUT:AvailabilityCondition:2" version="1">
-                    <FromDate>2020-01-26T00:00:00</FromDate>
-                </AvailabilityCondition>
-            </validityConditions>
-            <Description>https://ruter.no/en/buying-tickets/zones/</Description>
-            <tariffZones>
-                <TariffZone id="RUT:TariffZone:1" version="1">
-                    <Name lang="en">Ruter# tariff zone 1</Name>
-                </TariffZone>
-                <TariffZone id="RUT:TariffZone:2V" version="1">
-                    <Name lang="en">Ruter# tariff zone 2V</Name>                 
-                </TariffZone>
-            </tariffZones>
-        </SiteFrame>
-
-
-        <ServiceFrame id="RUT:ServiceFrame:1" version="1">
-            <!-- only included as NeTEx frame structure reference -->
-        </ServiceFrame>
-
-
-        <TimetableFrame id="RUT:TimetableFrame:1" version="1">
-            <!-- only included as NeTEx frame structure reference -->
-        </TimetableFrame>
 
 
 
