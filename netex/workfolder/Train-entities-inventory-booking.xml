@@ -32,8 +32,12 @@
         </TypeOfEquipment>
       </typesOfValue>
       
-  
+      
+      <!-- SeatingEquipment: NeTEx part 1 - ﻿8.4.8.7.3.5 SeatingEquipment – Model Element (page 776) -->
+      
+
       <equipments>
+        
         <!-- pervertering av firergruppe sete, premium klasse (Komfort?), v.h.a. derivedFromObjectRef -->
         <SeatingEquipment version="0" id="NTO:SeatingEquipment:Group1">
           
@@ -68,8 +72,10 @@
         </SeatingEquipment>
       </equipments>
       
+
       
       <vehicleTypes>
+        
         <!-- Generic VehicleType -->
         <VehicleType version="0" id="NTO:VehicleType:Buss">
           <capacities>
@@ -83,6 +89,7 @@
             </PassengerCapacity>
           </capacities>
         </VehicleType>
+        
         
         
         <!-- Specific VehicleType: Train -->
@@ -160,6 +167,7 @@
         
         <TrainElement version="0" id="NTO:TrainElement:1">
           <FareClasses>premiumClass standardClass</FareClasses>
+
           <!-- capasity per element-->
           <capacities>
             <PassengerCapacity id="NTO:PassengerCapacity:Premium">
@@ -172,13 +180,35 @@
             </PassengerCapacity>
           </capacities>
           
+          
+          
+          <!-- Accomodation related facilities: NeTEx part 3 - ﻿7.4.2.3 Fare Facility (page 111) -->
+          
           <facilities>
             <ServiceFacilitySet id="NTO:ServiceFacilityList:1" version="0">
               <CateringFacilityList>foodVendingMachine beverageVendingMachine</CateringFacilityList>
+              <AccommodationFacilityList>seating </AccommodationFacilityList>
+              <accommodations>
+                <Accommodation id="ENT:Accomodation:1" version="1">
+                  <BerthFacility>both</BerthFacility>
+                </Accommodation>
+              </accommodations>
             </ServiceFacilitySet>
           </facilities>
           
+          
+          
+          <!-- TODO: 
+            
+            PassengerAssignable / PassengerBookable
+            Assignable
+            Bookable
+            
+            Trengs en -PassengerSeating equipment- AMENITY / CONVENIENCE / COMPLIANCE (i.e. BOOKABLE feature) -->
+          
+          
           <equipments>
+            
             <!-- gruppe -->
             <SeatingEquipmentRef version="0" ref="NTO:SeatingEquipment:Group1"/>
             <!-- vanlige seter -->
@@ -213,6 +243,15 @@
           <VehicleTypeRef version="0" ref="NTO:VehicleType:Buss"/>
         </Vehicle>
       </vehicles>
+      
+      
+      <groupsOfEntities>
+        <GeneralGroupOfEntities id="ENT:GeneralGroupOfEntities:1" version="1">
+          <members>
+            <VersionOfObjectRef ref="test"/>
+          </members>
+        </GeneralGroupOfEntities>
+      </groupsOfEntities>
       
     </ResourceFrame>
 
@@ -348,6 +387,7 @@
             </Route>  
           </routes>
           
+         
           
           <lines>
             <Line version="0" id="NSB:Line:41">
