@@ -17,11 +17,26 @@
                 <EstimatedVehicleJourney>
                     <LineRef>SKY:Line:985</LineRef>
                     <DirectionRef>0</DirectionRef>
+                    
                     <!--DatedVehicleJourneyRef>6671390_94170</DatedVehicleJourneyRef-->
                     <FramedVehicleJourneyRef>
                         <DataFrameRef>2017-12-12</DataFrameRef>
-                        <DatedVehicleJourneyRef>ref</DatedVehicleJourneyRef>
+                        <DatedVehicleJourneyRef>ref</DatedVehicleJourneyRef>                        
                     </FramedVehicleJourneyRef>
+                    <!-- Cancellation>true</Cancellation -->
+                    
+                    
+                    <!-- burde hatt inn en referanse til erstatningstransport her:
+                        - <Replacement(Transport)s>
+                            <Replacement(Transport)>
+                                <LineRef>
+                                <RouteRef>
+                                <OperatorRef>
+                                <(Dated)VehicleJourneyRef>
+                                <VehicleMode>
+                    -->
+                    
+                    
                     <ExtraJourney>false</ExtraJourney>
                     <JourneyPatternRef>placeholder</JourneyPatternRef>
                     <VehicleMode>bus</VehicleMode>
