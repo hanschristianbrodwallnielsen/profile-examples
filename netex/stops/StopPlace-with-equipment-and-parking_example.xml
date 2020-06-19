@@ -165,9 +165,10 @@
                             <PrivateCode>512</PrivateCode>
                             <SignContentType>transportMode</SignContentType>
                         </GeneralSign>
+                        
+                        <GeneralSign id="NSR:GeneralSign:1234556789" version="0"/>
 
-                        <PassengerInformationEquipment id="RUT:PassengerInformationEquipment:1"
-                            version="1">
+                        <PassengerInformationEquipment id="RUT:PassengerInformationEquipment:1" version="1">
                             <!--PassengerInformationEquipmentList>realTimeDepartures lineNetworkPlan timetablePoster fareInformation interactiveKiosk</PassengerInformationEquipmentList1-->
                             <PassengerInformationFacilityList>nextStopIndicator passengerInformationDisplay realTimeConnections stopAnnouncements</PassengerInformationFacilityList>
                             <!-- IKKE I BRUK PDD. (ref. https://rutebanken.atlassian.net/wiki/display/REIS/Known+errors) -->
