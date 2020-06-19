@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ==== BoB monthly pass zone-count and zone based example ====== 
+This example shows how the product data with its zones, product categories, traveller categories and fares may be 
+encoded using NeTEx part 3.
+
+This file shows an example for a MonthlyPass which is very similar to a SingleTrip. See documentation in BOB-SingleTrip.xml.
+-->
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gis="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" version="1.10:NO-NeTEx-fares:0.9">
+	<PublicationTimestamp>2020-04-23T06:00:00</PublicationTimestamp>
+	<ParticipantRef>SAM</ParticipantRef>
+	<dataObjects>
+		<ResourceFrame id="SAM:ResourceFrame:1" version="1">
+			<typesOfValue>
+				<ValueSet version="1" id="BOB:ValueSet:1" classOfValues="TypeOfConcession">
+					<Name>Types of concession</Name>
+					<values>
+						<TypeOfConcession version="1" id="BOB:TypeOfConcession:Adult">
+							<Name>Adult</Name>
+						</TypeOfConcession>
+						<TypeOfConcession version="1" id="BOB:TypeOfConcession:Youth">
+							<Name>Youth</Name>
+						</TypeOfConcession>
+						<TypeOfConcession version="1" id="BOB:TypeOfConcession:Student">
+							<Name>Student</Name>
+						</TypeOfConcession>
+						<TypeOfConcession version="1" id="BOB:TypeOfConcession:Senior">
+							<Name>Senior</Name>
+						</TypeOfConcession>
+					</values>
+				</ValueSet>
+			</typesOfValue>
+			<organisations>
+				<GeneralOrganisation id="SAM:GeneralOrganisation:Samtrafiken" version="1">
+					<Name>Samtrafiken i Sverige AB</Name>
+					<ContactDetails>
+						<Url>https://www.samtrafiken.se</Url>
+					</ContactDetails>
+					<OrganisationType>statutoryBody</OrganisationType>
+				</GeneralOrganisation>
+				<Authority id="BOB:Authority:OpenBoB" version="1">
+					<Name>OpenBoB</Name>
+					<ContactDetails>
+						<Url>https://www.openbob.demo</Url>
+					</ContactDetails>
+					<OrganisationType>operator</OrganisationType>
+				</Authority>
+			</organisations>
+		</ResourceFrame>
+		<FareFrame id="BOB:FareFrame:Common" version="1">
+			<prerequisites>
+				<ResourceFrameRef version="1" ref="SAM:ResourceFrame:1"/>
+				<SiteFrameRef version="1" ref="BOB:SiteFrame:1"/>
+			</prerequisites>
+			<geographicalIntervals>
+				<GeographicalInterval version="1" id="BOB:GeographicalInterval:1zone">
+					<Name>Same zone</Name>
+					<NumberOfUnits>1</NumberOfUnits>
+					<IntervalType>tariffZone</IntervalType>
+				</GeographicalInterval>
+				<GeographicalInterval version="1" id="BOB:GeographicalInterval:2zones">
+					<Name>Two Zones</Name>
+					<NumberOfUnits>2</NumberOfUnits>
+					<IntervalType>tariffZone</IntervalType>
+				</GeographicalInterval>
+			</geographicalIntervals>
+			<fareStructureElements>
+				<FareStructureElement version="1" id="BOB:FareStructureElement:UseOfZone1">
+					<Name>Use of Zone 1</Name>
+					<validityParameterAssignments>
+						<GenericParameterAssignment id="BOB:GenericParameterAssignment:8" version="1" order="1">
+							<Name>Use of Zone 1</Name>
+							<validityParameters>
+								<TariffZoneRef version="1" ref="BOB:TariffZone:1"/>
+							</validityParameters>
+						</GenericParameterAssignment>
+					</validityParameterAssignments>
+				</FareStructureElement>
+				<FareStructureElement version="1" id="BOB:FareStructureElement:UseOfZone2">
+					<Name>Use of Zone 2</Name>
+					<validityParameterAssignments>
+						<GenericParameterAssignment id="BOB:GenericParameterAssignment:9" version="1" order="1">
+							<Name>Use of Zone 2</Name>
+							<validityParameters>
+								<TariffZoneRef version="1" ref="BOB:TariffZone:2"/>
+							</validityParameters>
+						</GenericParameterAssignment>
+					</validityParameterAssignments>
+				</FareStructureElement>
+				<FareStructureElement version="1" id="BOB:FareStructureElement:UseOfZoneSL">
+					<Name>Use of Zone SL</Name>
+					<validityParameterAssignments>
+						<GenericParameterAssignment id="BOB:GenericParameterAssignment:10" version="1" order="1">
+							<Name>Use of Zone 2</Name>
+							<validityParameters>
+								<TariffZoneRef version="1" ref="BOB:TariffZone:SL"/>
+							</validityParameters>
+						</GenericParameterAssignment>
+					</validityParameterAssignments>
+				</FareStructureElement>
+			</fareStructureElements>
+			<usageParameters>
+				<FrequencyOfUse id="BOB:FrequencyOfUse:unlimited" version="1">
+					<FrequencyOfUseType>unlimited</FrequencyOfUseType>
+				</FrequencyOfUse>
+				<UserProfile id="BOB:UserProfile:Adult" version="1">
+					<Name lang="en">Adult</Name>
+					<Description>Adult</Description>
+					<TypeOfConcessionRef version="1" ref="BOB:TypeOfConcession:Adult"/>
+				</UserProfile>
+				<UserProfile id="BOB:UserProfile:Youth" version="1">
+					<Name lang="en">Youth</Name>
+					<Description>Youth up to 19 years old</Description>
+					<TypeOfConcessionRef version="1" ref="BOB:TypeOfConcession:Youth"/>
+					<MaximumAge>19</MaximumAge>
+				</UserProfile>
+				<UserProfile id="BOB:UserProfile:Student" version="1">
+					<Name lang="en">Student</Name>
+					<Description>Student</Description>
+					<TypeOfConcessionRef version="1" ref="BOB:TypeOfConcession:Student"/>
+				</UserProfile>
+				<UserProfile id="BOB:UserProfile:Senior" version="1">
+					<Name lang="en">Senior</Name>
+					<Description>Senior citizen at least 65 years old</Description>
+					<TypeOfConcessionRef version="1" ref="BOB:TypeOfConcession:Senior"/>
+					<MinimumAge>65</MinimumAge>
+				</UserProfile>
+			</usageParameters>
+			<typesOfTravelDocuments>
+				<TypeOfTravelDocument id="BOB:TypeOfTravelDocument:AppOpenBoBTicket" version="1">
+					<Name>OpenBoB mobile app</Name>
+					<MediaType>mobileApp</MediaType>
+					<MachineReadable>other</MachineReadable>
+				</TypeOfTravelDocument>
+			</typesOfTravelDocuments>
+		</FareFrame>
+		<FareFrame id="BOB:FareFrame:MonthlyPass" version="1">
+			<validityConditions>
+				<AvailabilityCondition id="BOB:AvailabilityCondition:2" version="1">
+					<FromDate>2020-01-09T00:00:00</FromDate>
+				</AvailabilityCondition>
+			</validityConditions>
+			<Description>https://openbob.demo/en/buying-tickets/tickets-and-fares/</Description>
+			<prerequisites>
+				<FareFrameRef version="1" ref="BOB:FareFrame:Common"/>
+			</prerequisites>
+			<timeIntervals>
+				<TimeInterval id="BOB:TimeInterval:30days" version="1">
+					<Duration>P30D</Duration>
+				</TimeInterval>
+			</timeIntervals>
+			<fareStructureElements>
+				<FareStructureElement id="BOB:FareStructureElement:MonthlyPass" version="1">
+					<GenericParameterAssignment id="BOB:GenericParameterAssignment:21" version="1" order="0">
+						<limitations>
+							<FrequencyOfUseRef ref="BOB:FrequencyOfUse:unlimited"/>
+						</limitations>
+						<IncludesGroupingType>XOR</IncludesGroupingType>
+						<includes>
+							<GenericParameterAssignment id="BOB:GenericParameterAssignment:22" version="1" order="1">
+								<FareStructureElementRef version="1" ref="BOB:FareStructureElement:30daysZone12"/>
+							</GenericParameterAssignment>
+						</includes>
+					</GenericParameterAssignment>
+				</FareStructureElement>
+				<FareStructureElement version="1" id="BOB:FareStructureElement:TravellerMonthlyPass">
+					<Name>Traveller category</Name>
+					<GenericParameterAssignment order="1" id="BOB:GenericParameterAssignment:23" version="1">
+						<LimitationGroupingType>XOR</LimitationGroupingType>
+						<limitations>
+							<UserProfileRef version="1" ref="BOB:UserProfile:Adult"/>
+							<UserProfileRef version="1" ref="BOB:UserProfile:Youth"/>
+							<UserProfileRef version="1" ref="BOB:UserProfile:Student"/>
+							<UserProfileRef version="1" ref="BOB:UserProfile:Senior"/>
+						</limitations>
+					</GenericParameterAssignment>
+				</FareStructureElement>
+				<FareStructureElement version="1" id="BOB:FareStructureElement:30daysZone12">
+					<Name>All zones (not zone SL)</Name>
+					<fareStructureElementsInSequence>
+						<FareStructureElementInSequence version="1" order="1">
+							<IsFirstInSequence>true</IsFirstInSequence>
+							<IsLastInSequence>false</IsLastInSequence>
+							<FareStructureElementRef version="1" ref="BOB:FareStructureElement:UseOfZone1"/>
+						</FareStructureElementInSequence>
+						<FareStructureElementInSequence version="1" order="1">
+							<IsFirstInSequence>false</IsFirstInSequence>
+							<IsLastInSequence>true</IsLastInSequence>
+							<FareStructureElementRef version="1" ref="BOB:FareStructureElement:UseOfZone2"/>
+						</FareStructureElementInSequence>
+					</fareStructureElementsInSequence>
+					<validityParameterAssignments>
+						<GenericParameterAssignment id="BOB:GenericParameterAssignment:26" version="1" order="1">
+							<TimeIntervalRef ref="BOB:TimeInterval:30days" version="1"/>
+						</GenericParameterAssignment>
+					</validityParameterAssignments>
+				</FareStructureElement>
+			</fareStructureElements>
+			<validableElements>
+				<ValidableElement id="BOB:ValidableElement:MonthlyPass" version="1">
+					<Name>Single trip in a single zone or a number of zones for an adult, youth, student or senior</Name>
+					<fareStructureElements>
+						<FareStructureElementRef ref="BOB:FareStructureElement:MonthlyPass" version="1"/>
+						<FareStructureElementRef ref="BOB:FareStructureElement:TravellerMonthlyPass" version="1"/>
+					</fareStructureElements>
+				</ValidableElement>
+			</validableElements>
+			<fareProducts>
+				<PreassignedFareProduct id="BOB:PreassignedFareProduct:MonthlyPass" version="1">
+					<Name>Monthly Pass Ticket</Name>
+					<Description>A montly pass for travel in all zones (except zone SL)</Description>
+					<accessRightsInProduct>
+						<AccessRightInProduct id="BOB:AccessRightInProduct:MonthlyPass" version="1" order="1">
+							<ValidableElementRef ref="BOB:ValidableElement:MonthlyPass"/>
+						</AccessRightInProduct>
+					</accessRightsInProduct>
+				</PreassignedFareProduct>
+			</fareProducts>
+			<fareTables>
+				<FareTable id="BOB:FareTable:21" version="1">
+					<pricesFor>
+						<PreassignedFareProductRef version="1" ref="BOB:PreassignedFareProduct:MonthlyPass"/>
+						<UserProfileRef version="1" ref="BOB:UserProfile:Adult"/>
+					</pricesFor>
+					<cells>
+						<GeographicalIntervalPrice version="1" id="BOB:GeographicalIntervalPrice:21">
+							<Amount>910</Amount>
+							<Currency>SEK</Currency>
+							<GeographicalIntervalRef version="1" ref="BOB:GeographicalInterval:2zones"/>
+						</GeographicalIntervalPrice>
+					</cells>
+				</FareTable>
+				<FareTable id="BOB:FareTable:22" version="1">
+					<pricesFor>
+						<PreassignedFareProductRef version="1" ref="BOB:PreassignedFareProduct:MonthlyPass"/>
+						<UserProfileRef version="1" ref="BOB:UserProfile:Youth"/>
+						<UserProfileRef version="1" ref="BOB:UserProfile:Student"/>
+						<UserProfileRef version="1" ref="BOB:UserProfile:Senior"/>
+					</pricesFor>
+					<cells>
+						<GeographicalIntervalPrice version="1" id="BOB:GeographicalIntervalPrice:22">
+							<Amount>590</Amount>
+							<Currency>SEK</Currency>
+							<GeographicalIntervalRef version="1" ref="BOB:GeographicalInterval:2zones"/>
+						</GeographicalIntervalPrice>
+					</cells>
+				</FareTable>
+			</fareTables>
+			<salesOfferPackages>
+				<SalesOfferPackage id="BOB:SalesOfferPackage:2" version="1">
+					<Name lang="en">Montly pass valid within zones 1 and 2 (all UL zones)</Name>
+					<salesOfferPackageElements>
+						<SalesOfferPackageElement id="BOB:SalesOfferPackageElement:MontlyPass" version="1" order="1">
+							<Name lang="en">Montly pass valid within zones 1 and 2 (all UL zones</Name>
+							<PreassignedFareProductRef ref="BOB:PreassignedFareProduct:MontlyPass"/>
+						</SalesOfferPackageElement>
+					</salesOfferPackageElements>
+				</SalesOfferPackage>
+			</salesOfferPackages>
+		</FareFrame>
+		<SiteFrame id="BOB:SiteFrame:1" version="1">
+			<validityConditions>
+				<AvailabilityCondition id="BOB:AvailabilityCondition:0" version="1">
+					<FromDate>2020-01-09T00:00:00</FromDate>
+				</AvailabilityCondition>
+			</validityConditions>
+			<Description>https://openbob.demo/en/buying-tickets/zones/</Description>
+			<tariffZones>
+				<TariffZone id="BOB:TariffZone:1" version="1">
+					<Name lang="en">Zone 1 (Uppsala city zone)</Name>
+				</TariffZone>
+				<TariffZone id="BOB:TariffZone:2" version="1">
+					<Name lang="en">Zone 2 (Outside Uppsala city)</Name>
+				</TariffZone>
+				<TariffZone id="BOB:TariffZone:SL" version="1">
+					<Name lang="en">Zone SL (Stockholm zone)</Name>
+				</TariffZone>
+			</tariffZones>
+		</SiteFrame>
+		<SalesTransactionFrame id="BOB:SalesTransactionFrame:1" version="1">
+			<validityConditions>
+				<AvailabilityCondition id="BOB:AvailabilityCondition:3" version="1">
+					<FromDate>2020-06-16T00:00:00</FromDate>
+				</AvailabilityCondition>
+			</validityConditions>
+			<fareContracts>
+				<FareContract id="BOB:FareContract:2" version="1">
+					<Name lang="en">Youth monthly pass for an anonymous traveller for travel within zone 1 and 2</Name>
+					<StartDate>2020-06-16T00:00:00</StartDate>
+					<EndDate>2020-07-15T23:59:59</EndDate>
+					<fareContractEntries>
+						<SalesTransaction id="BOB:SalesTransaction:2" version="1">
+							<Name lang="en">Purchase of youth monthly pass for travel within zone 1 and 2</Name>
+							<Date>2020-06-01T14:43:00</Date>
+							<Amount>590</Amount>
+							<Currency>SEK</Currency>
+							<customerPurchasePackages>
+								<CustomerPurchasePackageRef ref="BOB:CustomerPurchasePackage:2" version="1"/>
+							</customerPurchasePackages>
+							<travelDocuments>
+								<TravelDocumentRef ref="BOB:TravelDocument:2"/>
+							</travelDocuments>
+						</SalesTransaction>
+					</fareContractEntries>
+				</FareContract>
+			</fareContracts>
+			<travelDocuments>
+				<TravelDocument id="BOB:TravelDocument:2" version="1">
+					<TypeOfTravelDocumentRef ref="BOB:TypeOfTravelDocument:AppOpenBoBTicket" version="1"/>
+				</TravelDocument>
+			</travelDocuments>
+			<customerPurchasePackages>
+				<CustomerPurchasePackage id="BOB:CustomerPurchasePackage:2" version="1">
+					<SalesOfferPackageRef ref="BOB:SalesOfferPackage:2" version="1"/>
+					<customerPurchasePackageElements>
+						<CustomerPurchasePackageElement id="BOB:CustomerPurchasePackageElement:2" version="1" order="1">
+							<SalesOfferPackageElementRef ref="BOB:SalesOfferPackageElement:2" version="1"/>
+							<elementAccesses>
+								<CustomerPurchasePackageElementAccess id="BOB:CustomerPurchasePackageElementAccess:2" version="1" created="2020-06-01T14:43:00">
+									<ValidableElementRef ref="BOB:ValidableElement:MonthlyPass" version="1"/>
+									<MarkedAs>activated</MarkedAs>
+									<validityParameterAssignments>
+										<CustomerPurchaseParameterAssignment id="BOB:CustomerPurchaseParameterAssignment:2" version="1" order="1">
+											<FareStructureElementRef version="1" ref="BOB:FareStructureElement:30daysZone12"/>
+											<limitations>
+												<UsageValidityPeriod id="BOB:UsageValidityPeriod:2" version="1">
+													<StartDate>2020-06-16</StartDate>
+													<StartTime>00:00:00</StartTime>
+													<EndDate>2020-07-15</EndDate>
+													<EndTime>23:59:59</EndTime>
+												</UsageValidityPeriod>
+												<UserProfileRef ref="BOB:UserProfile:Youth" version="1"/>
+											</limitations>
+											<validityParameters>
+												<TariffZoneRef ref="BOB:TariffZone:1"/>
+												<TariffZoneRef ref="BOB:TariffZone:2"/>
+											</validityParameters>
+										</CustomerPurchaseParameterAssignment>
+									</validityParameterAssignments>
+								</CustomerPurchasePackageElementAccess>
+							</elementAccesses>
+						</CustomerPurchasePackageElement>
+					</customerPurchasePackageElements>
+				</CustomerPurchasePackage>
+			</customerPurchasePackages>
+		</SalesTransactionFrame>
+	</dataObjects>
+</PublicationDelivery>
