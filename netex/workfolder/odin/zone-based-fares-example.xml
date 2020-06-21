@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery 
+  xmlns="http://www.netex.org.uk/netex"
+  xmlns:gis="http://www.opengis.net/gml/3.2" 
+  xmlns:siri="http://www.siri.org.uk/siri"
+  version="1.10:NO-NeTEx-fares:0.9">
+    
+    <PublicationTimestamp>2020-06-15T12:00:00</PublicationTimestamp>
+    <ParticipantRef>RUT</ParticipantRef>
+    <dataObjects>
+
+
+        <!-- Organisation data (incomplete, only used for example purposes) -->
+        <ResourceFrame id="ENT:ResourceFrame:1" version="1">
+            <organisations>
+                <GeneralOrganisation id="ENT:GeneralOrganisation:Entur" version="1">
+                    <Name>Entur</Name>
+                    <ContactDetails>
+                        <Url>https://www.entur.org</Url>
+                    </ContactDetails>
+                    <OrganisationType>statutoryBody</OrganisationType>
+                </GeneralOrganisation>
+                <Authority id="HSL:Authority:HSL" version="1">
+                    <Name>HSL</Name>
+                    <Description>Helsinki Region Transport (HSL)</Description>
+                    <ContactDetails>
+                        <Phone>09 4766 4000</Phone>
+                        <Url>https://www.hsl.fi/en/helsinki-regional-transport-authority</Url>
+                    </ContactDetails>
+                </Authority>
+            </organisations>
+        </ResourceFrame>
+        
+
+
+        <!-- Tariff Zones definitions (in Norway managed in NSR, the National Stopplace Registry) -->
+        <SiteFrame id="HSL:SiteFrame:1" version="1">
+            <validityConditions>
+                <AvailabilityCondition id="HSL:AvailabilityCondition:2" version="1">
+                    <FromDate>2020-01-01T00:00:00</FromDate>
+                </AvailabilityCondition>
+            </validityConditions>
+            
+            <Description>https://www.hsl.fi/en/tickets/zones</Description>
+            
+            <tariffZones>
+                <TariffZone id="HSL:TariffZone:A" version="1">
+                    <Name>A</Name>
+                </TariffZone>
+                <TariffZone id="HSL:TariffZone:B" version="1">
+                    <Name>B</Name>
+                </TariffZone>
+                <TariffZone id="HSL:TariffZone:C" version="1">
+                    <Name>C</Name>
+                </TariffZone>
+                <TariffZone id="HSL:TariffZone:D" version="1">
+                    <Name>D</Name>
+                </TariffZone>
+            </tariffZones>
+        </SiteFrame>
+        
+        
+        <ServiceFrame id="HSL:ServiceFrame:1" version="1">
+            <!-- only included as NeTEx frame structure reference -->
+        </ServiceFrame>
+        
+        
+        <TimetableFrame id="HSL:TimetableFrame:1" version="1">
+            <!-- only included as NeTEx frame structure reference -->
+        </TimetableFrame>
+        
+        
+
+        <FareFrame id="HSL:FareFrame:1" version="1">
+            <validityConditions>
+                <AvailabilityCondition id="HSL:AvailabilityCondition:1" version="1">
+                    <FromDate>2020-01-26T00:00:00</FromDate>
+                </AvailabilityCondition>
+            </validityConditions>
+            
+            
+            <PricingParameterSet id="atc:ATOC@Products@Trip@Prices" version="01">
+                <pricingServices>
+                    <PricingService id="ENT:PricingService:PoP" version="1">
+                        <Name>Pris og Produkt</Name>
+                        <OrganisationRef ref="ENT:GeneralOrganisation:Entur" version="1"/>
+                        <Url>https://pop.entur.org/</Url>
+                    </PricingService>
+                </pricingServices>
+            </PricingParameterSet>
+            
+            
+            
+            <!-- Spec: 7.5.3.4.1 GeographicalUnit – Model Element 
+                "A unit for calculating geographical graduated fares." 
+            (page 124) -->
+            <geographicalUnits>
+                <!-- Alternative: Geographical unit as basis for pricing -->
+                <GeographicalUnit id="HSL:GeographicalUnit:1" version="1">
+                    <Name>One zone (D, only zone allowing one-zone ticket)</Name>
+                    <prices>
+                        <GeographicalUnitPriceRef ref="HSL:GeographicalUnitPrice:1" version="1"/>
+                    </prices>
+                </GeographicalUnit>
+            </geographicalUnits>
+            
+            
+            
+            <!-- Spec: ﻿7.5.3.4.3 GeographicalInterval – Model Element 
+                "A geographical interval specifying access rights for the FARE STRUCTURE ELEMENTs within the range of this interval: '20-5 km', '4-6 zones', etc." 
+            (page 126) -->
+            <geographicalIntervals>
+                <GeographicalInterval id="HSL:GeographicalInterval:1" version="1">
+                    <NumberOfUnits>1</NumberOfUnits>
+                    <IntervalType>tariffZone</IntervalType>
+                </GeographicalInterval>
+                <GeographicalInterval id="HSL:GeographicalInterval:2" version="1">
+                    <NumberOfUnits>2</NumberOfUnits>
+                    <IntervalType>tariffZone</IntervalType>
+                </GeographicalInterval>
+                <GeographicalInterval id="HSL:GeographicalInterval:3" version="1">
+                    <NumberOfUnits>3</NumberOfUnits>
+                    <IntervalType>tariffZone</IntervalType>
+                </GeographicalInterval>
+                <GeographicalInterval id="HSL:GeographicalInterval:4" version="1">
+                    <NumberOfUnits>4</NumberOfUnits>
+                    <IntervalType>tariffZone</IntervalType>
+                </GeographicalInterval>
+            </geographicalIntervals>
+            
+            
+            <timeIntervals>
+                <TimeInterval id="HSL:TimeInterval:60min" version="1">
+                    <Description>Duration for single zone ticket</Description>
+                    <Duration>PT1H</Duration>
+                </TimeInterval>
+                <TimeInterval id="HSL:TimeInterval:90min" version="1">
+                    <Description>Duration for dual zone ticket</Description>
+                    <Duration>PT1H30M</Duration>
+                </TimeInterval>
+            </timeIntervals>
+            
+            
+            
+            <!-- ﻿7.5.7.4.1 DistanceMatrixElement – Model Element
+                "A cell of an origin-destination matrix for TARIFF ZONEs or STOP POINTs, expressing a fare distance for the corresponding trip: value in km, number of fare units etc" 
+            (page 180) -->
+            <distanceMatrixElements>
+                <!-- Alternative: Distance matrix as basis for pricing -->
+                <DistanceMatrixElement id="HSL:DistanceMatrixElement:AB" version="1">
+                    <StartTariffZoneRef ref="HSL:TariffZone:A" version="1"/>
+                    <EndTariffZoneRef ref="HSL:TariffZone:B" version="1"/>
+                    <prices>
+                        <!-- either -->
+                        <CellRef ref="HSL:Cell:1" version="1"/>
+                        <!-- or -->
+                        <DistanceMatrixElementPriceRef ref="HSL:DistanceMatrixElementPrice:2_80" version="1"/>
+                    </prices>
+                </DistanceMatrixElement>
+                <DistanceMatrixElement id="HSL:DistanceMatrixElement:BC" version="1">
+                    <StartTariffZoneRef ref="HSL:TariffZone:B" version="1"/>
+                    <EndTariffZoneRef ref="HSL:TariffZone:C" version="1"/>
+                </DistanceMatrixElement>
+                <DistanceMatrixElement id="HSL:DistanceMatrixElement:CD" version="1">
+                    <StartTariffZoneRef ref="HSL:TariffZone:C" version="1"/>
+                    <EndTariffZoneRef ref="HSL:TariffZone:D" version="1"/>
+                </DistanceMatrixElement>
+                <DistanceMatrixElement id="HSL:DistanceMatrixElement:ABC" version="1">
+                    <StartTariffZoneRef ref="HSL:TariffZone:A" version="1"/>
+                    <EndTariffZoneRef ref="HSL:TariffZone:C" version="1"/>
+                </DistanceMatrixElement>
+                <DistanceMatrixElement id="HSL:DistanceMatrixElement:BCD" version="1">
+                    <StartTariffZoneRef ref="HSL:TariffZone:B" version="1"/>
+                    <EndTariffZoneRef ref="HSL:TariffZone:D" version="1"/>
+                </DistanceMatrixElement>
+                <DistanceMatrixElement id="HSL:DistanceMatrixElement:ABCD" version="1">
+                    <StartTariffZoneRef ref="HSL:TariffZone:A" version="1"/>
+                    <EndTariffZoneRef ref="HSL:TariffZone:D" version="1"/>
+                    <prices>
+                        <CellRef ref="REF" version="1"/>
+                    </prices>
+                </DistanceMatrixElement>
+            </distanceMatrixElements>
+            
+            
+
+            <!-- Spec:﻿7.5.6.6.1.1 FareStructureElement – Model Element 
+                "﻿A sequence or set of CONTROLLABLE ELEMENTs to which rules for limitation of access rights and calculation of prices (fare structure) are applied." 
+            (page 158) -->
+            
+            <fareStructureElements>
+                
+                <!--
+                <FareStructureElement id="HSL:FareStructureElement:1zone60min" version="1">
+                    <validityParameterAssignments>
+                        <GenericParameterAssignment id="HSL:GenericParameterAssignment:1zone60min" version="1" order="0">
+                            <validityParameters>
+                                <TariffZoneRef ref="HSL:TariffZone:1" version="1"/>
+                            </validityParameters>
+                            <TimeIntervalRef ref="HSL:TimeInterval:60min" version="1"/>
+                        </GenericParameterAssignment>
+                    </validityParameterAssignments>
+                </FareStructureElement>
+                <FareStructureElement id="HSL:FareStructureElement:2zones90min" version="1">
+                    <validityParameterAssignments>
+                        <GenericParameterAssignment id="HSL:GenericParameterAssignment:2zones90min" version="1" order="0">
+                            <validityParameters>
+                                <TariffZoneRef ref="HSL:TariffZone:2V" version="1"/>
+                            </validityParameters>
+                            <TimeIntervalRef ref="HSL:TimeInterval:90min" version="1"/>
+                        </GenericParameterAssignment>
+                    </validityParameterAssignments>
+                </FareStructureElement>
+                -->
+            
+                <FareStructureElement id="HSL:FareStructureElement:1" version="1">
+                    <GenericParameterAssignment id="HSL:GenericParameterAssignment:1" version="1" order="0">
+                        <TariffRef ref="HSL:Tariff:1" version="1"/>
+                        <limitations>
+                            <FrequencyOfUse id="HSL:FrequencyOfUse:1" version="1">
+                                <FrequencyOfUseType>unlimited</FrequencyOfUseType>
+                            </FrequencyOfUse>
+                        </limitations>
+                        <validityParameters>
+                            <AuthorityRef ref="HSL:Authority:HSL" version="1"/>
+                            <TariffZoneRef ref="HSL:TariffZone:A" version="1"/>
+                        </validityParameters>
+                        <TimeIntervalRef ref="HSL:TimeInterval:60min" version="1"/>
+                    </GenericParameterAssignment>
+                </FareStructureElement>
+                
+                <FareStructureElement id="HSL:FareStructureElement:2" version="1">
+                    <GenericParameterAssignment id="HSL:GenericParameterAssignment:2" version="1" order="0">
+                        <limitations>
+                            <FrequencyOfUseRef ref="HSL:FrequencyOfUse:1" version="1"/>
+                        </limitations>
+                        <validityParameters>
+                            <AuthorityRef ref="HSL:Authority:HSL" version="1"/>
+                            <TariffZoneRef ref="HSL:TariffZone:A" version="1"/>
+                            <TariffZoneRef ref="test"></TariffZoneRef>
+                        </validityParameters>
+                        <TimeIntervalRef ref="HSL:TimeInterval:90min" version="1"/>
+                    </GenericParameterAssignment>
+                </FareStructureElement>
+                
+            </fareStructureElements>
+            
+
+
+            
+            <!-- ﻿﻿7.5.6.6.5 Tariff
+                A particular tariff, described by a combination of parameters
+            (page 164)    -->
+            <tariffs>
+                <Tariff id="HSL:Tariff:1" version="1">
+                    <priceGroups>
+                        <PriceGroup id="tst" version="1">
+                            
+                        </PriceGroup>
+                    </priceGroups>
+                    <fareTables>
+                        <FareTableRef ref="ref"></FareTableRef>
+                    </fareTables>
+                </Tariff>
+            </tariffs>
+           
+            
+            
+            <validableElements>
+                <ValidableElement id="HSL:ValidableElement:1" version="1">
+                    <Name>Single trip within one zone</Name>
+                    <fareStructureElements>
+                        <FareStructureElementRef ref="HSL:FareStructureElement:1" version="1"/>
+                    </fareStructureElements>
+                </ValidableElement>
+                <ValidableElement id="HSL:ValidableElement:2" version="1">
+                    <Name>Single trip within two zones</Name>
+                    <fareStructureElements>
+                        <FareStructureElementRef ref="HSL:FareStructureElement:2" version="1"/>
+                    </fareStructureElements>
+                </ValidableElement>
+            </validableElements>
+            
+            
+            <usageParameters>
+                <UserProfile id="HSL:UserProfile:NormalFare" version="1">
+                    <Name lang="no">Normal</Name>
+                    <Description>Adult, Student, Youth</Description>
+                </UserProfile>
+                <UserProfile id="HSL:UserProfile:ReducedFare" version="1">
+                    <Name lang="no">Reduced</Name>
+                    <Description>Child, Concessionary, Military</Description>
+                    <ProofRequired>passport birthCertificate drivingLicence identityDocument medicalDocument studentCard other</ProofRequired>
+                </UserProfile>
+            </usageParameters>
+            
+            
+            
+
+<!--
+
+﻿7.6.2.4.1 PreassignedFareProduct – Model Element
+A FARE PRODUCT consisting of one or several VALIDABLE ELEMENTs, specific to a CHARGING
+MOMENT. -->
+
+            <fareProducts>
+                <PreassignedFareProduct id="HSL:PreassignedFareProduct:SingleTrip1Zone" version="1">
+                    <Name>Single trip valid within one zone</Name>
+                    <accessRightsInProduct>
+                        <AccessRightInProductRef ref="HSL:ValidableElement:1" version="1"/>
+                    </accessRightsInProduct>
+                </PreassignedFareProduct>
+                <PreassignedFareProduct id="HSL:PreassignedFareProduct:SingleTrip2Zones" version="1">
+                    <Name>Single trip valid within two zones</Name>
+                    <accessRightsInProduct>
+                        <AccessRightInProductRef ref="HSL:ValidableElement:1" version="1"/>
+                    </accessRightsInProduct>
+                </PreassignedFareProduct>
+            </fareProducts>
+            
+            
+            
+            
+            <!-- ﻿7.7.3.4.1 FareTable – Model Element
+A grouping of prices that may be associated with various combinations fare elements such as the
+DISTANCE MATRIX ELEMENT, FARE STRUCTURE ELEMENT, GEOGRAPHICAL INTERVAL, TIME INTERVAL,
+USAGE PARAMETER, etc.
+            (page 419) -->
+            
+            <fareTables>
+                <!-- SIMPLIFIED (for presenting) -->
+                <FareTable id="HSL:FareTable:Zones" version="1">
+                    <prices>
+                        <DistanceMatrixElementPrice id="HSL:DistanceMatrixElementPrice:2_80" version="1">
+                            <Amount>2.80</Amount>
+                            <DistanceMatrixElementRef ref=""></DistanceMatrixElementRef>
+                        </DistanceMatrixElementPrice>
+                        <DistanceMatrixElementPrice id="HSL:DistanceMatrixElementPrice:3_20" version="1">
+                            <Amount>3.20</Amount>
+                            <DistanceMatrixElementRef ref=""></DistanceMatrixElementRef>
+                        </DistanceMatrixElementPrice>
+                        <DistanceMatrixElementPrice id="HSL:DistanceMatrixElementPrice:4_10" version="1">
+                            <Amount>4.10</Amount>
+                            <DistanceMatrixElementRef ref=""></DistanceMatrixElementRef>
+                        </DistanceMatrixElementPrice>
+                        <DistanceMatrixElementPrice id="HSL:DistanceMatrixElementPrice:5_70" version="1">
+                            <Amount>5.70</Amount>
+                            <DistanceMatrixElementRef ref=""></DistanceMatrixElementRef>
+                        </DistanceMatrixElementPrice>
+                        
+                        <GeographicalUnitPrice id="HSL:GeographicalUnitPrice:1" version="1">
+                            <Amount>2.80</Amount>
+                        </GeographicalUnitPrice>
+                    </prices>
+                    
+                    <cells>
+                        <Cell id="HSL:Cell:1" version="1" order="1">
+                            <Name>AB</Name>
+                            <Description>80 min</Description>
+                            <DistanceMatrixElementPriceRef ref="HSL:DistanceMatrixElementPrice:2_80" version="1"/>    
+                        </Cell>
+                        <Cell id="HSL:Cell:2" version="1" order="2">
+                            <Name>BC</Name>
+                            <Description>80 min</Description>
+                            <DistanceMatrixElementPriceRef ref="HSL:DistanceMatrixElementPrice:2_80" version="1"/>    
+                        </Cell>
+                        <Cell id="HSL:Cell:3" version="1" order="3">
+                            <Name>CD</Name>
+                            <Description>90 min</Description>
+                            <DistanceMatrixElementPriceRef ref="HSL:DistanceMatrixElementPrice:3_20" version="1"/>    
+                        </Cell>
+                        <Cell id="HSL:Cell:4" version="1" order="4">
+                            <Name>ABC</Name>
+                            <Description>90 min</Description>
+                            <DistanceMatrixElementPriceRef ref="HSL:DistanceMatrixElementPrice:4_10" version="1"/>    
+                        </Cell>
+                        <Cell id="HSL:Cell:5" version="1" order="5">
+                            <Name>BCD</Name>
+                            <Description>100 min</Description>
+                            <DistanceMatrixElementPriceRef ref="HSL:DistanceMatrixElementPrice:4_10" version="1"/>    
+                        </Cell>
+                        <Cell id="HSL:Cell:6" version="1" order="6">
+                            <Name>ABCD</Name>
+                            <Description>110 min</Description>
+                            <DistanceMatrixElementPriceRef ref="HSL:DistanceMatrixElementPrice:5_70" version="1"/>    
+                        </Cell>
+                        <Cell id="HSL:Cell:6" version="1" order="7">
+                            <Name>D</Name>
+                            <Description>80 min</Description>
+                            <GeographicalUnitPriceRef ref="HSL:GeographicalUnitPrice:1" version="1"/>    
+                        </Cell>
+                    </cells>
+                </FareTable>
+            </fareTables>
+            
+            
+            
+            
+            <typesOfTravelDocuments>
+                <TypeOfTravelDocument id="HSL:TypeOfTravelDocument:AppRuterBillett" version="1">
+                    <Name>RuterBillett mobile app</Name>
+                    <MediaType>mobileApp</MediaType>
+                    <MachineReadable>other</MachineReadable>
+                </TypeOfTravelDocument>
+                <TypeOfTravelDocument id="HSL:TypeOfTravelDocument:Travelcard" version="1">
+                    <Name>Travelcard</Name>
+                    <Description>Per Railway Directorate handbook compatible electronic travel card, e.g. Ruter#, Vy</Description>
+                    <MediaType>card</MediaType>
+                    <MachineReadable>nfc</MachineReadable>
+                </TypeOfTravelDocument>
+                <TypeOfTravelDocument id="HSL:TypeOfTravelDocument:SingleUseElectronicTicket" version="1">
+                    <Name>Single use electronic ticet</Name>
+                    <Description>Ruter# disposable travel card compatible electronic ticket</Description>
+                    <MediaType>card</MediaType>
+                    <MachineReadable>nfc</MachineReadable>
+                </TypeOfTravelDocument>  
+                <TypeOfTravelDocument id="HSL:TypeOfTravelDocument:Onboard" version="1">
+                    <Name>Onboard purchase</Name>
+                    <Description>Only busses and ferries</Description>
+                    <MediaType>paperTicket</MediaType>
+                </TypeOfTravelDocument>              
+            </typesOfTravelDocuments>
+            
+            
+            <salesOfferPackages>
+                <SalesOfferPackage id="HSL:SalesOfferPackage:SingleTrip1Zone" version="1">              
+                    <Name>Single trip within one zone</Name>
+                    <salesOfferPackageElements>
+                        <SalesOfferPackageElement id="HSL:SalesOfferPackageElement:SingleTrip1Zone" version="1" order="1">
+                            <Name>Single trip valid within one fare zone valid for one hour</Name>
+                            <PreassignedFareProductRef ref="HSL:PreassignedFareProduct:SingleTrip1Zone" version="1"/>
+                            <validityParameterAssignments>
+                                <GenericParameterAssignment id="HSL:GenericParameterAssignment:10" version="1" order="0">
+                                    <limitations>
+                                        <Transferability id="HSL:Transferability:1" version="1">
+                                            <CanTransfer>true</CanTransfer>
+                                            <HasTransferFee>false</HasTransferFee>
+                                            <SharedUsage>singleUser</SharedUsage>
+                                        </Transferability>
+                                        <FrequencyOfUse id="HSL:FrequencyOfUse:Unlimited60min" version="1">
+                                            <FrequencyOfUseType>unlimited</FrequencyOfUseType>
+                                            <TimeIntervalRef ref="HSL:TimeInterval:60min" version="1"/>
+                                        </FrequencyOfUse>
+                                    </limitations>
+                                </GenericParameterAssignment>
+                            </validityParameterAssignments>
+                        </SalesOfferPackageElement>
+                    </salesOfferPackageElements>
+                </SalesOfferPackage>
+                <SalesOfferPackage id="HSL:SalesOfferPackageElement:SingleTrip2Zones" version="1">
+                    <Name>Single trip valid within two zones</Name>
+                    <salesOfferPackageElements>
+                        <SalesOfferPackageElement id="HSL:SalesOfferPackageElement:SingleTrip2Zones" version="1" order="1">
+                            <Name>Single trip valid within two fare zones valid for one and a halv hours</Name>
+                            <PreassignedFareProductRef ref="HSL:PreassignedFareProduct:SingleTrip2Zones" version="1"/>
+                            <validityParameterAssignments>
+                                <GenericParameterAssignment id="HSL:GenericParameterAssignment:11" version="1" order="0">
+                                    <limitations>
+                                        <Transferability id="HSL:Transferability:2" version="1">
+                                            <CanTransfer>true</CanTransfer>
+                                            <HasTransferFee>false</HasTransferFee>
+                                            <SharedUsage>singleUser</SharedUsage>
+                                        </Transferability>
+                                        <FrequencyOfUse id="HSL:FrequencyOfUse:Unlimited90min" version="1">
+                                            <FrequencyOfUseType>unlimited</FrequencyOfUseType>
+                                            <TimeIntervalRef ref="HSL:TimeInterval:90min" version="1"/>
+                                        </FrequencyOfUse>
+                                    </limitations>
+                                </GenericParameterAssignment>
+                            </validityParameterAssignments>
+                        </SalesOfferPackageElement>
+                    </salesOfferPackageElements>
+                </SalesOfferPackage>
+            </salesOfferPackages>
+        </FareFrame>
+
+
+
+        <!-- SalesTransaction data for Ruter# Zone 1 and Zone 2V single tickets (random selection of variants) -->
+        <!-- REMARK: 
+            Use cases are split into individual SalesTransactionFrames for containing/highlighting each dataset.
+            However, as long as the ValidityConditions are the same (which they inherently are in these examples),
+            or where these structured within a CompositionFrame, the data can be merged into the same SalesTransactionFrame. -->  
+
+
+        <!-- Zone 1 mobile ticket (activates upon purchase): -->
+        
+        <SalesTransactionFrame id="HSL:SalesTransactionFrame:1" version="1">
+            <validityConditions>
+                <AvailabilityCondition id="HSL:AvailabilityCondition:3" version="1">
+                    <FromDate>2020-01-26T00:00:00</FromDate>
+                </AvailabilityCondition>
+            </validityConditions>
+
+            <customerAccounts>
+                <CustomerAccount id="HSL:CustomerAccount:1" version="1"/>
+                <!-- usually reference to external dataset -->
+            </customerAccounts>
+
+            <fareContracts>
+                <FareContract id="HSL:FareContract:1" version="1">
+                    <Name>Full price single mobile ticket for travel within one zone</Name>
+                    <StartDate>2020-06-15T11:00:00</StartDate>
+                    <EndDate>2020-06-15T12:00:00</EndDate>
+                    <fareContractEntries>
+                        <SalesTransaction id="HSL:SalesTransaction:1" version="1">
+                            <Name>Purchase of full price single mobile ticket for travel within one zone</Name>
+                            <Date>2020-06-15T11:00:00</Date>
+                            <Amount>37</Amount>
+                            <Currency>NOK</Currency>
+                            <PaymentMethod>mobilePhone</PaymentMethod>
+                            <customerPurchasePackages>
+                                <CustomerPurchasePackageRef ref="HSL:CustomerPurchasePackage:SingleTrip1ZoneActivated" version="1"/>
+                            </customerPurchasePackages>
+                        </SalesTransaction>
+                    </fareContractEntries>
+                </FareContract>
+            </fareContracts>
+
+            <travelDocuments>
+                <TravelDocument id="HSL:TravelDocument:1" version="1">
+                    <TypeOfTravelDocumentRef ref="HSL:TypeOfTravelDocument:AppRuterBillett" version="1"/>
+                </TravelDocument>
+            </travelDocuments>
+            
+            <customerPurchasePackages>
+                <CustomerPurchasePackage id="HSL:CustomerPurchasePackage:SingleTrip1ZoneActivated" version="1">
+                    <SalesOfferPackageRef ref="HSL:SalesOfferPackage:SingleTrip1Zone" version="1"/>
+                    <customerPurchasePackageElements>
+                        <CustomerPurchasePackageElement id="HSL:CustomerPurchasePackageElement:SingleTrip1ZoneActivated" version="1" order="1">
+                            <SalesOfferPackageElementRef ref="HSL:SalesOfferPackageElement:SingleTrip1Zone" version="1"/>
+                            
+                            <!-- CHECK: <PreassignedFareProduct> indirekte referert, og man trenger ikke angi eksplisitt -->  
+                            
+                            <elementAccesses>
+                                <CustomerPurchasePackageElementAccess id="HSL:CustomerPurchasePackageElementAccess:1" version="1" created="2020-06-15T11:00:00">
+                                    <ValidableElementRef ref="HSL:ValidableElement:1" version="1"/>
+                                    <MarkedAs>activated</MarkedAs>
+                                    <validityParameterAssignments>
+                                        <CustomerPurchaseParameterAssignment id="HSL:CustomerPurchasePackageElementAccess:1" version="1" order="1">
+                                            
+                                            <!-- CHECK: <ValidableElementRef> indirekte referert, likevel angi eksplisitt for ParameterAssignment? -->
+                                            
+                                            <limitations>
+                                                <UsageValidityPeriod id="HSL:UsageValidityPeriod:1" version="1">
+                                                    <StartDate>2020-06-15</StartDate>
+                                                    <StartTime>11:00:00</StartTime>
+                                                    <EndDate>2020-06-15</EndDate>
+                                                    <EndTime>12:00:00</EndTime>
+                                                </UsageValidityPeriod>
+                                                <UserProfileRef ref="HSL:UserProfile:NormalFare" version="1"/>
+                                            </limitations>
+                                        </CustomerPurchaseParameterAssignment>
+                                    </validityParameterAssignments>
+                                </CustomerPurchasePackageElementAccess>
+                            </elementAccesses>
+                        </CustomerPurchasePackageElement>
+                    </customerPurchasePackageElements>
+                    
+                    <!-- CHECK: Redundant, trenger ikke gjentas? -->
+                    <!--
+                    <prices>
+                        <CustomerPurchasePackagePrice id="HSL:CustomerPurchasePackagePrice:1">
+                            <Amount>699</Amount>
+                            <Currency>NOK</Currency>
+                        </CustomerPurchasePackagePrice>
+                    </prices>
+                    -->
+                </CustomerPurchasePackage>
+            </customerPurchasePackages>
+
+        </SalesTransactionFrame>
+        
+        
+        
+        
+        <!-- Zone 2V Travelcard (permanent or temporary) reduced price ticket: -->
+        
+        <SalesTransactionFrame id="HSL:SalesTransactionFrame:2" version="1">
+            <validityConditions>
+                <AvailabilityCondition id="HSL:AvailabilityCondition:4" version="1">
+                    <FromDate>2020-01-26T00:00:00</FromDate>
+                </AvailabilityCondition>
+            </validityConditions>
+            
+            <fareContracts>
+                <FareContract id="HSL:FareContract:2" version="1">
+                    <Name>Reduced price single travel card ticket for travel within two zones</Name>
+                    <StartDate>2020-06-15T11:00:00</StartDate>
+                    <EndDate>2021-06-15T12:00:00</EndDate> <!-- assumed one year validity -->
+                    <fareContractEntries>
+                        <SalesTransaction id="HSL:SalesTransaction:2" version="1">
+                            <Name>Purchase of reduced price single travel card ticket for travel within two zones</Name>
+                            <Date>2020-06-15T11:00:00</Date>
+                            <Amount>31</Amount>
+                            <Currency>NOK</Currency>
+                            <PaymentMethod>cashAndCard</PaymentMethod>
+                            <customerPurchasePackages>
+                                <CustomerPurchasePackageRef ref="HSL:CustomerPurchasePackage:SingleTrip2ZonesNotActivated" version="1"/>
+                            </customerPurchasePackages>
+                        </SalesTransaction>
+                    </fareContractEntries>
+                </FareContract>
+            </fareContracts>
+            
+            <travelDocuments>
+                <TravelDocument id="HSL:TravelDocument:2" version="1">
+                    <TypeOfTravelDocumentRef ref="HSL:TypeOfTravelDocument:Travelcard" version="1"/>
+                </TravelDocument>
+                <TravelDocument id="HSL:TravelDocument:3" version="1">
+                    <TypeOfTravelDocumentRef ref="HSL:TypeOfTravelDocument:SingleUseElectronicTicket" version="1"/>
+                </TravelDocument>
+            </travelDocuments>
+            
+            <customerPurchasePackages>   
+                <CustomerPurchasePackage id="HSL:CustomerPurchasePackage:SingleTrip2ZonesNotActivated" version="1">
+                    <SalesOfferPackageRef ref="HSL:SalesOfferPackageElement:SingleTrip2Zones" version="1"/>
+                    <customerPurchasePackageElements>
+                        
+                        <!-- Before activation -->                        
+                        
+                        <CustomerPurchasePackageElement id="HSL:CustomerPurchasePackageElement:SingleTrip2ZonesNotActivated" version="1" order="1">
+                            <SalesOfferPackageElementRef ref="HSL:SalesOfferPackageElement:SingleTrip2Zones" version="1"/>
+                            
+                            <!-- CHECK: <PreassignedFareProduct> indirekte referert, og man trenger ikke angi eksplisitt -->
+                            
+                            <elementAccesses>
+                                <CustomerPurchasePackageElementAccess id="HSL:CustomerPurchasePackageElementAccess:2" version="1" created="2019-01-01T00:00:00">
+                                    <ValidableElementRef ref="HSL:ValidableElement:2" version="1"/>
+                                    <MarkedAs>unused</MarkedAs>
+                                </CustomerPurchasePackageElementAccess>
+                            </elementAccesses>
+                            
+                            <validityParameterAssignments>
+                                <CustomerPurchaseParameterAssignment version="1" id="HSL:CustomerPurchaseParameterAssignment:2" order="1">
+                                    
+                                    <!-- CHECK: <ValidableElementRef> indirekte referert, likevel angi eksplisitt for ParameterAssignment? -->
+                                    
+                                    <limitations>
+                                        <UserProfileRef ref="HSL:UserProfile:ReducedFare" version="1"/>
+                                    </limitations>
+                                    
+                                    <!-- CHECK: <TariffZone> indirekte referert, likevel angi eksplisitt? -->
+                                    
+                                </CustomerPurchaseParameterAssignment>
+                            </validityParameterAssignments>
+                        </CustomerPurchasePackageElement>
+                        
+                        
+                        <!-- After activation -->
+                        
+                        <CustomerPurchasePackageElement id="HSL:CustomerPurchasePackageElement:SingleTripActivated" version="1" order="1">
+                            <SalesOfferPackageElementRef ref="HSL:SalesOfferPackageElement:SingleTrip2Zones" version="1"/>
+                            
+                            <!-- CHECK: <PreassignedFareProduct> indirekte referert, og man trenger ikke angi eksplisitt -->
+                            
+                            <elementAccesses>
+                                <CustomerPurchasePackageElementAccess id="HSL:CustomerPurchasePackageElementAccess:3" version="1" created="2020-06-15T13:10:00">
+                                    <ValidableElementRef ref="HSL:ValidableElement:2" version="1"/>
+                                    <MarkedAs>activated</MarkedAs>
+                                </CustomerPurchasePackageElementAccess>
+                            </elementAccesses>
+                            
+                            <validityParameterAssignments>
+                                <CustomerPurchaseParameterAssignment version="1" id="HSL:CustomerPurchaseParameterAssignment:3" order="1">
+                                    
+                                    <!-- CHECK: <ValidableElementRef> indirekte referert, likevel angi eksplisitt for ParameterAssignment? -->
+                                    
+                                    <limitations>
+                                        <UsageValidityPeriod id="HSL:UsageValidityPeriod:3" version="1">
+                                            <StartDate>2020-06-15</StartDate>
+                                            <StartTime>13:10:00</StartTime>
+                                            <EndDate>2020-06-15</EndDate>
+                                            <EndTime>14:40:00</EndTime>
+                                        </UsageValidityPeriod>
+                                        <UserProfileRef ref="HSL:UserProfile:ReducedFare" version="1"/>
+                                    </limitations>
+                                    
+                                    <!-- CHECK: <TariffZone> indirekte referert, likevel angi eksplisitt? -->
+                                    
+                                </CustomerPurchaseParameterAssignment>
+                            </validityParameterAssignments>
+                        </CustomerPurchasePackageElement>   
+                    </customerPurchasePackageElements>
+                </CustomerPurchasePackage>
+            </customerPurchasePackages>
+        </SalesTransactionFrame>
+    </dataObjects>
+</PublicationDelivery>
