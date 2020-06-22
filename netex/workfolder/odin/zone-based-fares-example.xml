@@ -155,6 +155,7 @@
                 A time-based interval specifying access rights for the FARE STRUCTURE ELEMENTs within the range of this interval: “0-1 hours,” “1-3 days”, etc
             (page 134) -->
             <timeIntervals>
+                <!-- single ticket intervals -->
                 <TimeInterval id="HSL:TimeInterval:80min" version="1">
                     <Duration>PT80M</Duration>
                 </TimeInterval>
@@ -167,6 +168,13 @@
                 <TimeInterval id="HSL:TimeInterval:110min" version="1">
                     <Duration>PT110M</Duration>
                 </TimeInterval>
+                <!-- period ticket intervals -->
+                <TimeInterval id="HSL:TimeInterval:30days" version="1">
+                    <Duration>P30D</Duration>
+                </TimeInterval>
+                <TimeInterval id="HSL:TimeInterval:360days" version="1">
+                    <Duration>P360D</Duration>
+                </TimeInterval>
             </timeIntervals>
             
             
@@ -178,6 +186,7 @@
                 <!-- Alternative: Distance matrix as basis for pricing -->
                 <DistanceMatrixElement id="HSL:DistanceMatrixElement:AB" version="1">
                     <Name>AB</Name>
+                    <InverseAllowed>true</InverseAllowed>
                     <StartTariffZoneRef ref="HSL:TariffZone:A" version="1"/>
                     <EndTariffZoneRef ref="HSL:TariffZone:B" version="1"/>
                     <prices>
@@ -189,6 +198,7 @@
                 </DistanceMatrixElement>
                 <DistanceMatrixElement id="HSL:DistanceMatrixElement:BC" version="1">
                     <Name>BC</Name>
+                    <InverseAllowed>true</InverseAllowed>
                     <StartTariffZoneRef ref="HSL:TariffZone:B" version="1"/>
                     <EndTariffZoneRef ref="HSL:TariffZone:C" version="1"/>
                     <prices>
@@ -197,6 +207,7 @@
                 </DistanceMatrixElement>
                 <DistanceMatrixElement id="HSL:DistanceMatrixElement:CD" version="1">
                     <Name>CD</Name>
+                    <InverseAllowed>true</InverseAllowed>
                     <StartTariffZoneRef ref="HSL:TariffZone:C" version="1"/>
                     <EndTariffZoneRef ref="HSL:TariffZone:D" version="1"/>
                     <prices>
@@ -205,6 +216,7 @@
                 </DistanceMatrixElement>
                 <DistanceMatrixElement id="HSL:DistanceMatrixElement:ABC" version="1">
                     <Name>ABC</Name>
+                    <InverseAllowed>true</InverseAllowed>
                     <StartTariffZoneRef ref="HSL:TariffZone:A" version="1"/>
                     <EndTariffZoneRef ref="HSL:TariffZone:C" version="1"/>
                     <prices>
@@ -213,6 +225,7 @@
                 </DistanceMatrixElement>
                 <DistanceMatrixElement id="HSL:DistanceMatrixElement:BCD" version="1">
                     <Name>BCD</Name>
+                    <InverseAllowed>true</InverseAllowed>
                     <StartTariffZoneRef ref="HSL:TariffZone:B" version="1"/>
                     <EndTariffZoneRef ref="HSL:TariffZone:D" version="1"/>
                     <prices>
@@ -221,6 +234,7 @@
                 </DistanceMatrixElement>
                 <DistanceMatrixElement id="HSL:DistanceMatrixElement:ABCD" version="1">
                     <Name>ABCD</Name>
+                    <InverseAllowed>true</InverseAllowed>
                     <StartTariffZoneRef ref="HSL:TariffZone:A" version="1"/>
                     <EndTariffZoneRef ref="HSL:TariffZone:D" version="1"/>
                     <prices>
@@ -388,6 +402,9 @@
             <fareTables>
                 <!-- SIMPLIFIED (for presenting) -->
                 <FareTable id="HSL:FareTable:Zones" version="1">
+                    
+                    <Description>https://www.hsl.fi/en/tickets/single-tickets | https://www.hsl.fi/en/tickets/season-tickets</Description>
+                    
                     <prices>
                         <DistanceMatrixElementPrice id="HSL:DistanceMatrixElementPrice:2_80" version="1">
                             <Amount>2.80</Amount>
