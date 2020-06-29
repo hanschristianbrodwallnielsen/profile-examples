@@ -90,6 +90,7 @@
                             <StopPointRef>0</StopPointRef>
                             <Order>1</Order>
                             <ExtraCall>true</ExtraCall>
+                            <Occupancy>full</Occupancy>
                             <!-- PredictionInaccurate>false</PredictionInaccurate -->
                             <RequestStop>true</RequestStop>
                             <DestinationDisplay>placeholder</DestinationDisplay>
