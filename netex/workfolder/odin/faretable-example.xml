@@ -260,6 +260,7 @@
                     </distanceMatrixElements>
                     <GenericParameterAssignment id="HSL:GenericParameterAssignment:1" version="1" order="0">
                         <!-- TariffRef ref="HSL:Tariff:1" version="1"/ -->
+                        <SaleDiscountRightRef ref="ref-TODO"/>
                         <limitations>
                             <FrequencyOfUse id="HSL:FrequencyOfUse:Unlimited" version="1">
                                 <FrequencyOfUseType>unlimited</FrequencyOfUseType>
@@ -310,7 +311,6 @@
                         <TimeIntervalRef ref="HSL:TimeInterval:80min" version="1"/>
                     </GenericParameterAssignment>
                 </FareStructureElement>
-                
             </fareStructureElements>
             
 
@@ -346,7 +346,7 @@
                         <FareStructureElementRef ref="HSL:FareStructureElement:ABCD" version="1"/>
                     </fareStructureElements>
                 </ValidableElement>
-                <!-- ...-->
+                <!-- ... -->
             </validableElements>
             
             
@@ -358,9 +358,12 @@
                 <UserProfile id="HSL:UserProfile:ReducedFare" version="1">
                     <Name>User with reduced fare</Name>
                 </UserProfile>
+                <UserProfile id="HSL:UserProfile:Adult" version="1">
+                    <UserType>adult</UserType>
+                    <ProofRequired>noneRequired</ProofRequired>
+                    <DiscountBasis>none</DiscountBasis>
+                </UserProfile>
             </usageParameters>
-            
-            
             
 
             <!-- 7.6.2.4.1 PreassignedFareProduct – Model Element
@@ -376,6 +379,10 @@
                 the set of all VALIDABLE ELEMENTs grouped together to define the access right assigned to that PREASSIGNED FARE PRODUCT.
             (page 352) -->
             <fareProducts>
+                <SaleDiscountRight id="HSL:SalesDiscountRight:1" version="1">
+                    <ChargingMomentRef ref="ref"/>
+                </SaleDiscountRight>
+                
                 <PreassignedFareProduct id="HSL:PreassignedFareProduct:AB" version="1">
                     <accessRightsInProduct>
                         <AccessRightInProductRef ref="HSL:ValidableElement:AB" order="1" /> <!-- version="1"; REMARK: Setting order for a versioned element makes it FAIL schema validation! -->
@@ -383,6 +390,7 @@
                 </PreassignedFareProduct>
                 
                 <PreassignedFareProduct id="HSL:PreassignedFareProduct:ABCD" version="1">
+                    <SaleDiscountRightRef ref="HSL:SalesDiscountRight:1" version="1"/>
                     <validableElements>
                         <ValidableElementRef ref="HSL:ValidableElement:ABCD" version="1"/> <!-- valid alternative -->
                     </validableElements>
@@ -496,6 +504,8 @@
                     </salesOfferPackageElements>
                 </SalesOfferPackage>        
             </salesOfferPackages>
+            
+            
         </FareFrame>
 
 
