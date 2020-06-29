@@ -3,7 +3,7 @@
   xmlns="http://www.netex.org.uk/netex"
   xmlns:gis="http://www.opengis.net/gml/3.2" 
   xmlns:siri="http://www.siri.org.uk/siri"
-  version="1.09:NO-NeTEx-networktimetable:1.4">
+  version="1.10:NO-NeTEx-networktimetable:1.4">
 
   <!--
   Modellert ut fra "Forenklet eksempel for utvidet innsending av tog-informasjon":
@@ -349,6 +349,7 @@
         
         <TimetableFrame version="0" id="NSB:TimetableFrame:1">
           <vehicleJourneys>
+            
             <ServiceJourney id="NSB:ServiceJourney:41" version="0">
               <keyList>
                 <KeyValue>
@@ -388,6 +389,7 @@
               </passingTimes>
             </ServiceJourney>
             
+            
             <ServiceJourney id="NSB:ServiceJourney:41-A" version="0">
               <keyList>
                 <KeyValue>
@@ -417,6 +419,7 @@
               </passingTimes>
             </ServiceJourney>
             
+            
             <ServiceJourney id="NSB:ServiceJourney:41-B" version="0">
               <keyList>
                 <KeyValue>
@@ -442,6 +445,7 @@
               </passingTimes>
             </ServiceJourney>
             
+            
             <ServiceJourney id="NSB:ServiceJourney:41-C" version="0">
               <keyList>
                 <KeyValue>
@@ -466,6 +470,7 @@
                 </TimetabledPassingTime> 
               </passingTimes>
             </ServiceJourney>
+            
             
             <ServiceJourney id="NSB:ServiceJourney:41-D" version="0">
               <keyList>
@@ -493,90 +498,146 @@
             </ServiceJourney>
             
             
-            <!-- REMARK: 
-              Due to lack of "(Base)ServiceJourneyRef" (or similar reference back to the "generic" ServiceJourney) 
-              the following references are used
-              
-                ExternalVehicleJourneyRef (element) = Reference to the ServiceJourney (aggregate) which the DatedServiceJourney realizes (i.e. the "template" defining the DatedServiceJourney)
-                
-                derivedFromObjectRef (attribute) = Reference to the DatedServiceJourney which the current is replacing/supplementing
-                  derivedFromVersionRef (attribute) = version of the referred DatedServiceJourney
-                
-                
-            -->
             
+            
+            
+            <!-- REMARK: 
+              
+              Each operating day (or daytype) must have its own DatedServiceJourney with a per codespace unique ID.
+              
+              "Blueprint" ServiceJourney is referred to through ServiceJourneyRef (i.e. reference back to the "generic" ServiceJourney) 
+              
+              DatedServiceJourneyRef [1...*] is a reference back to the originally planned DatedServiceJourney(s) in case of replacements,
+              or for ther relevant alterations necessitating a new data-object (new ID)
+              
+              PS: Both the original DSJ and replanned DSJ(s) must have an appropriate ServiceAlteration
+
+            -->
             
             
             <!-- Normal service -->
             <DatedServiceJourney version="0" id="NSB:DatedServiceJourney:41-2020-01-01">
-              <ExternalVehicleJourneyRef ref="NSB:ServiceJourney:41" />
+              <ServiceJourneyRef ref="NSB:ServiceJourney:41" version="0"/>
               <OperatingDayRef ref="NSB:OperatingDay:2020-01-01" version="0"/>
             </DatedServiceJourney>
             
             <!-- Cancelled service without replacement -->
             <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-2020-01-02">
-              <ExternalVehicleJourneyRef ref="NSB:ServiceJourney:41" />
               <ServiceAlteration>cancellation</ServiceAlteration>
+              <ServiceJourneyRef ref="NSB:ServiceJourney:41" version="0" />
               <OperatingDayRef ref="NSB:OperatingDay:2020-01-02" version="0"/>
             </DatedServiceJourney>
             
             <!-- Partially cancelled service (i.e. replaced with ServiceJourney with new JourneyPattern where Asker and Drammen is not serviced) -->
             <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-2020-01-03">
-              <ExternalVehicleJourneyRef ref="NSB:ServiceJourney:41" />
               <ServiceAlteration>replaced</ServiceAlteration>
+              <ServiceJourneyRef ref="NSB:ServiceJourney:41" />
               <OperatingDayRef ref="NSB:OperatingDay:2020-01-03" version="0"/>
             </DatedServiceJourney>
-            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-A-2020-01-03" derivedFromObjectRef="NSB:DatedServiceJourney:41-2020-01-03" derivedFromVersionRef="0">
-              <ExternalVehicleJourneyRef ref="NSB:ServiceJourney:41-A" />
+            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-A-2020-01-03">
               <ServiceAlteration>planned</ServiceAlteration>
+              <ServiceJourneyRef ref="NSB:ServiceJourney:41-A" version="0"/>
+              <DatedServiceJourneyRef ref="NSB:DatedServiceJourney:41-2020-01-03" version="0"/>
               <OperatingDayRef ref="NSB:OperatingDay:2020-01-03" version="0"/>
             </DatedServiceJourney>
             
             <!-- Partially cancelled service including replacement bus, but only for Sandvika to Asker (i.e. Asker to Drammen is not serviced) -->
             <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-2020-01-04">
-              <ExternalVehicleJourneyRef ref="NSB:ServiceJourney:41" />
               <ServiceAlteration>replaced</ServiceAlteration>
+              <ServiceJourneyRef ref="NSB:ServiceJourney:41" version="0"/>
               <OperatingDayRef ref="NSB:OperatingDay:2020-01-04" version="0"/>
             </DatedServiceJourney>
-            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-A-2020-01-04" derivedFromObjectRef="NSB:DatedServiceJourney:41-2020-01-04" derivedFromVersionRef="0">
-              <ExternalVehicleJourneyRef ref="NSB:ServiceJourney:41-A" />
+            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-A-2020-01-04">
               <ServiceAlteration>planned</ServiceAlteration>
+              <ServiceJourneyRef ref="NSB:ServiceJourney:41-A" version="0"/>
+              <DatedServiceJourneyRef ref="NSB:DatedServiceJourney:41-2020-01-04" version="0"/>
               <OperatingDayRef ref="NSB:OperatingDay:2020-01-04" version="0"/>
             </DatedServiceJourney>
-            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-B-2020-01-04" derivedFromObjectRef="NSB:DatedServiceJourney:41-2020-01-04" derivedFromVersionRef="0">
-              <ExternalVehicleJourneyRef ref="NSB:ServiceJourney:41-B" />
+            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-B-2020-01-04">
               <ServiceAlteration>planned</ServiceAlteration>
+              <ServiceJourneyRef ref="NSB:ServiceJourney:41-B" version="0"/>
+              <DatedServiceJourneyRef ref="NSB:DatedServiceJourney:41-2020-01-04" version="0"/>
               <OperatingDayRef ref="NSB:OperatingDay:2020-01-04" version="0"/>
             </DatedServiceJourney>
             
             <!-- Partially cancelled service including replacement busses (B: Sandvika-Asker, C: Asker-Drammen, D: Sandvika-Drammen directly) -->
             <!-- (B and C would normally be a combined JourneyPattern/ServiceJourney, but is split for examplification of combined replacement transport) -->
             <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-2020-01-05">
-              <ExternalVehicleJourneyRef ref="NSB:ServiceJourney:41" />
               <ServiceAlteration>replaced</ServiceAlteration>
+              <ServiceJourneyRef ref="NSB:ServiceJourney:41" version="0"/>
               <OperatingDayRef ref="NSB:OperatingDay:2020-01-05" version="0"/>
             </DatedServiceJourney>
-            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-A-2020-01-05" derivedFromObjectRef="NSB:DatedServiceJourney:41-2020-01-05" derivedFromVersionRef="0">
-              <ExternalVehicleJourneyRef ref="NSB:ServiceJourney:41-A" />
+            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-A-2020-01-05">
               <ServiceAlteration>planned</ServiceAlteration>
+              <ServiceJourneyRef ref="NSB:ServiceJourney:41-A" version="0"/>
+              <DatedServiceJourneyRef ref="NSB:DatedServiceJourney:41-2020-01-05" version="0"/>
               <OperatingDayRef ref="NSB:OperatingDay:2020-01-05" version="0"/>
             </DatedServiceJourney>
-            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-B-2020-01-05" derivedFromObjectRef="NSB:DatedServiceJourney:41-2020-01-05" derivedFromVersionRef="0">
-              <ExternalVehicleJourneyRef ref="NSB:ServiceJourney:41-B" />
+            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-B-2020-01-05">
+              <ExternalVehicleJourneyRef ref="" />
               <ServiceAlteration>planned</ServiceAlteration>
+              <ServiceJourneyRef ref="NSB:ServiceJourney:41-B" version="0"/>
+              <DatedServiceJourneyRef ref="NSB:DatedServiceJourney:41-2020-01-05" version="0"/>
               <OperatingDayRef ref="NSB:OperatingDay:2020-01-05" version="0"/>
             </DatedServiceJourney>        
-            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-C-2020-01-05" derivedFromObjectRef="NSB:DatedServiceJourney:41-2020-01-05" derivedFromVersionRef="0">
-              <ExternalVehicleJourneyRef ref="NSB:ServiceJourney:41-C" />
+            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-C-2020-01-05">
               <ServiceAlteration>planned</ServiceAlteration>
+              <ServiceJourneyRef ref="NSB:ServiceJourney:41-C" version="0"/>
+              <DatedServiceJourneyRef ref="NSB:DatedServiceJourney:41-2020-01-05" version="0"/>
               <OperatingDayRef ref="NSB:OperatingDay:2020-01-05" version="0"/>
             </DatedServiceJourney> 
-            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-D-2020-01-05" derivedFromObjectRef="NSB:DatedServiceJourney:41-2020-01-05" derivedFromVersionRef="0">
-              <ExternalVehicleJourneyRef ref="NSB:ServiceJourney:41-D" />
+            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-D-2020-01-05">
               <ServiceAlteration>extraJourney</ServiceAlteration>
+              <ServiceJourneyRef ref="NSB:ServiceJourney:41-D" version="0"/>
+              <DatedServiceJourneyRef ref="NSB:DatedServiceJourney:41-2020-01-05" version="0"/>
               <OperatingDayRef ref="NSB:OperatingDay:2020-01-05" version="0"/>
-            </DatedServiceJourney> 
+            </DatedServiceJourney>
+            
+            
+            
+            
+            
+            <!--
+              DEPRECATED COMMENT:
+              
+              Due to lack of "(Base)ServiceJourneyRef" (or similar reference back to the "generic" ServiceJourney) 
+              the following references are used
+              
+              ExternalVehicleJourneyRef (element) = Reference to the ServiceJourney (aggregate) which the DatedServiceJourney realizes (i.e. the "template" defining the DatedServiceJourney)
+              
+              derivedFromObjectRef (attribute) = Reference to the DatedServiceJourney which the current is replacing/supplementing
+              derivedFromVersionRef (attribute) = version of the referred DatedServiceJourney
+            -->
+            
+            
+            <!-- EXAMPLES -->
+            
+            <NormalDatedVehicleJourney>
+              <VehicleJourneyRef ref="ref"/>
+              <OperatingDayRef ref="ref"/>
+              <ServiceAlterationType>planned</ServiceAlterationType>
+            </NormalDatedVehicleJourney>
+            
+            <DatedVehicleJourney>
+              <dayTypes>
+                <DayTypeRef ref="ref"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ref"/>
+              <DatedVehicleJourneyRef ref="ref"/>
+              <OperatingDayRef ref="ref"/>
+              <datedPassingTimes>
+                <TargetPassingTime></TargetPassingTime>
+              </datedPassingTimes>
+            </DatedVehicleJourney>
+            
+            <DatedServiceJourney id="NSB:DatedServiceJourney:41-2020-01-21" version="1">
+              <!-- test -->
+            </DatedServiceJourney>
+            
           </vehicleJourneys>
+            
+            
+            
             
             
           
@@ -604,6 +665,8 @@
             </GroupOfServices>
           </groupsOfServices>
           
+          
+          
           <!-- (deemed not relevant for this use-case) -->
           <!--
           <trainNumbers>
@@ -613,6 +676,7 @@
             </TrainNumber>
           </trainNumbers>
           -->
+
           
         </TimetableFrame>
       </frames>
