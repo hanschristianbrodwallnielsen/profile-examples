@@ -1,0 +1,1070 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TrainPlan NeTEx interface version=1.1.1.5 -->
+<!-- Extract made from Folder(s) R20 between 2020-03-30-Mon and 2021-03-29-Mon -->
+<PublicationDelivery 
+  xmlns:gis="http://www.opengis.net/gml/3.2"
+  xmlns:siri="http://www.siri.org.uk/siri" 
+  version="1.10:NO-NeTEx-networktimetable:1.3"
+  xmlns="http://www.netex.org.uk/netex">
+  <PublicationTimestamp>2020-03-30T14:22:41</PublicationTimestamp>
+  <ParticipantRef>ENT</ParticipantRef>
+  <Description>Sørtoget Region</Description>
+  <dataObjects>
+    <CompositeFrame created="2020-03-30T14:22:55" version="74" id="ENT:CompositeFrame:50">
+      <!-- ====================== Validity ====================== -->
+      <validityConditions>
+        <AvailabilityCondition version="74" id="ENT:AvailabilityCondition:50">
+          <FromDate>2020-03-30T00:00:00</FromDate>
+          <ToDate>2021-03-29T00:00:00</ToDate>
+        </AvailabilityCondition>
+      </validityConditions>
+      <!-- ====================== CodeSpaces ====================== -->
+      <codespaces>
+        <Codespace id="ENT">
+          <Xmlns>ENT</Xmlns>
+          <XmlnsUrl>http://www.rutebanken.org/ns/ENT</XmlnsUrl>
+        </Codespace>
+        <Codespace id="nsr">
+          <Xmlns>NSR</Xmlns>
+          <XmlnsUrl>http://www.rutebanken.org/ns/nsr</XmlnsUrl>
+        </Codespace>
+      </codespaces>
+      <!-- ====================== Defaults ====================== -->
+      <FrameDefaults>
+        <DefaultLocale>
+          <TimeZone>Europe/Oslo</TimeZone>
+          <DefaultLanguage>no</DefaultLanguage>
+        </DefaultLocale>
+      </FrameDefaults>
+      <frames>
+        <!-- ====================== Line Service Frame ====================== -->
+        <ServiceFrame version="74" id="ENT:ServiceFrame:L50">
+          <routes>
+            <Route version="0" id="ENT:Route:L50-F">
+              <Name>Oslo S-Kristiansand-Stavanger</Name>
+              <ShortName>OSL-STV</ShortName>
+              <LineRef ref="ENT:Line:50" version="5"/>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="0" id="ENT:PointOnRoute:L50-F-1">
+                  <RoutePointRef ref="ENT:RoutePoint:OSL"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="0" id="ENT:PointOnRoute:L50-F-2">
+                  <RoutePointRef ref="ENT:RoutePoint:LYS"/>
+                </PointOnRoute>
+                <PointOnRoute order="3" version="0" id="ENT:PointOnRoute:L50-F-3">
+                  <RoutePointRef ref="ENT:RoutePoint:ASR"/>
+                </PointOnRoute>
+                <PointOnRoute order="4" version="0" id="ENT:PointOnRoute:L50-F-4">
+                  <RoutePointRef ref="ENT:RoutePoint:DRM"/>
+                </PointOnRoute>
+                <PointOnRoute order="5" version="0" id="ENT:PointOnRoute:L50-F-5">
+                  <RoutePointRef ref="ENT:RoutePoint:KBG"/>
+                </PointOnRoute>
+                <PointOnRoute order="6" version="0" id="ENT:PointOnRoute:L50-F-2">
+                  <RoutePointRef ref="ENT:RoutePoint:STV"/>
+                </PointOnRoute>
+              </pointsInSequence>
+              <InverseRouteRef ref="ENT:Route:L50-R" version="0"/>
+            </Route>
+            <Route version="0" id="ENT:Route:L50-R">
+              <Name>Stavange-Kristiansand-Oslo S</Name>
+              <ShortName>STV-OSL</ShortName>
+              <LineRef ref="ENT:Line:50" version="5"/>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="0" id="ENT:PointOnRoute:L50-R-1">
+                  <RoutePointRef ref="ENT:RoutePoint:STV"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="0" id="ENT:PointOnRoute:L50-R-2">
+                  <RoutePointRef ref="ENT:RoutePoint:OSL"/>
+                </PointOnRoute>
+              </pointsInSequence>
+              <InverseRouteRef ref="ENT:Route:L50-F" version="0"/>
+            </Route>
+          </routes>
+          <lines>
+            <Line version="5" id="ENT:Line:50">
+              <Name>Sørtoget Region</Name>
+              <TransportMode>rail</TransportMode>
+              <TransportSubmode>
+                <RailSubmode>regionalRail</RailSubmode>
+              </TransportSubmode>
+              <PublicCode>50</PublicCode>
+              <PrivateCode>L50</PrivateCode>
+              <OperatorRef ref="ENT:Operator:ENT"/>
+              <RepresentedByGroupRef ref="ENT:Network:GOA"/>
+              <Presentation>
+                <Colour>FF0000</Colour>
+                <TextColour>FFFFFF</TextColour>
+              </Presentation>
+            </Line>
+          </lines>
+          <!-- ====================== Journey patterns [77] ====================== -->
+          <journeyPatterns>
+            <JourneyPattern version="0" id="ENT:JourneyPattern:L50-771-O">
+              <Name>OSL-STV</Name>
+              <RouteRef ref="ENT:Route:L50-F" version="0"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-1">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:OSL-3"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ENT:DestinationDisplay:STV"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-2">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:LYS-2"/>
+                  <ForAlighting>false</ForAlighting>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-3">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:ASR-1"/>
+                  <ForAlighting>false</ForAlighting>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="4" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-4">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:DRM"/>
+                  <ForAlighting>false</ForAlighting>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="5" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-5">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:KBG-3"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="6" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-6">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:NGU-1"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="7" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-7">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:BOE"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="8" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-8">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:LUN-2"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="9" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-9">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:DRD-1"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="10" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-10">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:NVT"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="11" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-11">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:GJE-1"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="12" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-12">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:VGH-2"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="13" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-13">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:NEL-2"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="14" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-14">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:VNL-1"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="15" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-15">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:KRS-3"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="16" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-16">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:NDL"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="17" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-17">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:MDL"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="18" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-18">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:AUD-1"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="19" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-19">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:SNA-1"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="20" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-20">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:STO"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="21" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-21">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:GYL"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="22" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-22">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:SIR-2"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="23" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-23">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:MOI"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="24" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-24">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:EGS"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="25" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-25">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:BRY"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="26" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-26">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:SSE-5"/>
+                  <ForBoarding>false</ForBoarding>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="27" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-27">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:JAAT"/>
+                  <ForBoarding>false</ForBoarding>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="28" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-28">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:STV-1"/>
+                  <ForBoarding>false</ForBoarding>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="0" id="ENT:JourneyPattern:L50-KBG-DIRECT">
+              <Name>OSL-KBG</Name>
+              <RouteRef ref="ENT:Route:L50-F" version="0"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-KBG-DIRECT-1">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:OSL-BUS-1"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ENT:DestinationDisplay:STV"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-KBG-DIRECT-2">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:KBG-BUS-862"/>
+                  <ForBoarding>false</ForBoarding>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="0" id="ENT:JourneyPattern:L50-KBG-MILK_ROUTE">
+              <Name>OSL-KBG</Name>
+              <RouteRef ref="ENT:Route:L50-F" version="0"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-KBG-MILK-ROUTE-1">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:OSL-BUS-1"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ENT:DestinationDisplay:STV"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-KBG-MILK-ROUTE-2">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:LYSS-BUS-7905"/>
+                  <ForAlighting>false</ForAlighting>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-KBG-MILK-ROUTE-3">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:ASR-BUS-5"/>
+                  <ForAlighting>false</ForAlighting>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="4" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-KBG-MILK-ROUTE-4">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:DRMA-BUS-103309"/>
+                  <ForAlighting>false</ForAlighting>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="5" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-KBG-MILK-ROUTE-5">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:KBG-BUS-862"/>
+                  <ForBoarding>false</ForBoarding>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="0" id="ENT:JourneyPattern:L50-771-KBG-STV_XYZ1234">
+              <Name>KBG-STV</Name>
+              <RouteRef ref="ENT:Route:L50-F" version="0"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-5">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:KBG-3"/>
+                  <ForAlighting>false</ForAlighting>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-6">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:NGU-1"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-7">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:BOE"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="4" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-8">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:LUN-2"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="5" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-9">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:DRD-1"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="6" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-10">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:NVT"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="7" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-11">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:GJE-1"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="8" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-12">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:VGH-2"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="9" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-13">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:NEL-2"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="10" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-14">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:VNL-1"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="11" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-15">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:KRS-3"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="12" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-16">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:NDL"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="13" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-17">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:MDL"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="14" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-18">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:AUD-1"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="15" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-19">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:SNA-1"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="16" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-20">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:STO"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="17" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-21">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:GYL"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="18" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-22">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:SIR-2"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="19" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-23">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:MOI"/>
+                  <RequestStop>true</RequestStop>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="20" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-24">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:EGS"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="21" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-25">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:BRY"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="22" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-26">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:SSE-5"/>
+                  <ForBoarding>false</ForBoarding>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="23" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-27">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:JAAT"/>
+                  <ForBoarding>false</ForBoarding>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="24" version="0"
+                  id="ENT:StopPointInJourneyPattern:L50-139-28">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:STV-1"/>
+                  <ForBoarding>false</ForBoarding>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+          </journeyPatterns>
+        </ServiceFrame>
+        <!-- ====================== Line Timetable Frame ====================== -->
+        <TimetableFrame version="74" id="ENT:TimetableFrame:L50">
+          <!-- ====================== Vehicle Journeys [208] ====================== -->
+          <vehicleJourneys>
+            <!-- ====================== Opprinnelig ordinær avgang ====================== -->
+            <ServiceJourney version="0" id="ENT:ServiceJourney:771-O">
+              <keyList>
+                <KeyValue>
+                  <Key>OTN</Key>
+                  <Value>771</Value>
+                </KeyValue>
+              </keyList>
+              <Name>771</Name>
+              <Description>771 [07:25 : OSL-STV]</Description>
+              <PrivateCode>771</PrivateCode>
+              <TransportMode>rail</TransportMode>
+              <TransportSubmode>
+                <RailSubmode>regionalRail</RailSubmode>
+              </TransportSubmode>
+              <DepartureTime>07:25:00</DepartureTime>
+              <JourneyPatternRef ref="ENT:JourneyPattern:L50-771-O" version="0"/>
+              <OperatorRef ref="ENT:Operator:ENT"/>
+              <LineRef ref="ENT:Line:50" version="5"/>
+              <passingTimes>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:715-OSL">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-1" version="0"/>
+                  <DepartureTime>07:25:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:716-LYS">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-2" version="0"/>
+                  <DepartureTime>07:36:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:717-ASR">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-3" version="0"/>
+                  <DepartureTime>07:46:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:718-DRM">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-4" version="0"/>
+                  <DepartureTime>08:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:719-KBG">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-5" version="0"/>
+                  <ArrivalTime>08:34:00</ArrivalTime>
+                  <DepartureTime>08:36:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:720-NGU">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-6" version="0"/>
+                  <ArrivalTime>09:10:00</ArrivalTime>
+                  <DepartureTime>09:11:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:721-BOE">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-7" version="0"/>
+                  <ArrivalTime>09:24:00</ArrivalTime>
+                  <DepartureTime>09:25:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:722-LUN">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-8" version="0"/>
+                  <ArrivalTime>09:36:00</ArrivalTime>
+                  <DepartureTime>09:36:30</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:723-DRD">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-9" version="0"/>
+                  <ArrivalTime>09:56:00</ArrivalTime>
+                  <DepartureTime>09:57:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:724-NVT">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-10" version="0"/>
+                  <ArrivalTime>10:09:00</ArrivalTime>
+                  <DepartureTime>10:10:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:725-GJE">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-11" version="0"/>
+                  <ArrivalTime>10:22:00</ArrivalTime>
+                  <DepartureTime>10:23:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:726-VGH">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-12" version="0"/>
+                  <ArrivalTime>10:39:00</ArrivalTime>
+                  <DepartureTime>10:40:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:727-NEL">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-13" version="0"/>
+                  <ArrivalTime>10:53:00</ArrivalTime>
+                  <DepartureTime>10:55:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:728-VNL">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-14" version="0"/>
+                  <ArrivalTime>11:40:00</ArrivalTime>
+                  <DepartureTime>11:41:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:729-KRS">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-15" version="0"/>
+                  <ArrivalTime>11:53:00</ArrivalTime>
+                  <DepartureTime>12:02:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:730-NDL">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-16" version="0"/>
+                  <ArrivalTime>12:10:00</ArrivalTime>
+                  <DepartureTime>12:11:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:731-MDL">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-17" version="0"/>
+                  <ArrivalTime>12:32:00</ArrivalTime>
+                  <DepartureTime>12:33:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:732-AUD">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-18" version="0"/>
+                  <ArrivalTime>12:45:00</ArrivalTime>
+                  <DepartureTime>12:47:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:733-SNA">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-19" version="0"/>
+                  <ArrivalTime>12:54:00</ArrivalTime>
+                  <DepartureTime>12:55:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:734-STO">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-20" version="0"/>
+                  <ArrivalTime>13:08:00</ArrivalTime>
+                  <DepartureTime>13:09:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:735-GYL">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-21" version="0"/>
+                  <ArrivalTime>13:14:00</ArrivalTime>
+                  <DepartureTime>13:15:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:736-SIR">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-22" version="0"/>
+                  <ArrivalTime>13:25:00</ArrivalTime>
+                  <DepartureTime>13:26:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:737-MOI">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-23" version="0"/>
+                  <ArrivalTime>13:33:00</ArrivalTime>
+                  <DepartureTime>13:33:30</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:738-EGS">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-24" version="0"/>
+                  <ArrivalTime>14:06:00</ArrivalTime>
+                  <DepartureTime>14:07:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:739-BRY">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-25" version="0"/>
+                  <ArrivalTime>14:38:00</ArrivalTime>
+                  <DepartureTime>14:39:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:740-SSE">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-26" version="0"/>
+                  <ArrivalTime>14:50:00</ArrivalTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:741-JAAT">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-27" version="0"/>
+                  <ArrivalTime>14:58:00</ArrivalTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:742-STV">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-28" version="0"/>
+                  <ArrivalTime>15:05:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <!-- ====================== Operating days for original train ====================== -->
+            <DatedServiceJourney id="ENT:DatedServiceJourney:771-2020-04-20" version="0">
+              <ServiceJourneyRef ref="ENT:ServiceJourney:771-O"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-04-20"/>
+            </DatedServiceJourney>
+            <DatedServiceJourney id="ENT:DatedServiceJourney:771-2020-04-21" version="0">
+              <ServiceJourneyRef ref="ENT:ServiceJourney:771-O"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-04-21"/>
+            </DatedServiceJourney>
+            <DatedServiceJourney id="ENT:DatedServiceJourney:771-2020-04-22" version="0">
+              <ServiceJourneyRef ref="ENT:ServiceJourney:771-O"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-04-22"/>
+            </DatedServiceJourney>
+            <DatedServiceJourney id="ENT:DatedServiceJourney:771-2020-04-23" version="0">
+              <ServiceJourneyRef ref="ENT:ServiceJourney:771-O"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-04-23"/>
+            </DatedServiceJourney>
+            <DatedServiceJourney id="ENT:DatedServiceJourney:771-2020-04-24" version="0">
+              <ServiceJourneyRef ref="ENT:ServiceJourney:771-O"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-04-24"/>
+            </DatedServiceJourney>
+            <!-- ====================== Canceled without alternatives ====================== -->
+            <DatedServiceJourney id="ENT:DatedServiceJourney:771-2020-04-27" version="0">
+              <ServiceAlteration>cancellation</ServiceAlteration>
+              <ServiceJourneyRef ref="ENT:ServiceJourney:771-O"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-04-27"/>
+            </DatedServiceJourney>
+            <DatedServiceJourney id="ENT:DatedServiceJourney:771-2020-04-28" version="0">
+              <ServiceAlteration>cancellation</ServiceAlteration>
+              <ServiceJourneyRef ref="ENT:ServiceJourney:771-O"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-04-28"/>
+            </DatedServiceJourney>
+            <!-- ====================== Canceled with replacement alternatives ====================== -->
+            <DatedServiceJourney id="ENT:DatedServiceJourney:771-2020-04-29" version="0">
+              <ServiceAlteration>replaced</ServiceAlteration>
+              <ServiceJourneyRef ref="ENT:ServiceJourney:771-O"/>
+
+              <OperatingDayRef ref="ENT:OperatingDay:2020-04-29"/>
+            </DatedServiceJourney>
+            <DatedServiceJourney id="ENT:DatedServiceJourney:771-2020-04-30" version="0">
+              <ServiceAlteration>replaced</ServiceAlteration>
+              <ServiceJourneyRef ref="ENT:ServiceJourney:771-O"/>
+
+              <OperatingDayRef ref="ENT:OperatingDay:2020-04-30"/>
+            </DatedServiceJourney>
+            <DatedServiceJourney id="ENT:DatedServiceJourney:771-2020-05-01" version="0">
+              <ServiceAlteration>replaced</ServiceAlteration>
+              <ServiceJourneyRef ref="ENT:ServiceJourney:771-O"/>
+
+              <OperatingDayRef ref="ENT:OperatingDay:2020-05-01"/>
+            </DatedServiceJourney>
+            <!-- ====================== Direct bus KBG-1 ====================== -->
+            <ServiceJourney version="0" id="ENT:ServiceJourney:KBG-1_771_XYZ1234">
+              <keyList>
+                <KeyValue>
+                  <Key>OTN</Key>
+                  <Value>KBG-1</Value>
+                </KeyValue>
+              </keyList>
+              <Name>B-771-KBG-1 </Name>
+              <Description>Buss KBG-1 for 771 [07:25 : OSL-KBG]</Description>
+              <PrivateCode>771</PrivateCode>
+              <TransportMode>bus</TransportMode>
+              <TransportSubmode>
+                <BusSubmode>railReplacementBus</BusSubmode>
+              </TransportSubmode>
+              <DepartureTime>07:20:00</DepartureTime>
+              <JourneyPatternRef ref="ENT:JourneyPattern:L50-KBG-DIRECT" version="0"/>
+              <OperatorRef ref="ENT:Operator:ENT"/>
+              <LineRef ref="ENT:Line:50" version="5"/>
+              <passingTimes>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:715-OSL">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-KBG-DIRECT-1" version="0"/>
+                  <DepartureTime>07:20:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:719-KBG">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-KBG-DIRECT-2" version="0"/>
+                  <ArrivalTime>08:29:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <!-- ====================== Operating days for the bus KBG-1 ====================== -->
+            <DatedServiceJourney id="ENT:DatedServiceJourney:KBG-1_771-2020-04-29" version="0">
+              <ServiceJourneyRef ref="ENT:ServiceJourney:KBG-1_771_XYZ1234"/>
+              <DatedServiceJourneyRef ref="ENT:DatedServiceJourney:771-2020-04-29"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-04-29"/>
+            </DatedServiceJourney>
+            <DatedServiceJourney id="ENT:DatedServiceJourney:KBG-1_771-2020-04-30" version="0">
+              <ServiceJourneyRef ref="ENT:ServiceJourney:KBG-1_771_XYZ1234"/>
+              <DatedServiceJourneyRef ref="ENT:DatedServiceJourney:771-2020-04-30"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-04-30"/>
+            </DatedServiceJourney>
+            <DatedServiceJourney id="ENT:DatedServiceJourney:KBG-1_771-2020-05-01" version="0">
+              <ServiceJourneyRef ref="ENT:ServiceJourney:KBG-1_771_XYZ1234"/>
+              <DatedServiceJourneyRef ref="ENT:DatedServiceJourney:771-2020-05-01"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-05-01"/>
+            </DatedServiceJourney>
+            <!-- ====================== Direct bus KBG-2 ====================== -->
+            <ServiceJourney version="0" id="ENT:ServiceJourney:KBG-2_771_XYZ1234">
+              <keyList>
+                <KeyValue>
+                  <Key>OTN</Key>
+                  <Value>KBG-2</Value>
+                </KeyValue>
+              </keyList>
+              <Name>B-771-KBG-2</Name>
+              <Description>Buss KBG-2 for 771 [07:25 : OSL-KBG]</Description>
+              <PrivateCode>771</PrivateCode>
+              <TransportMode>bus</TransportMode>
+              <TransportSubmode>
+                <BusSubmode>railReplacementBus</BusSubmode>
+              </TransportSubmode>
+              <DepartureTime>07:21:00</DepartureTime>
+              <JourneyPatternRef ref="ENT:JourneyPattern:L50-KBG-DIRECT" version="0"/>
+              <OperatorRef ref="ENT:Operator:ENT"/>
+              <LineRef ref="ENT:Line:50" version="5"/>
+              <passingTimes>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:715-OSL">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-KBG-DIRECT-1" version="0"/>
+                  <DepartureTime>07:21:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:719-KBG">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-KBG-DIRECT-2" version="0"/>
+                  <ArrivalTime>08:30:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <!-- ====================== Operating days for the bus KBG-2 ====================== -->
+            <DatedServiceJourney id="ENT:DatedServiceJourney:KBG-2_771-2020-04-29" version="0">
+              <ServiceJourneyRef ref="ENT:ServiceJourney:KBG-2_771_XYZ1234"/>
+              <DatedServiceJourneyRef ref="ENT:DatedServiceJourney:771-2020-04-29"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-04-29"/>
+            </DatedServiceJourney>
+            <DatedServiceJourney id="ENT:DatedServiceJourney:KBG-2_771-2020-04-30" version="0">
+              <ServiceJourneyRef ref="ENT:ServiceJourney:KBG-2_771_XYZ1234"/>
+              <DatedServiceJourneyRef ref="ENT:DatedServiceJourney:771-2020-04-30"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-04-30"/>
+            </DatedServiceJourney>
+            <DatedServiceJourney id="ENT:DatedServiceJourney:KBG-2_771-2020-05-01" version="0">
+              <ServiceJourneyRef ref="ENT:ServiceJourney:KBG-2_771_XYZ1234"/>
+              <DatedServiceJourneyRef ref="ENT:DatedServiceJourney:771-2020-05-01"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-05-01"/>
+            </DatedServiceJourney>
+            <!-- ====================== Direct bus KBG-3 only friday ====================== -->
+            <ServiceJourney version="0" id="ENT:ServiceJourney:KBG-3_771_XYZ1234">
+              <keyList>
+                <KeyValue>
+                  <Key>OTN</Key>
+                  <Value>KBG-3</Value>
+                </KeyValue>
+              </keyList>
+              <Name>B-771-KBG-3</Name>
+              <Description>Buss KBG-3 for 771 [07:25 : OSL-KBG]</Description>
+              <PrivateCode>771</PrivateCode>
+              <TransportMode>bus</TransportMode>
+              <TransportSubmode>
+                <BusSubmode>railReplacementBus</BusSubmode>
+              </TransportSubmode>
+              <DepartureTime>07:19:00</DepartureTime>
+              <JourneyPatternRef ref="ENT:JourneyPattern:L50-KBG-DIRECT" version="0"/>
+              <OperatorRef ref="ENT:Operator:ENT"/>
+              <LineRef ref="ENT:Line:50" version="5"/>
+              <passingTimes>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:715-OSL">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-KBG-DIRECT-1" version="0"/>
+                  <DepartureTime>07:19:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:719-KBG">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-KBG-DIRECT-2" version="0"/>
+                  <ArrivalTime>08:28:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <!-- ====================== Operating days for the bus KBG-3 ====================== -->
+            <DatedServiceJourney id="ENT:DatedServiceJourney:KBG-3_771-2020-05-01" version="0">
+              <ServiceJourneyRef ref="ENT:ServiceJourney:KBG-3_771_XYZ1234"/>
+              <DatedServiceJourneyRef ref="ENT:DatedServiceJourney:771-2020-05-01"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-05-01"/>
+            </DatedServiceJourney>
+            <!-- ====================== Milk round bus KBG-4 ====================== -->
+            <ServiceJourney version="0" id="ENT:ServiceJourney:KBG-4_771_XYZ1234">
+              <keyList>
+                <KeyValue>
+                  <Key>OTN</Key>
+                  <Value>KBG-4</Value>
+                </KeyValue>
+              </keyList>
+              <Name>B-771-KBG-4</Name>
+              <Description>Buss KBG-4 for 771 [07:25 : OSL-KBG]</Description>
+              <PrivateCode>771</PrivateCode>
+              <TransportMode>bus</TransportMode>
+              <TransportSubmode>
+                <BusSubmode>railReplacementBus</BusSubmode>
+              </TransportSubmode>
+              <DepartureTime>07:25:00</DepartureTime>
+              <JourneyPatternRef ref="ENT:JourneyPattern:L50-KBG-MILK_ROUTE" version="0"/>
+              <OperatorRef ref="ENT:Operator:ENT"/>
+              <LineRef ref="ENT:Line:50" version="5"/>
+              <passingTimes>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:715-OSL">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-KBG-MILK-ROUTE-1" version="0"/>
+                  <DepartureTime>07:25:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:716-LYS">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-KBG-MILK-ROUTE-2" version="0"/>
+                  <DepartureTime>07:36:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:717-ASR">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-KBG-MILK-ROUTE-3" version="0"/>
+                  <DepartureTime>07:46:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:718-DRM">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-KBG-MILK-ROUTE-4" version="0"/>
+                  <DepartureTime>08:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:719-KBG">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-KBG-MILK-ROUTE-5" version="0"/>
+                  <ArrivalTime>08:34:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <!-- ====================== Operating days for the bus KBG-4 ====================== -->
+            <DatedServiceJourney id="ENT:DatedServiceJourney:KBG-4_771-2020-04-29" version="0">
+              <ServiceJourneyRef ref="ENT:ServiceJourney:KBG-4_771_XYZ1234"/>
+              <DatedServiceJourneyRef ref="ENT:DatedServiceJourney:771-2020-04-29"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-04-29"/>
+            </DatedServiceJourney>
+            <DatedServiceJourney id="ENT:DatedServiceJourney:KBG-4_771-2020-04-30" version="0">
+              <ServiceJourneyRef ref="ENT:ServiceJourney:KBG-4_771_XYZ1234"/>
+              <DatedServiceJourneyRef ref="ENT:DatedServiceJourney:771-2020-04-30"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-04-30"/>
+            </DatedServiceJourney>
+            <DatedServiceJourney id="ENT:DatedServiceJourney:KBG-4_771-2020-05-01" version="0">
+              <ServiceJourneyRef ref="ENT:ServiceJourney:KBG-4_771_XYZ1234"/>
+              <DatedServiceJourneyRef ref="ENT:DatedServiceJourney:771-2020-05-01"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-05-01"/>
+            </DatedServiceJourney>
+            <ServiceJourney version="0" id="ENT:ServiceJourney:80771_771-KBG-STV_XYZ1234">
+              <keyList>
+                <KeyValue>
+                  <Key>OTN</Key>
+                  <Value>80771</Value>
+                </KeyValue>
+              </keyList>
+              <Name>771</Name>
+              <Description>771 [08:40 : KBG-STV]</Description>
+              <PrivateCode>771</PrivateCode>
+              <TransportMode>rail</TransportMode>
+              <TransportSubmode>
+                <RailSubmode>regionalRail</RailSubmode>
+              </TransportSubmode>
+              <DepartureTime>08:40:00</DepartureTime>
+              <JourneyPatternRef ref="ENT:JourneyPattern:L50-771-KBG-STV_XYZ1234" version="0"/>
+              <OperatorRef ref="ENT:Operator:ENT"/>
+              <LineRef ref="ENT:Line:50" version="5"/>
+              <passingTimes>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:719-KBG">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-5" version="0"/>
+                  <DepartureTime>08:40:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:720-NGU">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-6" version="0"/>
+                  <ArrivalTime>09:10:00</ArrivalTime>
+                  <DepartureTime>09:11:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:721-BOE">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-7" version="0"/>
+                  <ArrivalTime>09:24:00</ArrivalTime>
+                  <DepartureTime>09:25:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:722-LUN">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-8" version="0"/>
+                  <ArrivalTime>09:36:00</ArrivalTime>
+                  <DepartureTime>09:36:30</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:723-DRD">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-9" version="0"/>
+                  <ArrivalTime>09:56:00</ArrivalTime>
+                  <DepartureTime>09:57:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:724-NVT">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-10" version="0"/>
+                  <ArrivalTime>10:09:00</ArrivalTime>
+                  <DepartureTime>10:10:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:725-GJE">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-11" version="0"/>
+                  <ArrivalTime>10:22:00</ArrivalTime>
+                  <DepartureTime>10:23:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:726-VGH">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-12" version="0"/>
+                  <ArrivalTime>10:39:00</ArrivalTime>
+                  <DepartureTime>10:40:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:727-NEL">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-13" version="0"/>
+                  <ArrivalTime>10:53:00</ArrivalTime>
+                  <DepartureTime>10:55:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:728-VNL">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-14" version="0"/>
+                  <ArrivalTime>11:40:00</ArrivalTime>
+                  <DepartureTime>11:41:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:729-KRS">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-15" version="0"/>
+                  <ArrivalTime>11:53:00</ArrivalTime>
+                  <DepartureTime>12:02:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:730-NDL">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-16" version="0"/>
+                  <ArrivalTime>12:10:00</ArrivalTime>
+                  <DepartureTime>12:11:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:731-MDL">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-17" version="0"/>
+                  <ArrivalTime>12:32:00</ArrivalTime>
+                  <DepartureTime>12:33:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:732-AUD">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-18" version="0"/>
+                  <ArrivalTime>12:45:00</ArrivalTime>
+                  <DepartureTime>12:47:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:733-SNA">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-19" version="0"/>
+                  <ArrivalTime>12:54:00</ArrivalTime>
+                  <DepartureTime>12:55:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:734-STO">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-20" version="0"/>
+                  <ArrivalTime>13:08:00</ArrivalTime>
+                  <DepartureTime>13:09:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:735-GYL">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-21" version="0"/>
+                  <ArrivalTime>13:14:00</ArrivalTime>
+                  <DepartureTime>13:15:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:736-SIR">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-22" version="0"/>
+                  <ArrivalTime>13:25:00</ArrivalTime>
+                  <DepartureTime>13:26:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:737-MOI">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-23" version="0"/>
+                  <ArrivalTime>13:33:00</ArrivalTime>
+                  <DepartureTime>13:33:30</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:738-EGS">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-24" version="0"/>
+                  <ArrivalTime>14:06:00</ArrivalTime>
+                  <DepartureTime>14:07:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:739-BRY">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-25" version="0"/>
+                  <ArrivalTime>14:38:00</ArrivalTime>
+                  <DepartureTime>14:39:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:740-SSE">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-26" version="0"/>
+                  <ArrivalTime>14:50:00</ArrivalTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:741-JAAT">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-27" version="0"/>
+                  <ArrivalTime>14:58:00</ArrivalTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="0" id="ENT:TimetabledPassingTime:742-STV">
+                  <StopPointInJourneyPatternRef ref="ENT:StopPointInJourneyPattern:L50-139-28" version="0"/>
+                  <ArrivalTime>15:05:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <DatedServiceJourney id="ENT:DatedServiceJourney:80771-2020-04-29" version="0">
+              <ServiceJourneyRef ref="ENT:ServiceJourney:80771_771-KBG-STV_XYZ1234"/>
+              <DatedServiceJourneyRef ref="ENT:DatedServiceJourney:771-2020-04-29"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-04-29"/>
+            </DatedServiceJourney>
+            <DatedServiceJourney id="ENT:DatedServiceJourney:80771-2020-04-30" version="0">
+              <ServiceJourneyRef ref="ENT:ServiceJourney:80771_771-KBG-STV_XYZ1234"/>
+              <DatedServiceJourneyRef ref="ENT:DatedServiceJourney:771-2020-04-30"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-04-30"/>
+            </DatedServiceJourney>
+            <DatedServiceJourney id="ENT:DatedServiceJourney:80771-2020-05-01" version="0">
+              <ServiceJourneyRef ref="ENT:ServiceJourney:80771_771-KBG-STV_XYZ1234"/>
+              <DatedServiceJourneyRef ref="ENT:DatedServiceJourney:771-2020-05-01"/>
+              <OperatingDayRef ref="ENT:OperatingDay:2020-05-01"/>
+            </DatedServiceJourney>
+          </vehicleJourneys>
+          <!-- ====================== Connections [47] ====================== -->
+          <journeyInterchanges>
+            <ServiceJourneyInterchange id="ENT:ServiceJourneyInterchange:1" version="0">
+              <Planned>true</Planned>
+              <Guaranteed>true</Guaranteed>
+              <FromPointRef ref="ENT:ScheduledStopPoint:KBG-BUS-862"/>
+              <ToPointRef ref="ENT:ScheduledStopPoint:KBG-1"/>
+              <FromJourneyRef ref="ENT:DatedServiceJourney:KBG-1_771-2020-04-29" version="0"/>
+              <ToJourneyRef ref="ENT:DatedServiceJourney:80771-2020-04-29" version="0"/>
+            </ServiceJourneyInterchange>
+          </journeyInterchanges>
+          <!-- ====================== Formations [31] ====================== -->
+          <vehicleTypes>
+            <Train version="0" id="ENT:Train:18">
+              <Name>73:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:19">
+              <Name>73:B</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:20">
+              <Name>72:B</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:21">
+              <Name>[STV-KRS]73:B; [KRS-OSL]73:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:22">
+              <Name>[STV-KRS]73:B; [KRS-KBG]73:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:23">
+              <Name>[STV-KRS]73:A; [KRS-KBG]73:B</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:24">
+              <Name>[OSL-KRS]73:B; [KRS-STV]73:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:25">
+              <Name>[OSL-KRS]73:B; [KRS-MOI]73:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:26">
+              <Name>[STV-KRS]73:A; [KRS-OSL]73:B</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:27">
+              <Name>[KBG-KRS]73:B; [KRS-STV]73:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:28">
+              <Name>[STV-KRS]73:B; [KRS-SÅV]73:A; [SÅV-OSL]73:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:29">
+              <Name>[STV-KRS]73:B; [KRS-BØ]73:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:30">
+              <Name>72:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:31">
+              <Name>[OSL-KRS]73:B; [KRS-EGS]73:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:32">
+              <Name>[MOI-KRS]73:B; [KRS-OSL]73:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:33">
+              <Name>[KBG-KRS]73:A; [KRS-STV]73:B</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:34">
+              <Name>[EGS-KRS]73:B; [KRS-OSL]73:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:35">
+              <Name>[OSL-KRS]73:B+73:A(X); [KRS-STV]73:A+73:B(X)</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:36">
+              <Name>[OSL-KRS]73:A; [KRS-STV]73:B</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:37">
+              <Name>[BØ-KRS]73:B; [KRS-STV]73:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:38">
+              <Name>[STV-KRS]EL_18:B+E1:B+F1:B+H1:B; [KRS-OSL]EL_18:A+H1:A+F1:A+E1:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:39">
+              <Name>[STV-KRS]EL_18:B+F1:B+H1:B; [KRS-OSL]EL_18:A+H1:A+F1:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:40">
+              <Name>[OSL-KRS]EL_18:B+E1:B+F1:B+H1:B; [KRS-STV]EL_18:A+H1:A+F1:A+E1:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:41">
+              <Name>[STV-KRS]EL_18:B+S1:B+F1:B+H1:B; [KRS-OSL]EL_18:A+H1:A+F1:A+S1:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:42">
+              <Name>[STV-KRS]EL_18:A+S1:B+F1:B+H1:B; [KRS-OSL]EL_18:B+H1:A+F1:A+S1:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:43">
+              <Name>[STV-KRS]EL_18:B+S1:B+F1:A+H1:B; [KRS-OSL]EL_18:A+H1:A+F1:B+S1:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:44">
+              <Name>[STV-KRS]EL_18:A+S1:B+F1:A+H1:A; [KRS-OSL]EL_18:B+H1:B+F1:B+S1:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:45">
+              <Name>[STV-KRS]EL_18:A+S1:B+F1:B+H1:A; [KRS-KBG]EL_18:B+H1:B+F1:A+S1:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:46">
+              <Name>[OSL-KRS]EL_18:B+S1:B+F1:B+H1:B; [KRS-STV]EL_18:A+H1:A+F1:A+S1:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:47">
+              <Name>[OSL-KRS]EL_18:A+S1:B+F1:B+H1:A; [KRS-STV]EL_18:B+H1:B+F1:A+S1:A</Name>
+            </Train>
+            <Train version="0" id="ENT:Train:48">
+              <Name>[OSL-KRS]S1:B+EL_18:B+F1:B+H1:B; [KRS-STV]S1:A+EL_18:A+H1:A+F1:A</Name>
+            </Train>
+          </vehicleTypes>
+        </TimetableFrame>
+      </frames>
+    </CompositeFrame>
+  </dataObjects>
+</PublicationDelivery>
