@@ -945,9 +945,9 @@
               <Planned>true</Planned>
               <Guaranteed>true</Guaranteed>
               <FromPointRef ref="ENT:ScheduledStopPoint:KBG-BUS-862"/>
-              <ToPointRef ref="ENT:ScheduledStopPoint:KBG-1"/>
-              <FromJourneyRef ref="ENT:DatedServiceJourney:KBG-1_771-2020-09-29" version="0"/>
-              <ToJourneyRef ref="ENT:DatedServiceJourney:80771-2020-09-29" version="0"/>
+              <ToPointRef ref="ENT:ScheduledStopPoint:KBG-3"/>
+              <FromJourneyRef ref="ENT:ServiceJourney:KBG-1_771_XYZ1234" version="0"/>
+              <ToJourneyRef ref="ENT:ServiceJourney:80771_771-KBG-STV_XYZ1234" version="0"/>
             </ServiceJourneyInterchange>
           </journeyInterchanges>
           <!-- ====================== Formations [31] ====================== -->
