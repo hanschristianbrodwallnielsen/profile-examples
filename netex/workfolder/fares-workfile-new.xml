@@ -99,7 +99,7 @@
                     <!-- todo -->
                     <prices>
                         <GeographicalUnitPrice id="RUT:GeographicalUnitPrice:1" version="1">
-                            
+                            <Name>GeographicalUnitPrice</Name>
                         </GeographicalUnitPrice>
                     </prices>
                 </GeographicalUnit>
@@ -113,13 +113,19 @@
                     
                     <NumberOfUnits>2</NumberOfUnits>
                     <IntervalType>tariffZone</IntervalType>
+                    <prices>
+                        <GeographicalIntervalPrice id="RUT:GeographicalIntervalPrice:1" version="1">
+                            <Name>GeographicalIntervalPrice</Name>
+                        </GeographicalIntervalPrice>
+                    </prices>
                 </GeographicalInterval>
             </geographicalIntervals>
             
             
+            <!-- Necessary, given that v.1 of the Fares profile will have pre-calculated fares? -->
             <geographicalStructureFactors>
                 <GeographicalStructureFactor id="RUT:GeographicalStructureFactor:1" version="1">
-                    <Name>demo</Name>
+                    <Name>GeographicalStructureFactor</Name>
                 </GeographicalStructureFactor>
             </geographicalStructureFactors>
             
@@ -149,8 +155,9 @@
                 </TimeInterval>
             </timeIntervals>
             
-            
             <fareStructureElements>
+                
+                
                 
                 <!--
                 <FareStructureElement id="RUT:FareStructureElement:1zone60min" version="1">
@@ -176,6 +183,15 @@
                 -->
             
                 <FareStructureElement id="RUT:FareStructureElement:1" version="1">
+                    <fareStructureElementsInSequence>
+                        <ControllableElementInSequence id="RUT:ControllableElementInSequence:1" version="1" order="1">
+                            
+                        </ControllableElementInSequence>
+                        <FareStructureElementInSequence id="RUT:FareStructureElementInSequence:1" version="1" order="1">
+                            
+                        </FareStructureElementInSequence>
+                    </fareStructureElementsInSequence>
+                    
                     <GenericParameterAssignment id="RUT:GenericParameterAssignment:1" version="1" order="0">
                         <limitations>
                             <FrequencyOfUse id="RUT:FrequencyOfUse:1" version="1">
@@ -188,6 +204,11 @@
                         </validityParameters>
                         <TimeIntervalRef ref="RUT:TimeInterval:60min" version="1"/>
                     </GenericParameterAssignment>
+                    <prices>
+                        <FareStructureElementPrice id="RUT:FareStructureElementPrice:1" version="1">
+                            <Name>FareStructureElementPrice</Name>
+                        </FareStructureElementPrice>
+                    </prices>
                 </FareStructureElement>
                 
                 <FareStructureElement id="RUT:FareStructureElement:2" version="1">
