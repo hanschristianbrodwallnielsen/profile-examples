@@ -3,9 +3,9 @@
   xmlns="http://www.netex.org.uk/netex"
   xmlns:gis="http://www.opengis.net/gml/3.2" 
   xmlns:siri="http://www.siri.org.uk/siri"
-  version="1.10:NO-NeTEx-fares:0.9">
+  version="1.14:NO-NeTEx-fares:0.9">
     
-    <PublicationTimestamp>2020-04-20T12:00:00</PublicationTimestamp>
+    <PublicationTimestamp>2020-07-22T12:00:00</PublicationTimestamp>
     <ParticipantRef>RUT</ParticipantRef>
     <dataObjects>
 
@@ -155,55 +155,30 @@
                 </TimeInterval>
             </timeIntervals>
             
+            
             <fareStructureElements>
                 
-                
-                
-                <!--
-                <FareStructureElement id="RUT:FareStructureElement:1zone60min" version="1">
+                <!-- RECOMMENDATION: -->
+                <!-- Either as separate GenericParamaterAssignment(s) -->
+                <FareStructureElement id="RUT:FareStructureElement:1" version="1">
+                    <TariffBasis>discount</TariffBasis>
                     <validityParameterAssignments>
-                        <GenericParameterAssignment id="RUT:GenericParameterAssignment:1zone60min" version="1" order="0">
+                        <GenericParameterAssignment id="RUT:GenericParameterAssignment:1" version="1" order="0">
+                            <limitations>
+                                <FrequencyOfUse id="RUT:FrequencyOfUse:1" version="1">
+                                    <FrequencyOfUseType>unlimited</FrequencyOfUseType>
+                                </FrequencyOfUse>
+                            </limitations>
                             <validityParameters>
+                                <AuthorityRef ref="RUT:Authority:Ruter" version="1"/>
                                 <TariffZoneRef ref="RUT:TariffZone:1" version="1"/>
                             </validityParameters>
                             <TimeIntervalRef ref="RUT:TimeInterval:60min" version="1"/>
+                            <GeographicalIntervalRef ref="ref"/>
+                            <QualityStructureFactorRef ref="ref"/>
                         </GenericParameterAssignment>
                     </validityParameterAssignments>
-                </FareStructureElement>
-                <FareStructureElement id="RUT:FareStructureElement:2zones90min" version="1">
-                    <validityParameterAssignments>
-                        <GenericParameterAssignment id="RUT:GenericParameterAssignment:2zones90min" version="1" order="0">
-                            <validityParameters>
-                                <TariffZoneRef ref="RUT:TariffZone:2V" version="1"/>
-                            </validityParameters>
-                            <TimeIntervalRef ref="RUT:TimeInterval:90min" version="1"/>
-                        </GenericParameterAssignment>
-                    </validityParameterAssignments>
-                </FareStructureElement>
-                -->
-            
-                <FareStructureElement id="RUT:FareStructureElement:1" version="1">
-                    <fareStructureElementsInSequence>
-                        <ControllableElementInSequence id="RUT:ControllableElementInSequence:1" version="1" order="1">
-                            
-                        </ControllableElementInSequence>
-                        <FareStructureElementInSequence id="RUT:FareStructureElementInSequence:1" version="1" order="1">
-                            
-                        </FareStructureElementInSequence>
-                    </fareStructureElementsInSequence>
                     
-                    <GenericParameterAssignment id="RUT:GenericParameterAssignment:1" version="1" order="0">
-                        <limitations>
-                            <FrequencyOfUse id="RUT:FrequencyOfUse:1" version="1">
-                                <FrequencyOfUseType>unlimited</FrequencyOfUseType>
-                            </FrequencyOfUse>
-                        </limitations>
-                        <validityParameters>
-                            <AuthorityRef ref="RUT:Authority:Ruter" version="1"/>
-                            <TariffZoneRef ref="RUT:TariffZone:1" version="1"/>
-                        </validityParameters>
-                        <TimeIntervalRef ref="RUT:TimeInterval:60min" version="1"/>
-                    </GenericParameterAssignment>
                     <prices>
                         <FareStructureElementPrice id="RUT:FareStructureElementPrice:1" version="1">
                             <Name>FareStructureElementPrice</Name>
@@ -211,8 +186,22 @@
                     </prices>
                 </FareStructureElement>
                 
+                <!-- Or as a sequence of references to GenericParamaterAssignments -->
                 <FareStructureElement id="RUT:FareStructureElement:2" version="1">
-                    <GenericParameterAssignment id="RUT:GenericParameterAssignment:2" version="1" order="0">
+                    <fareStructureElementsInSequence>
+                        <FareStructureElementInSequence id="RUT:FareStructureElementInSequence:1" version="1" order="1">
+                            <FareStructureElementRef ref="RUT:FareStructureElement:1" version="1"/>
+                        </FareStructureElementInSequence>
+                        <ControllableElementInSequence id="RUT:ControllableElementInSequence:1" version="1" order="1">
+                            <Name>ControllableElementInSequence</Name>
+                            <ControllableElementRef ref="reference"/>
+                        </ControllableElementInSequence>
+                    </fareStructureElementsInSequence>
+                </FareStructureElement>
+                
+                
+                <FareStructureElement id="RUT:FareStructureElement:3" version="1">
+                    <GenericParameterAssignment id="RUT:GenericParameterAssignment:3" version="1" order="0">
                         <limitations>
                             <FrequencyOfUseRef ref="RUT:FrequencyOfUse:1" version="1"/>
                         </limitations>
@@ -232,12 +221,13 @@
                     <Name>Single trip within one zone</Name>
                     <fareStructureElements>
                         <FareStructureElementRef ref="RUT:FareStructureElement:1" version="1"/>
+                        <FareStructureElementRef ref="RUT:FareStructureElement:1" version="1"/>
                     </fareStructureElements>
                 </ValidableElement>
                 <ValidableElement id="RUT:ValidableElement:2" version="1">
                     <Name>Single trip within two zones</Name>
                     <fareStructureElements>
-                        <FareStructureElementRef ref="RUT:FareStructureElement:2" version="1"/>
+                        <FareStructureElementRef ref="RUT:FareStructureElement:3" version="1"/>
                     </fareStructureElements>
                 </ValidableElement>
             </validableElements>
@@ -247,6 +237,9 @@
                 <UserProfile id="RUT:UserProfile:NormalFare" version="1">
                     <Name lang="no">Normal</Name>
                     <Description>Adult, Student, Youth</Description>
+                    <prices>
+                        <UsageParameterPriceRef ref="ref"></UsageParameterPriceRef>
+                    </prices>
                 </UserProfile>
                 <UserProfile id="RUT:UserProfile:ReducedFare" version="1">
                     <Name lang="no">Reduced</Name>
@@ -374,12 +367,12 @@
             <fareContracts>
                 <FareContract id="RUT:FareContract:1" version="1">
                     <Name lang="en">Full price single mobile ticket for travel within one zone</Name>
-                    <StartDate>2020-04-20T11:00:00</StartDate>
-                    <EndDate>2020-04-20T12:00:00</EndDate>
+                    <StartDate>2020-07-22T11:00:00</StartDate>
+                    <EndDate>2020-07-22T12:00:00</EndDate>
                     <fareContractEntries>
                         <SalesTransaction id="RUT:SalesTransaction:1" version="1">
                             <Name lang="en">Purchase of full price single mobile ticket for travel within one zone</Name>
-                            <Date>2020-04-20T11:00:00</Date>
+                            <Date>2020-07-22T11:00:00</Date>
                             <Amount>37</Amount>
                             <Currency>NOK</Currency>
                             <PaymentMethod>mobilePhone</PaymentMethod>
@@ -407,7 +400,7 @@
                             <!-- CHECK: <PreassignedFareProduct> indirekte referert, og man trenger ikke angi eksplisitt -->  
                             
                             <elementAccesses>
-                                <CustomerPurchasePackageElementAccess id="RUT:CustomerPurchasePackageElementAccess:1" version="1" created="2020-04-20T11:00:00">
+                                <CustomerPurchasePackageElementAccess id="RUT:CustomerPurchasePackageElementAccess:1" version="1" created="2020-07-22T11:00:00">
                                     <ValidableElementRef ref="RUT:ValidableElement:1" version="1"/>
                                     <MarkedAs>activated</MarkedAs>
                                     <validityParameterAssignments>
@@ -417,9 +410,9 @@
                                             
                                             <limitations>
                                                 <UsageValidityPeriod id="RUT:UsageValidityPeriod:1" version="1">
-                                                    <StartDate>2020-04-20</StartDate>
+                                                    <StartDate>2020-07-22</StartDate>
                                                     <StartTime>11:00:00</StartTime>
-                                                    <EndDate>2020-04-20</EndDate>
+                                                    <EndDate>2020-07-22</EndDate>
                                                     <EndTime>12:00:00</EndTime>
                                                 </UsageValidityPeriod>
                                                 <UserProfileRef ref="RUT:UserProfile:NormalFare" version="1"/>
@@ -460,12 +453,12 @@
             <fareContracts>
                 <FareContract id="RUT:FareContract:2" version="1">
                     <Name lang="en">Reduced price single travel card ticket for travel within two zones</Name>
-                    <StartDate>2020-04-20T11:00:00</StartDate>
-                    <EndDate>2021-04-20T12:00:00</EndDate> <!-- assumed one year validity -->
+                    <StartDate>2020-07-22T11:00:00</StartDate>
+                    <EndDate>2021-07-22T12:00:00</EndDate> <!-- assumed one year validity -->
                     <fareContractEntries>
                         <SalesTransaction id="RUT:SalesTransaction:2" version="1">
                             <Name lang="en">Purchase of reduced price single travel card ticket for travel within two zones</Name>
-                            <Date>2020-04-20T11:00:00</Date>
+                            <Date>2020-07-22T11:00:00</Date>
                             <Amount>31</Amount>
                             <Currency>NOK</Currency>
                             <PaymentMethod>cashAndCard</PaymentMethod>
@@ -529,7 +522,7 @@
                             <!-- CHECK: <PreassignedFareProduct> indirekte referert, og man trenger ikke angi eksplisitt -->
                             
                             <elementAccesses>
-                                <CustomerPurchasePackageElementAccess id="RUT:CustomerPurchasePackageElementAccess:3" version="1" created="2020-04-20T13:10:00">
+                                <CustomerPurchasePackageElementAccess id="RUT:CustomerPurchasePackageElementAccess:3" version="1" created="2020-07-22T13:10:00">
                                     <ValidableElementRef ref="RUT:ValidableElement:2" version="1"/>
                                     <MarkedAs>activated</MarkedAs>
                                 </CustomerPurchasePackageElementAccess>
@@ -542,9 +535,9 @@
                                     
                                     <limitations>
                                         <UsageValidityPeriod id="RUT:UsageValidityPeriod:3" version="1">
-                                            <StartDate>2020-04-20</StartDate>
+                                            <StartDate>2020-07-22</StartDate>
                                             <StartTime>13:10:00</StartTime>
-                                            <EndDate>2020-04-20</EndDate>
+                                            <EndDate>2020-07-22</EndDate>
                                             <EndTime>14:40:00</EndTime>
                                         </UsageValidityPeriod>
                                         <UserProfileRef ref="RUT:UserProfile:ReducedFare" version="1"/>
