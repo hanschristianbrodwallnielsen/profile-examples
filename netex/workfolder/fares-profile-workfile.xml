@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery 
+  xmlns="http://www.netex.org.uk/netex"
+  xmlns:gis="http://www.opengis.net/gml/3.2" 
+  xmlns:siri="http://www.siri.org.uk/siri"
+  version="1.14:NO-NeTEx-fares:0.9">
+    
+    <PublicationTimestamp>2020-07-22T12:00:00</PublicationTimestamp>
+    <ParticipantRef>RUT</ParticipantRef>
+    <dataObjects>
+
+
+        <!-- Non-compliant organisation data included only for readability of example -->
+        <ResourceFrame id="ENT:ResourceFrame:1" version="1">
+            <organisations>
+                <GeneralOrganisation id="ENT:GeneralOrganisation:Entur" version="1">
+                    <Name>Entur</Name>
+                    <ContactDetails>
+                        <Url>https://www.entur.org</Url>
+                    </ContactDetails>
+                    <OrganisationType>statutoryBody</OrganisationType>
+                </GeneralOrganisation>
+                <Authority id="ENT:Authority:Ruter" version="1">
+                    <Name>Ruter#</Name>
+                    <ContactDetails>
+                        <Url>https://www.ruter.no</Url>
+                    </ContactDetails>
+                    <OrganisationType>operator</OrganisationType>
+                    <!-- (simplified) acts as both operator and authority for this example -->
+                </Authority>
+            </organisations>
+        </ResourceFrame>
+
+
+
+        <SiteFrame id="RUT:SiteFrame:1" version="1">
+            <validityConditions>
+                <AvailabilityCondition id="RUT:AvailabilityCondition:2" version="1">
+                    <FromDate>2020-01-26T00:00:00</FromDate>
+                </AvailabilityCondition>
+            </validityConditions>
+            <Description>https://ruter.no/en/buying-tickets/zones/</Description>
+            <tariffZones>
+                <TariffZone id="RUT:TariffZone:1" version="1">
+                    <Name lang="en">Ruter# tariff zone 1 (sentral Oslo region)</Name>
+                </TariffZone>
+                <TariffZone id="RUT:TariffZone:2V" version="1">
+                    <Name lang="en">Ruter# tariff zone 2V (west incl Asker)</Name>                 
+                </TariffZone>
+                <TariffZone id="RUT:TariffZone:3V" version="1">
+                    <Name lang="en">Ruter# tariff zone 3V (west incl Slemmestad)</Name>                 
+                </TariffZone>
+                <TariffZone id="RUT:TariffZone:4V" version="1">
+                    <Name lang="en">Ruter# tariff zone 4V (west incl Tofte)</Name>         
+                </TariffZone>
+                <TariffZone id="RUT:TariffZone:2S" version="1">
+                    <Name lang="en">Ruter# tariff zone 2S (south incl Ski)</Name> 
+                </TariffZone>
+                <TariffZone id="RUT:TariffZone:3S" version="1">
+                    <Name lang="en">Ruter# tariff zone 3S (south incl Son)</Name>                 
+                </TariffZone>
+            </tariffZones>
+        </SiteFrame>
+        
+        
+        <ServiceFrame id="ENT:ServiceFrame:1" version="1">
+            <!-- only included as NeTEx frame structure reference -->
+        </ServiceFrame>
+        
+        
+        <TimetableFrame id="ENT:TimetableFrame:1" version="1">
+            <!-- only included as NeTEx frame structure reference -->
+        </TimetableFrame>
+
+
+
+
+        <!-- Fare data for Ruter# codespace "RUT" (greater Oslo region) -->
+
+        <FareFrame id="ENT:FareFrame:1" version="1">
+            <validityConditions>
+                <AvailabilityCondition id="ENT:AvailabilityCondition:1" version="1">
+                    <FromDate>2020-01-26T00:00:00</FromDate>
+                </AvailabilityCondition>
+            </validityConditions>
+            
+            <Description>https://ruter.no/en/buying-tickets/tickets-and-fares/</Description>
+            
+            
+            <PricingParameterSet id="ENT:PricingParameterSet:1" version="1">
+                <pricingServices>
+                    <PricingService id="ENT:PricingService:PoP" version="1">
+                        <Name>PoP (Pris og Produkt)</Name>
+                        <OrganisationRef ref="ENT:GeneralOrganisation:Entur" version="1"/>
+                        <Url>https://pop.entur.org/</Url>
+                    </PricingService>
+                </pricingServices>
+            </PricingParameterSet>
+
+
+
+            <!-- Spec: 7.5.3.4.1 GeographicalUnit – Model Element 
+                "A unit for calculating geographical graduated fares." 
+            (page 124) -->
+            <geographicalUnits>
+                <GeographicalUnit id="ENT:GeographicalUnit:1" version="1">
+                    <prices>
+                        <GeographicalUnitPrice id="ENT:GeographicalUnitPrice:1" version="1">
+                            <Name>GeographicalUnitPrice</Name>
+                        </GeographicalUnitPrice>
+                    </prices>
+                </GeographicalUnit>
+            </geographicalUnits>
+            
+            <!-- Spec: ﻿7.5.3.4.3 GeographicalInterval – Model Element 
+                "A geographical interval specifying access rights for the FARE STRUCTURE ELEMENTs within the range of this interval: '20-5 km', '4-6 zones', etc." 
+            (page 126) -->
+            <geographicalIntervals>
+                <GeographicalInterval id="ENT:GeographicalInterval:1" version="1">
+                    <NumberOfUnits>2</NumberOfUnits>
+                    <IntervalType>section</IntervalType>
+                    <!--prices>
+                        <GeographicalIntervalPrice id="ENT:GeographicalIntervalPrice:1" version="1">
+                            <Name>GeographicalIntervalPrice</Name>
+                        </GeographicalIntervalPrice>
+                    </prices-->
+                </GeographicalInterval>
+            </geographicalIntervals>
+            
+            <!-- Strictly necessary, when v.1 of the Fares profile will have pre-calculated fares? -->
+            <geographicalStructureFactors>
+                <GeographicalStructureFactor id="ENT:GeographicalStructureFactor:1" version="1">
+                    <Name>GeographicalStructureFactor</Name>
+                </GeographicalStructureFactor>
+            </geographicalStructureFactors>
+            
+            
+            
+            <!-- README (ODIN) -->
+            
+            <!-- HSL har 4 soner med 4 ulike faktorer 7 mulige kombinasjoner (med ulike interval) -->
+            
+            
+            <!-- 
+                
+                BoB har issues med formatkompleksistet  
+            
+            --> 
+
+            
+            
+            <timeIntervals>
+                <TimeInterval id="ENT:TimeInterval:60min" version="1">
+                    <Description>Duration for single zone ticket</Description>
+                    <Duration>PT1H</Duration>
+                </TimeInterval>
+                <TimeInterval id="ENT:TimeInterval:90min" version="1">
+                    <Description>Duration for dual zone ticket</Description>
+                    <Duration>PT1H30M</Duration>
+                </TimeInterval>
+            </timeIntervals>
+            
+            
+            <!-- 
+            NB: See NeTEx part 3 ﻿
+                7.5.3.1.1 Simple Space-based Factors (page 122): 
+                
+            ﻿Some fare structure systems will use arbitrary fare distances between the origin and the destination of a
+            FARE STRUCTURE ELEMENT. This is typically the case when a zone-matrix fare system is used. Some
+            TARIFF ZONEs (usually a few) are defined and a specific fare distance parameter is defined for each
+            possible origin/destination pair of TARIFF ZONEs. Such parameter values are likely to differ from an exact
+            calculation based on the covered distance. These values are stored in the entity DISTANCE MATRIX
+            ELEMENT.
+            In a similar way, the fare distance between SCHEDULED STOP POINTs may not be derived from the line
+            description but stored with specific values. In such a case, a DISTANCE MATRIX ELEMENT will store the
+            chosen value between each origin/destination pair of SCHEDULED STOP POINTs.
+            Therefore, a DISTANCE MATRIX ELEMENT will relate either two TARIFF ZONEs or two STOP POINTs.
+            -->
+            
+            <distanceMatrixElements>
+                <DistanceMatrixElement id="ENT:DistanceMatrixElement:StopPoints" version="1">
+                    <Name>ScheduledStopPoint based DistanceMatrixElement</Name>
+                    <InverseAllowed>true</InverseAllowed>
+                    <StartStopPointRef ref="NSR:ScheduledStopPoint:A"/>
+                    <EndStopPointRef ref="NSR:ScheduledStopPoint:B"/>
+                    <prices>
+                        <DistanceMatrixElementPriceRef ref="ENT:DistanceMatrixElementPrice:3_20" version="1"/>
+                    </prices>
+                </DistanceMatrixElement>
+                
+                <DistanceMatrixElement id="ENT:DistanceMatrixElemRUT:TariffZones" version="1">
+                    <Name>TariffZone based DistanceMatrixElement</Name>
+                    <InverseAllowed>true</InverseAllowed>
+                    <StartTariffZoneRef ref="RUT:TariffZone:1" version="1"/>
+                    <EndTariffZoneRef ref="RUT:TariffZone:2V" version="1"/>
+                    <prices>
+                        <DistanceMatrixElementPriceRef ref="ENT:DistanceMatrixElementPrice:2_80" version="1"/>
+                    </prices>
+                </DistanceMatrixElement>
+            </distanceMatrixElements>
+            
+            
+            <fareStructureElements>
+                
+                <!-- RECOMMENDATION: -->
+                <!-- Either as separate GenericParamaterAssignment(s) -->
+                <FareStructureElement id="ENT:FareStructureElement:1" version="1">
+                    <TariffBasis>discount</TariffBasis>
+                    <validityParameterAssignments>
+                        <GenericParameterAssignment id="ENT:GenericParameterAssignment:1" version="1" order="0">
+                            <limitations>
+                                <FrequencyOfUseRef ref="ENT:FrequencyOfUse:1" version="1"/>
+                            </limitations>
+                            <validityParameters>
+                                <AuthorityRef ref="ENT:Authority:Ruter" version="1"/>
+                                <TariffZoneRef ref="RUT:TariffZone:1" version="1"/>
+                            </validityParameters>
+                            <TimeIntervalRef ref="ENT:TimeInterval:60min" version="1"/>
+                            <GeographicalIntervalRef ref="ref"/>
+                            <QualityStructureFactorRef ref="ref"/>
+                        </GenericParameterAssignment>
+                    </validityParameterAssignments>
+                    <prices>
+                        <FareStructureElementPrice id="ENT:FareStructureElementPrice:1" version="1">
+                            <Name>FareStructureElementPrice</Name>
+                        </FareStructureElementPrice>
+                    </prices>
+                </FareStructureElement>
+                
+                <!-- Or as a sequence of references to GenericParamaterAssignments -->
+                <FareStructureElement id="ENT:FareStructureElement:2" version="1">
+                    <fareStructureElementsInSequence>
+                        <FareStructureElementInSequence id="ENT:FareStructureElementInSequence:1" version="1" order="1">
+                            <FareStructureElementRef ref="ENT:FareStructureElement:1" version="1"/>
+                        </FareStructureElementInSequence>
+                        <ControllableElementInSequence id="ENT:ControllableElementInSequence:1" version="1" order="1">
+                            <Name>ControllableElementInSequence</Name>
+                            <ControllableElementRef ref="reference"/>
+                        </ControllableElementInSequence>
+                    </fareStructureElementsInSequence>
+                </FareStructureElement>
+                
+                <FareStructureElement id="ENT:FareStructureElement:3" version="1">
+                    <GenericParameterAssignment id="ENT:GenericParameterAssignment:3" version="1" order="0">
+                        <limitations>
+                            <FrequencyOfUseRef ref="ENT:FrequencyOfUse:1" version="1"/>
+                        </limitations>
+                        <validityParameters>
+                            <AuthorityRef ref="ENT:Authority:Ruter" version="1"/>
+                            <TariffZoneRef ref="RUT:TariffZone:2V" version="1"/>
+                        </validityParameters>
+                        <TimeIntervalRef ref="ENT:TimeInterval:90min" version="1"/>
+                    </GenericParameterAssignment>
+                </FareStructureElement>
+                
+            </fareStructureElements>
+            
+            
+            <validableElements>
+                <ValidableElement id="ENT:ValidableElement:1" version="1">
+                    <Name>Single trip within one zone</Name>
+                    <fareStructureElements>
+                        <FareStructureElementRef ref="ENT:FareStructureElement:1" version="1"/>
+                        <FareStructureElementRef ref="ENT:FareStructureElement:1" version="1"/>
+                    </fareStructureElements>
+                </ValidableElement>
+                <ValidableElement id="ENT:ValidableElement:2" version="1">
+                    <Name>Single trip within two zones</Name>
+                    <fareStructureElements>
+                        <FareStructureElementRef ref="ENT:FareStructureElement:3" version="1"/>
+                    </fareStructureElements>
+                </ValidableElement>
+            </validableElements>
+            
+            
+            <usageParameters>
+                <UserProfile id="ENT:UserProfile:NormalFare" version="1">
+                    <Name lang="no">Normal</Name>
+                    <Description>Adult, Student, Youth</Description>
+                    <UserType>anyone</UserType>
+                    <DiscountBasis>none</DiscountBasis>
+                </UserProfile>
+                <UserProfile id="ENT:UserProfile:ReducedFare" version="1">
+                    <Name lang="no">Reduced</Name>
+                    <Description>Child, Concessionary, Military</Description>
+                    <ProofRequired>passport birthCertificate drivingLicence identityDocument medicalDocument other</ProofRequired>
+                    <DiscountBasis>discount</DiscountBasis>
+                </UserProfile>
+                <UserProfile id="ENT:UserProfile:StudentFare" version="1">
+                    <Name lang="no">Student</Name>
+                    <Description>Students below 33 years</Description>
+                    <UserType>student</UserType>
+                    <ProofRequired>studentCard</ProofRequired>
+                    <DiscountBasis>discount</DiscountBasis>
+                </UserProfile>
+                <UsageValidityPeriod id="ENT:UsageValidityPeriod:1" version="1">
+                    <Name>UsageValidityPeriod</Name>
+                </UsageValidityPeriod>
+                <Suspending id="ENT:Suspending:1" version="1">
+                    <SuspensionPolicy>forAnyReason</SuspensionPolicy>
+                </Suspending>
+                <FrequencyOfUse id="ENT:FrequencyOfUse:1" version="1">
+                    <Name>FrequencyOfUse</Name>
+                </FrequencyOfUse>
+                <Interchanging id="ENT:Interchanging:1" version="1">
+                    <Name>Interchanging</Name>
+                </Interchanging>
+                <PurchaseWindow id="ENT:PurchaseWindow:1" version="1">
+                    <PurchaseAction>reserve</PurchaseAction>
+                    <PurchaseWhen></PurchaseWhen>
+                </PurchaseWindow>
+                <Reserving id="ENT:Reserving:1" version="1">
+                    <Name>Reserving</Name>
+                </Reserving>
+                <Cancelling id="ENT:Cancelling:1" version="1">
+                    <Name>Cancelling</Name>
+                </Cancelling>
+                <Refunding id="ENT:Refunding:1" version="1">
+                    <Name>Refunding</Name>
+                </Refunding>
+                <Transferability id="ENT:Transferability:1" version="1">
+                    <Name>Transferability</Name>
+                    <MaximumNumberOfNamedTransferees>1</MaximumNumberOfNamedTransferees>
+                    <HasTransferFee>false</HasTransferFee>
+                    <SharedUsage>singleUser</SharedUsage>
+                </Transferability>
+                <Exchanging id="ENT:Exchanging:1" version="1">
+                    <Name>Exchanging</Name>
+                    <NumberOfExchangesAllowed>1</NumberOfExchangesAllowed>
+                    <ToFareClass>any</ToFareClass>
+                    <ExchangableTo>anyProduct</ExchangableTo>
+                </Exchanging>
+                <Replacing id="ENT:Replacing:1" version="1">
+                    <Name>Replacing</Name>
+                </Replacing>
+                <ChargingPolicy id="ENT:ChargingPolicy:1" version="1">
+                    <CreditPolicy>allowTravel</CreditPolicy>
+                    <BillingPolicy>billAsYouGo</BillingPolicy>
+                </ChargingPolicy>
+                <PenaltyPolicy id="ENT:PenaltyPolicy:1" version="1">
+                    <PenaltyPolicyType>noTicket</PenaltyPolicyType>
+                </PenaltyPolicy>
+                <GroupTicket id="ENT:GroupTicket:1" version="1">
+                    <Name>RUT:TariffZone</Name>
+                </GroupTicket>
+                <CompanionProfile id="ENT:CompanionProfile:1" version="1">
+                    <CompanionRelationshipType></CompanionRelationshipType>
+                    <MaximumNumberOfPersons>1</MaximumNumberOfPersons>
+                    <DiscountBasis>none</DiscountBasis>
+                </CompanionProfile>
+                <Subscribing id="ENT:Subscribing:1" version="1">
+                    <SubscriptionTermType>openEnded</SubscriptionTermType>
+                    <SubscriptionRenewalPolicy>automatic</SubscriptionRenewalPolicy>
+                    <InstallmentPaymentMethods>bankTransfer banknote</InstallmentPaymentMethods>
+                </Subscribing>
+                <CommercialProfile id="ENT:CommercialProfile:1" version="1">
+                    <Name>CommercialProfile</Name>
+                </CommercialProfile>
+                <EntitlementGiven id="test" version="1">
+                    <CappedDiscountRightRef ref="ref"/>
+                </EntitlementGiven>
+                <EntitlementRequired id="test" version="1">
+                    <ServiceAccessRightRef ref="ref"/>
+                </EntitlementRequired>
+            </usageParameters>
+
+            
+            <fareProducts>
+                <PreassignedFareProduct id="ENT:PreassignedFareProduct:1" version="1">
+                    <Name>PreassignedFareProduct</Name>
+                    <FareProductRef ref=""></FareProductRef> <!-- FAIL (kun en referanse tillatt) -->
+                    <!--SaleDiscountRightRef ref="ENT:SaleDiscountRight:1" version="1"/ -->
+                    <!-- SupplementProductRef ref="ENT:SupplementProduct:1" version="1"/ -->
+                    <accessRightsInProduct>
+                        <AccessRightInProduct id="BS" version="1" order="1">
+                            <ValidableElementRef ref="test"/>
+                        </AccessRightInProduct>
+                    </accessRightsInProduct>
+                </PreassignedFareProduct>
+                
+                <PreassignedFareProduct id="ENT:PreassignedFareProduct:SingleTrip1Zone" version="1">
+                    <Name lang="en">Single trip valid within one zone</Name>
+                    <accessRightsInProduct>
+                        <AccessRightInProductRef ref="ENT:ValidableElement:1" version="1"/>
+                    </accessRightsInProduct>
+                    <!--prices>
+                        <FareProductPrice></FareProductPrice>
+                    </prices-->
+                </PreassignedFareProduct>
+                <PreassignedFareProduct id="ENT:PreassignedFareProduct:SingleTrip2Zones" version="1">
+                    <Name lang="en">Single trip valid within two zones</Name>
+                    <accessRightsInProduct>
+                        <AccessRightInProductRef ref="ENT:ValidableElement:1" version="1"/>
+                    </accessRightsInProduct>
+                </PreassignedFareProduct>
+                
+                <SupplementProduct id="ENT:SupplementProduct:1" version="1">
+                    <SupplementProductType>animal</SupplementProductType>
+                </SupplementProduct>
+                
+                <SaleDiscountRight id="ENT:SaleDiscountRight:1" version="1">
+                    <Name>SalesDiscountRight</Name>
+                </SaleDiscountRight>
+            </fareProducts>
+            
+            <!--
+            <priceGroups>
+                <PriceGroup id="ENT:PriceGroup:1" version="1">
+                    <ParkingPriceRef ref="example"/>
+                </PriceGroup>
+            </priceGroups>
+            -->
+            
+            <fareTables>
+                <FareTable id="ENT:FareTable:2" version="1">
+                    <pricesFor>
+                        <PreassignedFareProductRef version="1" ref="ENT:PreassignedFareProduct:SingleTrip1Zone"/>
+                        <UserProfileRef ref="ENT:UserProfile:ReducedFare" version="1" />
+                        <UserProfileRef ref="ENT:UserProfile:NormalFare" version="1" />
+                        <UserProfileRef ref="ENT:UserProfile:StudentFare" version="1" />
+                    </pricesFor>
+                    
+                    <prices>
+                        <DistanceMatrixElementPrice id="ENT:DistanceMatrixElementPrice:2_80" version="1">
+                            <Amount>2.80</Amount>
+                            <!-- ALTERNATIVELY: The FareTable refers the fare structure it prices -->
+                            <DistanceMatrixElementRef ref="ENT:DistanceMatrixElemRUT:TariffZones" version="1"/>
+                        </DistanceMatrixElementPrice>
+                        <DistanceMatrixElementPrice id="ENT:DistanceMatrixElementPrice:3_20" version="1">
+                            <Amount>3.20</Amount>
+                        </DistanceMatrixElementPrice>
+                        <DistanceMatrixElementPrice id="ENT:DistanceMatrixElementPrice:4_10" version="1">
+                            <Amount>4.10</Amount>
+                        </DistanceMatrixElementPrice>
+                        <DistanceMatrixElementPrice id="ENT:DistanceMatrixElementPrice:5_70" version="1">
+                            <Amount>5.70</Amount>
+                        </DistanceMatrixElementPrice>
+                        
+                        <GeographicalUnitPrice id="ENT:GeographicalUnitPrice:2_80" version="1">
+                            <Amount>2.80</Amount>
+                        </GeographicalUnitPrice>
+                    </prices>
+                    
+                    <!--
+                    <cells>
+                        <FareStructureElementPrice version="1" id="ENT:FareStructureElementPrice:9">
+                            <Amount>41</Amount>
+                            <Currency>SEK</Currency>
+                            <FareStructureElementRef version="1" ref="ENT:FareStructureElement:120minZone2SL"/>
+                        </FareStructureElementPrice>
+                        <FareStructureElementPrice version="1" id="ENT:FareStructureElementPrice:10">
+                            <Amount>57</Amount>
+                            <Currency>SEK</Currency>
+                            <FareStructureElementRef version="1" ref="ENT:FareStructureElement:150minZone12SL"/>
+                        </FareStructureElementPrice>
+                        <GeographicalIntervalPrice version="1" id="ENT:GeographicalIntervalPrice:7">
+                            <Amount>16</Amount>
+                            <Currency>SEK</Currency>
+                            <GeographicalIntervalRef version="1" ref="ENT:GeographicalInterval:1zone"/>
+                        </GeographicalIntervalPrice>
+                        <GeographicalIntervalPrice version="1" id="ENT:GeographicalIntervalPrice:8">
+                            <Amount>32</Amount>
+                            <Currency>SEK</Currency>
+                            <GeographicalIntervalRef version="1" ref="ENT:GeographicalInterval:2zones"/>
+                        </GeographicalIntervalPrice>
+                    </cells>
+                    -->
+                </FareTable>
+            </fareTables>
+            
+            
+            <distributionChannels>
+                <DistributionChannel id="ENT:DistributionChannel:1" version="1">
+                    <Name>DistributionChannel</Name>
+                </DistributionChannel>
+            </distributionChannels>
+            
+            <groupsOfDistributionChannels>
+                <GroupOfDistributionChannels id="ENT:GroupOfDistributionChannels:1" version="1">
+                    <Name>GroupOfDistributionChannels</Name>
+                </GroupOfDistributionChannels>
+            </groupsOfDistributionChannels>
+            
+            
+            <fulfilmentMethods>
+                <FulfilmentMethod id="ENT:FulfilmentMethod:1" version="1">
+                    <Name>FulfilmentMethod</Name>
+                </FulfilmentMethod>
+            </fulfilmentMethods>
+            
+            
+            <typesOfTravelDocuments>
+                <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:AppRuterBillett" version="1">
+                    <Name>RuterBillett mobile app</Name>
+                    <MediaType>mobileApp</MediaType>
+                    <MachineReadable>other</MachineReadable>
+                </TypeOfTravelDocument>
+                <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:Travelcard" version="1">
+                    <Name>Travelcard</Name>
+                    <Description>Per Railway Directorate handbook compatible electronic travel card, e.g. Ruter#, Vy</Description>
+                    <MediaType>card</MediaType>
+                    <MachineReadable>nfc</MachineReadable>
+                </TypeOfTravelDocument>
+                <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:SingleUseElectronicTicket" version="1">
+                    <Name>Single use electronic ticet</Name>
+                    <Description>Ruter# disposable travel card compatible electronic ticket</Description>
+                    <MediaType>card</MediaType>
+                    <MachineReadable>nfc</MachineReadable>
+                </TypeOfTravelDocument>  
+                <TypeOfTravelDocument id="ENT:TypeOfTravelDocument:Onboard" version="1">
+                    <Name>Onboard purchase</Name>
+                    <Description>Only busses and ferries</Description>
+                    <MediaType>paperTicket</MediaType>
+                </TypeOfTravelDocument>              
+            </typesOfTravelDocuments>
+            
+
+            
+            
+            <salesOfferPackages>
+                <SalesOfferPackage id="ENT:SalesOfferPackage:SingleTrip1Zone" version="1">              
+                    <Name lang="en">Single trip within one zone</Name>
+                    <salesOfferPackageElements>
+                        <SalesOfferPackageElement id="ENT:SalesOfferPackageElement:SingleTrip1Zone" version="1" order="1">
+                            <Name lang="en">Single trip valid within one fare zone valid for one hour</Name>
+                            <PreassignedFareProductRef ref="ENT:PreassignedFareProduct:SingleTrip1Zone" version="1"/>
+                            <validityParameterAssignments>
+                                <GenericParameterAssignment id="ENT:GenericParameterAssignment:10" version="1" order="0">
+                                    <limitations>
+                                        <TransferabilityRef ref="ENT:Transferability:1" version="1"/>
+                                        <FrequencyOfUseRef ref="ENT:FrequencyOfUse:1" version="1"/>
+                                    </limitations>
+                                </GenericParameterAssignment>
+                            </validityParameterAssignments>
+                        </SalesOfferPackageElement>
+                    </salesOfferPackageElements>
+                </SalesOfferPackage>
+                <SalesOfferPackage id="ENT:SalesOfferPackageElement:SingleTrip2Zones" version="1">
+                    <Name lang="en">Single trip valid within two zones</Name>
+                    <salesOfferPackageElements>
+                        <SalesOfferPackageElement id="ENT:SalesOfferPackageElement:SingleTrip2Zones" version="1" order="1">
+                            <Name lang="en">Single trip valid within two fare zones valid for one and a halv hours</Name>
+                            <PreassignedFareProductRef ref="ENT:PreassignedFareProduct:SingleTrip2Zones" version="1"/>
+                            <validityParameterAssignments>
+                                <GenericParameterAssignment id="ENT:GenericParameterAssignment:11" version="1" order="0">
+                                    <limitations>
+                                        <TransferabilityRef ref="ENT:Transferability:1" version="1"/>
+                                        <FrequencyOfUseRef ref="ENT:FrequencyOfUse:1" version="1"/>
+                                    </limitations>
+                                </GenericParameterAssignment>
+                            </validityParameterAssignments>
+                        </SalesOfferPackageElement>
+                    </salesOfferPackageElements>
+                </SalesOfferPackage>
+            </salesOfferPackages>
+            
+            
+            <groupsOfSalesOfferPackages>
+                <GroupOfSalesOfferPackages id="ENT:GroupOfSalesOfferPackages:1" version="1">
+                    <Name>GroupOfSalesOfferPackages</Name>
+                </GroupOfSalesOfferPackages>
+            </groupsOfSalesOfferPackages>
+            
+            <distributionAssignments>
+                <DistributionAssignment id="ENT:DistributionAssignment:1" version="1" order="1">
+                    <Name>test</Name>
+                </DistributionAssignment>
+            </distributionAssignments>
+        </FareFrame>
+
+
+
+        <!-- SalesTransaction data for Ruter# Zone 1 and Zone 2V single tickets (random selection of variants) -->
+        <!-- REMARK: 
+            Use cases are split into individual SalesTransactionFrames for containing/highlighting each dataset.
+            However, as long as the ValidityConditions are the same (which they inherently are in these examples),
+            or where these structured within a CompositionFrame, the data can be merged into the same SalesTransactionFrame. -->  
+
+
+        <!-- Zone 1 mobile ticket (activates upon purchase): -->
+        
+        <SalesTransactionFrame id="ENT:SalesTransactionFrame:1" version="1">
+            <validityConditions>
+                <AvailabilityCondition id="ENT:AvailabilityCondition:3" version="1">
+                    <FromDate>2020-01-26T00:00:00</FromDate>
+                </AvailabilityCondition>
+            </validityConditions>
+            
+            
+            <customerAccounts>
+                <CustomerAccount id="ENT:CustomerAccount:1" version="1"/>
+                <!-- usually reference to external dataset -->
+            </customerAccounts>
+            
+            
+            <fareContracts>
+                <FareContract id="ENT:FareContract:1" version="1">
+                    <Name lang="en">Full price single mobile ticket for travel within one zone</Name>
+                    <StartDate>2020-07-22T11:00:00</StartDate>
+                    <EndDate>2020-07-22T12:00:00</EndDate>
+                    <fareContractEntries>
+                        <SalesTransaction id="ENT:SalesTransaction:1" version="1">
+                            <Name lang="en">Purchase of full price single mobile ticket for travel within one zone</Name>
+                            <Date>2020-07-22T11:00:00</Date>
+                            <Amount>37</Amount>
+                            <Currency>NOK</Currency>
+                            <PaymentMethod>mobilePhone</PaymentMethod>
+                            <customerPurchasePackages>
+                                <CustomerPurchasePackageRef ref="ENT:CustomerPurchasePackage:SingleTrip1ZoneActivated" version="1"/>
+                            </customerPurchasePackages>
+                        </SalesTransaction>
+                    </fareContractEntries>
+                </FareContract>
+            </fareContracts>
+
+            <travelDocuments>
+                <TravelDocument id="ENT:TravelDocument:1" version="1">
+                    <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:AppRuterBillett" version="1"/>
+                </TravelDocument>
+            </travelDocuments>
+            
+            <customerPurchasePackages>
+                <CustomerPurchasePackage id="ENT:CustomerPurchasePackage:SingleTrip1ZoneActivated" version="1">
+                    <SalesOfferPackageRef ref="ENT:SalesOfferPackage:SingleTrip1Zone" version="1"/>
+                    <customerPurchasePackageElements>
+                        <CustomerPurchasePackageElement id="ENT:CustomerPurchasePackageElement:SingleTrip1ZoneActivated" version="1" order="1">
+                            <SalesOfferPackageElementRef ref="ENT:SalesOfferPackageElement:SingleTrip1Zone" version="1"/>
+                            
+                            <!-- CHECK: <PreassignedFareProduct> indirekte referert, og man trenger ikke angi eksplisitt -->  
+                            
+                            <elementAccesses>
+                                <CustomerPurchasePackageElementAccess id="ENT:CustomerPurchasePackageElementAccess:1" version="1" created="2020-07-22T11:00:00">
+                                    <ValidableElementRef ref="ENT:ValidableElement:1" version="1"/>
+                                    <MarkedAs>activated</MarkedAs>
+                                    <validityParameterAssignments>
+                                        <CustomerPurchaseParameterAssignment id="ENT:CustomerPurchasePackageElementAccess:1" version="1" order="1">
+                                            
+                                            <!-- CHECK: <ValidableElementRef> indirekte referert, likevel angi eksplisitt for ParameterAssignment? -->
+                                            
+                                            <limitations>
+                                                <UsageValidityPeriodRef ref="ENT:UsageValidityPeriod:1" version="1"/>
+                                                <UserProfileRef ref="ENT:UserProfile:NormalFare" version="1"/>
+                                            </limitations>
+                                        </CustomerPurchaseParameterAssignment>
+                                    </validityParameterAssignments>
+                                </CustomerPurchasePackageElementAccess>
+                            </elementAccesses>
+                        </CustomerPurchasePackageElement>
+                    </customerPurchasePackageElements>
+                    
+                    <!-- CHECK: Redundant, trenger ikke gjentas? -->
+                    <!--
+                    <prices>
+                        <CustomerPurchasePackagePrice id="ENT:CustomerPurchasePackagePrice:1">
+                            <Amount>699</Amount>
+                            <Currency>NOK</Currency>
+                        </CustomerPurchasePackagePrice>
+                    </prices>
+                    -->
+                </CustomerPurchasePackage>
+            </customerPurchasePackages>
+
+        </SalesTransactionFrame>
+        
+        
+        
+        
+        <!-- Zone 2V Travelcard (permanent or temporary) reduced price ticket: -->
+        
+        <SalesTransactionFrame id="ENT:SalesTransactionFrame:2" version="1">
+            <validityConditions>
+                <AvailabilityCondition id="ENT:AvailabilityCondition:4" version="1">
+                    <FromDate>2020-01-26T00:00:00</FromDate>
+                </AvailabilityCondition>
+            </validityConditions>
+            
+            <fareContracts>
+                <FareContract id="ENT:FareContract:2" version="1">
+                    <Name lang="en">Reduced price single travel card ticket for travel within two zones</Name>
+                    <StartDate>2020-07-22T11:00:00</StartDate>
+                    <EndDate>2021-07-22T12:00:00</EndDate> <!-- assumed one year validity -->
+                    <fareContractEntries>
+                        <SalesTransaction id="ENT:SalesTransaction:2" version="1">
+                            <Name lang="en">Purchase of reduced price single travel card ticket for travel within two zones</Name>
+                            <Date>2020-07-22T11:00:00</Date>
+                            <Amount>31</Amount>
+                            <Currency>NOK</Currency>
+                            <PaymentMethod>cashAndCard</PaymentMethod>
+                            <customerPurchasePackages>
+                                <CustomerPurchasePackageRef ref="ENT:CustomerPurchasePackage:SingleTrip2ZonesNotActivated" version="1"/>
+                            </customerPurchasePackages>
+                        </SalesTransaction>
+                    </fareContractEntries>
+                </FareContract>
+            </fareContracts>
+            
+            <travelDocuments>
+                <TravelDocument id="ENT:TravelDocument:2" version="1">
+                    <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:Travelcard" version="1"/>
+                </TravelDocument>
+                <TravelDocument id="ENT:TravelDocument:3" version="1">
+                    <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:SingleUseElectronicTicket" version="1"/>
+                </TravelDocument>
+            </travelDocuments>
+            
+            <customerPurchasePackages>   
+                <CustomerPurchasePackage id="ENT:CustomerPurchasePackage:SingleTrip2ZonesNotActivated" version="1">
+                    <SalesOfferPackageRef ref="ENT:SalesOfferPackageElement:SingleTrip2Zones" version="1"/>
+                    <customerPurchasePackageElements>
+                        
+                        <!-- Before activation -->                        
+                        
+                        <CustomerPurchasePackageElement id="ENT:CustomerPurchasePackageElement:SingleTrip2ZonesNotActivated" version="1" order="1">
+                            <SalesOfferPackageElementRef ref="ENT:SalesOfferPackageElement:SingleTrip2Zones" version="1"/>
+                            
+                            <!-- CHECK: <PreassignedFareProduct> indirekte referert, og man trenger ikke angi eksplisitt -->
+                            
+                            <elementAccesses>
+                                <CustomerPurchasePackageElementAccess id="ENT:CustomerPurchasePackageElementAccess:2" version="1" created="2019-01-01T00:00:00">
+                                    <ValidableElementRef ref="ENT:ValidableElement:2" version="1"/>
+                                    <MarkedAs>unused</MarkedAs>
+                                </CustomerPurchasePackageElementAccess>
+                            </elementAccesses>
+                            
+                            <validityParameterAssignments>
+                                <CustomerPurchaseParameterAssignment version="1" id="ENT:CustomerPurchaseParameterAssignment:2" order="1">
+                                    
+                                    <!-- CHECK: <ValidableElementRef> indirekte referert, likevel angi eksplisitt for ParameterAssignment? -->
+                                    
+                                    <limitations>
+                                        <UserProfileRef ref="ENT:UserProfile:ReducedFare" version="1"/>
+                                    </limitations>
+                                    
+                                    <!-- CHECK: <TariffZone> indirekte referert, likevel angi eksplisitt? -->
+                                    
+                                </CustomerPurchaseParameterAssignment>
+                            </validityParameterAssignments>
+                        </CustomerPurchasePackageElement>
+                        
+                        
+                        <!-- After activation -->
+                        
+                        <CustomerPurchasePackageElement id="ENT:CustomerPurchasePackageElement:SingleTripActivated" version="1" order="1">
+                            <SalesOfferPackageElementRef ref="ENT:SalesOfferPackageElement:SingleTrip2Zones" version="1"/>
+                            
+                            <!-- CHECK: <PreassignedFareProduct> indirekte referert, og man trenger ikke angi eksplisitt -->
+                            
+                            <elementAccesses>
+                                <CustomerPurchasePackageElementAccess id="ENT:CustomerPurchasePackageElementAccess:3" version="1" created="2020-07-22T13:10:00">
+                                    <ValidableElementRef ref="ENT:ValidableElement:2" version="1"/>
+                                    <MarkedAs>activated</MarkedAs>
+                                </CustomerPurchasePackageElementAccess>
+                            </elementAccesses>
+                            
+                            <validityParameterAssignments>
+                                <CustomerPurchaseParameterAssignment version="1" id="ENT:CustomerPurchaseParameterAssignment:3" order="1">
+                                    
+                                    <!-- CHECK: <ValidableElementRef> indirekte referert, likevel angi eksplisitt for ParameterAssignment? -->
+                                    
+                                    <limitations>
+                                        <UsageValidityPeriodRef ref="ENT:UsageValidityPeriod:1" version="1"/>
+                                        <UserProfileRef ref="ENT:UserProfile:ReducedFare" version="1"/>
+                                    </limitations>
+                                    
+                                    <!-- CHECK: <TariffZone> indirekte referert, likevel angi eksplisitt? -->
+                                    
+                                </CustomerPurchaseParameterAssignment>
+                            </validityParameterAssignments>
+                        </CustomerPurchasePackageElement>   
+                    </customerPurchasePackageElements>
+                </CustomerPurchasePackage>
+            </customerPurchasePackages>
+        </SalesTransactionFrame>
+    </dataObjects>
+</PublicationDelivery>
