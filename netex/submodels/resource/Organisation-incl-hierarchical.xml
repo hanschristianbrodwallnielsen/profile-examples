@@ -192,9 +192,9 @@
 
                 
                 
-                <!-- ====================================================== -->
-                <!-- Eksempel 2: Ruter# og (selvstendige) underleverandører -->
-                <!-- ====================================================== -->
+                <!-- ================================================== -->
+                <!-- Eksempel 2: Ruter# med Unibuss som underleverandør -->
+                <!-- ================================================== -->
                 
                 <Authority id="RUT:Authority:Ruter" version="1">
                     <!-- Organisasjonsnummer -->
