@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery 
+    xmlns="http://www.netex.org.uk/netex"
+    version="1.14:NO-NeTEx-fares:0.9">
+    
+    <PublicationTimestamp>2020-08-04T12:00:00Z</PublicationTimestamp>
+    
+    <ParticipantRef>ENT</ParticipantRef>
+    <Description>Organisations</Description>
+    
+    <dataObjects>
+        <ResourceFrame id="ENT:ResourceFrame:1" version="1">
+            
+            <!-- https://enturas.atlassian.net/wiki/spaces/PUBLIC/pages/637370434/List+of+current+Codespaces -->
+            <codespaces>
+                <!-- Supplerende info for Eksempel 1: Vy-konsernet --> 
+                <Codespace id="ent">
+                    <Xmlns>ENT</Xmlns>
+                    <XmlnsUrl>http://www.rutebanken.org/ns/nsr</XmlnsUrl>
+                    <Description>Entur AS</Description>
+                </Codespace>
+                <Codespace id="vyg">
+                    <Xmlns>VYG</Xmlns>
+                    <XmlnsUrl>http://www.rutebanken.org/ns/vyg</XmlnsUrl>
+                    <Description>Vygruppen AS</Description>
+                </Codespace>
+                <Codespace id="vyt">
+                    <Xmlns>VYT</Xmlns>
+                    <XmlnsUrl>http://www.rutebanken.org/ns/vyt</XmlnsUrl>
+                    <Description>Vy Tog AS</Description>
+                </Codespace>
+                <Codespace id="gjb">
+                    <Xmlns>GJB</Xmlns>
+                    <XmlnsUrl>http://www.rutebanken.org/ns/gjb</XmlnsUrl>
+                    <Description>Vy Gjøvikbanen AS</Description>
+                </Codespace>
+                <Codespace id="vyx">
+                    <Xmlns>VYX</Xmlns>
+                    <XmlnsUrl>http://www.rutebanken.org/ns/vyx</XmlnsUrl>
+                    <Description>Vy Buss AS</Description>
+                </Codespace>
+                <Codespace id="vyb">
+                    <Xmlns>VYB</Xmlns>
+                    <XmlnsUrl>http://www.rutebanken.org/ns/vyb</XmlnsUrl>
+                    <Description>Vy Buss (Sverige) AB</Description>
+                </Codespace>
+                
+                <!-- Supplerende info for Eksempel 2: Ruter# og underleverandører -->
+                <Codespace id="rut">
+                    <Xmlns>RUT</Xmlns>
+                    <XmlnsUrl>http://www.rutebanken.org/ns/rut</XmlnsUrl>
+                    <Description>Ruter# AS</Description>
+                </Codespace>
+                <Codespace id="uni">
+                    <Xmlns>UNI</Xmlns>
+                    <XmlnsUrl>http://www.rutebanken.org/ns/uni</XmlnsUrl>
+                    <Description>Unibuss AS</Description>
+                </Codespace>
+            </codespaces>
+            
+            
+            
+            <organisations>
+                
+                <!-- ======================== -->
+                <!-- Eksempel 1: Vy-konsernet -->
+                <!-- ======================== -->
+                
+                <OtherOrganisation id="ENT:OtherOrganisation:Samferdselsdepartementet" version="1">
+                    <!-- Organisasjonsnummer -->
+                    <CompanyNumber>972 417 904</CompanyNumber>
+                    <Name>Samferdselsdepartementet</Name>
+                    <LegalName>SAMFERDSELSDEPARTEMENTET</LegalName>
+                    <OrganisationType>statutoryBody</OrganisationType>
+                    <parts>
+                        <OrganisationPart id="VYG:OrganizationPart:1" version="1">
+                            <GeneralOrganisationRef ref="VYG:GeneralOrganisation:Vygruppen" version="1"/>
+                        </OrganisationPart>
+                    </parts>
+                </OtherOrganisation>
+                
+                <GeneralOrganisation id="VYG:GeneralOrganisation:Vygruppen" version="1">
+                    <!-- Organisasjonsnummer -->
+                    <CompanyNumber>984 661 177</CompanyNumber>
+                    <Name>Vygruppen</Name>
+                    <LegalName>VYGRUPPEN AS</LegalName>
+                    <Description>Tidligere NORGES STATSBANER AS</Description>
+                    <ContactDetails>
+                        <Url>https://www.vy.no/vygruppen/kontakt-oss</Url>
+                    </ContactDetails>
+                    <!-- MANGLER RELEVANT OrganisationTypeEnum; legg inn "group", "parent" og/eller "businessConcern" i NeTEx -->
+                    <OrganisationType>other</OrganisationType>
+                    <parts>
+                        <OrganisationPart id="VYG:OrganizationPart:2" version="1">
+                            <OperatorRef ref="VYG:Operator:VYT" version="1"/>
+                        </OrganisationPart>
+                        <OrganisationPart id="VYG:OrganizationPart:3" version="1">
+                            <OperatorRef ref="VYG:Operator:GJB" version="1"/>
+                        </OrganisationPart>
+                        <OrganisationPart id="VYG:OrganizationPart:4" version="1">
+                            <OperatorRef ref="VYG:Operator:VYX" version="1"/>
+                        </OrganisationPart>
+                    </parts>
+                </GeneralOrganisation>
+                
+                <Operator id="VYG:Operator:VYT" version="1">
+                    <!-- Organisasjonsnummer -->
+                    <CompanyNumber>917 374 988</CompanyNumber>
+                    <Name>Vy Tog</Name>
+                    <LegalName>VY TOG AS</LegalName>
+                    <Description>Tidligere NSB ANBUD AS</Description>
+                    <ContactDetails>
+                        <Url>https://www.vy.no/kundeservice/hjelp-og-kontakt?item=2699</Url>
+                    </ContactDetails>
+                    <OrganisationType>operator</OrganisationType>
+                    <Address>
+                        <AddressLine1>Schweigaards gate 23</AddressLine1>
+                        <Town>Oslo</Town>
+                        <PostCode>0191</PostCode>
+                    </Address>
+                    <OperatorActivities>passenger</OperatorActivities>
+                </Operator>
+                
+                <Operator id="VYG:Operator:GJB" version="1">
+                    <!-- Organisasjonsnummer -->
+                    <CompanyNumber>987 831 278</CompanyNumber>
+                    <Name>Vy Gjøvikbanen</Name>
+                    <LegalName>VY GJØVIKBANEN AS</LegalName>
+                    <ContactDetails>
+                        <Url>https://www.vy.no/kundeservice/hjelp-og-kontakt?item=2699</Url>
+                    </ContactDetails>
+                    <PrivateContactDetails>
+                        <Phone>23 15 00 00</Phone>
+                    </PrivateContactDetails>
+                    <OrganisationType>operator</OrganisationType>
+                    <Address>
+                        <AddressLine1>Schweigaards gate 23</AddressLine1>
+                        <Town>Oslo</Town>
+                        <PostCode>0191</PostCode>
+                    </Address>
+                    <OperatorActivities>passenger</OperatorActivities>
+                </Operator>
+                
+                <Operator id="VYG:Operator:VYX" version="1">
+                    <!-- Organisasjonsnummer -->
+                    <CompanyNumber>917 374 988</CompanyNumber>
+                    <Name>Vy Buss</Name>
+                    <LegalName>VY BUSS AS</LegalName>
+                    <Description>Tidligere NETTBUSS AS</Description>
+                    <ContactDetails>
+                        <Url>https://www.vy.no/kundeservice/hjelp-og-kontakt?item=2700</Url>
+                    </ContactDetails>
+                    <PrivateContactDetails>
+                        <Phone>815 81 105</Phone>
+                    </PrivateContactDetails>
+                    <OrganisationType>operator</OrganisationType>
+                    <parts>
+                        <OrganisationPart id="VYG:OrganizationPart:5" version="1">
+                            <OperatorRef ref="VYG:Operator:VYB" version="1"/>
+                        </OrganisationPart>
+                    </parts>
+                    <Address>
+                        <AddressLine1>Postboks 1800 Sentrum</AddressLine1>
+                        <Town>Oslo</Town>
+                        <PostCode>0048</PostCode>
+                    </Address>
+                    <OperatorActivities>passenger</OperatorActivities>
+                </Operator>
+                
+                <Operator id="VYG:Operator:VYB" version="1">
+                    <!-- Organisasjonsnummer (svensk), datterselskap av Vy Buss AS -->
+                    <CompanyNumber>556429-0319</CompanyNumber>
+                    <Name>Vy Buss AB</Name>
+                    <LegalName>VY BUSS AB</LegalName>
+                    <Description>Vy buss Sverige</Description>
+                    <ContactDetails>
+                        <Url>https://www.nettbuss.no/om-vybuss/selskapet/</Url>
+                    </ContactDetails>
+                    <PrivateContactDetails>
+                        <Phone>(+49) 0770456565</Phone>
+                    </PrivateContactDetails>
+                    <OrganisationType>operator</OrganisationType>
+                    <Address>
+                        <CountryName>Sweden</CountryName>
+                        <AddressLine1>Polhemsplatsen 5</AddressLine1>
+                        <Town>Göteborg</Town>
+                        <PostCode>411 11</PostCode>
+                    </Address>
+                    <OperatorActivities>passenger</OperatorActivities>
+                </Operator>
+                
+
+                
+                
+                <!-- ====================================================== -->
+                <!-- Eksempel 2: Ruter# og (selvstendige) underleverandører -->
+                <!-- ====================================================== -->
+                
+                <Authority id="RUT:Authority:Ruter" version="1">
+                    <!-- Organisasjonsnummer -->
+                    <CompanyNumber>991609407</CompanyNumber>
+                    <Name>Ruter#</Name>
+                    <LegalName>RUTER AS</LegalName>
+                    <Description>Tidligere OSLO OG AKERSHUS KOLLEKTIVTRAFIKK AS</Description>
+                    <ContactDetails>
+                        <Email>post@ruter.no</Email>
+                        <Phone>177 (or 22 05 70 70)</Phone>
+                        <Url>https://ruter.no/fa-hjelp/kontakt-oss/</Url>
+                    </ContactDetails>
+                    <Address>
+                        <AddressLine1>Dronningens gate 40, 4.etg.</AddressLine1>
+                        <Town>Oslo</Town>
+                        <PostCode>0154</PostCode>
+                    </Address>
+                </Authority>
+                
+                
+                <OtherOrganisation id="RUT:OtherOrganisation:OsloKommune" version="1">
+                    <!-- Organisasjonsnummer -->
+                    <CompanyNumber>958 935 420</CompanyNumber>
+                    <Name>Samferdselsdepartementet</Name>
+                    <LegalName>SAMFERDSELSDEPARTEMENTET</LegalName>
+                    <OrganisationType>statutoryBody</OrganisationType>
+                    <parts>
+                        <OrganisationPart id="VYG:OrganizationPart:6" version="1">
+                            <GeneralOrganisationRef ref="RUT:GeneralOrganisation:Sporveien" version="1"/>
+                        </OrganisationPart>
+                    </parts>
+                </OtherOrganisation>
+                
+                <GeneralOrganisation id="RUT:GeneralOrganisation:Sporveien" version="1">
+                    <!-- Organisasjonsnummer -->
+                    <CompanyNumber>915 070 434</CompanyNumber>
+                    <Name>Sporveien</Name>
+                    <LegalName>SPORVEIEN AS</LegalName>
+                    <Description>Tidligere SPORVEIEN OSLO AS</Description>
+                    <ContactDetails>
+                        <Phone>+47 22 08 40 00</Phone>
+                        <Url>https://sporveien.com/inter/kontaktoss?p_document_id=34236</Url>
+                    </ContactDetails>
+                    <OrganisationType>facilityOperator</OrganisationType>
+                    <parts>    
+                        <OrganisationPart id="VYG:OrganizationPart:7" version="1">
+                            <OperatorRef ref="RUT:Operator:UNI" version="1"/>
+                        </OrganisationPart>
+                    </parts>
+                </GeneralOrganisation>
+                
+                <!-- Unibuss er innleid og kjører (for eksempelets skyld) KUN ruter på vegne av Ruter# 
+                    (med data levert i RUT codespace) -->
+                <Operator version="1" id="RUT:Operator:UNI">
+                    <!-- Organisasjonsnummer -->
+                    <CompanyNumber>985615616</CompanyNumber>
+                    <Name>Unibuss</Name>
+                    <LegalName>UNIBUSS AS</LegalName>
+                    <Description>Tidligere NEXUS TRAFIKK AS</Description>
+                    <ContactDetails>
+                        <Email>post@unibuss.no</Email>
+                        <Phone>22 08 40 00 / 22 08 43 00</Phone>
+                        <Fax>22 08 43 01</Fax>
+                        <Url>https://www.unibuss.no/kontakt/</Url>
+                    </ContactDetails>
+                    <Address>
+                        <AddressLine1>Schweigaards gate 16</AddressLine1>
+                        <Town>Oslo</Town>
+                        <PostCode>0191</PostCode>
+                    </Address>
+                    <PrimaryMode>bus</PrimaryMode>
+                    <OperatorActivities>passenger</OperatorActivities>
+                    <CustomerServiceContactDetails>
+                        <Phone>61 05 19 10</Phone>
+                        <Url>https://ruter.no/fa-hjelp/kontakt-oss/</Url>
+                    </CustomerServiceContactDetails>
+                </Operator>
+                
+            </organisations>
+        </ResourceFrame>
+    </dataObjects>
+</PublicationDelivery>
