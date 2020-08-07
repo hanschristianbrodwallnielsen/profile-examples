@@ -76,7 +76,7 @@
                 </OtherOrganisation>
 
                 <!-- add responsibilities to this organization by using responsibiltySetRef -->
-                <GeneralOrganisation id="NOG:GeneralOrganisation:Vygruppen" version="1" responsibilitySetRef="RB:ResponsibilitySet:InnsendingRutedata">
+                <GeneralOrganisation id="NOG:GeneralOrganisation:Vygruppen" version="1" responsibilitySetRef="NOG:ResponsibilitySet:InnsendingRutedata">
                     <!-- Organisasjonsnummer -->
                     <CompanyNumber>984 661 177</CompanyNumber>
                     <Name>Vygruppen</Name>
@@ -145,22 +145,22 @@
                         <ResponsibilitySet version="1" id="NOG:ResponsibilitySet:InnsendingRutedata">
                             <Name>Innsending av rutedata for VY Gruppen</Name>
                             <roles>
-                                <ResponsibilityRoleAssignment id="RB:ResponsibilityRoleAssignment:11" version="1">
+                                <ResponsibilityRoleAssignment id="NOG:ResponsibilityRoleAssignment:11" version="1">
                                     <DataRoleType>creates</DataRoleType>
                                     <ResponsibleOrganisationRef version="1" ref="NOG:Operator:VYT"/>
                                     <ResponsibleAreaRef ref="NOG:AdministrativeZone:Tog" version="1"/>
                                 </ResponsibilityRoleAssignment>
-                                <ResponsibilityRoleAssignment id="RB:ResponsibilityRoleAssignment:12" version="1">
+                                <ResponsibilityRoleAssignment id="NOG:ResponsibilityRoleAssignment:12" version="1">
                                     <DataRoleType>creates</DataRoleType>
                                     <ResponsibleOrganisationRef version="1" ref="NOG:Operator:GJB"/>
                                     <ResponsibleAreaRef ref="NOG:AdministrativeZone:GJB" version="1"/>
                                 </ResponsibilityRoleAssignment>
-                                <ResponsibilityRoleAssignment id="RB:ResponsibilityRoleAssignment:13" version="1">
+                                <ResponsibilityRoleAssignment id="NOG:ResponsibilityRoleAssignment:13" version="1">
                                     <DataRoleType>creates</DataRoleType>
                                     <ResponsibleOrganisationRef version="1" ref="NOG:Operator:VYX"/>
                                     <ResponsibleAreaRef ref="NOG:AdministrativeZone:VYX" version="1"/>
                                 </ResponsibilityRoleAssignment>
-                                <ResponsibilityRoleAssignment id="RB:ResponsibilityRoleAssignment:14" version="1">
+                                <ResponsibilityRoleAssignment id="NOG:ResponsibilityRoleAssignment:14" version="1">
                                     <DataRoleType>creates</DataRoleType>
                                     <ResponsibleOrganisationRef version="1" ref="NOG:Operator:VYB"/>
                                     <ResponsibleAreaRef ref="NOG:AdministrativeZone:VYB" version="1"/>
