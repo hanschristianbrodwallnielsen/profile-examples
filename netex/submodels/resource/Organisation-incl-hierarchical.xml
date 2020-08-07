@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gml="http://www.opengis.net/gml/3.2" version="1.14:NO-NeTEx-fares:0.9">
+<PublicationDelivery 
+  xmlns="http://www.netex.org.uk/netex" 
+  xmlns:gml="http://www.opengis.net/gml/3.2" 
+  version="1.14:NO-NeTEx-fares:0.9">
 
     <PublicationTimestamp>2020-08-04T12:00:00Z</PublicationTimestamp>
 
@@ -11,12 +14,19 @@
 
             <!-- https://enturas.atlassian.net/wiki/spaces/PUBLIC/pages/637370434/List+of+current+Codespaces -->
             <codespaces>
-                <!-- Supplerende info for Eksempel 1: Vy-konsernet -->
+                
+                <Codespace id="nog">
+                    <Xmlns>NOG</Xmlns>
+                    <XmlnsUrl>http://www.rutebanken.org/ns/nog</XmlnsUrl>
+                    <Description>Nasjonalt Organisasjonsregister (forvaltet av Entur)</Description>
+                </Codespace>
                 <Codespace id="ent">
                     <Xmlns>ENT</Xmlns>
                     <XmlnsUrl>http://www.rutebanken.org/ns/nsr</XmlnsUrl>
                     <Description>Entur AS</Description>
                 </Codespace>
+                
+                <!-- Supplerende info for Eksempel 1: Vy-konsernet -->
                 <Codespace id="vyg">
                     <Xmlns>VYG</Xmlns>
                     <XmlnsUrl>http://www.rutebanken.org/ns/vyg</XmlnsUrl>
@@ -148,22 +158,22 @@
                                 <ResponsibilityRoleAssignment id="RB:ResponsibilityRoleAssignment:11" version="1">
                                     <DataRoleType>creates</DataRoleType>
                                     <ResponsibleOrganisationRef version="1" ref="NOG:Operator:VYT"/>
-                                    <ResponsibleAreaRef ref="NOG:AdministrativeZone:Tog" version="1"/>
+                                    <!--ResponsibleAreaRef ref="NOG:AdministrativeZone:Tog" version="1"/-->
                                 </ResponsibilityRoleAssignment>
                                 <ResponsibilityRoleAssignment id="RB:ResponsibilityRoleAssignment:12" version="1">
                                     <DataRoleType>creates</DataRoleType>
                                     <ResponsibleOrganisationRef version="1" ref="NOG:Operator:GJB"/>
-                                    <ResponsibleAreaRef ref="NOG:AdministrativeZone:GJB" version="1"/>
+                                    <!--ResponsibleAreaRef ref="NOG:AdministrativeZone:GJB" version="1"/-->
                                 </ResponsibilityRoleAssignment>
                                 <ResponsibilityRoleAssignment id="RB:ResponsibilityRoleAssignment:13" version="1">
                                     <DataRoleType>creates</DataRoleType>
                                     <ResponsibleOrganisationRef version="1" ref="NOG:Operator:VYX"/>
-                                    <ResponsibleAreaRef ref="NOG:AdministrativeZone:VYX" version="1"/>
+                                    <!--ResponsibleAreaRef ref="NOG:AdministrativeZone:VYX" version="1"/-->
                                 </ResponsibilityRoleAssignment>
                                 <ResponsibilityRoleAssignment id="RB:ResponsibilityRoleAssignment:14" version="1">
                                     <DataRoleType>creates</DataRoleType>
                                     <ResponsibleOrganisationRef version="1" ref="NOG:Operator:VYB"/>
-                                    <ResponsibleAreaRef ref="NOG:AdministrativeZone:VYB" version="1"/>
+                                    <!--ResponsibleAreaRef ref="NOG:AdministrativeZone:VYB" version="1"/-->
                                 </ResponsibilityRoleAssignment>
                             </roles>
                         </ResponsibilitySet>
