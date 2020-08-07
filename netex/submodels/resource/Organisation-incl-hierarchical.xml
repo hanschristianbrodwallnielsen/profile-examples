@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery 
-    xmlns="http://www.netex.org.uk/netex"
-    version="1.14:NO-NeTEx-fares:0.9">
-    
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gml="http://www.opengis.net/gml/3.2" version="1.14:NO-NeTEx-fares:0.9">
+
     <PublicationTimestamp>2020-08-04T12:00:00Z</PublicationTimestamp>
-    
+
     <ParticipantRef>ENT</ParticipantRef>
     <Description>Organisations</Description>
-    
+
     <dataObjects>
-        <ResourceFrame id="ENT:ResourceFrame:1" version="1">
-            
+        <ResourceFrame id="NOG:ResourceFrame:1" version="1">
+
             <!-- https://enturas.atlassian.net/wiki/spaces/PUBLIC/pages/637370434/List+of+current+Codespaces -->
             <codespaces>
-                <!-- Supplerende info for Eksempel 1: Vy-konsernet --> 
+                <!-- Supplerende info for Eksempel 1: Vy-konsernet -->
                 <Codespace id="ent">
                     <Xmlns>ENT</Xmlns>
                     <XmlnsUrl>http://www.rutebanken.org/ns/nsr</XmlnsUrl>
@@ -44,7 +42,7 @@
                     <XmlnsUrl>http://www.rutebanken.org/ns/vyb</XmlnsUrl>
                     <Description>Vy Buss (Sverige) AB</Description>
                 </Codespace>
-                
+
                 <!-- Supplerende info for Eksempel 2: Ruter# og underleverandører -->
                 <Codespace id="rut">
                     <Xmlns>RUT</Xmlns>
@@ -57,29 +55,28 @@
                     <Description>Unibuss AS</Description>
                 </Codespace>
             </codespaces>
-            
-            
-            
+
             <organisations>
-                
+
                 <!-- ======================== -->
                 <!-- Eksempel 1: Vy-konsernet -->
                 <!-- ======================== -->
-                
-                <OtherOrganisation id="ENT:OtherOrganisation:Samferdselsdepartementet" version="1">
+
+                <OtherOrganisation id="NOG:OtherOrganisation:Samferdselsdepartementet" version="1">
                     <!-- Organisasjonsnummer -->
                     <CompanyNumber>972 417 904</CompanyNumber>
                     <Name>Samferdselsdepartementet</Name>
                     <LegalName>SAMFERDSELSDEPARTEMENTET</LegalName>
                     <OrganisationType>statutoryBody</OrganisationType>
                     <parts>
-                        <OrganisationPart id="VYG:OrganizationPart:1" version="1">
-                            <GeneralOrganisationRef ref="VYG:GeneralOrganisation:Vygruppen" version="1"/>
+                        <OrganisationPart id="NOG:OrganizationPart:1" version="1">
+                            <GeneralOrganisationRef ref="NOG:GeneralOrganisation:Vygruppen" version="1"/>
                         </OrganisationPart>
                     </parts>
                 </OtherOrganisation>
-                
-                <GeneralOrganisation id="VYG:GeneralOrganisation:Vygruppen" version="1">
+
+                <!-- add responsibilities to this organization by using responsibiltySetRef -->
+                <GeneralOrganisation id="NOG:GeneralOrganisation:Vygruppen" version="1" responsibilitySetRef="RB:ResponsibilitySet:InnsendingRutedata">
                     <!-- Organisasjonsnummer -->
                     <CompanyNumber>984 661 177</CompanyNumber>
                     <Name>Vygruppen</Name>
@@ -91,19 +88,90 @@
                     <!-- MANGLER RELEVANT OrganisationTypeEnum; legg inn "group", "parent" og/eller "businessConcern" i NeTEx -->
                     <OrganisationType>other</OrganisationType>
                     <parts>
-                        <OrganisationPart id="VYG:OrganizationPart:2" version="1">
-                            <OperatorRef ref="VYG:Operator:VYT" version="1"/>
+                        <OrganisationPart id="NOG:OrganizationPart:2" version="1">
+                            <OperatorRef ref="NOG:Operator:VYT" version="1"/>
+                            <!-- define an adminstrative zone where whe can assign the codespace to use -->
+                            <administrativeZones>
+                                <AdministrativeZone id="NOG:AdministrativeZone:Tog" version="1">
+                                    <Name>Vy TOG</Name>
+                                    <!-- could add polygon -->
+                                    <codespaceAssignments>
+                                        <CodespaceAssignment id="NOG:CodespaceAssignment:1" version="1">
+                                            <CodespaceRef ref="vyt"/>
+                                        </CodespaceAssignment>
+                                    </codespaceAssignments>
+                                </AdministrativeZone>
+                            </administrativeZones>
                         </OrganisationPart>
-                        <OrganisationPart id="VYG:OrganizationPart:3" version="1">
-                            <OperatorRef ref="VYG:Operator:GJB" version="1"/>
+                        <OrganisationPart id="NOG:OrganizationPart:3" version="1">
+                            <OperatorRef ref="NOG:Operator:GJB" version="1"/>
+                            <administrativeZones>
+                                <AdministrativeZone id="NOG:AdministrativeZone:GJB" version="1">
+                                    <Name>Gjøvikbanen tog</Name>
+                                    <!-- could add polygon -->
+                                    <codespaceAssignments>
+                                        <CodespaceAssignment id="NOG:CodespaceAssignment:2" version="1">
+                                            <CodespaceRef ref="gjb"/>
+                                        </CodespaceAssignment>
+                                    </codespaceAssignments>
+                                </AdministrativeZone>
+                            </administrativeZones>
                         </OrganisationPart>
-                        <OrganisationPart id="VYG:OrganizationPart:4" version="1">
-                            <OperatorRef ref="VYG:Operator:VYX" version="1"/>
+                        <OrganisationPart id="NOG:OrganizationPart:4" version="1">
+                            <OperatorRef ref="NOG:Operator:VYX" version="1"/>
+                            <administrativeZones>
+                                <AdministrativeZone id="NOG:AdministrativeZone:Buss" version="1">
+                                    <Name>Vy TOG</Name>
+                                    <!-- could add polygon -->
+                                    <codespaceAssignments>
+                                        <CodespaceAssignment id="NOG:CodespaceAssignment:3" version="1">
+                                            <CodespaceRef ref="vyx"/>
+                                        </CodespaceAssignment>
+                                    </codespaceAssignments>
+                                </AdministrativeZone>
+                                <AdministrativeZone id="NOG:AdministrativeZone:BussSverige" version="1">
+                                    <Name>Vy TOG</Name>
+                                    <!-- could add polygon -->
+                                    <codespaceAssignments>
+                                        <CodespaceAssignment id="NOG:CodespaceAssignment:4" version="1">
+                                            <CodespaceRef ref="vyb"/>
+                                        </CodespaceAssignment>
+                                    </codespaceAssignments>
+                                </AdministrativeZone>
+                            </administrativeZones>
                         </OrganisationPart>
                     </parts>
+                    <ownResponsibilitySets>
+                        <ResponsibilitySet version="1" id="NOG:ResponsibilitySet:InnsendingRutedata">
+                            <Name>Innsending av rutedata for VY Gruppen</Name>
+                            <roles>
+                                <ResponsibilityRoleAssignment id="RB:ResponsibilityRoleAssignment:11" version="1">
+                                    <DataRoleType>creates</DataRoleType>
+                                    <ResponsibleOrganisationRef version="1" ref="NOG:Operator:VYT"/>
+                                    <ResponsibleAreaRef ref="NOG:AdministrativeZone:Tog" version="1"/>
+                                </ResponsibilityRoleAssignment>
+                                <ResponsibilityRoleAssignment id="RB:ResponsibilityRoleAssignment:12" version="1">
+                                    <DataRoleType>creates</DataRoleType>
+                                    <ResponsibleOrganisationRef version="1" ref="NOG:Operator:GJB"/>
+                                    <ResponsibleAreaRef ref="NOG:AdministrativeZone:GJB" version="1"/>
+                                </ResponsibilityRoleAssignment>
+                                <ResponsibilityRoleAssignment id="RB:ResponsibilityRoleAssignment:13" version="1">
+                                    <DataRoleType>creates</DataRoleType>
+                                    <ResponsibleOrganisationRef version="1" ref="NOG:Operator:VYX"/>
+                                    <ResponsibleAreaRef ref="NOG:AdministrativeZone:VYX" version="1"/>
+                                </ResponsibilityRoleAssignment>
+                                <ResponsibilityRoleAssignment id="RB:ResponsibilityRoleAssignment:14" version="1">
+                                    <DataRoleType>creates</DataRoleType>
+                                    <ResponsibleOrganisationRef version="1" ref="NOG:Operator:VYB"/>
+                                    <ResponsibleAreaRef ref="NOG:AdministrativeZone:VYB" version="1"/>
+                                </ResponsibilityRoleAssignment>
+                            </roles>
+                        </ResponsibilitySet>
+                    </ownResponsibilitySets>
+
                 </GeneralOrganisation>
-                
-                <Operator id="VYG:Operator:VYT" version="1">
+
+                <Operator id="NOG:Operator:VYT" version="1">
                     <!-- Organisasjonsnummer -->
                     <CompanyNumber>917 374 988</CompanyNumber>
                     <Name>Vy Tog</Name>
@@ -120,8 +188,8 @@
                     </Address>
                     <OperatorActivities>passenger</OperatorActivities>
                 </Operator>
-                
-                <Operator id="VYG:Operator:GJB" version="1">
+
+                <Operator id="NOG:Operator:GJB" version="1">
                     <!-- Organisasjonsnummer -->
                     <CompanyNumber>987 831 278</CompanyNumber>
                     <Name>Vy Gjøvikbanen</Name>
@@ -132,7 +200,7 @@
                     <PrivateContactDetails>
                         <Phone>23 15 00 00</Phone>
                     </PrivateContactDetails>
-                    <OrganisationType>operator</OrganisationType>
+
                     <Address>
                         <AddressLine1>Schweigaards gate 23</AddressLine1>
                         <Town>Oslo</Town>
@@ -140,8 +208,8 @@
                     </Address>
                     <OperatorActivities>passenger</OperatorActivities>
                 </Operator>
-                
-                <Operator id="VYG:Operator:VYX" version="1">
+
+                <Operator id="NOG:Operator:VYX" version="1">
                     <!-- Organisasjonsnummer -->
                     <CompanyNumber>917 374 988</CompanyNumber>
                     <Name>Vy Buss</Name>
@@ -153,10 +221,10 @@
                     <PrivateContactDetails>
                         <Phone>815 81 105</Phone>
                     </PrivateContactDetails>
-                    <OrganisationType>operator</OrganisationType>
+
                     <parts>
-                        <OrganisationPart id="VYG:OrganizationPart:5" version="1">
-                            <OperatorRef ref="VYG:Operator:VYB" version="1"/>
+                        <OrganisationPart id="NOG:OrganizationPart:5" version="1">
+                            <OperatorRef ref="NOG:Operator:VYB" version="1"/>
                         </OrganisationPart>
                     </parts>
                     <Address>
@@ -166,8 +234,8 @@
                     </Address>
                     <OperatorActivities>passenger</OperatorActivities>
                 </Operator>
-                
-                <Operator id="VYG:Operator:VYB" version="1">
+
+                <Operator id="NOG:Operator:VYB" version="1">
                     <!-- Organisasjonsnummer (svensk), datterselskap av Vy Buss AS -->
                     <CompanyNumber>556429-0319</CompanyNumber>
                     <Name>Vy Buss AB</Name>
@@ -188,15 +256,15 @@
                     </Address>
                     <OperatorActivities>passenger</OperatorActivities>
                 </Operator>
-                
 
-                
-                
+
+
+
                 <!-- ================================================== -->
                 <!-- Eksempel 2: Ruter# med Unibuss som underleverandør -->
                 <!-- ================================================== -->
-                
-                <Authority id="RUT:Authority:Ruter" version="1">
+
+                <Authority id="NOG:Authority:Ruter" version="1">
                     <!-- Organisasjonsnummer -->
                     <CompanyNumber>991609407</CompanyNumber>
                     <Name>Ruter#</Name>
@@ -213,22 +281,22 @@
                         <PostCode>0154</PostCode>
                     </Address>
                 </Authority>
-                
-                
-                <OtherOrganisation id="RUT:OtherOrganisation:OsloKommune" version="1">
+
+
+                <OtherOrganisation id="NOG:OtherOrganisation:OsloKommune" version="1">
                     <!-- Organisasjonsnummer -->
                     <CompanyNumber>958 935 420</CompanyNumber>
                     <Name>Samferdselsdepartementet</Name>
                     <LegalName>SAMFERDSELSDEPARTEMENTET</LegalName>
                     <OrganisationType>statutoryBody</OrganisationType>
                     <parts>
-                        <OrganisationPart id="VYG:OrganizationPart:6" version="1">
-                            <GeneralOrganisationRef ref="RUT:GeneralOrganisation:Sporveien" version="1"/>
+                        <OrganisationPart id="NOG:OrganizationPart:6" version="1">
+                            <GeneralOrganisationRef ref="NOG:GeneralOrganisation:Sporveien" version="1"/>
                         </OrganisationPart>
                     </parts>
                 </OtherOrganisation>
-                
-                <GeneralOrganisation id="RUT:GeneralOrganisation:Sporveien" version="1">
+
+                <GeneralOrganisation id="NOG:GeneralOrganisation:Sporveien" version="1">
                     <!-- Organisasjonsnummer -->
                     <CompanyNumber>915 070 434</CompanyNumber>
                     <Name>Sporveien</Name>
@@ -239,16 +307,16 @@
                         <Url>https://sporveien.com/inter/kontaktoss?p_document_id=34236</Url>
                     </ContactDetails>
                     <OrganisationType>facilityOperator</OrganisationType>
-                    <parts>    
-                        <OrganisationPart id="VYG:OrganizationPart:7" version="1">
-                            <OperatorRef ref="RUT:Operator:UNI" version="1"/>
+                    <parts>
+                        <OrganisationPart id="NOG:OrganizationPart:7" version="1">
+                            <OperatorRef ref="NOG:Operator:UNI" version="1"/>
                         </OrganisationPart>
                     </parts>
                 </GeneralOrganisation>
-                
+
                 <!-- Unibuss er innleid og kjører (for eksempelets skyld) KUN ruter på vegne av Ruter# 
                     (med data levert i RUT codespace) -->
-                <Operator version="1" id="RUT:Operator:UNI">
+                <Operator version="1" id="NOG:Operator:UNI">
                     <!-- Organisasjonsnummer -->
                     <CompanyNumber>985615616</CompanyNumber>
                     <Name>Unibuss</Name>
@@ -272,7 +340,7 @@
                         <Url>https://ruter.no/fa-hjelp/kontakt-oss/</Url>
                     </CustomerServiceContactDetails>
                 </Operator>
-                
+
             </organisations>
         </ResourceFrame>
     </dataObjects>
