@@ -12,11 +12,8 @@
     <dataObjects>
         <ResourceFrame id="NOG:ResourceFrame:1" version="1">
 
-            
-
             <!-- https://enturas.atlassian.net/wiki/spaces/PUBLIC/pages/637370434/List+of+current+Codespaces -->
             <codespaces>
-                
                 <Codespace id="nog">
                     <Xmlns>NOG</Xmlns>
                     <XmlnsUrl>http://www.rutebanken.org/ns/nog</XmlnsUrl>
