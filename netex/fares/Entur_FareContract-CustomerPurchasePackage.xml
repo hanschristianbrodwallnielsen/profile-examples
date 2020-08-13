@@ -371,6 +371,14 @@
                         </SalesOfferPackageElement>
                     </salesOfferPackageElements>
                 </SalesOfferPackage>
+                <SalesOfferPackage id="ENT:SalesOfferPackage:Group" version="1">
+                    <Name lang="no">Gruppebillett</Name>
+                    <salesOfferPackageElements>
+                        <SalesOfferPackageElement id="ENT:SalesOfferPackageElement:Group" version="1" order="1">
+                            <Name lang="no">Enkelttur gruppe</Name>
+                        </SalesOfferPackageElement>
+                    </salesOfferPackageElements>
+                </SalesOfferPackage>
             </salesOfferPackages>
 
             <distributionAssignments>
@@ -1369,7 +1377,7 @@
                     </fareContractEntries>
                 </FareContract>
             </fareContracts>
-
+            
             <customerPurchasePackages>
                 <CustomerPurchasePackage id="ENT:CustomerPurchasePackage:Oyafestivalen" version="1">
                     <SalesOfferPackageRef ref="ENT:SalesOfferPackage:Oyafestivalen" version="1"/>
@@ -1382,7 +1390,7 @@
                                     <MarkedAs>activated</MarkedAs>
                                 </CustomerPurchasePackageElementAccess>
                             </elementAccesses>
-
+                            
                             <validityParameterAssignments>
                                 <CustomerPurchaseParameterAssignment version="1" id="ENT:CustomerPurchaseParameterAssignment:18" order="1">
                                     <ValidableElementRef ref="VYT:ValidableElement:SingleTrip" version="1"/>
@@ -1397,6 +1405,98 @@
                                             <EndTime>16:00:00</EndTime>
                                         </UsageValidityPeriod>
                                         <!-- Voksen kan brukes av alle? -->
+                                    </limitations>
+                                    <validityParameters>
+                                        <AuthorityRef ref="VYT:Authority:VYT" version="1"/>
+                                        <ServiceJourneyRef ref="VYT:ServiceJourney:ArendalOslo" version="1"/>
+                                    </validityParameters>
+                                </CustomerPurchaseParameterAssignment>
+                            </validityParameterAssignments>
+                        </CustomerPurchasePackageElement>
+                    </customerPurchasePackageElements>
+                    <prices>
+                        <CustomerPurchasePackagePrice id="ENT:CustomerPurchasePackagePrice:1">
+                            <Amount>100</Amount>
+                            <!-- pris pr pakke, i ordre er 2 av denne -->
+                            <Currency>NOK</Currency>
+                        </CustomerPurchasePackagePrice>
+                    </prices>
+                </CustomerPurchasePackage>
+            </customerPurchasePackages>
+        </SalesTransactionFrame>
+
+        <!-- Eksempel på GROUP TICKET:
+            
+            Travels together on a single ticket (opposed to having separate tickets that could be transferred one and one to separate accounts)
+            
+           2 Voksen
+           1 barn
+           
+           
+        -->
+        <SalesTransactionFrame id="ENT:SalesTransactionFrame:Group" version="1">
+            <fareContracts>
+                <FareContract id="ENT:FareContract:15" version="1">
+                    <Name>2 voksne, 1 barn, gruppebillett</Name>
+                    <StartDate>2018-09-06T01:07:00</StartDate>
+                    <EndDate>2018-09-07T01:07:00</EndDate>
+                    <fareContractEntries>
+                        <SalesTransaction version="1" id="ENT:SalesTransaction:16">
+                            <Name>Gruppebillett</Name>
+                            <Date>2018-09-06T01:07:00</Date>
+                            
+                            <Amount>999</Amount>
+                            <Currency>NOK</Currency>
+                            <PaymentMethod>debitCard</PaymentMethod>
+                            <customerPurchasePackages>
+                                <CustomerPurchasePackageRef ref="ENT:CustomerPurchasePackage:Group" version="1"/>
+                                
+                            </customerPurchasePackages>
+                        </SalesTransaction>
+                    </fareContractEntries>
+                </FareContract>
+            </fareContracts>
+            
+            <customerPurchasePackages>
+                <CustomerPurchasePackage id="ENT:CustomerPurchasePackage:Group" version="1">
+                    <SalesOfferPackageRef ref="ENT:SalesOfferPackage:Group" version="1"/>
+                    <customerPurchasePackageElements>
+                        <CustomerPurchasePackageElement id="ENT:CustomerPurchasePackageElement:Group" version="1" order="1">
+                            <SalesOfferPackageElementRef ref="ENT:SalesOfferPackageElement:Group" version="1"/>
+                            <elementAccesses>
+                                <CustomerPurchasePackageElementAccess id="ENT:CustomerPurchasePackageElementAccess:8" version="1" created="2019-01-01T00:00:00">
+                                    <ValidableElementRef ref="VYT:ValidableElement:SingleTrip" version="1"/>
+                                    <MarkedAs>activated</MarkedAs>
+                                </CustomerPurchasePackageElementAccess>
+                            </elementAccesses>
+                            
+                            <validityParameterAssignments>
+                                <CustomerPurchaseParameterAssignment version="1" id="ENT:CustomerPurchaseParameterAssignment:19" order="1">
+                                    <ValidableElementRef ref="VYT:ValidableElement:SingleTrip" version="1"/>
+                                    <PreassignedFareProductRef ref="VYT:PreassignedFareProduct:SingleTrip" version="1"/>
+                                    <DistanceMatrixElementRef ref="VYT:DistanceMatrixElement:DrammenOslo"/>
+                                    <LimitationGroupingType>AND</LimitationGroupingType>
+                                    <limitations>
+                                        <!-- Group definition -->
+                                        <GroupTicket id="ENT:GroupTicket:1" version="1">
+                                            <MaximumNumberOfPersons>3</MaximumNumberOfPersons>
+                                            <companionProfiles>
+                                                <CompanionProfile id="ENT:CompanionProfile:1" version="1">
+                                                    <UserProfileRef ref="VYT:UserProfile:Voksen" version="1"/>
+                                                    <MaximumNumberOfPersons>2</MaximumNumberOfPersons>
+                                                </CompanionProfile>
+                                                <CompanionProfile id="ENT:CompanionProfile:2" version="1">
+                                                    <UserProfileRef ref="VYT:UserProfile:Barn" version="1"/>
+                                                    <MaximumNumberOfPersons>1</MaximumNumberOfPersons>
+                                                </CompanionProfile>
+                                            </companionProfiles>
+                                        </GroupTicket>
+                                        <UsageValidityPeriod id="ENT:UsageValidityPeriod:8" version="19">
+                                            <StartDate>2018-09-04</StartDate>
+                                            <StartTime>12:00:00</StartTime>
+                                            <EndDate>2018-09-04</EndDate>
+                                            <EndTime>16:00:00</EndTime>
+                                        </UsageValidityPeriod>
                                     </limitations>
                                     <validityParameters>
                                         <AuthorityRef ref="VYT:Authority:VYT" version="1"/>
