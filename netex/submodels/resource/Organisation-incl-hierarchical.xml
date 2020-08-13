@@ -12,6 +12,8 @@
     <dataObjects>
         <ResourceFrame id="NOG:ResourceFrame:1" version="1">
 
+            
+
             <!-- https://enturas.atlassian.net/wiki/spaces/PUBLIC/pages/637370434/List+of+current+Codespaces -->
             <codespaces>
                 
@@ -65,7 +67,8 @@
                     <Description>Unibuss AS</Description>
                 </Codespace>
             </codespaces>
-
+            
+            
             <organisations>
 
                 <!-- ======================== -->
@@ -151,13 +154,14 @@
                             </administrativeZones>
                         </OrganisationPart>
                     </parts>
+                    
                     <ownResponsibilitySets>
                         <ResponsibilitySet version="1" id="NOG:ResponsibilitySet:InnsendingRutedata">
                             <Name>Innsending av rutedata for VY Gruppen</Name>
                             <roles>
                                 <ResponsibilityRoleAssignment id="NOG:ResponsibilityRoleAssignment:11" version="1">
                                     <DataRoleType>creates</DataRoleType>
-                                    <ResponsibleOrganisationRef version="1" ref="NOG:Operator:VYT"/>
+                                    <ResponsibleOrganisationRef ref="NOG:Operator:VYT" version="1"/>
                                     <!--ResponsibleAreaRef ref="NOG:AdministrativeZone:Tog" version="1"/-->
                                 </ResponsibilityRoleAssignment>
                                 <ResponsibilityRoleAssignment id="NOG:ResponsibilityRoleAssignment:12" version="1">
@@ -178,7 +182,6 @@
                             </roles>
                         </ResponsibilitySet>
                     </ownResponsibilitySets>
-
                 </GeneralOrganisation>
 
                 <Operator id="NOG:Operator:VYT" version="1">
@@ -231,7 +234,6 @@
                     <PrivateContactDetails>
                         <Phone>815 81 105</Phone>
                     </PrivateContactDetails>
-
                     <parts>
                         <OrganisationPart id="NOG:OrganizationPart:5" version="1">
                             <OperatorRef ref="NOG:Operator:VYB" version="1"/>
