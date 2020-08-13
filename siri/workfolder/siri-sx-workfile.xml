@@ -41,9 +41,7 @@
                         <EndTime>2020-08-15T23:00:00+02:00</EndTime>
                     </PublicationWindow>
                     <UndefinedReason></UndefinedReason>
-                    
-                    
-                    <Severity>normal</Severity>
+                    <Severity>verySevere</Severity>
                     <Priority>1</Priority>
                     <Audience>staff</Audience>
                     <ScopeType>line</ScopeType>
