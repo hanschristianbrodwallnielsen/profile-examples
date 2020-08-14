@@ -6,21 +6,21 @@
   xmlns:datex2="http://datex2.eu/schema/2_0RC1/2_0"
   version="2.0">
     <ServiceDelivery>
-        <ResponseTimestamp>2017-08-15T10:43:30.506+02:00</ResponseTimestamp>
+        <ResponseTimestamp>2020-08-15T10:43:30.506+02:00</ResponseTimestamp>
         <ProducerRef>CODESPACE</ProducerRef>
         
         <EstimatedTimetableDelivery version="2.0">
-            <ResponseTimestamp>2017-07-11T11:29:31</ResponseTimestamp>
-            <!--ValidUntil>2017-08-11T11:29:31.173+02:00</ValidUntil-->
+            <ResponseTimestamp>2020-07-11T11:29:31</ResponseTimestamp>
+            <!--ValidUntil>2020-08-11T11:29:31.173+02:00</ValidUntil-->
             <EstimatedJourneyVersionFrame>
-                <RecordedAtTime>2017-08-15T10:43:21.826+02:00</RecordedAtTime>
+                <RecordedAtTime>2020-08-15T10:43:21.826+02:00</RecordedAtTime>
                 <EstimatedVehicleJourney>
                     <LineRef>SKY:Line:985</LineRef>
                     <DirectionRef>0</DirectionRef>
                     
                     <!--DatedVehicleJourneyRef>6671390_94170</DatedVehicleJourneyRef-->
                     <FramedVehicleJourneyRef>
-                        <DataFrameRef>2017-12-12</DataFrameRef>
+                        <DataFrameRef>2020-12-12</DataFrameRef>
                         <DatedVehicleJourneyRef>ref</DatedVehicleJourneyRef>                        
                     </FramedVehicleJourneyRef>
                     <!-- Cancellation>true</Cancellation -->
@@ -76,12 +76,12 @@
                             <Order>1</Order>
                             <ExtraCall>true</ExtraCall>
                             <Occupancy>full</Occupancy>
-                            <AimedArrivalTime>2017-11-07T12:03:00+01:00</AimedArrivalTime>
-                            <ExpectedArrivalTime>2017-11-07T12:03:00+01:00</ExpectedArrivalTime>
-                            <ActualArrivalTime>2017-11-07T12:03:00+01:00</ActualArrivalTime>
-                            <AimedDepartureTime>2017-11-07T12:03:00+01:00</AimedDepartureTime>
-                            <ExpectedDepartureTime>2017-11-07T12:03:00+01:00</ExpectedDepartureTime>
-                            <ActualDepartureTime>2017-11-07T12:03:00+01:00</ActualDepartureTime>
+                            <AimedArrivalTime>2020-11-07T12:03:00+01:00</AimedArrivalTime>
+                            <ExpectedArrivalTime>2020-11-07T12:03:00+01:00</ExpectedArrivalTime>
+                            <ActualArrivalTime>2020-11-07T12:03:00+01:00</ActualArrivalTime>
+                            <AimedDepartureTime>2020-11-07T12:03:00+01:00</AimedDepartureTime>
+                            <ExpectedDepartureTime>2020-11-07T12:03:00+01:00</ExpectedDepartureTime>
+                            <ActualDepartureTime>2020-11-07T12:03:00+01:00</ActualDepartureTime>
                         </RecordedCall>
                     </RecordedCalls>
                     
@@ -112,8 +112,8 @@
                                 <EquipmentAvailability>
                                     <EquipmentRef>placeholder</EquipmentRef>
                                     <ValidityPeriod>
-                                        <StartTime>2017-06-28T12:32:05.9987717+02:00</StartTime>
-                                        <EndTime>2017-06-28T12:32:05.9987717+02:00</EndTime>
+                                        <StartTime>2020-06-28T12:32:05.9987717+02:00</StartTime>
+                                        <EndTime>2020-06-28T12:32:05.9987717+02:00</EndTime>
                                     </ValidityPeriod>
                                     <EquipmentStatus>notAvailable</EquipmentStatus>
                                 </EquipmentAvailability>
@@ -134,8 +134,8 @@
                             <SituationRef>
                                 <SituationSimpleRef>placeholder</SituationSimpleRef>
                             </SituationRef>
-                            <AimedArrivalTime>2017-08-15T15:00:00+02:00</AimedArrivalTime>
-                            <ExpectedArrivalTime>2017-08-15T15:00:01+02:00</ExpectedArrivalTime>
+                            <AimedArrivalTime>2020-08-15T15:00:00+02:00</AimedArrivalTime>
+                            <ExpectedArrivalTime>2020-08-15T15:00:01+02:00</ExpectedArrivalTime>
                             <ArrivalStatus>arrived</ArrivalStatus>
                             <ArrivalBoardingActivity>noAlighting</ArrivalBoardingActivity>
                             <ArrivalStopAssignment>
@@ -145,9 +145,9 @@
                             </ArrivalStopAssignment>
                             <ArrivalOperatorRefs>placeholder</ArrivalOperatorRefs>
                             <ArrivalOperatorRefs>placeholder</ArrivalOperatorRefs>
-                            <AimedDepartureTime>2017-08-15T15:00:00+02:00</AimedDepartureTime>
-                            <ExpectedDepartureTime>2017-08-15T15:00:00+02:00</ExpectedDepartureTime>
-                            <!-- <EarliestExpectedDepartureTime>2017-08-15T15:00:00+02:00</EarliestExpectedDepartureTime> -->
+                            <AimedDepartureTime>2020-08-15T15:00:00+02:00</AimedDepartureTime>
+                            <ExpectedDepartureTime>2020-08-15T15:00:00+02:00</ExpectedDepartureTime>
+                            <!-- <EarliestExpectedDepartureTime>2020-08-15T15:00:00+02:00</EarliestExpectedDepartureTime> -->
                             <DepartureStatus>cancelled</DepartureStatus>
                             <DepartureBoardingActivity>passThru</DepartureBoardingActivity>
                             <DepartureStopAssignment>

@@ -14,11 +14,11 @@
             <Situations>
                 <PtSituationElement>
                     <CreationTime>2020-06-28T12:32:05.9987717+02:00</CreationTime>
-                    <ParticipantRef>NSB</ParticipantRef>
-                    <SituationNumber>46197</SituationNumber>
+                    <ParticipantRef>placeholder</ParticipantRef>
+                    <SituationNumber>1</SituationNumber>
                     <Source>
                         <SourceType>web</SourceType>
-                        <Phone>99127032</Phone>
+                        <Phone>placeholder</Phone>
                         <Web>http://www.entur.org/test</Web>
                         <AgentReference>unknown</AgentReference>
                         <TimeOfCommunication>2020-06-30T20:30:01.2475086+02:00</TimeOfCommunication>
@@ -67,19 +67,19 @@
                     <Affects>
                         <Networks>
                             <AffectedNetwork>
-                                <NetworkRef>NetworkRef2</NetworkRef>
+                                <NetworkRef>placeholder</NetworkRef>
                                 <AllLines/>
 
                             </AffectedNetwork>
                             <AffectedNetwork>
                                 <AffectedOperator>
-                                    <OperatorRef>OperatorRef2</OperatorRef>
+                                    <OperatorRef>placeholder</OperatorRef>
                                 </AffectedOperator>
-                                <NetworkRef>NetworkRef2</NetworkRef>
+                                <NetworkRef>placeholder</NetworkRef>
                                 <VehicleMode>bus</VehicleMode>
                                 <BusSubmode>railReplacementBus</BusSubmode>
                                 <AffectedLine>
-                                    <LineRef>LineRef2</LineRef>
+                                    <LineRef>placeholder</LineRef>
                                     <Routes>
                                         <AffectedRoute>
                                             <RouteRef>data</RouteRef>
@@ -95,11 +95,11 @@
                                         <AffectedRoute>
                                             <StopPoints>
                                                 <AffectedStopPoint>
-                                                    <StopPointRef>NSR:StopPlace:36817</StopPointRef>
+                                                    <StopPointRef>NSR:StopPlace:1</StopPointRef>
                                                 </AffectedStopPoint>
 
                                                 <AffectedStopPoint>
-                                                    <StopPointRef>NSR:StopPlace:36928</StopPointRef>
+                                                    <StopPointRef>NSR:StopPlace:1</StopPointRef>
                                                 </AffectedStopPoint>
                                             </StopPoints>
                                         </AffectedRoute>
@@ -144,7 +144,7 @@
                             <AffectedVehicleJourney>
                                 <FramedVehicleJourneyRef>
                                     <DataFrameRef>2020-03-01</DataFrameRef>
-                                    <DatedVehicleJourneyRef>ref</DatedVehicleJourneyRef>
+                                    <DatedVehicleJourneyRef>placeholder</DatedVehicleJourneyRef>
                                 </FramedVehicleJourneyRef>
                                 <!-- <VehicleJourneyRef>1634</VehicleJourneyRef> -->
                                 <Operator>
@@ -161,19 +161,21 @@
                             </AffectedVehicleJourney>
                             
                             <AffectedVehicleJourney>
-                                <VehicleJourneyRef>VehicleJourneyRef1</VehicleJourneyRef>
+                                <VehicleJourneyRef>placeholder</VehicleJourneyRef>
                                 <Operator>
-                                    <OperatorRef>OperatorRef</OperatorRef>
+                                    <OperatorRef>placeholder</OperatorRef>
                                 </Operator>
-                                <LineRef>LineRef</LineRef>
+                                <LineRef>placeholder</LineRef>
                                 <Route/> <!-- default -->
                             </AffectedVehicleJourney>
                             <AffectedVehicleJourney>
-                                <VehicleJourneyRef>VehicleJourneyRef2</VehicleJourneyRef>
+                                <VehicleJourneyRef>placeholder</VehicleJourneyRef>
                                 <Route>
-                                    <RouteRef>ref</RouteRef>
+                                    <RouteRef>placeholder</RouteRef>
                                     <StopPoints>
-                                        <AffectedStopPoint></AffectedStopPoint>
+                                        <AffectedStopPoint>
+                                            <StopPointRef>placeholder</StopPointRef>
+                                        </AffectedStopPoint>
                                     </StopPoints>
                                 </Route>
                                 <OriginAimedDepartureTime>2020-03-01T02:00:00+02:00</OriginAimedDepartureTime>
