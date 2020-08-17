@@ -26,7 +26,7 @@
                     <!-- Cancellation>true</Cancellation -->
                     
                     
-                    <!-- burde hatt inn en referanse til erstatningstransport her:
+                    <!-- Potensiell referanse til erstatningstransport (lagt på is, gir liten reell verdi med dagens semi-manuelle arbeidsflyt):
                         - <Replacement(Transport)s>
                             <Replacement(Transport)>
                                 <LineRef>
@@ -63,8 +63,8 @@
                     <ConfidenceLevel>reliable</ConfidenceLevel>
                     <Occupancy>full</Occupancy>
                     
-                    <!--
-                    <SectionOccupancy>  - maxOccurs="unlimited" -
+                    <!--  UTGÅR !?
+                    <SectionOccupancy>
                         <SectionName>xsd:string</SectionName>
                         <SectionName>xsd:string</SectionName>
                         <SeatingCapacity>xsd:integer</SeatingCapacity>
@@ -93,10 +93,28 @@
                             <ExpectedArrivalTime>2020-11-07T12:03:00+01:00</ExpectedArrivalTime>
                             <ActualArrivalTime>2020-11-07T12:03:00+01:00</ActualArrivalTime>
                             
+                            <ArrivalFormationAssignment>
+                                <EntranceToVehicleRef>ref</EntranceToVehicleRef>
+                                <TrainStopAssignment>
+                                    <AimedQuayName>id</AimedQuayName>
+                                    <ExpectedQuayName>id</ExpectedQuayName>
+                                    <ActualQuayRef>ref</ActualQuayRef>
+                                </TrainStopAssignment>
+                            </ArrivalFormationAssignment>
+                            
                             <AimedDepartureTime>2020-11-07T12:03:00+01:00</AimedDepartureTime>
                             <ExpectedDepartureTime>2020-11-07T12:03:00+01:00</ExpectedDepartureTime>
                             <ActualDepartureTime>2020-11-07T12:03:00+01:00</ActualDepartureTime>
                             <DepartureStatus>arrived</DepartureStatus>
+                            
+                            <DepartureFormationAssignment>
+                                <EntranceToVehicleRef>ref</EntranceToVehicleRef>
+                                <TrainStopAssignment>
+                                    <AimedQuayName>id</AimedQuayName>
+                                    <ExpectedQuayName>id</ExpectedQuayName>
+                                    <ActualQuayRef>ref</ActualQuayRef>
+                                </TrainStopAssignment>
+                            </DepartureFormationAssignment>
                             
                             <RecordedDepartureOccupancy>
                                 <TrainComponentRef>ref</TrainComponentRef>
@@ -165,11 +183,30 @@
                             <ExpectedArrivalTime>2020-08-15T15:00:01+02:00</ExpectedArrivalTime>
                             <ArrivalStatus>arrived</ArrivalStatus>
                             <ArrivalBoardingActivity>noAlighting</ArrivalBoardingActivity>
+                            
                             <ArrivalStopAssignment>
                                 <AimedQuayRef>placeholder</AimedQuayRef>
                                 <ExpectedQuayRef>placeholder</ExpectedQuayRef>
                                 <ActualQuayRef>placeholder</ActualQuayRef>
                             </ArrivalStopAssignment>
+                            
+                            <ArrivalFormationAssignment>
+                                <EntranceToVehicleRef>ref</EntranceToVehicleRef>
+                                <TrainStopAssignment>
+                                    <AimedQuayName>id</AimedQuayName>
+                                    <ExpectedQuayName>id</ExpectedQuayName>
+                                    <ActualQuayRef>ref</ActualQuayRef>
+                                </TrainStopAssignment>
+                            </ArrivalFormationAssignment>
+                            <ArrivalFormationAssignment>
+                                <TrainComponentRef>ref</TrainComponentRef>
+                                <TrainStopAssignment>
+                                    <AimedQuayName>id</AimedQuayName>
+                                    <ExpectedQuayName>id</ExpectedQuayName>
+                                    <ActualQuayRef>ref</ActualQuayRef>
+                                </TrainStopAssignment>
+                            </ArrivalFormationAssignment>
+                            
                             <ArrivalOperatorRefs>placeholder</ArrivalOperatorRefs>
                             <ArrivalOperatorRefs>placeholder</ArrivalOperatorRefs>
                             <AimedDepartureTime>2020-08-15T15:00:00+02:00</AimedDepartureTime>
@@ -182,6 +219,16 @@
                                 <ExpectedQuayRef>placeholder</ExpectedQuayRef>
                                 <ActualQuayRef>placeholder</ActualQuayRef>
                             </DepartureStopAssignment>
+                            
+                            <DepartureFormationAssignment>
+                                <TrainRef>ref</TrainRef>
+                                <PositionOfTrainElement>2</PositionOfTrainElement>
+                                <TrainStopAssignment>
+                                    <AimedQuayName>id</AimedQuayName>
+                                    <ExpectedQuayName>id</ExpectedQuayName>
+                                    <ActualQuayRef>ref</ActualQuayRef>
+                                </TrainStopAssignment>
+                            </DepartureFormationAssignment>
                             
                             <ExpectedDepartureOccupancy>
                                 <EntranceToVehicleRef>ref1</EntranceToVehicleRef>
