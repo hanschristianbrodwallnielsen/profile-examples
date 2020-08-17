@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+
 <PublicationDelivery 
   xmlns="http://www.netex.org.uk/netex"
   xmlns:gis="http://www.opengis.net/gml/3.2" 
@@ -8,8 +10,8 @@
     <PublicationTimestamp>2020-07-22T12:00:00</PublicationTimestamp>
     <ParticipantRef>RUT</ParticipantRef>
     <dataObjects>
-
-
+        
+        
         <!-- Non-compliant organisation data included only for readability of example -->
         <ResourceFrame id="ENT:ResourceFrame:1" version="1">
             <organisations>
@@ -31,7 +33,7 @@
             </organisations>
         </ResourceFrame>
 
-
+        
 
         <SiteFrame id="RUT:SiteFrame:1" version="1">
             <validityConditions>
@@ -86,7 +88,6 @@
             
             <Description>https://ruter.no/en/buying-tickets/tickets-and-fares/</Description>
             
-            
             <PricingParameterSet id="ENT:PricingParameterSet:1" version="1">
                 <pricingServices>
                     <PricingService id="ENT:PricingService:PoP" version="1">
@@ -133,21 +134,6 @@
                     <Name>GeographicalStructureFactor</Name>
                 </GeographicalStructureFactor>
             </geographicalStructureFactors>
-            
-            
-            
-            <!-- README (ODIN) -->
-            
-            <!-- HSL har 4 soner med 4 ulike faktorer 7 mulige kombinasjoner (med ulike interval) -->
-            
-            
-            <!-- 
-                
-                BoB har issues med formatkompleksistet  
-            
-            --> 
-
-            
             
             <timeIntervals>
                 <TimeInterval id="ENT:TimeInterval:60min" version="1">
@@ -206,6 +192,9 @@
                 <!-- Either as separate GenericParamaterAssignment(s) -->
                 <FareStructureElement id="ENT:FareStructureElement:1" version="1">
                     <TariffBasis>discount</TariffBasis>
+                    <fareStructureElementsInSequence>
+                        <FareStructureElementInSequence></FareStructureElementInSequence>
+                    </fareStructureElementsInSequence>                    
                     <validityParameterAssignments>
                         <GenericParameterAssignment id="ENT:GenericParameterAssignment:1" version="1" order="0">
                             <limitations>
@@ -240,19 +229,37 @@
                     </fareStructureElementsInSequence>
                 </FareStructureElement>
                 
+                <!-- completed sample -->
                 <FareStructureElement id="ENT:FareStructureElement:3" version="1">
                     <GenericParameterAssignment id="ENT:GenericParameterAssignment:3" version="1" order="0">
+                        <LimitationGroupingType>AND</LimitationGroupingType>
+                        <LimitationSetSelectionType>oneOfAnyOneSet</LimitationSetSelectionType>
                         <limitations>
                             <FrequencyOfUseRef ref="ENT:FrequencyOfUse:1" version="1"/>
                         </limitations>
+                        <ValidityParameterAssignmentType>EQ</ValidityParameterAssignmentType>
+                        <ValidityParameterGroupingType>AND</ValidityParameterGroupingType>
+                        <ValidityParameterSetSelectionType>allOfAllSets</ValidityParameterSetSelectionType>
+                        
+                        <temporalValidityParameters>
+                            <OperatingDayRef ref="ENT:OperatingDay:externalref"/>
+                        </temporalValidityParameters>
+                        
                         <validityParameters>
                             <AuthorityRef ref="ENT:Authority:Ruter" version="1"/>
                             <TariffZoneRef ref="RUT:TariffZone:2V" version="1"/>
                         </validityParameters>
+                        
                         <TimeIntervalRef ref="ENT:TimeInterval:90min" version="1"/>
+                        <GeographicalIntervalRef ref="ref"></GeographicalIntervalRef>
+                        <IncludesGroupingType>AND</IncludesGroupingType>
+                        <includes>
+                            <GenericParameterAssignmentInContext>
+                                <FareQuotaFactorRef ref="external"></FareQuotaFactorRef>
+                            </GenericParameterAssignmentInContext>
+                        </includes>
                     </GenericParameterAssignment>
                 </FareStructureElement>
-                
             </fareStructureElements>
             
             
@@ -299,12 +306,24 @@
                 <Suspending id="ENT:Suspending:1" version="1">
                     <SuspensionPolicy>forAnyReason</SuspensionPolicy>
                 </Suspending>
+                <RoundTrip id="ENT:RoundTrip:1" version="1">
+                    <TripType>return</TripType>
+                    <IsRequired>true</IsRequired>
+                </RoundTrip>
                 <FrequencyOfUse id="ENT:FrequencyOfUse:1" version="1">
                     <Name>FrequencyOfUse</Name>
                 </FrequencyOfUse>
                 <Interchanging id="ENT:Interchanging:1" version="1">
                     <Name>Interchanging</Name>
                 </Interchanging>
+                <LuggageAllowance id="ENT:LuggageAllowance:1" version="1">
+                    <BaggageUseType>carryOn</BaggageUseType>
+                    <BaggageType>bicycle</BaggageType>
+                    <LuggageAllowanceType>singleBag</LuggageAllowanceType>
+                    <MaximumNumberItems>1</MaximumNumberItems>
+                    <TotalWeight>0.5</TotalWeight>
+                    <LuggageChargingBasis>free</LuggageChargingBasis>
+                </LuggageAllowance>
                 <PurchaseWindow id="ENT:PurchaseWindow:1" version="1">
                     <PurchaseAction>reserve</PurchaseAction>
                     <PurchaseWhen></PurchaseWhen>
@@ -356,12 +375,19 @@
                 <CommercialProfile id="ENT:CommercialProfile:1" version="1">
                     <Name>CommercialProfile</Name>
                 </CommercialProfile>
+                
+                
+                <!-- 
+                    TODO
+                -->
+                
                 <EntitlementGiven id="test" version="1">
                     <CappedDiscountRightRef ref="ref"/>
                 </EntitlementGiven>
                 <EntitlementRequired id="test" version="1">
                     <ServiceAccessRightRef ref="ref"/>
                 </EntitlementRequired>
+                
             </usageParameters>
 
             
@@ -400,7 +426,13 @@
                 
                 <SaleDiscountRight id="ENT:SaleDiscountRight:1" version="1">
                     <Name>SalesDiscountRight</Name>
+                    <ProductType>travelCard</ProductType>
                 </SaleDiscountRight>
+                
+                <ThirdPartyProduct id="ENT:ThirdPartyProduct:1" version="1">
+                    <Name>ThirdPartyProduct</Name>
+                </ThirdPartyProduct>
+                
             </fareProducts>
             
             <!--
@@ -663,8 +695,6 @@
         </SalesTransactionFrame>
         
         
-        
-        
         <!-- Zone 2V Travelcard (permanent or temporary) reduced price ticket: -->
         
         <SalesTransactionFrame id="ENT:SalesTransactionFrame:2" version="1">
@@ -771,5 +801,6 @@
                 </CustomerPurchasePackage>
             </customerPurchasePackages>
         </SalesTransactionFrame>
+
     </dataObjects>
 </PublicationDelivery>
