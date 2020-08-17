@@ -89,6 +89,7 @@
                     <ProgressRate>normalProgress</ProgressRate>
                     <Velocity>100</Velocity>
                     <Occupancy>full</Occupancy>
+                    
                     <Delay>PT54S</Delay>
                     <VehicleStatus>completed</VehicleStatus>
                     
@@ -124,9 +125,14 @@
                     
                     <PreviousCalls>
                         <PreviousCall>
+                            
                             <StopPointRef>NSR:Quay:1</StopPointRef>
+                            
+                            <!-- occupancy mangler i denne konstruksjonen (har sjekket) -->
+                            
                         </PreviousCall>
                     </PreviousCalls>
+                    
                     <MonitoredCall>
                         <!--StopPointRef>1</StopPointRef-->
                         <StopPointName>placeholder</StopPointName>
@@ -149,12 +155,26 @@
                             <AimedQuayRef>placeholder</AimedQuayRef>
                             <ActualQuayRef>placeholder</ActualQuayRef>
                         </DepartureStopAssignment>
+                        
+                        <ExpectedDepartureOccupancy>
+                            <EntranceToVehicleRef>ref</EntranceToVehicleRef>
+                            <OccupancyLevel>full</OccupancyLevel>
+                            <TotalNumberOfReservedSeats>0</TotalNumberOfReservedSeats>
+                        </ExpectedDepartureOccupancy>
+                        
                     </MonitoredCall>
+                    
                     <OnwardCalls>
                         <OnwardCall>
                             <StopPointRef>NSR:Quay:1</StopPointRef>
                             <VehicleAtStop>false</VehicleAtStop>
-                            <ArrivalBoardingActivity></ArrivalBoardingActivity>
+                            <ArrivalBoardingActivity>noAlighting</ArrivalBoardingActivity>
+                            
+                            <ExpectedDepartureOccupancy>
+                                <OccupancyLevel>full</OccupancyLevel>
+                                <TotalNumberOfReservedSeats>0</TotalNumberOfReservedSeats>
+                            </ExpectedDepartureOccupancy>
+                            
                         </OnwardCall>
                     </OnwardCalls>
                     <IsCompleteStopSequence>false</IsCompleteStopSequence>

@@ -62,6 +62,17 @@
                     <DataSource>ENT</DataSource>
                     <ConfidenceLevel>reliable</ConfidenceLevel>
                     <Occupancy>full</Occupancy>
+                    
+                    <!--
+                    <SectionOccupancy>  - maxOccurs="unlimited" -
+                        <SectionName>xsd:string</SectionName>
+                        <SectionName>xsd:string</SectionName>
+                        <SeatingCapacity>xsd:integer</SeatingCapacity>
+                        <StandingCapacity>xsd:integer</StandingCapacity>
+                        <RegisteredPassenger>xsd:integer</RegisteredPassenger>
+                    </SectionOccupancy>
+                    -->
+                    
                     <!-- BlockRef>86</BlockRef -->
                     <VehicleJourneyRef>placeholder</VehicleJourneyRef>
                     <VehicleRef>placeholder</VehicleRef>
@@ -70,18 +81,34 @@
                         <DatedVehicleJourneyRef>placeholder</DatedVehicleJourneyRef>
                     </AdditionalVehicleJourneyRef>
                     
+                    
                     <RecordedCalls>
                         <RecordedCall>
                             <StopPointRef>NSR:Quay:52930</StopPointRef>
                             <Order>1</Order>
                             <ExtraCall>true</ExtraCall>
                             <Occupancy>full</Occupancy>
+                            
                             <AimedArrivalTime>2020-11-07T12:03:00+01:00</AimedArrivalTime>
                             <ExpectedArrivalTime>2020-11-07T12:03:00+01:00</ExpectedArrivalTime>
                             <ActualArrivalTime>2020-11-07T12:03:00+01:00</ActualArrivalTime>
+                            
                             <AimedDepartureTime>2020-11-07T12:03:00+01:00</AimedDepartureTime>
                             <ExpectedDepartureTime>2020-11-07T12:03:00+01:00</ExpectedDepartureTime>
                             <ActualDepartureTime>2020-11-07T12:03:00+01:00</ActualDepartureTime>
+                            <DepartureStatus>arrived</DepartureStatus>
+                            
+                            <RecordedDepartureOccupancy>
+                                <TrainComponentRef>ref</TrainComponentRef>
+                                <OccupancyLevel>fewSeatsAvailable</OccupancyLevel>
+                                <TotalNumberOfReservedSeats>0</TotalNumberOfReservedSeats>
+                            </RecordedDepartureOccupancy>
+                            <RecordedDepartureOccupancy>
+                                <TrainComponentRef>ref</TrainComponentRef>
+                                <OccupancyLevel>fewSeatsAvailable</OccupancyLevel>
+                                <TotalNumberOfReservedSeats>0</TotalNumberOfReservedSeats>
+                            </RecordedDepartureOccupancy>
+                            
                         </RecordedCall>
                     </RecordedCalls>
                     
@@ -155,9 +182,20 @@
                                 <ExpectedQuayRef>placeholder</ExpectedQuayRef>
                                 <ActualQuayRef>placeholder</ActualQuayRef>
                             </DepartureStopAssignment>
-                            <DepartureOperatorRefs>placeholder</DepartureOperatorRefs>
-                            <DepartureOperatorRefs>placeholder</DepartureOperatorRefs>
                             
+                            <ExpectedDepartureOccupancy>
+                                <EntranceToVehicleRef>ref1</EntranceToVehicleRef>
+                                <OccupancyLevel>full</OccupancyLevel>
+                                <TotalNumberOfReservedSeats>0</TotalNumberOfReservedSeats>
+                            </ExpectedDepartureOccupancy>
+                            <ExpectedDepartureOccupancy>
+                                <EntranceToVehicleRef>ref2</EntranceToVehicleRef>
+                                <OccupancyLevel>manySeatsAvailable</OccupancyLevel>
+                                <TotalNumberOfReservedSeats>0</TotalNumberOfReservedSeats>
+                            </ExpectedDepartureOccupancy>
+                            
+                            <DepartureOperatorRefs>placeholder</DepartureOperatorRefs>
+                            <DepartureOperatorRefs>placeholder</DepartureOperatorRefs>
                             <AimedHeadwayInterval>PT5M</AimedHeadwayInterval>
                             <ExpectedHeadwayInterval>PT12M</ExpectedHeadwayInterval>
                             <!--DistanceFromStop>500</DistanceFromStop>
