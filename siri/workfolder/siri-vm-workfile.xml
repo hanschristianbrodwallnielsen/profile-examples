@@ -80,14 +80,17 @@
                     <DataSource>ENT</DataSource>
                     <ConfidenceLevel>reliable</ConfidenceLevel>
                     
+                    <!-- Location -->
                     <VehicleLocation>
                         <Longitude>10.731900</Longitude>
                         <Latitude>59.936350</Latitude>
                         <Precision>1</Precision>
                     </VehicleLocation>
+                    
                     <!-- Bearing>0.0</Bearing -->
                     <ProgressRate>normalProgress</ProgressRate>
                     <Velocity>100</Velocity>
+                    
                     <Occupancy>full</Occupancy>
                     
                     <Delay>PT54S</Delay>
@@ -108,10 +111,12 @@
                     </AdditionalVehicleJourneyRef>
                     <DriverRef>placeholder</DriverRef>
                     <DriverName>placeholder</DriverName>
+                    
                     <TrainNumbers>
                         <TrainNumberRef>placeholder</TrainNumberRef>
                         <TrainNumberRef>placeholder</TrainNumberRef>
                     </TrainNumbers>
+                    
                     <JourneyParts>
                         <JourneyPartInfo>
                             <JourneyPartRef>placeholder</JourneyPartRef>
@@ -123,9 +128,69 @@
                         </JourneyPartInfo>
                     </JourneyParts>
                     
+                    
+                    <!-- TRAIN -->
+                    
+                    <TrainElements>
+                        <TrainElement>
+                            <TrainElementCode>1</TrainElementCode>
+                            <HasLiftOrRamp>true</HasLiftOrRamp>
+                            <Length>123</Length>
+                            <Facilities>
+                                <Facility>
+                                    <Features>
+                                        <Feature>
+                                            <SanitaryFacility>toilet</SanitaryFacility>
+                                        </Feature>
+                                        <Feature>
+                                            <SanitaryFacility>wheelchairAcccessToilet</SanitaryFacility>
+                                        </Feature>
+                                        <Feature>
+                                            <SanitaryFacility>babyChange</SanitaryFacility>
+                                        </Feature>
+                                    </Features>
+                                </Facility>
+                            </Facilities>
+                        </TrainElement>
+                        <TrainElement>
+                            <TrainElementCode>2</TrainElementCode>
+                            <HasLiftOrRamp>false</HasLiftOrRamp>
+                            <Length>123</Length>
+                            <Facilities>
+                                <Facility>
+                                    <Features>
+                                        <Feature>
+                                            <LuggageFacility>bikeCarriage</LuggageFacility>
+                                        </Feature>
+                                    </Features>
+                                </Facility>
+                            </Facilities>
+                        </TrainElement>
+                    </TrainElements>
+                    
+                    <Trains>
+                        <Train>
+                            <HasLiftOrRamp>true</HasLiftOrRamp>
+                            <Length>123</Length>
+                            <NumberOfCars>2</NumberOfCars>
+                            <TrainComponents>
+                                <TrainComponent>
+                                    <Order>1</Order>
+                                    <TrainElementRef>1</TrainElementRef>
+                                </TrainComponent>
+                                <TrainComponent>
+                                    <Order>2</Order>
+                                    <TrainElementRef>2</TrainElementRef>
+                                </TrainComponent>
+                            </TrainComponents>
+                        </Train>
+                    </Trains>
+                    
+                    
+                    
                     <PreviousCalls>
                         <PreviousCall>
-                            <StopPointRef>NSR:Quay:1</StopPointRef>
+                            <!--StopPointRef>NSR:Quay:1</StopPointRef-->
                             <ActualArrivalTime>2020-08-07T11:29:00</ActualArrivalTime>
                             <!-- Previous call mangler Occupancy og Stop/Formation Assignments 
                                (har kun StopPointName/Ref, Aimed&ExpectedArrival/DepartureTime, VisitNumber/Order og VehicleAtStop true/false) -->
@@ -191,7 +256,7 @@
                     
                     <OnwardCalls>
                         <OnwardCall>
-                            <StopPointRef>NSR:Quay:1</StopPointRef>
+                            <!--StopPointRef>NSR:Quay:1</StopPointRef-->
                             <VehicleAtStop>false</VehicleAtStop>
                             <ArrivalBoardingActivity>noAlighting</ArrivalBoardingActivity>
                             

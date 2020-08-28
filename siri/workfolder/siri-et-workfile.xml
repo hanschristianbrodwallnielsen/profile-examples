@@ -63,7 +63,7 @@
                     <ConfidenceLevel>reliable</ConfidenceLevel>
                     <Occupancy>full</Occupancy>
                     
-                    <!--  UTGÅR !?
+                    <!--  UTGÅR !
                     <SectionOccupancy>
                         <SectionName>xsd:string</SectionName>
                         <SectionName>xsd:string</SectionName>
@@ -96,8 +96,9 @@
                             <ArrivalFormationAssignment>
                                 <EntranceToVehicleRef>ref</EntranceToVehicleRef>
                                 <TrainStopAssignment>
-                                    <AimedQuayName>id</AimedQuayName>
+                                    
                                     <ExpectedQuayName>id</ExpectedQuayName>
+                                    
                                     <ActualQuayRef>ref</ActualQuayRef>
                                 </TrainStopAssignment>
                             </ArrivalFormationAssignment>
@@ -108,6 +109,7 @@
                             <DepartureStatus>arrived</DepartureStatus>
                             
                             <DepartureFormationAssignment>
+                                <TrainComponentRef>ref</TrainComponentRef>
                                 <EntranceToVehicleRef>ref</EntranceToVehicleRef>
                                 <TrainStopAssignment>
                                     <AimedQuayName>id</AimedQuayName>
@@ -139,6 +141,9 @@
                             <!-- PredictionInaccurate>false</PredictionInaccurate -->
                             <RequestStop>true</RequestStop>
                             <DestinationDisplay>placeholder</DestinationDisplay>
+                            
+                            
+                            
                             <!--
                             <FacilityConditionElement>
                                 <FacilityRef>placeholder</FacilityRef>
@@ -191,6 +196,7 @@
                             </ArrivalStopAssignment>
                             
                             <ArrivalFormationAssignment>
+                                <TrainRef>ref</TrainRef>
                                 <EntranceToVehicleRef>ref</EntranceToVehicleRef>
                                 <TrainStopAssignment>
                                     <AimedQuayName>id</AimedQuayName>
@@ -214,6 +220,7 @@
                             <!-- <EarliestExpectedDepartureTime>2020-08-15T15:00:00+02:00</EarliestExpectedDepartureTime> -->
                             <DepartureStatus>cancelled</DepartureStatus>
                             <DepartureBoardingActivity>passThru</DepartureBoardingActivity>
+                            
                             <DepartureStopAssignment>
                                 <AimedQuayRef>placeholder</AimedQuayRef>
                                 <ExpectedQuayRef>placeholder</ExpectedQuayRef>
@@ -231,7 +238,6 @@
                             </DepartureFormationAssignment>
                             
                             <ExpectedDepartureOccupancy>
-                                <EntranceToVehicleRef>ref1</EntranceToVehicleRef>
                                 <OccupancyLevel>full</OccupancyLevel>
                                 <TotalNumberOfReservedSeats>0</TotalNumberOfReservedSeats>
                             </ExpectedDepartureOccupancy>
@@ -240,6 +246,11 @@
                                 <OccupancyLevel>manySeatsAvailable</OccupancyLevel>
                                 <TotalNumberOfReservedSeats>0</TotalNumberOfReservedSeats>
                             </ExpectedDepartureOccupancy>
+                            
+                            <ExpectedDepartureCapacities>
+                                <TrainComponentRef>ref</TrainComponentRef>
+                                <SeatingCapacity>100</SeatingCapacity>
+                            </ExpectedDepartureCapacities>
                             
                             <DepartureOperatorRefs>placeholder</DepartureOperatorRefs>
                             <DepartureOperatorRefs>placeholder</DepartureOperatorRefs>
