@@ -260,6 +260,7 @@
                             <VehicleAtStop>false</VehicleAtStop>
                             <ArrivalBoardingActivity>noAlighting</ArrivalBoardingActivity>
                             
+                            
                             <ArrivalStopAssignment>
                                 <AimedQuayRef>placeholder</AimedQuayRef>
                                 <ExpectedQuayRef>placeholder</ExpectedQuayRef>
