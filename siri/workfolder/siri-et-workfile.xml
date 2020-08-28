@@ -81,6 +81,65 @@
                         <DatedVehicleJourneyRef>placeholder</DatedVehicleJourneyRef>
                     </AdditionalVehicleJourneyRef>
                     
+                    <!-- TRAIN -->
+                    
+                    <TrainElements>
+                        <TrainElement>
+                            <TrainElementCode>1</TrainElementCode>
+                            <HasLiftOrRamp>true</HasLiftOrRamp>
+                            <Length>123</Length>
+                            <Facilities>
+                                <Facility>
+                                    <Features>
+                                        <Feature>
+                                            <SanitaryFacility>toilet</SanitaryFacility>
+                                        </Feature>
+                                        <Feature>
+                                            <SanitaryFacility>wheelchairAcccessToilet</SanitaryFacility>
+                                        </Feature>
+                                        <Feature>
+                                            <SanitaryFacility>babyChange</SanitaryFacility>
+                                        </Feature>
+                                    </Features>
+                                </Facility>
+                            </Facilities>
+                        </TrainElement>
+                        <TrainElement>
+                            <TrainElementCode>2</TrainElementCode>
+                            <HasLiftOrRamp>false</HasLiftOrRamp>
+                            <Length>123</Length>
+                            <Facilities>
+                                <Facility>
+                                    <Features>
+                                        <Feature>
+                                            <LuggageFacility>bikeCarriage</LuggageFacility>
+                                        </Feature>
+                                    </Features>
+                                </Facility>
+                            </Facilities>
+                        </TrainElement>
+                    </TrainElements>
+                    
+                    <Trains>
+                        <Train>
+                            <HasLiftOrRamp>true</HasLiftOrRamp>
+                            <Length>123</Length>
+                            <NumberOfCars>2</NumberOfCars>
+                            <TrainComponents>
+                                <TrainComponent>
+                                    <TrainComponentCode>TrainComponent-1</TrainComponentCode>
+                                    <Order>1</Order>
+                                    <TrainElementRef>1</TrainElementRef>
+                                </TrainComponent>
+                                <TrainComponent>
+                                    <TrainComponentCode>TrainComponent-2</TrainComponentCode>
+                                    <Order>2</Order>
+                                    <TrainElementRef>2</TrainElementRef>
+                                </TrainComponent>
+                            </TrainComponents>
+                        </Train>
+                    </Trains>
+                    
                     
                     <RecordedCalls>
                         <RecordedCall>
@@ -243,14 +302,17 @@
                                 <OccupancyLevel>full</OccupancyLevel>
                                 <TotalNumberOfReservedSeats>0</TotalNumberOfReservedSeats>
                             </ExpectedDepartureOccupancy>
+                            
                             <ExpectedDepartureOccupancy>
+                                <TrainComponentRef>TrainComponent-1</TrainComponentRef>
                                 <EntranceToVehicleRef>ref2</EntranceToVehicleRef>
                                 <OccupancyLevel>manySeatsAvailable</OccupancyLevel>
                                 <TotalNumberOfReservedSeats>0</TotalNumberOfReservedSeats>
                             </ExpectedDepartureOccupancy>
                             
                             <ExpectedDepartureCapacities>
-                                <TrainComponentRef>ref</TrainComponentRef>
+                                <TrainComponentRef>TrainComponent-1</TrainComponentRef>
+                                <EntranceToVehicleRef>entranceref</EntranceToVehicleRef>
                                 <SeatingCapacity>100</SeatingCapacity>
                             </ExpectedDepartureCapacities>
                             
