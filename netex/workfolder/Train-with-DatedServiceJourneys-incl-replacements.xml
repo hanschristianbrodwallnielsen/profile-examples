@@ -630,20 +630,12 @@
                 <TargetPassingTime></TargetPassingTime>
               </datedPassingTimes>
             </DatedVehicleJourney>
-            
-            <DatedServiceJourney id="VYG:DatedServiceJourney:1-2020-01-21" version="1">
-              <!-- test -->
-            </DatedServiceJourney>
-            
           </vehicleJourneys>
-            
-            
-            
             
             
           
           <!-- ALTERNATIVE CONSTRUCTION: -->
-          
+          <!-- (deemed not relevant/optimal for this use-case) -->
           <groupsOfServices>
             <GroupOfServices id="VYG:GroupOfServices:1" version="0">
               <members>
@@ -668,7 +660,8 @@
           
           
           
-          <!-- (deemed not relevant for this use-case) -->
+          
+          
           
           <trainNumbers>
             <TrainNumber id="VYG:TrainNumber:1-3922" version="0">
@@ -691,7 +684,7 @@
           </serviceFacilitySets>
           
           <noticeAssignments>
-            <NoticeAssignment version="0" id="VYG:NoticeAssignment:1" order="0">
+            <NoticeAssignment version="0" id="VYG:NoticeAssignment:" order="0">
               <NoticeRef ref="VYG:Notice:1" />
               <NoticedObjectRef ref="VYG:ServiceJourney:1" version="0" />
             </NoticeAssignment>
