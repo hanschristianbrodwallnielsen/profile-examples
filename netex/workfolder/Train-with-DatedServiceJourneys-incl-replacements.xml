@@ -22,12 +22,12 @@
   <Description>EXAMPLE</Description>
   <dataObjects>
 
-    <VehicleScheduleFrame created="2020-01-03T15:00:00" version="0" id="NSB:VehicleScheduleFrame:4145997"> 
+    <VehicleScheduleFrame created="2020-01-03T15:00:00" version="0" id="VYG:VehicleScheduleFrame:145997"> 
       <!-- placeholder -->
     </VehicleScheduleFrame>
 
 
-    <GeneralFrame created="2020-01-03T15:00:00" version="0" id="NSB:GeneralFrame:4145997">
+    <GeneralFrame created="2020-01-03T15:00:00" version="0" id="VYG:GeneralFrame:145997">
       <!-- placeholder -->
       <versions>
         <Version id="ENT:Version:1" version="1">
@@ -38,14 +38,14 @@
     </GeneralFrame>
 
 
-    <ResourceFrame created="2020-01-03T15:00:00" version="0" id="NSB:ResourceFrame:4145997" derivedFromObjectRef=""> 
+    <ResourceFrame created="2020-01-03T15:00:00" version="0" id="VYG:ResourceFrame:145997" derivedFromObjectRef=""> 
       <!-- placeholder -->
     </ResourceFrame>
 
 
-    <CompositeFrame created="2020-01-03T15:00:00" version="0" id="NSB:CompositeFrame:4145997">
+    <CompositeFrame created="2020-01-03T15:00:00" version="0" id="VYG:CompositeFrame:145997">
       <validityConditions>
-        <AvailabilityCondition version="0" id="NSB:AvailabilityCondition:4144408">
+        <AvailabilityCondition version="0" id="VYG:AvailabilityCondition:144408">
           <FromDate>2020-01-01T00:00:00</FromDate>
           <ToDate>2020-12-31T23:59:59</ToDate>
         </AvailabilityCondition>
@@ -91,60 +91,60 @@
         </SiteFrame>
         
         
-        <ServiceCalendarFrame version="0" id="NSB:ServiceCalendarFrame:1">
+        <ServiceCalendarFrame version="0" id="VYG:ServiceCalendarFrame:1">
           <dayTypes>
-            <DayType version="0" id="NSB:DayType:2020-01-01"/>
-            <DayType version="0" id="NSB:DayType:2020-01-02"/>
-            <DayType version="0" id="NSB:DayType:2020-01-03"/>
-            <DayType version="0" id="NSB:DayType:2020-01-04"/>
-            <DayType version="0" id="NSB:DayType:2020-01-05"/>
-            <DayType version="0" id="NSB:DayType:2020-01-06"/>
+            <DayType version="0" id="VYG:DayType:2020-01-01"/>
+            <DayType version="0" id="VYG:DayType:2020-01-02"/>
+            <DayType version="0" id="VYG:DayType:2020-01-03"/>
+            <DayType version="0" id="VYG:DayType:2020-01-04"/>
+            <DayType version="0" id="VYG:DayType:2020-01-05"/>
+            <DayType version="0" id="VYG:DayType:2020-01-06"/>
           </dayTypes>  
           <operatingDays>
-            <OperatingDay id="NSB:OperatingDay:2020-01-01" version="0">
+            <OperatingDay id="VYG:OperatingDay:2020-01-01" version="0">
               <CalendarDate>2020-01-01</CalendarDate>
             </OperatingDay>
-            <OperatingDay id="NSB:OperatingDay:2020-01-02" version="0">
+            <OperatingDay id="VYG:OperatingDay:2020-01-02" version="0">
               <CalendarDate>2020-01-02</CalendarDate>
             </OperatingDay>
-            <OperatingDay id="NSB:OperatingDay:2020-01-03" version="0">
+            <OperatingDay id="VYG:OperatingDay:2020-01-03" version="0">
               <CalendarDate>2020-01-03</CalendarDate>
             </OperatingDay>
-            <OperatingDay id="NSB:OperatingDay:2020-01-04" version="0">
+            <OperatingDay id="VYG:OperatingDay:2020-01-04" version="0">
               <CalendarDate>2020-01-04</CalendarDate>
             </OperatingDay>
-            <OperatingDay id="NSB:OperatingDay:2020-01-05" version="0">
+            <OperatingDay id="VYG:OperatingDay:2020-01-05" version="0">
               <CalendarDate>2020-01-05</CalendarDate>
             </OperatingDay>
-            <OperatingDay id="NSB:OperatingDay:2020-01-06" version="0">
+            <OperatingDay id="VYG:OperatingDay:2020-01-06" version="0">
               <CalendarDate>2020-01-06</CalendarDate>
             </OperatingDay>
           </operatingDays>
           <dayTypeAssignments>
-            <DayTypeAssignment id="NSB:DayTypeAssignment:2020-01-01" version="0" order="2">
+            <DayTypeAssignment id="VYG:DayTypeAssignment:2020-01-01" version="0" order="2">
               <Date>2020-01-01</Date>
-              <DayTypeRef ref="NSB:DayType:2020-01-01" version="0"/>
+              <DayTypeRef ref="VYG:DayType:2020-01-01" version="0"/>
             </DayTypeAssignment>
-            <DayTypeAssignment id="NSB:DayTypeAssignment:2020-01-02" version="0" order="2">
+            <DayTypeAssignment id="VYG:DayTypeAssignment:2020-01-02" version="0" order="2">
               <Date>2020-01-02</Date>
-              <DayTypeRef ref="NSB:DayType:2020-01-02" version="0"/>
+              <DayTypeRef ref="VYG:DayType:2020-01-02" version="0"/>
             </DayTypeAssignment>
-            <DayTypeAssignment id="NSB:DayTypeAssignment:2020-01-03" version="0" order="3">
+            <DayTypeAssignment id="VYG:DayTypeAssignment:2020-01-03" version="0" order="3">
               <Date>2020-01-03</Date>
-              <DayTypeRef ref="NSB:DayType:2020-01-03" version="0"/>
+              <DayTypeRef ref="VYG:DayType:2020-01-03" version="0"/>
             </DayTypeAssignment>
-            <DayTypeAssignment id="NSB:DayTypeAssignment:2020-01-04" version="0" order="4">
+            <DayTypeAssignment id="VYG:DayTypeAssignment:2020-01-04" version="0" order="4">
               <Date>2020-01-04</Date>
-              <DayTypeRef ref="NSB:DayType:2020-01-02" version="0"/>
+              <DayTypeRef ref="VYG:DayType:2020-01-02" version="0"/>
             </DayTypeAssignment>
-            <DayTypeAssignment id="NSB:DayTypeAssignment:2020-01-05" version="0" order="5">
+            <DayTypeAssignment id="VYG:DayTypeAssignment:2020-01-05" version="0" order="5">
               <Date>2020-01-05</Date>
-              <DayTypeRef ref="NSB:DayType:2020-01-05" version="0"/>
+              <DayTypeRef ref="VYG:DayType:2020-01-05" version="0"/>
               <isAvailable>false</isAvailable>
             </DayTypeAssignment>
-            <DayTypeAssignment id="NSB:DayTypeAssignment:2020-01-06" version="0" order="6">
+            <DayTypeAssignment id="VYG:DayTypeAssignment:2020-01-06" version="0" order="6">
               <Date>2020-01-06</Date>
-              <DayTypeRef ref="NSB:DayType:2020-01-06" version="0"/>
+              <DayTypeRef ref="VYG:DayType:2020-01-06" version="0"/>
               <isAvailable>false</isAvailable>
             </DayTypeAssignment>
           </dayTypeAssignments>
@@ -152,20 +152,20 @@
         
         
         
-        <ServiceFrame version="0" id="NSB:ServiceFrame:4145998">
+        <ServiceFrame version="0" id="VYG:ServiceFrame:145998">
           
           <routePoints>         
-            <RoutePoint version="0" id="NSB:RoutePoint:1">
+            <RoutePoint version="0" id="VYG:RoutePoint:1">
               <projections>
                 <PointProjection version="0" id="ENT:PointProjection:1">
-                  <ProjectToPointRef version="0" ref="NSB:ScheduledStopPoint:1"/>
+                  <ProjectToPointRef version="0" ref="VYG:ScheduledStopPoint:1"/>
                 </PointProjection>
               </projections>
             </RoutePoint>
-            <RoutePoint version="0" id="NSB:RoutePoint:2">
+            <RoutePoint version="0" id="VYG:RoutePoint:2">
               <projections>
                 <PointProjection version="0" id="ENT:PointProjection:2">
-                  <ProjectToPointRef version="0" ref="NSB:ScheduledStopPoint:1"/>
+                  <ProjectToPointRef version="0" ref="VYG:ScheduledStopPoint:1"/>
                 </PointProjection>
               </projections>
             </RoutePoint>
@@ -175,24 +175,24 @@
           <routeLinks>
             <RouteLink version="0" id="ENT:RouteLink:1">
               <Distance>100</Distance>
-              <FromPointRef ref="NSB:RoutePoint:1"/>
-              <ToPointRef ref="NSB:RoutePoint:2"/>
+              <FromPointRef ref="VYG:RoutePoint:1"/>
+              <ToPointRef ref="VYG:RoutePoint:2"/>
             </RouteLink>
           </routeLinks>
           
           
           <routes>
-            <Route version="0" id="NSB:Route:1">
+            <Route version="0" id="VYG:Route:1">
               <Name>Oslo S - Drammen stasjon</Name>
               <ShortName>Oslo S - Drammen stasjon</ShortName>
-              <LineRef ref="NSB:Line:41" version="0"/>
+              <LineRef ref="VYG:Line:1" version="0"/>
               <DirectionType>outbound</DirectionType>
               <pointsInSequence>
                 <PointOnRoute version="0" id="ENT:PointOnRoute:1" order="1">
-                  <RoutePointRef version="0" ref="NSB:RoutePoint:1"/>
+                  <RoutePointRef version="0" ref="VYG:RoutePoint:1"/>
                 </PointOnRoute>
                 <PointOnRoute version="0" id="ENT:PointOnRoute:2" order="2">
-                  <RoutePointRef version="0" ref="NSB:RoutePoint:2"/>
+                  <RoutePointRef version="0" ref="VYG:RoutePoint:2"/>
                 </PointOnRoute>
               </pointsInSequence>
             </Route>  
@@ -200,32 +200,32 @@
           
           
           <lines>
-            <Line version="0" id="NSB:Line:41">
+            <Line version="0" id="VYG:Line:1">
               <Name>Oslo S - Drammen stasjon</Name>
               <PublicCode>41</PublicCode>
-              <OperatorRef ref="NSB:Operator:503"/>
-              <RepresentedByGroupRef ref="NSB:Network:1"/>
+              <OperatorRef ref="VYG:Operator:503"/>
+              <RepresentedByGroupRef ref="VYG:Network:1"/>
             </Line>
           </lines>
           
           
           <scheduledStopPoints>
-            <ScheduledStopPoint version="0" id="NSB:ScheduledStopPoint:1"/> <!-- Oslo S -->
-            <ScheduledStopPoint version="0" id="NSB:ScheduledStopPoint:2"/> <!-- Nationaltheatret -->
-            <ScheduledStopPoint version="0" id="NSB:ScheduledStopPoint:3"/> <!-- Sandvika -->
-            <ScheduledStopPoint version="0" id="NSB:ScheduledStopPoint:4"/> <!-- Asker -->
-            <ScheduledStopPoint version="0" id="NSB:ScheduledStopPoint:5"/> <!-- Drammen -->
+            <ScheduledStopPoint version="0" id="VYG:ScheduledStopPoint:1"/> <!-- Oslo S -->
+            <ScheduledStopPoint version="0" id="VYG:ScheduledStopPoint:2"/> <!-- Nationaltheatret -->
+            <ScheduledStopPoint version="0" id="VYG:ScheduledStopPoint:3"/> <!-- Sandvika -->
+            <ScheduledStopPoint version="0" id="VYG:ScheduledStopPoint:4"/> <!-- Asker -->
+            <ScheduledStopPoint version="0" id="VYG:ScheduledStopPoint:5"/> <!-- Drammen -->
           </scheduledStopPoints>
           
           
           <stopAssignments>
             <PassengerStopAssignment version="0" id="ENT:PassengerStopAssignment:1" order="1">
-              <ScheduledStopPointRef version="0" ref="NSB:ScheduledStopPoint:1"/>
+              <ScheduledStopPointRef version="0" ref="VYG:ScheduledStopPoint:1"/>
               <StopPlaceRef version="0" ref="NSR:StopPlace:1"/>
               <QuayRef version="0" ref="NSR:Quay:1"/>
             </PassengerStopAssignment>
             <PassengerStopAssignment version="0" id="ENT:PassengerStopAssignment:2" order="2">
-              <ScheduledStopPointRef version="0" ref="NSB:ScheduledStopPoint:2"/>
+              <ScheduledStopPointRef version="0" ref="VYG:ScheduledStopPoint:2"/>
               <StopPlaceRef version="0" ref="NSR:StopPlace:2"/>
               <QuayRef version="0" ref="NSR:Quay:2"/>
             </PassengerStopAssignment>
@@ -236,107 +236,107 @@
           
           
           <journeyPatterns>
-            <JourneyPattern version="0" id="NSB:JourneyPattern:1">
+            <JourneyPattern version="0" id="VYG:JourneyPattern:1">
               <Name>Oslo S - Drammen st</Name>
-              <RouteRef ref="NSB:Route:1" version="0"/>
+              <RouteRef ref="VYG:Route:1" version="0"/>
               <pointsInSequence>
-                <StopPointInJourneyPattern order="1" version="0" id="NSB:StopPointInJourneyPattern:1-1">
-                  <ScheduledStopPointRef ref="NSB:ScheduledStopPoint:1" version="0"/>
+                <StopPointInJourneyPattern order="1" version="0" id="VYG:StopPointInJourneyPattern:1-1">
+                  <ScheduledStopPointRef ref="VYG:ScheduledStopPoint:1" version="0"/>
                   <ForAlighting>false</ForAlighting>
-                  <DestinationDisplayRef ref="NSB:DestinationDisplay:32"/>
+                  <DestinationDisplayRef ref="VYG:DestinationDisplay:32"/>
                 </StopPointInJourneyPattern>
-                <StopPointInJourneyPattern order="2" version="0" id="NSB:StopPointInJourneyPattern:1-2">
-                  <ScheduledStopPointRef ref="NSB:ScheduledStopPoint:2" version="0"/>
+                <StopPointInJourneyPattern order="2" version="0" id="VYG:StopPointInJourneyPattern:1-2">
+                  <ScheduledStopPointRef ref="VYG:ScheduledStopPoint:2" version="0"/>
                 </StopPointInJourneyPattern>
-                <StopPointInJourneyPattern order="3" version="0" id="NSB:StopPointInJourneyPattern:1-3">
-                  <ScheduledStopPointRef ref="NSB:ScheduledStopPoint:3" version="0"/>
+                <StopPointInJourneyPattern order="3" version="0" id="VYG:StopPointInJourneyPattern:1-3">
+                  <ScheduledStopPointRef ref="VYG:ScheduledStopPoint:3" version="0"/>
                 </StopPointInJourneyPattern>
-                <StopPointInJourneyPattern order="4" version="0" id="NSB:StopPointInJourneyPattern:1-4">
-                  <ScheduledStopPointRef ref="NSB:ScheduledStopPoint:4" version="0"/>
+                <StopPointInJourneyPattern order="4" version="0" id="VYG:StopPointInJourneyPattern:1-4">
+                  <ScheduledStopPointRef ref="VYG:ScheduledStopPoint:4" version="0"/>
                 </StopPointInJourneyPattern>
-                <StopPointInJourneyPattern order="5" version="0" id="NSB:StopPointInJourneyPattern:1-5">
-                  <ScheduledStopPointRef ref="NSB:ScheduledStopPoint:4" version="0"/>
+                <StopPointInJourneyPattern order="5" version="0" id="VYG:StopPointInJourneyPattern:1-5">
+                  <ScheduledStopPointRef ref="VYG:ScheduledStopPoint:4" version="0"/>
                   <ForBoarding>false</ForBoarding>
                 </StopPointInJourneyPattern>
               </pointsInSequence>
               <linksInSequence>
-                <ServiceLinkInJourneyPattern order="1" version="0" id="NSB:ServiceLinkInJourneyPattern:1">
-                  <ServiceLinkRef ref="NSB:ServiceLink:1-external"/>
+                <ServiceLinkInJourneyPattern order="1" version="0" id="VYG:ServiceLinkInJourneyPattern:1">
+                  <ServiceLinkRef ref="VYG:ServiceLink:1-external"/>
                 </ServiceLinkInJourneyPattern>
-                <ServiceLinkInJourneyPattern order="2" version="0" id="NSB:ServiceLinkInJourneyPattern:2">
-                  <ServiceLinkRef ref="NSB:ServiceLink:2-external"/>
+                <ServiceLinkInJourneyPattern order="2" version="0" id="VYG:ServiceLinkInJourneyPattern:2">
+                  <ServiceLinkRef ref="VYG:ServiceLink:2-external"/>
                 </ServiceLinkInJourneyPattern>
-                <ServiceLinkInJourneyPattern order="3" version="0" id="NSB:ServiceLinkInJourneyPattern:3">
-                  <ServiceLinkRef ref="NSB:ServiceLink:3-external"/>
+                <ServiceLinkInJourneyPattern order="3" version="0" id="VYG:ServiceLinkInJourneyPattern:3">
+                  <ServiceLinkRef ref="VYG:ServiceLink:3-external"/>
                 </ServiceLinkInJourneyPattern>
-                <ServiceLinkInJourneyPattern order="4" version="0" id="NSB:ServiceLinkInJourneyPattern:4">
-                  <ServiceLinkRef ref="NSB:ServiceLink:4-external"/>
+                <ServiceLinkInJourneyPattern order="4" version="0" id="VYG:ServiceLinkInJourneyPattern:4">
+                  <ServiceLinkRef ref="VYG:ServiceLink:4-external"/>
                 </ServiceLinkInJourneyPattern>
               </linksInSequence>
             </JourneyPattern>
             
-            <JourneyPattern version="0" id="NSB:JourneyPattern:2">
+            <JourneyPattern version="0" id="VYG:JourneyPattern:2">
               <Name>Oslo S - Sandvika, partially cancelled (no service from Sandvika to Drammen)</Name>
-              <RouteRef ref="NSB:Route:1" version="0"/>
+              <RouteRef ref="VYG:Route:1" version="0"/>
               <pointsInSequence>
-                <StopPointInJourneyPattern order="1" version="0" id="NSB:StopPointInJourneyPattern:2-1">
-                  <ScheduledStopPointRef ref="NSB:ScheduledStopPoint:1" version="0"/>
+                <StopPointInJourneyPattern order="1" version="0" id="VYG:StopPointInJourneyPattern:2-1">
+                  <ScheduledStopPointRef ref="VYG:ScheduledStopPoint:1" version="0"/>
                   <ForAlighting>false</ForAlighting>
-                  <DestinationDisplayRef ref="NSB:DestinationDisplay:DrammenST-external"/>
+                  <DestinationDisplayRef ref="VYG:DestinationDisplay:DrammenST-external"/>
                 </StopPointInJourneyPattern>
-                <StopPointInJourneyPattern order="2" version="0" id="NSB:StopPointInJourneyPattern:2-2">
-                  <ScheduledStopPointRef ref="NSB:ScheduledStopPoint:2" version="0"/>
+                <StopPointInJourneyPattern order="2" version="0" id="VYG:StopPointInJourneyPattern:2-2">
+                  <ScheduledStopPointRef ref="VYG:ScheduledStopPoint:2" version="0"/>
                 </StopPointInJourneyPattern>
-                <StopPointInJourneyPattern order="3" version="0" id="NSB:StopPointInJourneyPattern:2-3">
-                  <ScheduledStopPointRef ref="NSB:ScheduledStopPoint:3" version="0"/>
+                <StopPointInJourneyPattern order="3" version="0" id="VYG:StopPointInJourneyPattern:2-3">
+                  <ScheduledStopPointRef ref="VYG:ScheduledStopPoint:3" version="0"/>
                   <ForBoarding>false</ForBoarding>
                 </StopPointInJourneyPattern>
               </pointsInSequence>
             </JourneyPattern>
 
-            <JourneyPattern version="0" id="NSB:JourneyPattern:3">
+            <JourneyPattern version="0" id="VYG:JourneyPattern:3">
               <Name>Sandvika - Asker (replacement)</Name>
-              <RouteRef ref="NSB:Route:1" version="0"/>
+              <RouteRef ref="VYG:Route:1" version="0"/>
               <pointsInSequence>
-                <StopPointInJourneyPattern order="1" version="0" id="NSB:StopPointInJourneyPattern:3-3">
-                  <ScheduledStopPointRef ref="NSB:ScheduledStopPoint:3" version="0"/>
+                <StopPointInJourneyPattern order="1" version="0" id="VYG:StopPointInJourneyPattern:3-3">
+                  <ScheduledStopPointRef ref="VYG:ScheduledStopPoint:3" version="0"/>
                   <ForAlighting>false</ForAlighting>
-                  <DestinationDisplayRef ref="NSB:DestinationDisplay:DrammenST-external"/>
+                  <DestinationDisplayRef ref="VYG:DestinationDisplay:DrammenST-external"/>
                 </StopPointInJourneyPattern>
-                <StopPointInJourneyPattern order="2" version="0" id="NSB:StopPointInJourneyPattern:3-4">
-                  <ScheduledStopPointRef ref="NSB:ScheduledStopPoint:4" version="0"/>
+                <StopPointInJourneyPattern order="2" version="0" id="VYG:StopPointInJourneyPattern:3-4">
+                  <ScheduledStopPointRef ref="VYG:ScheduledStopPoint:4" version="0"/>
                   <ForBoarding>false</ForBoarding>
                 </StopPointInJourneyPattern>
               </pointsInSequence>
             </JourneyPattern>
 
-            <JourneyPattern version="0" id="NSB:JourneyPattern:4">
+            <JourneyPattern version="0" id="VYG:JourneyPattern:4">
               <Name>Asker - Drammen st (replacement)</Name>
-              <RouteRef ref="NSB:Route:1" version="0"/>
+              <RouteRef ref="VYG:Route:1" version="0"/>
               <pointsInSequence>
-                <StopPointInJourneyPattern order="1" version="0" id="NSB:StopPointInJourneyPattern:4-4">
-                  <ScheduledStopPointRef ref="NSB:ScheduledStopPoint:4" version="0"/>
+                <StopPointInJourneyPattern order="1" version="0" id="VYG:StopPointInJourneyPattern:4-4">
+                  <ScheduledStopPointRef ref="VYG:ScheduledStopPoint:4" version="0"/>
                   <ForAlighting>false</ForAlighting>
-                  <DestinationDisplayRef ref="NSB:DestinationDisplay:DrammenST-external"/>
+                  <DestinationDisplayRef ref="VYG:DestinationDisplay:DrammenST-external"/>
                 </StopPointInJourneyPattern>
-                <StopPointInJourneyPattern order="2" version="0" id="NSB:StopPointInJourneyPattern:4-5">
-                  <ScheduledStopPointRef ref="NSB:ScheduledStopPoint:5" version="0"/>
+                <StopPointInJourneyPattern order="2" version="0" id="VYG:StopPointInJourneyPattern:4-5">
+                  <ScheduledStopPointRef ref="VYG:ScheduledStopPoint:5" version="0"/>
                   <ForBoarding>false</ForBoarding>
                 </StopPointInJourneyPattern>
               </pointsInSequence>
             </JourneyPattern>
             
-            <JourneyPattern version="0" id="NSB:JourneyPattern:5">
+            <JourneyPattern version="0" id="VYG:JourneyPattern:5">
               <Name>Sandvika - Drammen st (direct bus replacement)</Name>
-              <RouteRef ref="NSB:Route:1" version="0"/>
+              <RouteRef ref="VYG:Route:1" version="0"/>
               <pointsInSequence>
-                <StopPointInJourneyPattern order="1" version="0" id="NSB:StopPointInJourneyPattern:5-3">
-                  <ScheduledStopPointRef ref="NSB:ScheduledStopPoint:4" version="0"/>
+                <StopPointInJourneyPattern order="1" version="0" id="VYG:StopPointInJourneyPattern:5-3">
+                  <ScheduledStopPointRef ref="VYG:ScheduledStopPoint:4" version="0"/>
                   <ForAlighting>false</ForAlighting>
-                  <DestinationDisplayRef ref="NSB:DestinationDisplay:DrammenST-external"/>
+                  <DestinationDisplayRef ref="VYG:DestinationDisplay:DrammenST-external"/>
                 </StopPointInJourneyPattern>
-                <StopPointInJourneyPattern order="2" version="0" id="NSB:StopPointInJourneyPattern:5-5">
-                  <ScheduledStopPointRef ref="NSB:ScheduledStopPoint:5" version="0"/>
+                <StopPointInJourneyPattern order="2" version="0" id="VYG:StopPointInJourneyPattern:5-5">
+                  <ScheduledStopPointRef ref="VYG:ScheduledStopPoint:5" version="0"/>
                   <ForBoarding>false</ForBoarding>
                 </StopPointInJourneyPattern>
               </pointsInSequence>
@@ -347,10 +347,10 @@
         
         
         
-        <TimetableFrame version="0" id="NSB:TimetableFrame:1">
+        <TimetableFrame version="0" id="VYG:TimetableFrame:1">
           <vehicleJourneys>
             
-            <ServiceJourney id="NSB:ServiceJourney:41" version="0">
+            <ServiceJourney id="VYG:ServiceJourney:1" version="0">
               <keyList>
                 <KeyValue>
                   <Key>OTN</Key>
@@ -362,35 +362,35 @@
               <TransportSubmode>
                 <RailSubmode>regionalRail</RailSubmode>
               </TransportSubmode>
-              <JourneyPatternRef ref="NSB:JourneyPattern:1" version="0" />
+              <JourneyPatternRef ref="VYG:JourneyPattern:1" version="0" />
               <passingTimes>
                 <TimetabledPassingTime>
-                  <StopPointInJourneyPatternRef version="0" ref="NSB:StopPointInJourneyPattern:1" />
+                  <StopPointInJourneyPatternRef version="0" ref="VYG:StopPointInJourneyPattern:1" />
                   <DepartureTime>07:48:00</DepartureTime>
                 </TimetabledPassingTime>                
                 <TimetabledPassingTime>
-                  <StopPointInJourneyPatternRef version="0" ref="NSB:StopPointInJourneyPattern:2" />
+                  <StopPointInJourneyPatternRef version="0" ref="VYG:StopPointInJourneyPattern:2" />
                   <DepartureTime>07:50:00</DepartureTime>
                 </TimetabledPassingTime>
                 <TimetabledPassingTime>
-                  <StopPointInJourneyPatternRef version="0" ref="NSB:StopPointInJourneyPattern:3" />
+                  <StopPointInJourneyPatternRef version="0" ref="VYG:StopPointInJourneyPattern:3" />
                   <ArrivalTime>08:00:00</ArrivalTime>
                   <DepartureTime>08:04:00</DepartureTime>
                 </TimetabledPassingTime> 
                 <TimetabledPassingTime>
-                  <StopPointInJourneyPatternRef version="0" ref="NSB:StopPointInJourneyPattern:4" />
+                  <StopPointInJourneyPatternRef version="0" ref="VYG:StopPointInJourneyPattern:4" />
                   <ArrivalTime>08:12:00</ArrivalTime>
                   <DepartureTime>08:14:00</DepartureTime>
                 </TimetabledPassingTime>                 
                 <TimetabledPassingTime>
-                  <StopPointInJourneyPatternRef version="0" ref="NSB:StopPointInJourneyPattern:5" />
+                  <StopPointInJourneyPatternRef version="0" ref="VYG:StopPointInJourneyPattern:5" />
                   <ArrivalTime>08:30:00</ArrivalTime>
                 </TimetabledPassingTime>           
               </passingTimes>
             </ServiceJourney>
             
             
-            <ServiceJourney id="NSB:ServiceJourney:41-A" version="0">
+            <ServiceJourney id="VYG:ServiceJourney:1-A" version="0">
               <keyList>
                 <KeyValue>
                   <Key>OTN</Key>
@@ -402,25 +402,25 @@
               <TransportSubmode>
                 <RailSubmode>regionalRail</RailSubmode>
               </TransportSubmode>
-              <JourneyPatternRef ref="NSB:JourneyPattern:2" version="0" />
+              <JourneyPatternRef ref="VYG:JourneyPattern:2" version="0" />
               <passingTimes>
                 <TimetabledPassingTime>
-                  <StopPointInJourneyPatternRef version="0" ref="NSB:StopPointInJourneyPattern:1" />
+                  <StopPointInJourneyPatternRef version="0" ref="VYG:StopPointInJourneyPattern:1" />
                   <DepartureTime>07:48:00</DepartureTime>
                 </TimetabledPassingTime>                
                 <TimetabledPassingTime>
-                  <StopPointInJourneyPatternRef version="0" ref="NSB:StopPointInJourneyPattern:2" />
+                  <StopPointInJourneyPatternRef version="0" ref="VYG:StopPointInJourneyPattern:2" />
                   <DepartureTime>07:50:00</DepartureTime>
                 </TimetabledPassingTime>
                 <TimetabledPassingTime>
-                  <StopPointInJourneyPatternRef version="0" ref="NSB:StopPointInJourneyPattern:3" />
+                  <StopPointInJourneyPatternRef version="0" ref="VYG:StopPointInJourneyPattern:3" />
                   <ArrivalTime>08:00:00</ArrivalTime>
                 </TimetabledPassingTime>               
               </passingTimes>
             </ServiceJourney>
             
             
-            <ServiceJourney id="NSB:ServiceJourney:41-B" version="0">
+            <ServiceJourney id="VYG:ServiceJourney:1-B" version="0">
               <keyList>
                 <KeyValue>
                   <Key>OTN</Key>
@@ -432,21 +432,21 @@
               <TransportSubmode>
                 <BusSubmode>railReplacementBus</BusSubmode>
               </TransportSubmode>
-              <JourneyPatternRef ref="NSB:JourneyPattern:2" version="0" />
+              <JourneyPatternRef ref="VYG:JourneyPattern:2" version="0" />
               <passingTimes>
                 <TimetabledPassingTime>
-                  <StopPointInJourneyPatternRef version="0" ref="NSB:StopPointInJourneyPattern:3" />
+                  <StopPointInJourneyPatternRef version="0" ref="VYG:StopPointInJourneyPattern:3" />
                   <DepartureTime>08:14:00</DepartureTime>
                 </TimetabledPassingTime>  
                 <TimetabledPassingTime>
-                  <StopPointInJourneyPatternRef version="0" ref="NSB:StopPointInJourneyPattern:4" />
+                  <StopPointInJourneyPatternRef version="0" ref="VYG:StopPointInJourneyPattern:4" />
                   <ArrivalTime>08:40:00</ArrivalTime>
                 </TimetabledPassingTime> 
               </passingTimes>
             </ServiceJourney>
             
             
-            <ServiceJourney id="NSB:ServiceJourney:41-C" version="0">
+            <ServiceJourney id="VYG:ServiceJourney:1-C" version="0">
               <keyList>
                 <KeyValue>
                   <Key>OTN</Key>
@@ -458,21 +458,21 @@
               <TransportSubmode>
                 <BusSubmode>railReplacementBus</BusSubmode>
               </TransportSubmode>
-              <JourneyPatternRef ref="NSB:JourneyPattern:2" version="0" />
+              <JourneyPatternRef ref="VYG:JourneyPattern:2" version="0" />
               <passingTimes>
                 <TimetabledPassingTime>
-                  <StopPointInJourneyPatternRef version="0" ref="NSB:StopPointInJourneyPattern:4" />
+                  <StopPointInJourneyPatternRef version="0" ref="VYG:StopPointInJourneyPattern:4" />
                   <DepartureTime>08:45:00</DepartureTime>
                 </TimetabledPassingTime>  
                 <TimetabledPassingTime>
-                  <StopPointInJourneyPatternRef version="0" ref="NSB:StopPointInJourneyPattern:5" />
+                  <StopPointInJourneyPatternRef version="0" ref="VYG:StopPointInJourneyPattern:5" />
                   <ArrivalTime>09:00:00</ArrivalTime>
                 </TimetabledPassingTime> 
               </passingTimes>
             </ServiceJourney>
             
             
-            <ServiceJourney id="NSB:ServiceJourney:41-D" version="0">
+            <ServiceJourney id="VYG:ServiceJourney:1-D" version="0">
               <keyList>
                 <KeyValue>
                   <Key>OTN</Key>
@@ -484,14 +484,14 @@
               <TransportSubmode>
                 <BusSubmode>railReplacementBus</BusSubmode>
               </TransportSubmode>
-              <JourneyPatternRef ref="NSB:JourneyPattern:2" version="0" />
+              <JourneyPatternRef ref="VYG:JourneyPattern:2" version="0" />
               <passingTimes>
                 <TimetabledPassingTime>
-                  <StopPointInJourneyPatternRef version="0" ref="NSB:StopPointInJourneyPattern:3" />
+                  <StopPointInJourneyPatternRef version="0" ref="VYG:StopPointInJourneyPattern:3" />
                   <DepartureTime>08:14:00</DepartureTime>
                 </TimetabledPassingTime>  
                 <TimetabledPassingTime>
-                  <StopPointInJourneyPatternRef version="0" ref="NSB:StopPointInJourneyPattern:5" />
+                  <StopPointInJourneyPatternRef version="0" ref="VYG:StopPointInJourneyPattern:5" />
                   <ArrivalTime>08:46:00</ArrivalTime>
                 </TimetabledPassingTime> 
               </passingTimes>
@@ -516,81 +516,82 @@
             
             
             <!-- Normal service -->
-            <DatedServiceJourney version="0" id="NSB:DatedServiceJourney:41-2020-01-01">
-              <ServiceJourneyRef ref="NSB:ServiceJourney:41" version="0"/>
-              <OperatingDayRef ref="NSB:OperatingDay:2020-01-01" version="0"/>
+            <DatedServiceJourney version="0" id="VYG:DatedServiceJourney:1-2020-01-01">
+              <ServiceJourneyRef ref="VYG:ServiceJourney:1" version="0"/>
+              <OperatingDayRef ref="VYG:OperatingDay:2020-01-01" version="0"/>
             </DatedServiceJourney>
             
             <!-- Cancelled service without replacement -->
-            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-2020-01-02">
+            <DatedServiceJourney version="1" id="VYG:DatedServiceJourney:1-2020-01-02">
               <ServiceAlteration>cancellation</ServiceAlteration>
-              <ServiceJourneyRef ref="NSB:ServiceJourney:41" version="0" />
-              <OperatingDayRef ref="NSB:OperatingDay:2020-01-02" version="0"/>
+              <ServiceJourneyRef ref="VYG:ServiceJourney:1" version="0" />
+              <OperatingDayRef ref="VYG:OperatingDay:2020-01-02" version="0"/>
             </DatedServiceJourney>
             
             <!-- Partially cancelled service (i.e. replaced with ServiceJourney with new JourneyPattern where Asker and Drammen is not serviced) -->
-            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-2020-01-03">
+            <DatedServiceJourney version="1" id="VYG:DatedServiceJourney:1-2020-01-03">
               <ServiceAlteration>replaced</ServiceAlteration>
-              <ServiceJourneyRef ref="NSB:ServiceJourney:41" />
-              <OperatingDayRef ref="NSB:OperatingDay:2020-01-03" version="0"/>
+              <ServiceJourneyRef ref="VYG:ServiceJourney:1" />
+              <OperatingDayRef ref="VYG:OperatingDay:2020-01-03" version="0"/>
             </DatedServiceJourney>
-            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-A-2020-01-03">
+            <DatedServiceJourney version="1" id="VYG:DatedServiceJourney:1-A-2020-01-03">
               <ServiceAlteration>planned</ServiceAlteration>
-              <ServiceJourneyRef ref="NSB:ServiceJourney:41-A" version="0"/>
-              <DatedServiceJourneyRef ref="NSB:DatedServiceJourney:41-2020-01-03" version="0"/>
-              <OperatingDayRef ref="NSB:OperatingDay:2020-01-03" version="0"/>
+              <ServiceJourneyRef ref="VYG:ServiceJourney:1-A" version="0"/>
+              <DatedServiceJourneyRef ref="VYG:DatedServiceJourney:1-2020-01-03" version="0"/>
+              <OperatingDayRef ref="VYG:OperatingDay:2020-01-03" version="0"/>
             </DatedServiceJourney>
             
             <!-- Partially cancelled service including replacement bus, but only for Sandvika to Asker (i.e. Asker to Drammen is not serviced) -->
-            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-2020-01-04">
+            <DatedServiceJourney version="1" id="VYG:DatedServiceJourney:1-2020-01-04">
               <ServiceAlteration>replaced</ServiceAlteration>
-              <ServiceJourneyRef ref="NSB:ServiceJourney:41" version="0"/>
-              <OperatingDayRef ref="NSB:OperatingDay:2020-01-04" version="0"/>
+              <ServiceJourneyRef ref="VYG:ServiceJourney:1" version="0"/>
+              <VehicleJourneyRef ref="ref"></VehicleJourneyRef>
+              <OperatingDayRef ref="VYG:OperatingDay:2020-01-04" version="0"/>
             </DatedServiceJourney>
-            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-A-2020-01-04">
+            <DatedServiceJourney version="1" id="VYG:DatedServiceJourney:1-A-2020-01-04">
               <ServiceAlteration>planned</ServiceAlteration>
-              <ServiceJourneyRef ref="NSB:ServiceJourney:41-A" version="0"/>
-              <DatedServiceJourneyRef ref="NSB:DatedServiceJourney:41-2020-01-04" version="0"/>
-              <OperatingDayRef ref="NSB:OperatingDay:2020-01-04" version="0"/>
+              <ServiceJourneyRef ref="VYG:ServiceJourney:1-A" version="0"/>
+              <DatedServiceJourneyRef ref="VYG:DatedServiceJourney:1-2020-01-04" version="0"/>
+              <OperatingDayRef ref="VYG:OperatingDay:2020-01-04" version="0"/>
             </DatedServiceJourney>
-            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-B-2020-01-04">
+            <DatedServiceJourney version="1" id="VYG:DatedServiceJourney:1-B-2020-01-04">
               <ServiceAlteration>planned</ServiceAlteration>
-              <ServiceJourneyRef ref="NSB:ServiceJourney:41-B" version="0"/>
-              <DatedServiceJourneyRef ref="NSB:DatedServiceJourney:41-2020-01-04" version="0"/>
-              <OperatingDayRef ref="NSB:OperatingDay:2020-01-04" version="0"/>
+              <ServiceJourneyRef ref="VYG:ServiceJourney:1-B" version="0"/>
+              <DatedServiceJourneyRef ref="VYG:DatedServiceJourney:1-2020-01-04" version="0"/>
+              <OperatingDayRef ref="VYG:OperatingDay:2020-01-04" version="0"/>
             </DatedServiceJourney>
             
             <!-- Partially cancelled service including replacement busses (B: Sandvika-Asker, C: Asker-Drammen, D: Sandvika-Drammen directly) -->
             <!-- (B and C would normally be a combined JourneyPattern/ServiceJourney, but is split for examplification of combined replacement transport) -->
-            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-2020-01-05">
+            <DatedServiceJourney version="1" id="VYG:DatedServiceJourney:1-2020-01-05">
               <ServiceAlteration>replaced</ServiceAlteration>
-              <ServiceJourneyRef ref="NSB:ServiceJourney:41" version="0"/>
-              <OperatingDayRef ref="NSB:OperatingDay:2020-01-05" version="0"/>
+              <ServiceJourneyRef ref="VYG:ServiceJourney:1" version="0"/>
+              <OperatingDayRef ref="VYG:OperatingDay:2020-01-05" version="0"/>
             </DatedServiceJourney>
-            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-A-2020-01-05">
+            <DatedServiceJourney version="1" id="VYG:DatedServiceJourney:1-A-2020-01-05">
               <ServiceAlteration>planned</ServiceAlteration>
-              <ServiceJourneyRef ref="NSB:ServiceJourney:41-A" version="0"/>
-              <DatedServiceJourneyRef ref="NSB:DatedServiceJourney:41-2020-01-05" version="0"/>
-              <OperatingDayRef ref="NSB:OperatingDay:2020-01-05" version="0"/>
+              <ServiceJourneyRef ref="VYG:ServiceJourney:1-A" version="0"/>
+              <DatedServiceJourneyRef ref="VYG:DatedServiceJourney:1-2020-01-05" version="0"/>
+              <OperatingDayRef ref="VYG:OperatingDay:2020-01-05" version="0"/>
             </DatedServiceJourney>
-            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-B-2020-01-05">
+            <DatedServiceJourney version="1" id="VYG:DatedServiceJourney:1-B-2020-01-05">
               <ExternalVehicleJourneyRef ref="" />
               <ServiceAlteration>planned</ServiceAlteration>
-              <ServiceJourneyRef ref="NSB:ServiceJourney:41-B" version="0"/>
-              <DatedServiceJourneyRef ref="NSB:DatedServiceJourney:41-2020-01-05" version="0"/>
-              <OperatingDayRef ref="NSB:OperatingDay:2020-01-05" version="0"/>
+              <ServiceJourneyRef ref="VYG:ServiceJourney:1-B" version="0"/>
+              <DatedServiceJourneyRef ref="VYG:DatedServiceJourney:1-2020-01-05" version="0"/>
+              <OperatingDayRef ref="VYG:OperatingDay:2020-01-05" version="0"/>
             </DatedServiceJourney>        
-            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-C-2020-01-05">
+            <DatedServiceJourney version="1" id="VYG:DatedServiceJourney:1-C-2020-01-05">
               <ServiceAlteration>planned</ServiceAlteration>
-              <ServiceJourneyRef ref="NSB:ServiceJourney:41-C" version="0"/>
-              <DatedServiceJourneyRef ref="NSB:DatedServiceJourney:41-2020-01-05" version="0"/>
-              <OperatingDayRef ref="NSB:OperatingDay:2020-01-05" version="0"/>
+              <ServiceJourneyRef ref="VYG:ServiceJourney:1-C" version="0"/>
+              <DatedServiceJourneyRef ref="VYG:DatedServiceJourney:1-2020-01-05" version="0"/>
+              <OperatingDayRef ref="VYG:OperatingDay:2020-01-05" version="0"/>
             </DatedServiceJourney> 
-            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:41-D-2020-01-05">
+            <DatedServiceJourney version="1" id="VYG:DatedServiceJourney:1-D-2020-01-05">
               <ServiceAlteration>extraJourney</ServiceAlteration>
-              <ServiceJourneyRef ref="NSB:ServiceJourney:41-D" version="0"/>
-              <DatedServiceJourneyRef ref="NSB:DatedServiceJourney:41-2020-01-05" version="0"/>
-              <OperatingDayRef ref="NSB:OperatingDay:2020-01-05" version="0"/>
+              <ServiceJourneyRef ref="VYG:ServiceJourney:1-D" version="0"/>
+              <DatedServiceJourneyRef ref="VYG:DatedServiceJourney:1-2020-01-05" version="0"/>
+              <OperatingDayRef ref="VYG:OperatingDay:2020-01-05" version="0"/>
             </DatedServiceJourney>
             
             
@@ -630,7 +631,7 @@
               </datedPassingTimes>
             </DatedVehicleJourney>
             
-            <DatedServiceJourney id="NSB:DatedServiceJourney:41-2020-01-21" version="1">
+            <DatedServiceJourney id="VYG:DatedServiceJourney:1-2020-01-21" version="1">
               <!-- test -->
             </DatedServiceJourney>
             
@@ -644,22 +645,22 @@
           <!-- ALTERNATIVE CONSTRUCTION: -->
           
           <groupsOfServices>
-            <GroupOfServices id="NSB:GroupOfServices:41" version="0">
+            <GroupOfServices id="VYG:GroupOfServices:1" version="0">
               <members>
-                <GroupOfServicesMember id="NSB:GroupOfServicesMember:41" version="0" order="1">
-                  <ServiceJourneyRef ref="NSB:ServiceJourney:41" version="0"/>
+                <GroupOfServicesMember id="VYG:GroupOfServicesMember:1" version="0" order="1">
+                  <ServiceJourneyRef ref="VYG:ServiceJourney:1" version="0"/>
                 </GroupOfServicesMember>
-                <GroupOfServicesMember id="NSB:GroupOfServicesMember:41-A" version="0" order="2">
-                  <DatedVehicleJourneyRef ref="NSB:DatedServiceJourney:41-A-2020-01-05" />
+                <GroupOfServicesMember id="VYG:GroupOfServicesMember:1-A" version="0" order="2">
+                  <DatedVehicleJourneyRef ref="VYG:DatedServiceJourney:1-A-2020-01-05" />
                 </GroupOfServicesMember>
-                <GroupOfServicesMember id="NSB:GroupOfServicesMember:41-B" version="0" order="2">
-                  <DatedVehicleJourneyRef ref="NSB:DatedServiceJourney:41-B-2020-01-05" />
+                <GroupOfServicesMember id="VYG:GroupOfServicesMember:1-B" version="0" order="2">
+                  <DatedVehicleJourneyRef ref="VYG:DatedServiceJourney:1-B-2020-01-05" />
                 </GroupOfServicesMember>
-                <GroupOfServicesMember id="NSB:GroupOfServicesMember:41-C" version="0" order="2">
-                  <DatedVehicleJourneyRef ref="NSB:DatedServiceJourney:41-C-2020-01-05" />
+                <GroupOfServicesMember id="VYG:GroupOfServicesMember:1-C" version="0" order="2">
+                  <DatedVehicleJourneyRef ref="VYG:DatedServiceJourney:1-C-2020-01-05" />
                 </GroupOfServicesMember>
-                <GroupOfServicesMember id="NSB:GroupOfServicesMember:41-D" version="0" order="2">
-                  <DatedVehicleJourneyRef ref="NSB:DatedServiceJourney:41-D-2020-01-05" />
+                <GroupOfServicesMember id="VYG:GroupOfServicesMember:1-D" version="0" order="2">
+                  <DatedVehicleJourneyRef ref="VYG:DatedServiceJourney:1-D-2020-01-05" />
                 </GroupOfServicesMember>
               </members>
             </GroupOfServices>
@@ -668,15 +669,33 @@
           
           
           <!-- (deemed not relevant for this use-case) -->
-          <!--
+          
           <trainNumbers>
-            <TrainNumber id="NSB:TrainNumber:1-3922" version="0">
+            <TrainNumber id="VYG:TrainNumber:1-3922" version="0">
               <ForAdvertisement>3922</ForAdvertisement>
               <ForProduction>3922XYZ</ForProduction>
             </TrainNumber>
           </trainNumbers>
-          -->
-
+          
+          <serviceFacilitySets>
+            <ServiceFacilitySet id="VYG:ServiceFacilitySet:1" version="0">
+              <CateringFacilityList>selfService</CateringFacilityList>
+              <FareClasses>secondClass unknown</FareClasses>
+              <MobilityFacilityList>suitableForWheelchairs</MobilityFacilityList>
+              <NuisanceFacilityList>mobilePhoneFreeZone</NuisanceFacilityList>
+              <PassengerCommsFacilityList>publicWifi</PassengerCommsFacilityList>
+              <AccommodationFacilityList>recreationArea singleSleeper</AccommodationFacilityList>
+              <LuggageCarriageFacilityList>cyclesAllowedInVan</LuggageCarriageFacilityList>
+              <ServiceReservationFacilityList>noReservationsPossible</ServiceReservationFacilityList>
+            </ServiceFacilitySet>
+          </serviceFacilitySets>
+          
+          <noticeAssignments>
+            <NoticeAssignment version="0" id="VYG:NoticeAssignment:1" order="0">
+              <NoticeRef ref="VYG:Notice:1" />
+              <NoticedObjectRef ref="VYG:ServiceJourney:1" version="0" />
+            </NoticeAssignment>
+          </noticeAssignments>
           
         </TimetableFrame>
       </frames>
