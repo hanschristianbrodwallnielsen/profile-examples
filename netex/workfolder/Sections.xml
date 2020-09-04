@@ -1,9 +1,61 @@
 <?xml version='1.0' encoding='UTF-8'?>
+
+
+<!--
+
+Section:
+A part of a public transport network where the ROUTEs of several JOURNEY PATTERNs are going in parallel and where the synchronisation of SERVICE JOURNEYs may be planned and controlled with respect to commonly used LINKs and SCHEDULED STOP POINTs. COMMON SECTIONs are defined arbitrarily and need not cover the total lengths of topologically bundled sections.
+
+
+
+# LineSection
+
+A section of a LINE NETWORK comprising an edge between two nodes. It is not directional.
+
+(Line Network: The Topological structure of a NETWORK as a graph of LINE SECTIONs. This allows the branches and loops of a LINE to be described as a whole.)
+
++ Per jernbane er det intuitivt dette som skal beskrives og gis Resposibility
+- Må (pdd.) defineres som <sections> på et LineNetwork, som i utg.pkt er ment brukt til å strukturere/visualisere hvordan ulike Lines henger sammen (ikke for å seksjonere Lines).
+
+
+
+# CommonSection
+
+GENERAL SECTION is a general-purpose instance of a SECTION that can be used for a sequence of links of any TYPE.
+
++ kan defineres helt uavhengig (i ServiceFrame - commonSections)
+
+
+
+
+# FareSection
+
+A subdivision of a JOURNEY PATTERN consisting of consecutive POINTs IN JOURNEY PATTERN, used to define an element of the fare structure.
+
+Har i tillegg til <pointsOnSection> også
+(evt JourneyPatternRef)
+FromFarePointRef
+ToFarePointRef
+
+aka f.eks. FareScheduledStopPointRef
+
+
+
+Dvs. alt kan implementeres, og gis f.eks. ResponsibilitySet/Ref. (Men da må konstruksjonen redgjøres i profil.)
+Spec stiller ikke krav til noe annet enn at en Section skal ha <pointsOnSection> og dette skal innholde et Point eller PointRef av fritt valgt type.
+
+
+Må tas stilling use-cases her, og hvor tett dette skal være knyttet til Line (og/eller Route, JourneyPattern) eller som et "selvstendig" datasett. 
+Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tanke på evt. behov for directe knytning (xSectionRef) fra relevante datatyper. 
+(Referansen mangler i en del objekter hvor den kanskje kan være relevant.)
+
+-->
+
 <PublicationDelivery 
-    xmlns="http://www.netex.org.uk/netex"
-    xmlns:gis="http://www.opengis.net/gml/3.2" 
-    xmlns:siri="http://www.siri.org.uk/siri"
-    version="1.12:NO-NeTEx-networktimetable:1.4">
+  xmlns="http://www.netex.org.uk/netex"
+  xmlns:gis="http://www.opengis.net/gml/3.2" 
+  xmlns:siri="http://www.siri.org.uk/siri"
+  version="1.12:NO-NeTEx-networktimetable:1.4">
 
 
   <PublicationTimestamp>2020-09-03T15:00:00</PublicationTimestamp>
@@ -129,28 +181,86 @@
           </routes>
 
 
+          <commonSections>
+            
+            <!-- Alternative with ScheduledStopPoints -->
+            <CommonSection id="ENT:CommonSection:Vy" version="1">
+              <Name>VY</Name>
+              <pointsOnSection>
+                <PointOnSection id="ENT:PointOnSection:1" version="1" order="1">
+                  <!-- Oslo -->
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:1"/> 
+                </PointOnSection>
+                <PointOnSection id="ENT:PointOnSection:2" version="1" order="2">
+                  <!-- Lillehammer -->
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:2"/> 
+                </PointOnSection>
+              </pointsOnSection>
+            </CommonSection>
+            <CommonSection id="ENT:CommonSection:SJ-NORD" version="1">
+              <Name>SJ NORD</Name>
+              <pointsOnSection>
+                <PointOnSection id="ENT:PointOnSection:3" version="1" order="1">
+                  <!-- Lillehammer -->
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:2"/> 
+                </PointOnSection>
+                <PointOnSection id="ENT:PointOnSection:4" version="1" order="2">
+                  <!-- Dombås -->
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:3"/> 
+                </PointOnSection>
+              </pointsOnSection>
+            </CommonSection>
+            
+            <!-- Alternative with RailwayPoints (not yet defined per Nordic NeTEx Profile -->
+            <CommonSection id="VYG:CommonSection:Vy" version="1">
+              <Name>VY</Name>
+              <pointsOnSection>
+                <PointOnSection id="VYG:PointOnSection:1" version="1" order="1">
+                  <RailwayPointRef ref="Oslo"/>
+                </PointOnSection>
+                <PointOnSection id="VYG:PointOnSection:2" version="1" order="2">
+                  <RailwayPointRef ref="Lillehammer"/>
+                </PointOnSection>
+              </pointsOnSection>
+            </CommonSection>
+            <CommonSection id="SJN:CommonSection:SJ-NORD" version="1">
+              <Name>SJ NORD</Name>
+              <pointsOnSection>
+                <PointOnSection id="SJN:PointOnSection:1" version="1" order="1">
+                  <RailwayPointRef ref="Dombås"/>
+                </PointOnSection>
+                <PointOnSection id="SJN:PointOnSection:2" version="1" order="2">
+                  <RailwayPointRef ref="Lillehammer"/>
+                </PointOnSection>
+              </pointsOnSection>
+            </CommonSection>
+            
+          </commonSections>
+
 
           <lines>
-            <Line version="0" id="VYG:Line:1">
+            <Line id="VYG:Line:1" version="0">
               <Name>DEMO</Name>
               <PublicCode>41</PublicCode>
               <OperatorRef ref="VYG:Operator:1"/>
               <RepresentedByGroupRef ref="VYG:Network:1"/>
-              
-              
+
+
               <!-- (arbeidshypotese -->
-              <!-- her trenger vi (trolig) referanse til LineNetwork --> 
+              <!-- her trenger vi (trolig) referanse til LineNetwork -->
               <!-- eller mer presist, LineSection skal defineres selvstendig, og en Line kan ha en eller flere LineSection -->
-                
-              
+
+
             </Line>
           </lines>
+
 
 
           <lineNetworks>
             <LineNetwork version="0" id="tfl:LineNetwork:LG_NTN">
               <Name>Northern Line</Name>
-              <LineRef ref="1" version="0"/> <!-- Trolig irrelevant, siden en section skal brukes for flere Line -->
+              <LineRef ref="VYG:Line:1" version="0"/>
+              <!-- Trolig irrelevant, siden en section skal brukes for flere Line -->
               <sections>
                 <LineSection version="0" id="ENT:PointOnLineSection:1">
                   <pointsOnSection>
@@ -252,7 +362,7 @@
                     </PointOnLineSection>
                   </pointsOnSection>
                 </LineSection>
-                
+
                 <LineSection version="0" id="ENT:PointOnLineSection:2">
                   <pointsOnSection>
                     <PointOnLineSection id="ENT:PointOnLineSection:0" version="0">
@@ -378,11 +488,64 @@
             </PassengerStopAssignment>
 
             <!-- etc... -->
-
+            
+            <!-- FareScheduledStopPoint assignments -->
+            <PassengerStopAssignment id="ENT:PassengerStopAssignment:3" version="1" order="1">
+              <FareScheduledStopPointRef ref="VYG:FareScheduledStopPoint:1" version="1"/>
+              <StopPlaceRef version="0" ref="NSR:StopPlace:1"/>
+            </PassengerStopAssignment>
+            <PassengerStopAssignment id="ENT:PassengerStopAssignment:4" version="1" order="1">
+              <FareScheduledStopPointRef ref="VYG:FareScheduledStopPoint:2" version="1"/>
+              <StopPlaceRef version="0" ref="NSR:StopPlace:2"/>
+            </PassengerStopAssignment>
+            
           </stopAssignments>
 
-
         </ServiceFrame>
+
+
+
+
+        <FareFrame id="ENT:FareFrame:1" version="1"> 
+        
+          <fareScheduledStopPoints>
+            
+            <!-- Ikke spesifisert knytning til StopPlace -->
+            <FareScheduledStopPoint id="VYG:FareScheduledStopPoint:1" version="1" responsibilitySetRef="VYG:ResponsibilitySet:1">
+              <Name>Oslo</Name>
+              <VehicleModes>rail</VehicleModes>
+            </FareScheduledStopPoint>
+            <FareScheduledStopPoint id="VYG:FareScheduledStopPoint:2" version="1" responsibilitySetRef="VYG:ResponsibilitySet:1">
+              <Name>Lillehammer</Name>
+              <VehicleModes>rail</VehicleModes>
+            </FareScheduledStopPoint>
+            
+          </fareScheduledStopPoints>
+          
+          
+          <fareSections>
+
+            <FareSection id="VYG:FareSection" version="1" >
+              <Name>VY</Name>
+              <!-- ikke definert farePointsInPattern i eksempelet, foreløpig er dette relevant for geografisk strekke ikke kjøremønster? -->
+              <pointsOnSection>
+                <PointOnSection id="ENT:PointOnSection:4" version="1" order="1">
+                  <!-- Oslo -->
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:1"/> 
+                </PointOnSection>
+                <PointOnSection id="ENT:PointOnSection:5" version="1" order="2">
+                  <!-- Lillehammer -->
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:2"/> 
+                </PointOnSection>
+              </pointsOnSection>
+              <JourneyPatternRef ref="NSB:JourneyPattern:1"/> <!-- dvs. neppe relevant? -->
+              <!-- FromPointInPatternRef ref="VYG:FarePointInPattern:1" version="1" /-->
+              <!-- ToPointInPatternRef ref="VYG:FarePointInPattern:1" version="1" /-->
+            </FareSection>
+          </fareSections>
+          
+        </FareFrame>
+
       </frames>
     </CompositeFrame>
   </dataObjects>
