@@ -1,0 +1,389 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<PublicationDelivery 
+    xmlns="http://www.netex.org.uk/netex"
+    xmlns:gis="http://www.opengis.net/gml/3.2" 
+    xmlns:siri="http://www.siri.org.uk/siri"
+    version="1.12:NO-NeTEx-networktimetable:1.4">
+
+
+  <PublicationTimestamp>2020-09-03T15:00:00</PublicationTimestamp>
+  <ParticipantRef>ENT</ParticipantRef>
+  <Description>EXAMPLE</Description>
+  <dataObjects>
+
+    <VehicleScheduleFrame created="2020-09-03T15:00:00" version="0" id="VYG:VehicleScheduleFrame:1">
+      <!-- placeholder -->
+    </VehicleScheduleFrame>
+
+
+    <GeneralFrame created="2020-09-03T15:00:00" version="0" id="VYG:GeneralFrame:145997">
+      <!-- placeholder -->
+    </GeneralFrame>
+
+
+    <ResourceFrame created="2020-09-03T15:00:00" version="0" id="VYG:ResourceFrame:145997">
+      <!-- placeholder -->
+    </ResourceFrame>
+
+
+    <CompositeFrame created="2020-09-03T15:00:00" version="0" id="VYG:CompositeFrame:145997">
+      <validityConditions>
+        <AvailabilityCondition version="0" id="VYG:AvailabilityCondition:144408">
+          <FromDate>2020-09-01T00:00:00</FromDate>
+          <ToDate>2020-12-31T23:59:59</ToDate>
+        </AvailabilityCondition>
+      </validityConditions>
+      <codespaces>
+        <Codespace id="nsr">
+          <Xmlns>NSR</Xmlns>
+          <XmlnsUrl>http://www.rutebanken.org/ns/nsr</XmlnsUrl>
+        </Codespace>
+        <Codespace id="ent">
+          <Xmlns>ENT</Xmlns>
+          <XmlnsUrl>http://www.rutebanken.org/ns/ent</XmlnsUrl>
+        </Codespace>
+        <Codespace id="vyg">
+          <Xmlns>VYG</Xmlns>
+          <XmlnsUrl>http://www.rutebanken.org/ns/vyg</XmlnsUrl>
+        </Codespace>
+        <Codespace id="goa">
+          <Xmlns>GOA</Xmlns>
+          <XmlnsUrl>http://www.rutebanken.org/ns/goa</XmlnsUrl>
+        </Codespace>
+      </codespaces>
+      <FrameDefaults>
+        <DefaultLocale>
+          <TimeZone>Europe/Oslo</TimeZone>
+          <DefaultLanguage>no</DefaultLanguage>
+        </DefaultLocale>
+      </FrameDefaults>
+
+
+      <frames>
+        <SiteFrame version="0" id="NSR:SiteFrame:1">
+          <stopPlaces>
+            <StopPlace version="0" id="NSR:StopPlace:1">
+              <Name>Demo</Name>
+              <quays>
+                <Quay version="0" id="NSR:Quay:1"/>
+              </quays>
+            </StopPlace>
+            <StopPlace version="0" id="NSR:StopPlace:2">
+              <Name>Demo</Name>
+              <quays>
+                <Quay version="0" id="NSR:Quay:2"/>
+              </quays>
+            </StopPlace>
+          </stopPlaces>
+        </SiteFrame>
+
+
+        <ServiceCalendarFrame version="0" id="VYG:ServiceCalendarFrame:1">
+          <!-- placeholder -->
+        </ServiceCalendarFrame>
+
+
+
+        <ServiceFrame version="0" id="VYG:ServiceFrame:145998">
+          <routePoints>
+            <RoutePoint version="0" id="VYG:RoutePoint:1">
+              <projections>
+                <PointProjection version="0" id="ENT:PointProjection:1">
+                  <ProjectToPointRef version="0" ref="VYG:ScheduledStopPoint:1"/>
+                </PointProjection>
+              </projections>
+            </RoutePoint>
+            <RoutePoint version="0" id="VYG:RoutePoint:2">
+              <projections>
+                <PointProjection version="0" id="ENT:PointProjection:2">
+                  <ProjectToPointRef version="0" ref="VYG:ScheduledStopPoint:1"/>
+                </PointProjection>
+              </projections>
+            </RoutePoint>
+          </routePoints>
+
+
+          <routeLinks>
+            <RouteLink version="0" id="ENT:RouteLink:1">
+              <Distance>100</Distance>
+              <FromPointRef ref="VYG:RoutePoint:1"/>
+              <ToPointRef ref="VYG:RoutePoint:2"/>
+            </RouteLink>
+          </routeLinks>
+
+
+          <routes>
+            <Route version="0" id="VYG:Route:1">
+              <Name>Demo</Name>
+              <LineRef ref="VYG:Line:1" version="0"/>
+              <DirectionType>outbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute version="0" id="ENT:PointOnRoute:1" order="1">
+                  <RoutePointRef version="0" ref="VYG:RoutePoint:1"/>
+                </PointOnRoute>
+                <PointOnRoute version="0" id="ENT:PointOnRoute:2" order="2">
+                  <RoutePointRef version="0" ref="VYG:RoutePoint:2"/>
+                </PointOnRoute>
+              </pointsInSequence>
+            </Route>
+          </routes>
+
+
+
+          <lines>
+            <Line version="0" id="VYG:Line:1">
+              <Name>DEMO</Name>
+              <PublicCode>41</PublicCode>
+              <OperatorRef ref="VYG:Operator:1"/>
+              <RepresentedByGroupRef ref="VYG:Network:1"/>
+              
+              
+              <!-- (arbeidshypotese -->
+              <!-- her trenger vi (trolig) referanse til LineNetwork --> 
+              <!-- eller mer presist, LineSection skal defineres selvstendig, og en Line kan ha en eller flere LineSection -->
+                
+              
+            </Line>
+          </lines>
+
+
+          <lineNetworks>
+            <LineNetwork version="0" id="tfl:LineNetwork:LG_NTN">
+              <Name>Northern Line</Name>
+              <LineRef ref="1" version="0"/> <!-- Trolig irrelevant, siden en section skal brukes for flere Line -->
+              <sections>
+                <LineSection version="0" id="ENT:PointOnLineSection:1">
+                  <pointsOnSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:0" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:DN2"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:1" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:WN1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:2" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:SD1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:3" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:BY1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:4" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:BC1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:5" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:LM1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:6" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:PS1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:7" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:PC1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:8" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:PN1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:9" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:KW1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:10" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:VL1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:11" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:NG1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:12" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:LO3"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:13" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:MB5"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:14" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:HX4"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:15" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:SQ1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:16" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:CR2"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:17" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:DG1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:18" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:RR1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:19" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:US4"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:20" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:TC1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:21" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:TN1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:22" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:SH1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:23" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:FP1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:24" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:CY1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:25" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:GT1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:26" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:FY1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:27" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:YC1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:28" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:FN1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:29" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:OP1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:30" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:AW1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:31" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:BT1"/>
+                    </PointOnLineSection>
+                  </pointsOnSection>
+                </LineSection>
+                
+                <LineSection version="0" id="ENT:PointOnLineSection:2">
+                  <pointsOnSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:0" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:DN2"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:1" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:WN1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:2" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:SD1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:3" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:BY1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:4" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:BC1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:5" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:LM1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:6" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:PS1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:7" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:PC1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:8" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:PN1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:9" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:KW1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:10" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:VL1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:11" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:NG1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:12" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:AC3"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:13" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:OR1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:14" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:NB1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:15" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:NK4"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:16" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:GT3"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:17" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:DS1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:18" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:GL1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:19" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:SX4"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:20" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:US2"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:21" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:TN2"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:22" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:FM1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:23" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:ZP1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:24" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:TD1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:25" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:GN1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:26" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:TX1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:27" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:CL1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:28" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:ND1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:29" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:TK1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:30" version="0">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:GW1"/>
+                    </PointOnLineSection>
+                  </pointsOnSection>
+                </LineSection>
+              </sections>
+            </LineNetwork>
+          </lineNetworks>
+
+
+          <scheduledStopPoints>
+            <ScheduledStopPoint version="0" id="NSR:ScheduledStopPoint:1"/>
+            <!-- ScheduledStopPoint ID skal legges til i NSR -->
+            <ScheduledStopPoint version="0" id="NSR:ScheduledStopPoint:2"/>
+            <ScheduledStopPoint version="0" id="NSR:ScheduledStopPoint:3"/>
+            <ScheduledStopPoint version="0" id="VYG:ScheduledStopPoint:4"/>
+            <ScheduledStopPoint version="0" id="VYG:ScheduledStopPoint:5"/>
+          </scheduledStopPoints>
+
+
+          <stopAssignments>
+            <PassengerStopAssignment version="0" id="ENT:PassengerStopAssignment:1" order="1">
+              <ScheduledStopPointRef version="0" ref="NSR:ScheduledStopPoint:1"/>
+              <StopPlaceRef version="0" ref="NSR:StopPlace:1"/>
+              <QuayRef version="0" ref="NSR:Quay:1"/>
+            </PassengerStopAssignment>
+            <PassengerStopAssignment version="0" id="ENT:PassengerStopAssignment:2" order="2">
+              <ScheduledStopPointRef version="0" ref="NSR:ScheduledStopPoint:2"/>
+              <StopPlaceRef version="0" ref="NSR:StopPlace:2"/>
+              <QuayRef version="0" ref="NSR:Quay:2"/>
+            </PassengerStopAssignment>
+
+            <!-- etc... -->
+
+          </stopAssignments>
+
+
+        </ServiceFrame>
+      </frames>
+    </CompositeFrame>
+  </dataObjects>
+</PublicationDelivery>
