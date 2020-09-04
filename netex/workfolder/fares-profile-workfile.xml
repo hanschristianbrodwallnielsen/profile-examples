@@ -728,7 +728,7 @@
                     <prices>
                         <CustomerPurchasePackagePrice id="ENT:CustomerPurchasePackagePrice:1" version="1">
                             <Amount>10</Amount>
-                        </CustomerPurchasePackagePrice>llq
+                        </CustomerPurchasePackagePrice>
                     </prices>
                 </CustomerPurchasePackage>
             </customerPurchasePackages>
