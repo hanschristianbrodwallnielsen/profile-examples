@@ -88,6 +88,7 @@
             
             <Description>https://ruter.no/en/buying-tickets/tickets-and-fares/</Description>
             
+            
             <PricingParameterSet id="ENT:PricingParameterSet:1" version="1">
                 <pricingServices>
                     <PricingService id="ENT:PricingService:PoP" version="1">
@@ -97,8 +98,8 @@
                     </PricingService>
                 </pricingServices>
             </PricingParameterSet>
-
-
+            
+            
 
             <!-- Spec: 7.5.3.4.1 GeographicalUnit – Model Element 
                 "A unit for calculating geographical graduated fares." 
@@ -145,6 +146,8 @@
                     <Duration>PT1H30M</Duration>
                 </TimeInterval>
             </timeIntervals>
+            
+            
             
             
             <!-- 
@@ -278,7 +281,7 @@
                     </fareStructureElements>
                 </ValidableElement>
             </validableElements>
-            
+
             
             <usageParameters>
                 <UserProfile id="ENT:UserProfile:NormalFare" version="1">
@@ -387,9 +390,7 @@
                 <EntitlementRequired id="test" version="1">
                     <ServiceAccessRightRef ref="ref"/>
                 </EntitlementRequired>
-                
             </usageParameters>
-
             
             <fareProducts>
                 <PreassignedFareProduct id="ENT:PreassignedFareProduct:1" version="1">
@@ -400,6 +401,7 @@
                     <accessRightsInProduct>
                         <AccessRightInProduct id="BS" version="1" order="1">
                             <ValidableElementRef ref="test"/>
+                            <SupplementProductRef ref="ref"/> <!-- preferably not referenced from here -->
                         </AccessRightInProduct>
                     </accessRightsInProduct>
                 </PreassignedFareProduct>
@@ -517,6 +519,17 @@
             <fulfilmentMethods>
                 <FulfilmentMethod id="ENT:FulfilmentMethod:1" version="1">
                     <Name>FulfilmentMethod</Name>
+                    <RequiresCard>false</RequiresCard>
+                    <RequiresBookingReference>false</RequiresBookingReference>
+                    <typesOfTravelDocument>
+                        <TypeOfTravelDocumentRef ref="ref"/>
+                    </typesOfTravelDocument>
+                    <canIssueTypesOfTravelDocument>
+                        <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:abtSmartphoneToken"/>
+                    </canIssueTypesOfTravelDocument>
+                    <canReuseTypesOfTravelDocument>
+                        <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:abtSmartphoneToken"/>
+                    </canReuseTypesOfTravelDocument>
                 </FulfilmentMethod>
             </fulfilmentMethods>
             
@@ -618,12 +631,17 @@
                 </AvailabilityCondition>
             </validityConditions>
             
+            <customers>
+                <Customer id="ENT:Customer:1" version="1">
+                    <Surname>Name</Surname>
+                    <FirstName>Name</FirstName>
+                    <DateOfBirth>1980-01-02</DateOfBirth>
+                </Customer> 
+            </customers>
             
             <customerAccounts>
-                <CustomerAccount id="ENT:CustomerAccount:1" version="1"/>
-                <!-- usually reference to external dataset -->
+                <CustomerAccount id="ENT:CustomerAccount:1" version="1"> </CustomerAccount>
             </customerAccounts>
-            
             
             <fareContracts>
                 <FareContract id="ENT:FareContract:1" version="1">
@@ -631,29 +649,43 @@
                     <StartDate>2020-07-22T11:00:00</StartDate>
                     <EndDate>2020-07-22T12:00:00</EndDate>
                     <fareContractEntries>
-                        <SalesTransaction id="ENT:SalesTransaction:1" version="1">
-                            <Name lang="en">Purchase of full price single mobile ticket for travel within one zone</Name>
-                            <Date>2020-07-22T11:00:00</Date>
-                            <Amount>37</Amount>
-                            <Currency>NOK</Currency>
-                            <PaymentMethod>mobilePhone</PaymentMethod>
-                            <customerPurchasePackages>
-                                <CustomerPurchasePackageRef ref="ENT:CustomerPurchasePackage:SingleTrip1ZoneActivated" version="1"/>
-                            </customerPurchasePackages>
-                        </SalesTransaction>
+                        <SalesTransactionRef ref="ENT:SalesTransaction:1" version="1"/>
                     </fareContractEntries>
                 </FareContract>
             </fareContracts>
-
+            
+            <!-- (ikke i bruk pdd.) -->
+            <travelSpecifications>
+                <TravelSpecification id="ENT:TravelSpecification:1" version="1">
+                </TravelSpecification>
+            </travelSpecifications>
+            
+            <salesTransactions>
+                <SalesTransaction id="ENT:SalesTransaction:1" version="1">
+                    <Name lang="en">Purchase of full price single mobile ticket for travel within one zone</Name>
+                    <Date>2020-07-22T11:00:00</Date>
+                    <Amount>37</Amount>
+                    <Currency>NOK</Currency>
+                    <PaymentMethod>mobilePhone</PaymentMethod>
+                    <customerPurchasePackages>
+                        <CustomerPurchasePackageRef ref="ENT:CustomerPurchasePackage:SingleTrip1ZoneActivated" version="1"/>
+                    </customerPurchasePackages>
+                </SalesTransaction>
+            </salesTransactions>
+            
+            <!-- (ikke i bruk pdd.) -->
             <travelDocuments>
                 <TravelDocument id="ENT:TravelDocument:1" version="1">
                     <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:AppRuterBillett" version="1"/>
+                    <MarkedAs>activated</MarkedAs>
                 </TravelDocument>
             </travelDocuments>
             
             <customerPurchasePackages>
                 <CustomerPurchasePackage id="ENT:CustomerPurchasePackage:SingleTrip1ZoneActivated" version="1">
                     <SalesOfferPackageRef ref="ENT:SalesOfferPackage:SingleTrip1Zone" version="1"/>
+                    <CustomerRef ref="ref"/>
+                    <CustomerAccountRef ref="ref"/>
                     <customerPurchasePackageElements>
                         <CustomerPurchasePackageElement id="ENT:CustomerPurchasePackageElement:SingleTrip1ZoneActivated" version="1" order="1">
                             <SalesOfferPackageElementRef ref="ENT:SalesOfferPackageElement:SingleTrip1Zone" version="1"/>
@@ -662,145 +694,46 @@
                             
                             <elementAccesses>
                                 <CustomerPurchasePackageElementAccess id="ENT:CustomerPurchasePackageElementAccess:1" version="1" created="2020-07-22T11:00:00">
-                                    <ValidableElementRef ref="ENT:ValidableElement:1" version="1"/>
+                                    
                                     <MarkedAs>activated</MarkedAs>
+                                    
                                     <validityParameterAssignments>
                                         <CustomerPurchaseParameterAssignment id="ENT:CustomerPurchasePackageElementAccess:1" version="1" order="1">
-                                            
                                             <!-- CHECK: <ValidableElementRef> indirekte referert, likevel angi eksplisitt for ParameterAssignment? -->
-                                            
                                             <limitations>
                                                 <UsageValidityPeriodRef ref="ENT:UsageValidityPeriod:1" version="1"/>
                                                 <UserProfileRef ref="ENT:UserProfile:NormalFare" version="1"/>
                                             </limitations>
+                                            <validityParameters>
+                                                <PassengerSeatRef ref="VYT:PassengerSeat:XYZ3" />
+                                            </validityParameters>
                                         </CustomerPurchaseParameterAssignment>
                                     </validityParameterAssignments>
                                 </CustomerPurchasePackageElementAccess>
                             </elementAccesses>
-                        </CustomerPurchasePackageElement>
-                    </customerPurchasePackageElements>
-                    
-                    <!-- CHECK: Redundant, trenger ikke gjentas? -->
-                    <!--
-                    <prices>
-                        <CustomerPurchasePackagePrice id="ENT:CustomerPurchasePackagePrice:1">
-                            <Amount>699</Amount>
-                            <Currency>NOK</Currency>
-                        </CustomerPurchasePackagePrice>
-                    </prices>
-                    -->
-                </CustomerPurchasePackage>
-            </customerPurchasePackages>
-
-        </SalesTransactionFrame>
-        
-        
-        <!-- Zone 2V Travelcard (permanent or temporary) reduced price ticket: -->
-        
-        <SalesTransactionFrame id="ENT:SalesTransactionFrame:2" version="1">
-            <validityConditions>
-                <AvailabilityCondition id="ENT:AvailabilityCondition:4" version="1">
-                    <FromDate>2020-01-26T00:00:00</FromDate>
-                </AvailabilityCondition>
-            </validityConditions>
-            
-            <fareContracts>
-                <FareContract id="ENT:FareContract:2" version="1">
-                    <Name lang="en">Reduced price single travel card ticket for travel within two zones</Name>
-                    <StartDate>2020-07-22T11:00:00</StartDate>
-                    <EndDate>2021-07-22T12:00:00</EndDate> <!-- assumed one year validity -->
-                    <fareContractEntries>
-                        <SalesTransaction id="ENT:SalesTransaction:2" version="1">
-                            <Name lang="en">Purchase of reduced price single travel card ticket for travel within two zones</Name>
-                            <Date>2020-07-22T11:00:00</Date>
-                            <Amount>31</Amount>
-                            <Currency>NOK</Currency>
-                            <PaymentMethod>cashAndCard</PaymentMethod>
-                            <customerPurchasePackages>
-                                <CustomerPurchasePackageRef ref="ENT:CustomerPurchasePackage:SingleTrip2ZonesNotActivated" version="1"/>
-                            </customerPurchasePackages>
-                        </SalesTransaction>
-                    </fareContractEntries>
-                </FareContract>
-            </fareContracts>
-            
-            <travelDocuments>
-                <TravelDocument id="ENT:TravelDocument:2" version="1">
-                    <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:Travelcard" version="1"/>
-                </TravelDocument>
-                <TravelDocument id="ENT:TravelDocument:3" version="1">
-                    <TypeOfTravelDocumentRef ref="ENT:TypeOfTravelDocument:SingleUseElectronicTicket" version="1"/>
-                </TravelDocument>
-            </travelDocuments>
-            
-            <customerPurchasePackages>   
-                <CustomerPurchasePackage id="ENT:CustomerPurchasePackage:SingleTrip2ZonesNotActivated" version="1">
-                    <SalesOfferPackageRef ref="ENT:SalesOfferPackageElement:SingleTrip2Zones" version="1"/>
-                    <customerPurchasePackageElements>
-                        
-                        <!-- Before activation -->                        
-                        
-                        <CustomerPurchasePackageElement id="ENT:CustomerPurchasePackageElement:SingleTrip2ZonesNotActivated" version="1" order="1">
-                            <SalesOfferPackageElementRef ref="ENT:SalesOfferPackageElement:SingleTrip2Zones" version="1"/>
-                            
-                            <!-- CHECK: <PreassignedFareProduct> indirekte referert, og man trenger ikke angi eksplisitt -->
-                            
-                            <elementAccesses>
-                                <CustomerPurchasePackageElementAccess id="ENT:CustomerPurchasePackageElementAccess:2" version="1" created="2019-01-01T00:00:00">
-                                    <ValidableElementRef ref="ENT:ValidableElement:2" version="1"/>
-                                    <MarkedAs>unused</MarkedAs>
-                                </CustomerPurchasePackageElementAccess>
-                            </elementAccesses>
-                            
                             <validityParameterAssignments>
-                                <CustomerPurchaseParameterAssignment version="1" id="ENT:CustomerPurchaseParameterAssignment:2" order="1">
-                                    
+                                <CustomerPurchaseParameterAssignment id="ENT:CustomerPurchasePackageElementAccess:2" version="1" order="1">
                                     <!-- CHECK: <ValidableElementRef> indirekte referert, likevel angi eksplisitt for ParameterAssignment? -->
-                                    
-                                    <limitations>
-                                        <UserProfileRef ref="ENT:UserProfile:ReducedFare" version="1"/>
-                                    </limitations>
-                                    
-                                    <!-- CHECK: <TariffZone> indirekte referert, likevel angi eksplisitt? -->
-                                    
-                                </CustomerPurchaseParameterAssignment>
-                            </validityParameterAssignments>
-                        </CustomerPurchasePackageElement>
-                        
-                        
-                        <!-- After activation -->
-                        
-                        <CustomerPurchasePackageElement id="ENT:CustomerPurchasePackageElement:SingleTripActivated" version="1" order="1">
-                            <SalesOfferPackageElementRef ref="ENT:SalesOfferPackageElement:SingleTrip2Zones" version="1"/>
-                            
-                            <!-- CHECK: <PreassignedFareProduct> indirekte referert, og man trenger ikke angi eksplisitt -->
-                            
-                            <elementAccesses>
-                                <CustomerPurchasePackageElementAccess id="ENT:CustomerPurchasePackageElementAccess:3" version="1" created="2020-07-22T13:10:00">
-                                    <ValidableElementRef ref="ENT:ValidableElement:2" version="1"/>
-                                    <MarkedAs>activated</MarkedAs>
-                                </CustomerPurchasePackageElementAccess>
-                            </elementAccesses>
-                            
-                            <validityParameterAssignments>
-                                <CustomerPurchaseParameterAssignment version="1" id="ENT:CustomerPurchaseParameterAssignment:3" order="1">
-                                    
-                                    <!-- CHECK: <ValidableElementRef> indirekte referert, likevel angi eksplisitt for ParameterAssignment? -->
-                                    
                                     <limitations>
                                         <UsageValidityPeriodRef ref="ENT:UsageValidityPeriod:1" version="1"/>
-                                        <UserProfileRef ref="ENT:UserProfile:ReducedFare" version="1"/>
+                                        <UserProfileRef ref="ENT:UserProfile:NormalFare" version="1"/>
                                     </limitations>
-                                    
-                                    <!-- CHECK: <TariffZone> indirekte referert, likevel angi eksplisitt? -->
-                                    
+                                    <validityParameters>
+                                        <PassengerSeatRef ref="VYT:PassengerSeat:XYZ3" />
+                                    </validityParameters>
                                 </CustomerPurchaseParameterAssignment>
                             </validityParameterAssignments>
-                        </CustomerPurchasePackageElement>   
+                        </CustomerPurchasePackageElement>
                     </customerPurchasePackageElements>
+                    <prices>
+                        <CustomerPurchasePackagePrice id="ENT:CustomerPurchasePackagePrice:1" version="1">
+                            <Amount>10</Amount>
+                        </CustomerPurchasePackagePrice>llq
+                    </prices>
                 </CustomerPurchasePackage>
             </customerPurchasePackages>
-        </SalesTransactionFrame>
 
+        </SalesTransactionFrame>
+ 
     </dataObjects>
 </PublicationDelivery>
