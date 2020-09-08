@@ -490,6 +490,13 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
             <!-- etc... -->
             
             <!-- supplementary example for assigning to Vehicle/Train/Entrance/BoardingPosition -->
+            <!-- 
+              NB: 
+                TrainStopAssignment is documented as "Assignment of a scheduled train stop point to a STOP PLACE and quay. etc."
+                but does not actually have a reference to neither Quay nor StopPlace (only to BoardingPosition from Site elements)
+              I.e. must indirectly be assigned with a PassengerStopAssignmentRef or vice versa 
+              (or implicitly, per profile in the case, if assigned to the same ScheduledStopPoint ID) 
+            -->
             <TrainStopAssignment id="VYG:TrainStopAssignment:1" version="1" order="1">
               <FareScheduledStopPointRef ref="ref"></FareScheduledStopPointRef>
               <PassengerStopAssignmentRef ref="ENT:PassengerStopAssignment:3" version="1"/> <!-- only for demonstration purpose -->
