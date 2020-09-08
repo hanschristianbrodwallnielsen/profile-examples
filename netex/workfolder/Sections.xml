@@ -489,10 +489,21 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
 
             <!-- etc... -->
             
+            <!-- supplementary example for assigning to Vehicle/Train/Entrance/BoardingPosition -->
+            <TrainStopAssignment id="VYG:TrainStopAssignment:1" version="1" order="1">
+              <FareScheduledStopPointRef ref="ref"></FareScheduledStopPointRef>
+              <PassengerStopAssignmentRef ref="ENT:PassengerStopAssignment:3" version="1"/> <!-- only for demonstration purpose -->
+              <BoardingPositionRef ref="ref-to-external-id"/>
+              <EntranceToVehicle>yes</EntranceToVehicle> <!-- incorrectly implemented in NeTEx? (SIRI refers with ID) -->
+            </TrainStopAssignment>
+            
             <!-- FareScheduledStopPoint assignments -->
             <PassengerStopAssignment id="ENT:PassengerStopAssignment:3" version="1" order="1">
               <FareScheduledStopPointRef ref="VYG:FareScheduledStopPoint:1" version="1"/>
               <StopPlaceRef version="1" ref="NSR:StopPlace:1"/>
+              <trainElements>
+                <TrainStopAssignmentRef ref="VYG:TrainStopAssignment:1" version="1"/> <!-- only for demonstration purpose -->
+              </trainElements>
             </PassengerStopAssignment>
             <PassengerStopAssignment id="ENT:PassengerStopAssignment:4" version="1" order="1">
               <FareScheduledStopPointRef ref="VYG:FareScheduledStopPoint:2" version="1"/>
@@ -509,20 +520,25 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
         <FareFrame id="ENT:FareFrame:1" version="1">
           
           <!-- 
-            FareScheduled =
-            StopPointA specialisation of SCHEDULED STOP POINT describing a stop with fare accounting and routing characteristics.
+            FareScheduledStopPoint =
+            A specialisation of SCHEDULED STOP POINT describing a stop with fare accounting and routing characteristics.
           -->
           
           <fareScheduledStopPoints>
             
-            <!-- Ikke spesifisert knytning til StopPlace -->
             <FareScheduledStopPoint id="VYG:FareScheduledStopPoint:1" version="1" responsibilitySetRef="VYG:ResponsibilitySet:1">
               <Name>Oslo</Name>
-              <VehicleModes>rail</VehicleModes>
+              <tariffZones>
+                <TariffZoneRef ref="ref"/> <!-- possible, but should rather be derived from NSR -->
+              </tariffZones>
+              <StopType>railStation</StopType>
+              <VehicleModes>rail bus</VehicleModes>
             </FareScheduledStopPoint>
+            
             <FareScheduledStopPoint id="VYG:FareScheduledStopPoint:2" version="1" responsibilitySetRef="VYG:ResponsibilitySet:1">
               <Name>Lillehammer</Name>
-              <VehicleModes>rail</VehicleModes>
+              <StopType>railStation</StopType>
+              <VehicleModes>rail bus</VehicleModes>
             </FareScheduledStopPoint>
             
           </fareScheduledStopPoints>
