@@ -256,7 +256,7 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
             </CommonSection>
             
             <!-- Alternative with RailwayPoints (not yet defined per Nordic NeTEx Profile -->
-            <CommonSection id="VYG:CommonSection:Vy" version="1">
+            <CommonSection id="VYG:CommonSection:Vy" version="1" responsibilitySetRef="ENT:ResponsibilitySet:VYT-Oslo-Lillehammer">
               <Name>VY</Name>
               <pointsOnSection>
                 <PointOnSection id="VYG:PointOnSection:1" version="1" order="1">
@@ -267,7 +267,7 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
                 </PointOnSection>
               </pointsOnSection>
             </CommonSection>
-            <CommonSection id="SJN:CommonSection:SJ-NORD" version="1">
+            <CommonSection id="SJN:CommonSection:SJ-NORD" version="1" responsibilitySetRef="ENT:ResponsibilitySet:SJ-Oslo-Lillehammer-IKKE-IMPLEMENTERT">
               <Name>SJ NORD</Name>
               <pointsOnSection>
                 <PointOnSection id="SJN:PointOnSection:1" version="1" order="1">
@@ -301,7 +301,7 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
 
 
           <lineNetworks>
-            <LineNetwork version="1" id="tfl:LineNetwork:LG_NTN">
+            <LineNetwork version="1" id="tfl:LineNetwork:LG_NTN" responsibilitySetRef="ENT:ResponsibilitySet:VYT-Oslo-Lillehammer">
               <Name>Northern Line</Name>
               <LineRef ref="VYG:Line:1" version="1"/>
               <!-- Trolig irrelevant, siden en section skal brukes for flere Line -->
@@ -598,7 +598,7 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
           <fareSections>
             
             <!-- Alternativ 1: Som referanse til eksplisitt FareScheduledStopPoints -->
-            <FareSection id="VYG:FareSection:1" version="1" >
+            <FareSection id="VYG:FareSection:1" version="1" responsibilitySetRef="ENT:ResponsibilitySet:VYT-Oslo-Lillehammer">
               <Name>VY</Name>
               <!-- ikke definert farePointsInPattern i eksempelet, foreløpig er dette relevant for geografisk strekke ikke kjøremønster? -->
               <pointsOnSection>
@@ -618,7 +618,7 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
             
             
             <!-- Alternativ 2: Som referanse til vanlig ScheduledStopPoints (gyldig, men ikke like semantisk presist) -->
-            <FareSection id="VYG:FareSection:2" version="1" >
+            <FareSection id="VYG:FareSection:2" version="1" responsibilitySetRef="ENT:ResponsibilitySet:VYT-Oslo-Lillehammer">
               <Name>VY</Name>
               <pointsOnSection>
                 <PointOnSection id="ENT:PointOnSection:6" version="1" order="1">
