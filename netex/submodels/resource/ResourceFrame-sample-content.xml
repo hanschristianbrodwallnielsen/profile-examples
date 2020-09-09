@@ -61,7 +61,7 @@
                 </Codespace>
             </codespaces>
             <responsibilitySets>
-                <ResponsibilitySet version="2.0" id="RB:ResponsibilitySet:OSLO">
+                <ResponsibilitySet id="RB:ResponsibilitySet:OSLO" version="1">
                     <Name>Endre stoppesteder i OSLO</Name>
                     <roles>
                         <ResponsibilityRoleAssignment id="RB:ResponsibilityRoleAssignment:1" version="1">
@@ -71,7 +71,7 @@
                         </ResponsibilityRoleAssignment>
                     </roles>
                 </ResponsibilitySet>
-                <ResponsibilitySet version="2.0" id="RB:ResponsibilitySet:InnsendingRutedata">
+                <ResponsibilitySet id="RB:ResponsibilitySet:InnsendingRutedata" version="1">
                     <Name>Innsending rutedata Oslo</Name>
                     <roles>
                         <ResponsibilityRoleAssignment id="RB:ResponsibilityRoleAssignment:11" version="1">
@@ -80,7 +80,7 @@
                         </ResponsibilityRoleAssignment>
                     </roles>
                 </ResponsibilitySet>
-                <ResponsibilitySet version="2.0" id="RB:ResponsibilitySet:BUSKERUD">
+                <ResponsibilitySet id="RB:ResponsibilitySet:BUSKERUD" version="1">
                     <Name>Endre stoppesteder i BUSKERUD</Name>
                     <roles>
                         <ResponsibilityRoleAssignment id="RB:ResponsibilityRoleAssignment:2" version="1">
