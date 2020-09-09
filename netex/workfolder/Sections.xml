@@ -73,11 +73,71 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
     </GeneralFrame>
 
 
-    <ResourceFrame created="2020-09-03T15:00:00" version="1" id="VYG:ResourceFrame:145997">
-      <!-- placeholder -->
+    <ResourceFrame id="VYG:ResourceFrame:1" version="1" created="2020-09-03T15:00:00">
+      <codespaces>
+        <Codespace id="ent">
+          <Xmlns>ENT</Xmlns>
+          <XmlnsUrl>http://www.rutebanken.org/ns/ent</XmlnsUrl>
+          <Description>Entur AS</Description>
+        </Codespace>
+        <Codespace id="nsr">
+          <Xmlns>NSR</Xmlns>
+          <XmlnsUrl>http://www.rutebanken.org/ns/nsr</XmlnsUrl>
+          <Description>Nasjonalt Stoppested-Register</Description>
+        </Codespace>
+        <Codespace id="nog">
+          <Xmlns>NOG</Xmlns>
+          <XmlnsUrl>http://www.rutebanken.org/ns/nog</XmlnsUrl>
+          <Description>Nasjonalt Organisasjons-Register</Description>
+        </Codespace>
+        <Codespace id="vyg">
+          <Xmlns>VYG</Xmlns>
+          <XmlnsUrl>http://www.rutebanken.org/ns/vyg</XmlnsUrl>
+          <Description>Vy-gruppen</Description>
+        </Codespace>
+        <Codespace id="goa">
+          <Xmlns>GOA</Xmlns>
+          <XmlnsUrl>http://www.rutebanken.org/ns/goa</XmlnsUrl>
+          <Description>Go-Ahead Nordic</Description>
+        </Codespace>
+      </codespaces>
+      
+      <responsibilitySets>
+        <ResponsibilitySet id="ENT:ResponsibilitySet:VYT-Oslo-Lillehammer" version="1">
+          <Name>Endre stoppesteder i OSLO</Name>
+          <roles>
+            <ResponsibilityRoleAssignment id="ENT:ResponsibilityRoleAssignment:1" version="1">
+              <DataRoleType>owns</DataRoleType>
+              
+              <!-- XSD:CHOICE -->
+              <!-- ResponsibilityRoleRef ref="ENT:TypeOfEntity:FareAuthority" version="1"/ --> <!-- DOES NOT COMPUTE -->
+              <!-- TypeOfResponsibilityRoleRef ref="ENT:TypeOfEntity:FareAuthority" version="1"/ --> <!-- DOES NOT COMPUTE -->
+
+              <ResponsibleOrganisationRef ref="NOG:Organisation:VYG"/>
+              <ResponsiblePartRef ref="NOG:ResponsiblePart:VYT"/>
+
+              <!-- ResponsibleAreaRef ref="NSR:VYG:FareSection:1" version="1"/ --> <!-- MERK: Pdd. referanse ikke teknisk mulig for Section -->
+            </ResponsibilityRoleAssignment>
+          </roles>
+        </ResponsibilitySet>
+      </responsibilitySets>
+      
+      <typesOfValue>
+        <ValueSet id="ENT:ValueSet:FareManagement" version="1">
+          <values>
+            <TypeOfEntity id="ENT:TypeOfEntity:FareAuthority" version="1">
+              <Name>Forvalter Fare Structures (tilordner) på vegne av JDIR</Name>
+            </TypeOfEntity>
+            <TypeOfEntity id="ENT:TypeOfEntity:FareManager" version="1">
+              <Name>Forvalter prisstrukturerer innenfor (tilordnet) forvaltningsområde</Name>
+            </TypeOfEntity>
+          </values>
+        </ValueSet>
+      </typesOfValue>
     </ResourceFrame>
-
-
+    
+    
+    
     <CompositeFrame created="2020-09-03T15:00:00" version="1" id="VYG:CompositeFrame:145997">
       <validityConditions>
         <AvailabilityCondition version="1" id="VYG:AvailabilityCondition:144408">
@@ -85,24 +145,7 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
           <ToDate>2020-12-31T23:59:59</ToDate>
         </AvailabilityCondition>
       </validityConditions>
-      <codespaces>
-        <Codespace id="nsr">
-          <Xmlns>NSR</Xmlns>
-          <XmlnsUrl>http://www.rutebanken.org/ns/nsr</XmlnsUrl>
-        </Codespace>
-        <Codespace id="ent">
-          <Xmlns>ENT</Xmlns>
-          <XmlnsUrl>http://www.rutebanken.org/ns/ent</XmlnsUrl>
-        </Codespace>
-        <Codespace id="vyg">
-          <Xmlns>VYG</Xmlns>
-          <XmlnsUrl>http://www.rutebanken.org/ns/vyg</XmlnsUrl>
-        </Codespace>
-        <Codespace id="goa">
-          <Xmlns>GOA</Xmlns>
-          <XmlnsUrl>http://www.rutebanken.org/ns/goa</XmlnsUrl>
-        </Codespace>
-      </codespaces>
+      
       <FrameDefaults>
         <DefaultLocale>
           <TimeZone>Europe/Oslo</TimeZone>
@@ -117,7 +160,9 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
             <StopPlace version="1" id="NSR:StopPlace:1">
               <Name>Demo</Name>
               <quays>
-                <Quay version="1" id="NSR:Quay:1"/>
+                <Quay version="1" id="NSR:Quay:1">
+                  
+                </Quay>
               </quays>
             </StopPlace>
             <StopPlace version="1" id="NSR:StopPlace:2">
@@ -133,7 +178,6 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
         <ServiceCalendarFrame version="1" id="VYG:ServiceCalendarFrame:1">
           <!-- placeholder -->
         </ServiceCalendarFrame>
-
 
 
         <ServiceFrame version="1" id="VYG:ServiceFrame:145998">
