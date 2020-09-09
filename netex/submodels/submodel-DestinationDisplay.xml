@@ -2,11 +2,10 @@
 <!--
 DestinationDisplay is used to specify text that is advertized to public, both on the screens on vehicle sides and on some other media
 -->
-<ServiceFrame xmlns="http://www.netex.org.uk/netex"
-  xmlns:siri="http://www.siri.org.uk/siri"
-  xmlns:core="http://www.govtalk.gov.uk/core"
-  xmlns:ifopt="http://www.ifopt.org.uk/ifopt"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ServiceFrame 
+  xmlns="http://www.netex.org.uk/netex"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  version="1.11:NO-NeTEx-networktimetable:1.4">
     
     <destinationDisplays>
         <!-- Metro Line 5 to Sognsvann -->
