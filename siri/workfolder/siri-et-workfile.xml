@@ -198,12 +198,12 @@
                             <ExtraCall>true</ExtraCall>
                             <PredictionInaccurate>false</PredictionInaccurate>
                             
+                            <!-- ConfidenceLevel>reliable</ConfidenceLevel --> <!-- MANGLER I EstimatedCall -->
+                            
                             <Occupancy>full</Occupancy>
                             
                             <RequestStop>true</RequestStop>
                             <DestinationDisplay>placeholder</DestinationDisplay>
-                            
-                            
                             
                             <!--
                             <FacilityConditionElement>
