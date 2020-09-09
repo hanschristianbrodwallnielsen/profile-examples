@@ -25,8 +25,8 @@
                         </ContactDetails>
                         <OrganisationRef ref="defaultOrganisation"/> <!-- organisation a user primarliy belongs to -->
                         <responsibilitySets>
-                            <ResponsibilitySetRef ref="RB:ResponsibilitySet:BUSKERUD"/>
-                            <ResponsibilitySetRef ref="RB:ResponsibilitySet:OSLO"/>
+                            <ResponsibilitySetRef ref="ENT:ResponsibilitySet:BUSKERUD"/>
+                            <ResponsibilitySetRef ref="ENT:ResponsibilitySet:OSLO"/>
                         </responsibilitySets>
                         <notifications>
                             <Notification>
@@ -61,41 +61,41 @@
                 </Codespace>
             </codespaces>
             <responsibilitySets>
-                <ResponsibilitySet id="RB:ResponsibilitySet:OSLO" version="1">
+                <ResponsibilitySet id="ENT:ResponsibilitySet:OSLO" version="1">
                     <Name>Endre stoppesteder i OSLO</Name>
                     <roles>
-                        <ResponsibilityRoleAssignment id="RB:ResponsibilityRoleAssignment:1" version="1">
+                        <ResponsibilityRoleAssignment id="ENT:ResponsibilityRoleAssignment:1" version="1">
                             <TypeOfResponsibilityRoleRef ref="editStops"/>
                             <ResponsibleOrganisationRef version="1" ref="NSR:Authority:RUT"/>
-                            <ResponsibleAreaRef ref="RB:AdministrativeZone:OSLO"/>
+                            <ResponsibleAreaRef ref="ENT:AdministrativeZone:OSLO"/>
                         </ResponsibilityRoleAssignment>
                     </roles>
                 </ResponsibilitySet>
-                <ResponsibilitySet id="RB:ResponsibilitySet:InnsendingRutedata" version="1">
+                <ResponsibilitySet id="ENT:ResponsibilitySet:InnsendingRutedata" version="1">
                     <Name>Innsending rutedata Oslo</Name>
                     <roles>
-                        <ResponsibilityRoleAssignment id="RB:ResponsibilityRoleAssignment:11" version="1">
+                        <ResponsibilityRoleAssignment id="ENT:ResponsibilityRoleAssignment:11" version="1">
                             <TypeOfResponsibilityRoleRef ref="editTimetableData"/>
                             <ResponsibleOrganisationRef version="1" ref="NSR:Authority:RUT"/>
                         </ResponsibilityRoleAssignment>
                     </roles>
                 </ResponsibilitySet>
-                <ResponsibilitySet id="RB:ResponsibilitySet:BUSKERUD" version="1">
+                <ResponsibilitySet id="ENT:ResponsibilitySet:BUSKERUD" version="1">
                     <Name>Endre stoppesteder i BUSKERUD</Name>
                     <roles>
-                        <ResponsibilityRoleAssignment id="RB:ResponsibilityRoleAssignment:2" version="1">
+                        <ResponsibilityRoleAssignment id="ENT:ResponsibilityRoleAssignment:2" version="1">
                             <Extensions>
                                 <!-- StopPlaces av type onStreetBus -->
-                                <EntityTypeRef ref="RB:TypeOfEntity:StopPlace">
-                                    <EntityClassification ref="RB:TypeOfPoint:OnStreetBus"/>
+                                <EntityTypeRef ref="ENT:TypeOfEntity:StopPlace">
+                                    <EntityClassification ref="ENT:TypeOfPoint:OnStreetBus"/>
                                 </EntityTypeRef>
-                                <EntityTypeRef ref="RB:TypeOfEntity:StopPlace">
-                                    <EntityClassification ref="RB:TypeOfPoint:TramStop"/>
+                                <EntityTypeRef ref="ENT:TypeOfEntity:StopPlace">
+                                    <EntityClassification ref="ENT:TypeOfPoint:TramStop"/>
                                 </EntityTypeRef>
                             </Extensions>
                             <TypeOfResponsibilityRoleRef ref="editStops"/>
                             <ResponsibleOrganisationRef version="1" ref="NSR:Authority:BRA"/>
-                            <ResponsibleAreaRef ref="RB:AdministrativeZone:BUSKERUD"/>
+                            <ResponsibleAreaRef ref="ENT:AdministrativeZone:BUSKERUD"/>
                         </ResponsibilityRoleAssignment>
                     </roles>
                 </ResponsibilitySet>
@@ -103,38 +103,38 @@
             <typesOfValue>
                 <ValueSet id="EntityType" version="1">
                     <values>
-                        <TypeOfEntity id="RB:TypeOfEntity:StopPlace" version="1">
+                        <TypeOfEntity id="ENT:TypeOfEntity:StopPlace" version="1">
                             <Name>Stoppesteder</Name>
                             <PrivateCode>StopPlace</PrivateCode>
                         </TypeOfEntity>
-                        <TypeOfEntity id="RB:TypeOfEntity:PointOfInterest" version="1">
+                        <TypeOfEntity id="ENT:TypeOfEntity:PointOfInterest" version="1">
                             <Name>PointOfInterest</Name>
                         </TypeOfEntity>
                     </values>
                 </ValueSet>
                 <ValueSet id="StopPlaceType" version="1">
                     <values>
-                        <TypeOfPoint version="1" id="RB:TypeOfPoint:OnStreetBus">
+                        <TypeOfPoint version="1" id="ENT:TypeOfPoint:OnStreetBus">
                             <Name>Bus stop</Name>
                             <PrivateCode>onStreetBus</PrivateCode>
                             <!-- bruke samme som stopPlaceType -->
                         </TypeOfPoint>
-                        <TypeOfPoint version="1" id="RB:TypeOfPoint:Tram">
+                        <TypeOfPoint version="1" id="ENT:TypeOfPoint:Tram">
                             <Name>Tram stop</Name>
                             <PrivateCode>tramStop</PrivateCode>
                             <!-- bruke samme som stopPlaceType -->
                         </TypeOfPoint>
-                        <TypeOfPoint version="1" id="RB:TypeOfPoint:Airport">
+                        <TypeOfPoint version="1" id="ENT:TypeOfPoint:Airport">
                             <Name>Airport</Name>
                         </TypeOfPoint>
-                        <TypeOfPoint version="1" id="RB:TypeOfPoint:RailwayStation">
+                        <TypeOfPoint version="1" id="ENT:TypeOfPoint:RailwayStation">
                             <Name>Railway station</Name>
                         </TypeOfPoint>
                     </values>
                 </ValueSet>
                 <ValueSet id="PointofInterestType" version="1">
                     <values>
-                        <TypeOfPoint version="1" id="RB:TypeOfPoint:AnyPoi">
+                        <TypeOfPoint version="1" id="ENT:TypeOfPoint:AnyPoi">
                             <Name>Alle POI-typer</Name>
                             <PrivateCode>*</PrivateCode>
                             <!-- bruke samme som pointOfInterestType? -->
@@ -173,10 +173,10 @@
                     <Name>Rutebanken</Name>
                     <OrganisationType>authority</OrganisationType>
                     <parts>
-                        <OrganisationPart id="RB:OrganisationPart:1" version="1">
+                        <OrganisationPart id="ENT:OrganisationPart:1" version="1">
                             <Name>Rutebanken Admin Part</Name>
                             <administrativeZones>
-                                <AdministrativeZone id="RB:AdministrativeZone:OSLO-uten-OSLOS" version="1">
+                                <AdministrativeZone id="ENT:AdministrativeZone:OSLO-uten-OSLOS" version="1">
                                     <Name>Oslo</Name>
                                     <gml:Polygon gml:id="oslo_uten_oslos">
                                         <!-- oslo -->
@@ -193,15 +193,15 @@
                                         </gml:interior>
                                     </gml:Polygon>
                                 </AdministrativeZone>
-                                <AdministrativeZone id="RB:AdministrativeZone:OSLO" version="1">
+                                <AdministrativeZone id="ENT:AdministrativeZone:OSLO" version="1">
                                     <Name>Oslo</Name>
                                     <gml:Polygon gml:id="oslo"/>
                                 </AdministrativeZone>
-                                <AdministrativeZone id="RB:AdministrativeZone:BUSKERUD" version="1">
+                                <AdministrativeZone id="ENT:AdministrativeZone:BUSKERUD" version="1">
                                     <Name>Buskerud</Name>
                                     <gml:Polygon gml:id="buskerud"/>
                                 </AdministrativeZone>
-                                <AdministrativeZone id="RB:AdministrativeZone:NORGE" version="1">
+                                <AdministrativeZone id="ENT:AdministrativeZone:NORGE" version="1">
                                     <Name>Norge</Name>
                                     <gml:Polygon gml:id="norge"> </gml:Polygon>
                                 </AdministrativeZone>
