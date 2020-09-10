@@ -52,9 +52,9 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
 -->
 
 <PublicationDelivery 
-  xmlns="http://www.netex.org.uk/netex"
-  xmlns:gis="http://www.opengis.net/gml/3.2" 
-  xmlns:siri="http://www.siri.org.uk/siri"
+  xmlns="http://www.netex.org.uk/netex" 
+  xmlns:gml="http://www.opengis.net/gml/3.2" 
+  xmlns:siri="http://www.siri.org.uk/siri" 
   version="1.12:NO-NeTEx-networktimetable:1.4">
 
 
@@ -111,6 +111,11 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
               <XmlnsUrl>http://www.rutebanken.org/ns/vyg</XmlnsUrl>
               <Description>Vy-gruppen</Description>
             </Codespace>
+            <Codespace id="vyt">
+              <Xmlns>VYT</Xmlns>
+              <XmlnsUrl>http://www.rutebanken.org/ns/vyt</XmlnsUrl>
+              <Description>Vy Tog</Description>
+            </Codespace>
             <Codespace id="goa">
               <Xmlns>GOA</Xmlns>
               <XmlnsUrl>http://www.rutebanken.org/ns/goa</XmlnsUrl>
@@ -118,12 +123,14 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
             </Codespace>
           </codespaces>
           
+          
           <responsibilitySets>
             <ResponsibilitySet id="ENT:ResponsibilitySet:VYT-Oslo-Lillehammer" version="1">
-              <Name>Endre stoppesteder i OSLO</Name>
+              <Name>Fare management på fellesstrekning Oslo-Lillehammer</Name>
               <roles>
                 <ResponsibilityRoleAssignment id="ENT:ResponsibilityRoleAssignment:1" version="1">
                   <DataRoleType>owns</DataRoleType>
+                  <StakeholderRoleType>FareManagement</StakeholderRoleType>
                   
                   <!-- XSD:CHOICE -->
                   <!-- ResponsibilityRoleRef ref="ENT:TypeOfEntity:FareAuthority" version="1"/ --> <!-- DOES NOT COMPUTE -->
@@ -138,6 +145,7 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
             </ResponsibilitySet>
           </responsibilitySets>
           
+          
           <typesOfValue>
             <ValueSet id="ENT:ValueSet:FareManagement" version="1">
               <values>
@@ -150,7 +158,77 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
               </values>
             </ValueSet>
           </typesOfValue>
+          
+          
+          <organisations>
+            <GeneralOrganisation id="NOG:GeneralOrganisation:VYG" version="1">
+              <CompanyNumber>984 661 177</CompanyNumber>
+              <Name>Vygruppen</Name>
+              <LegalName>VYGRUPPEN AS</LegalName>
+              <Description>Tidligere NORGES STATSBANER AS</Description>
+              <ContactDetails>
+                <Url>https://www.vy.no/vygruppen/kontakt-oss</Url>
+              </ContactDetails>
+              <OrganisationType>other</OrganisationType>
+              <parts>
+                <OrganisationPart id="NOG:OrganizationPart:1" version="1">
+                  <OperatorRef ref="NOG:Operator:VYT" version="1"/>
+                  <administrativeZones>
+                    <TransportAdministrativeZone id="NOG:TransportAdministrativeZone:1" version="1">
+                      <Name>Vy TOG</Name>
+                      <gml:Polygon gml:id="NOG-TransportAdministrativeZone-1" srsName="wgs84">
+                        <gml:exterior>
+                          <gml:LinearRing>
+                            <gml:pos>1 2</gml:pos>
+                            <gml:pos>3 4</gml:pos>
+                            <gml:pos>5 6</gml:pos>
+                            <gml:pos>7 8</gml:pos>
+                          </gml:LinearRing>
+                        </gml:exterior>
+                      </gml:Polygon>
+                    </TransportAdministrativeZone>
+                  </administrativeZones>
+                </OrganisationPart>
+              </parts>
+              
+              <!-- ALTERNATIVE CONSTRUCTION: Inherent responsibility definition -->
+              <ownResponsibilitySets>
+                <ResponsibilitySet version="1" id="NOG:ResponsibilitySet:2">
+                  <Name>Fare management på fellesstrekning Oslo-Lillehammer (inkludert i organsisasjonsinformasjonen)</Name>
+                  <roles>
+                    <ResponsibilityRoleAssignment id="NOG:ResponsibilityRoleAssignment:11" version="1">
+                      <DataRoleType>owns</DataRoleType>
+                      <StakeholderRoleType>FareManagement</StakeholderRoleType>
+                      <ResponsibleOrganisationRef ref="NOG:Operator:VYT" version="1"/>
+                      <ResponsibleAreaRef ref="NOG:TransportAdministrativeZone:1" version="1"/>
+                    </ResponsibilityRoleAssignment>
+                  </roles>
+                </ResponsibilitySet>
+              </ownResponsibilitySets>
+            </GeneralOrganisation>
+            
+            
+            <Operator id="NOG:Operator:VYT" version="1" responsibilitySetRef="NOG:ResponsibilitySet:2">
+              <CompanyNumber>917 374 988</CompanyNumber>
+              <Name>Vy Tog</Name>
+              <LegalName>VY TOG AS</LegalName>
+              <Description>Tidligere NSB ANBUD AS</Description>
+              <ContactDetails>
+                <Url>https://www.vy.no/kundeservice/hjelp-og-kontakt?item=2699</Url>
+              </ContactDetails>
+              <OrganisationType>operator</OrganisationType>
+              <Address>
+                <AddressLine1>Schweigaards gate 23</AddressLine1>
+                <Town>Oslo</Town>
+                <PostCode>0191</PostCode>
+              </Address>
+              <OperatorActivities>passenger</OperatorActivities>
+            </Operator>
+            
+          </organisations>
+          
         </ResourceFrame>
+        
         
         
         <SiteFrame version="1" id="NSR:SiteFrame:1">
@@ -158,9 +236,7 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
             <StopPlace version="1" id="NSR:StopPlace:1">
               <Name>Demo</Name>
               <quays>
-                <Quay version="1" id="NSR:Quay:1">
-                  
-                </Quay>
+                <Quay version="1" id="NSR:Quay:1"/>
               </quays>
             </StopPlace>
             <StopPlace version="1" id="NSR:StopPlace:2">
