@@ -2,7 +2,7 @@
 <PublicationDelivery 
   xmlns="http://www.netex.org.uk/netex" 
   xmlns:gml="http://www.opengis.net/gml/3.2" 
-  version="1.14:NO-NeTEx-fares:0.9">
+  version="1.12:NO-NeTEx-networktimetable:1.4">
 
     <PublicationTimestamp>2020-08-04T12:00:00Z</PublicationTimestamp>
 
