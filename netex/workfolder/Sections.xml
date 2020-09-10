@@ -62,85 +62,10 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
   <ParticipantRef>ENT</ParticipantRef>
   <Description>EXAMPLE</Description>
   <dataObjects>
-
-    <VehicleScheduleFrame created="2020-09-03T15:00:00" version="1" id="VYG:VehicleScheduleFrame:1">
-      <!-- placeholder -->
-    </VehicleScheduleFrame>
-
-
-    <GeneralFrame created="2020-09-03T15:00:00" version="1" id="VYG:GeneralFrame:145997">
-      <!-- placeholder -->
-    </GeneralFrame>
-
-
-    <ResourceFrame id="VYG:ResourceFrame:1" version="1" created="2020-09-03T15:00:00">
-      <codespaces>
-        <Codespace id="ent">
-          <Xmlns>ENT</Xmlns>
-          <XmlnsUrl>http://www.rutebanken.org/ns/ent</XmlnsUrl>
-          <Description>Entur AS</Description>
-        </Codespace>
-        <Codespace id="nsr">
-          <Xmlns>NSR</Xmlns>
-          <XmlnsUrl>http://www.rutebanken.org/ns/nsr</XmlnsUrl>
-          <Description>Nasjonalt Stoppested-Register</Description>
-        </Codespace>
-        <Codespace id="nog">
-          <Xmlns>NOG</Xmlns>
-          <XmlnsUrl>http://www.rutebanken.org/ns/nog</XmlnsUrl>
-          <Description>Nasjonalt Organisasjons-Register</Description>
-        </Codespace>
-        <Codespace id="vyg">
-          <Xmlns>VYG</Xmlns>
-          <XmlnsUrl>http://www.rutebanken.org/ns/vyg</XmlnsUrl>
-          <Description>Vy-gruppen</Description>
-        </Codespace>
-        <Codespace id="goa">
-          <Xmlns>GOA</Xmlns>
-          <XmlnsUrl>http://www.rutebanken.org/ns/goa</XmlnsUrl>
-          <Description>Go-Ahead Nordic</Description>
-        </Codespace>
-      </codespaces>
-      
-      <responsibilitySets>
-        <ResponsibilitySet id="ENT:ResponsibilitySet:VYT-Oslo-Lillehammer" version="1">
-          <Name>Endre stoppesteder i OSLO</Name>
-          <roles>
-            <ResponsibilityRoleAssignment id="ENT:ResponsibilityRoleAssignment:1" version="1">
-              <DataRoleType>owns</DataRoleType>
-              
-              <!-- XSD:CHOICE -->
-              <!-- ResponsibilityRoleRef ref="ENT:TypeOfEntity:FareAuthority" version="1"/ --> <!-- DOES NOT COMPUTE -->
-              <!-- TypeOfResponsibilityRoleRef ref="ENT:TypeOfEntity:FareAuthority" version="1"/ --> <!-- DOES NOT COMPUTE -->
-
-              <ResponsibleOrganisationRef ref="NOG:Organisation:VYG"/>
-              <ResponsiblePartRef ref="NOG:ResponsiblePart:VYT"/>
-
-              <!-- ResponsibleAreaRef ref="NSR:VYG:FareSection:1" version="1"/ --> <!-- MERK: Pdd. referanse ikke teknisk mulig for Section -->
-            </ResponsibilityRoleAssignment>
-          </roles>
-        </ResponsibilitySet>
-      </responsibilitySets>
-      
-      <typesOfValue>
-        <ValueSet id="ENT:ValueSet:FareManagement" version="1">
-          <values>
-            <TypeOfEntity id="ENT:TypeOfEntity:FareAuthority" version="1">
-              <Name>Forvalter Fare Structures (tilordner) på vegne av JDIR</Name>
-            </TypeOfEntity>
-            <TypeOfEntity id="ENT:TypeOfEntity:FareManager" version="1">
-              <Name>Forvalter prisstrukturerer innenfor (tilordnet) forvaltningsområde</Name>
-            </TypeOfEntity>
-          </values>
-        </ValueSet>
-      </typesOfValue>
-    </ResourceFrame>
     
-    
-    
-    <CompositeFrame created="2020-09-03T15:00:00" version="1" id="VYG:CompositeFrame:145997">
+    <CompositeFrame id="VYG:CompositeFrame:1" version="1" created="2020-09-03T15:00:00">
       <validityConditions>
-        <AvailabilityCondition version="1" id="VYG:AvailabilityCondition:144408">
+        <AvailabilityCondition version="1" id="VYG:AvailabilityCondition:1">
           <FromDate>2020-09-01T00:00:00</FromDate>
           <ToDate>2020-12-31T23:59:59</ToDate>
         </AvailabilityCondition>
@@ -155,6 +80,79 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
 
 
       <frames>
+        
+        <GeneralFrame id="VYG:GeneralFrame:145997" version="1" >
+          <!-- placeholder -->
+        </GeneralFrame>
+        
+        <VehicleScheduleFrame id="VYG:VehicleScheduleFrame:1" version="1" >
+          <!-- placeholder -->
+        </VehicleScheduleFrame>
+        
+        <ResourceFrame id="VYG:ResourceFrame:1" version="1">
+          <codespaces>
+            <Codespace id="ent">
+              <Xmlns>ENT</Xmlns>
+              <XmlnsUrl>http://www.rutebanken.org/ns/ent</XmlnsUrl>
+              <Description>Entur AS</Description>
+            </Codespace>
+            <Codespace id="nsr">
+              <Xmlns>NSR</Xmlns>
+              <XmlnsUrl>http://www.rutebanken.org/ns/nsr</XmlnsUrl>
+              <Description>Nasjonalt Stoppested-Register</Description>
+            </Codespace>
+            <Codespace id="nog">
+              <Xmlns>NOG</Xmlns>
+              <XmlnsUrl>http://www.rutebanken.org/ns/nog</XmlnsUrl>
+              <Description>Nasjonalt Organisasjons-Register</Description>
+            </Codespace>
+            <Codespace id="vyg">
+              <Xmlns>VYG</Xmlns>
+              <XmlnsUrl>http://www.rutebanken.org/ns/vyg</XmlnsUrl>
+              <Description>Vy-gruppen</Description>
+            </Codespace>
+            <Codespace id="goa">
+              <Xmlns>GOA</Xmlns>
+              <XmlnsUrl>http://www.rutebanken.org/ns/goa</XmlnsUrl>
+              <Description>Go-Ahead Nordic</Description>
+            </Codespace>
+          </codespaces>
+          
+          <responsibilitySets>
+            <ResponsibilitySet id="ENT:ResponsibilitySet:VYT-Oslo-Lillehammer" version="1">
+              <Name>Endre stoppesteder i OSLO</Name>
+              <roles>
+                <ResponsibilityRoleAssignment id="ENT:ResponsibilityRoleAssignment:1" version="1">
+                  <DataRoleType>owns</DataRoleType>
+                  
+                  <!-- XSD:CHOICE -->
+                  <!-- ResponsibilityRoleRef ref="ENT:TypeOfEntity:FareAuthority" version="1"/ --> <!-- DOES NOT COMPUTE -->
+                  <!-- TypeOfResponsibilityRoleRef ref="ENT:TypeOfEntity:FareAuthority" version="1"/ --> <!-- DOES NOT COMPUTE -->
+                  
+                  <ResponsibleOrganisationRef ref="NOG:Organisation:VYG"/>
+                  <ResponsiblePartRef ref="NOG:ResponsiblePart:VYT"/>
+                  
+                  <!-- ResponsibleAreaRef ref="NSR:VYG:FareSection:1" version="1"/ --> <!-- MERK: Pdd. referanse ikke teknisk mulig for Section -->
+                </ResponsibilityRoleAssignment>
+              </roles>
+            </ResponsibilitySet>
+          </responsibilitySets>
+          
+          <typesOfValue>
+            <ValueSet id="ENT:ValueSet:FareManagement" version="1">
+              <values>
+                <TypeOfEntity id="ENT:TypeOfEntity:FareAuthority" version="1">
+                  <Name>Forvalter Fare Structures (tilordner) på vegne av JDIR</Name>
+                </TypeOfEntity>
+                <TypeOfEntity id="ENT:TypeOfEntity:FareManager" version="1">
+                  <Name>Forvalter prisstrukturerer innenfor (tilordnet) forvaltningsområde</Name>
+                </TypeOfEntity>
+              </values>
+            </ValueSet>
+          </typesOfValue>
+        </ResourceFrame>
+        
+        
         <SiteFrame version="1" id="NSR:SiteFrame:1">
           <stopPlaces>
             <StopPlace version="1" id="NSR:StopPlace:1">
@@ -180,7 +178,7 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
         </ServiceCalendarFrame>
 
 
-        <ServiceFrame version="1" id="VYG:ServiceFrame:145998">
+        <ServiceFrame version="1" id="VYG:ServiceFrame:1">
           <routePoints>
             <RoutePoint version="1" id="VYG:RoutePoint:1">
               <projections>
@@ -198,7 +196,6 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
             </RoutePoint>
           </routePoints>
 
-
           <routeLinks>
             <RouteLink version="1" id="ENT:RouteLink:1">
               <Distance>100</Distance>
@@ -206,7 +203,6 @@ Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tan
               <ToPointRef ref="VYG:RoutePoint:2"/>
             </RouteLink>
           </routeLinks>
-
 
           <routes>
             <Route version="1" id="VYG:Route:1">
