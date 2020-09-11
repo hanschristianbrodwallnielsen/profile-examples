@@ -1,0 +1,717 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+
+<!--
+
+Section:
+A part of a public transport network where the ROUTEs of several JOURNEY PATTERNs are going in parallel and where the synchronisation of SERVICE JOURNEYs may be planned and controlled with respect to commonly used LINKs and SCHEDULED STOP POINTs. COMMON SECTIONs are defined arbitrarily and need not cover the total lengths of topologically bundled sections.
+
+
+
+# LineSection
+
+A section of a LINE NETWORK comprising an edge between two nodes. It is not directional.
+
+(Line Network: The Topological structure of a NETWORK as a graph of LINE SECTIONs. This allows the branches and loops of a LINE to be described as a whole.)
+
++ Per jernbane er det intuitivt dette som skal beskrives og gis Resposibility
+- Må (pdd.) defineres som <sections> på et LineNetwork, som i utg.pkt er ment brukt til å strukturere/visualisere hvordan ulike Lines henger sammen (ikke for å seksjonere Lines).
+
+
+
+# CommonSection
+
+GENERAL SECTION is a general-purpose instance of a SECTION that can be used for a sequence of links of any TYPE.
+
++ kan defineres helt uavhengig (i ServiceFrame - commonSections)
+
+
+
+
+# FareSection
+
+A subdivision of a JOURNEY PATTERN consisting of consecutive POINTs IN JOURNEY PATTERN, used to define an element of the fare structure.
+
+Har i tillegg til <pointsOnSection> også
+(evt JourneyPatternRef)
+FromFarePointRef
+ToFarePointRef
+
+aka f.eks. FareScheduledStopPointRef
+
+
+
+Dvs. alt kan implementeres, og gis f.eks. ResponsibilitySet/Ref. (Men da må konstruksjonen redgjøres i profil.)
+Spec stiller ikke krav til noe annet enn at en Section skal ha <pointsOnSection> og dette skal innholde et Point eller PointRef av fritt valgt type.
+
+
+Må tas stilling use-cases her, og hvor tett dette skal være knyttet til Line (og/eller Route, JourneyPattern) eller som et "selvstendig" datasett. 
+Det kan spille relevant rolle for hvordan dette bør modelleres, særlig med tanke på evt. behov for directe knytning (xSectionRef) fra relevante datatyper. 
+(Referansen mangler i en del objekter hvor den kanskje kan være relevant.)
+
+-->
+
+<PublicationDelivery 
+  xmlns="http://www.netex.org.uk/netex" 
+  xmlns:gml="http://www.opengis.net/gml/3.2" 
+  xmlns:siri="http://www.siri.org.uk/siri" 
+  version="1.12:NO-NeTEx-networktimetable:1.4">
+
+
+  <PublicationTimestamp>2020-09-03T15:00:00</PublicationTimestamp>
+  <ParticipantRef>ENT</ParticipantRef>
+  <Description>EXAMPLE</Description>
+  <dataObjects>
+    
+    <CompositeFrame id="VYG:CompositeFrame:1" version="1" created="2020-09-03T15:00:00">
+      <validityConditions>
+        <AvailabilityCondition version="1" id="VYG:AvailabilityCondition:1">
+          <FromDate>2020-09-01T00:00:00</FromDate>
+          <ToDate>2020-12-31T23:59:59</ToDate>
+        </AvailabilityCondition>
+      </validityConditions>
+      
+      <FrameDefaults>
+        <DefaultLocale>
+          <TimeZone>Europe/Oslo</TimeZone>
+          <DefaultLanguage>no</DefaultLanguage>
+        </DefaultLocale>
+      </FrameDefaults>
+
+
+      <frames>
+        
+        <GeneralFrame id="VYG:GeneralFrame:145997" version="1" >
+          <!-- placeholder -->
+        </GeneralFrame>
+        
+        <VehicleScheduleFrame id="VYG:VehicleScheduleFrame:1" version="1" >
+          <!-- placeholder -->
+        </VehicleScheduleFrame>
+        
+        <ResourceFrame id="VYG:ResourceFrame:1" version="1">
+          <codespaces>
+            <Codespace id="ent">
+              <Xmlns>ENT</Xmlns>
+              <XmlnsUrl>http://www.rutebanken.org/ns/ent</XmlnsUrl>
+              <Description>Entur AS</Description>
+            </Codespace>
+            <Codespace id="nsr">
+              <Xmlns>NSR</Xmlns>
+              <XmlnsUrl>http://www.rutebanken.org/ns/nsr</XmlnsUrl>
+              <Description>Nasjonalt Stoppested-Register</Description>
+            </Codespace>
+            <Codespace id="nog">
+              <Xmlns>NOG</Xmlns>
+              <XmlnsUrl>http://www.rutebanken.org/ns/nog</XmlnsUrl>
+              <Description>Nasjonalt Organisasjons-Register</Description>
+            </Codespace>
+            <Codespace id="vyg">
+              <Xmlns>VYG</Xmlns>
+              <XmlnsUrl>http://www.rutebanken.org/ns/vyg</XmlnsUrl>
+              <Description>Vy-gruppen</Description>
+            </Codespace>
+            <Codespace id="vyt">
+              <Xmlns>VYT</Xmlns>
+              <XmlnsUrl>http://www.rutebanken.org/ns/vyt</XmlnsUrl>
+              <Description>Vy Tog</Description>
+            </Codespace>
+            <Codespace id="goa">
+              <Xmlns>GOA</Xmlns>
+              <XmlnsUrl>http://www.rutebanken.org/ns/goa</XmlnsUrl>
+              <Description>Go-Ahead Nordic</Description>
+            </Codespace>
+          </codespaces>
+          
+          
+          <responsibilitySets>
+            <ResponsibilitySet id="ENT:ResponsibilitySet:VYT-Oslo-Lillehammer" version="1">
+              <Name>Fare management på fellesstrekning Oslo-Lillehammer</Name>
+              <roles>
+                <ResponsibilityRoleAssignment id="ENT:ResponsibilityRoleAssignment:1" version="1">
+                  <DataRoleType>owns</DataRoleType>
+                  <StakeholderRoleType>FareManagement</StakeholderRoleType>
+                  
+                  <!-- XSD:CHOICE -->
+                  <!-- ResponsibilityRoleRef ref="ENT:TypeOfEntity:FareAuthority" version="1"/ --> <!-- DOES NOT COMPUTE -->
+                  <!-- TypeOfResponsibilityRoleRef ref="ENT:TypeOfEntity:FareAuthority" version="1"/ --> <!-- DOES NOT COMPUTE -->
+                  
+                  <ResponsibleOrganisationRef ref="NOG:Organisation:VYG"/>
+                  <ResponsiblePartRef ref="NOG:ResponsiblePart:VYT"/>
+                  
+                  <!-- ResponsibleAreaRef ref="NSR:VYG:FareSection:1" version="1"/ --> <!-- MERK: Pdd. referanse ikke teknisk mulig for Section -->
+                </ResponsibilityRoleAssignment>
+              </roles>
+            </ResponsibilitySet>
+          </responsibilitySets>
+          
+          
+          <typesOfValue>
+            <ValueSet id="ENT:ValueSet:FareManagement" version="1">
+              <values>
+                <TypeOfEntity id="ENT:TypeOfEntity:FareAuthority" version="1">
+                  <Name>Forvalter Fare Structures (tilordner) på vegne av JDIR</Name>
+                </TypeOfEntity>
+                <TypeOfEntity id="ENT:TypeOfEntity:FareManager" version="1">
+                  <Name>Forvalter prisstrukturerer innenfor (tilordnet) forvaltningsområde</Name>
+                </TypeOfEntity>
+              </values>
+            </ValueSet>
+          </typesOfValue>
+          
+          
+          <organisations>
+            <GeneralOrganisation id="NOG:GeneralOrganisation:VYG" version="1">
+              <CompanyNumber>984 661 177</CompanyNumber>
+              <Name>Vygruppen</Name>
+              <LegalName>VYGRUPPEN AS</LegalName>
+              <Description>Tidligere NORGES STATSBANER AS</Description>
+              <ContactDetails>
+                <Url>https://www.vy.no/vygruppen/kontakt-oss</Url>
+              </ContactDetails>
+              <OrganisationType>other</OrganisationType>
+              <parts>
+                <OrganisationPart id="NOG:OrganizationPart:1" version="1">
+                  <OperatorRef ref="NOG:Operator:VYT" version="1"/>
+                  <administrativeZones>
+                    <TransportAdministrativeZone id="NOG:TransportAdministrativeZone:1" version="1">
+                      <Name>Vy TOG</Name>
+                      <gml:Polygon gml:id="NOG-TransportAdministrativeZone-1" srsName="wgs84">
+                        <gml:exterior>
+                          <gml:LinearRing>
+                            <gml:pos>1 2</gml:pos>
+                            <gml:pos>3 4</gml:pos>
+                            <gml:pos>5 6</gml:pos>
+                            <gml:pos>7 8</gml:pos>
+                          </gml:LinearRing>
+                        </gml:exterior>
+                      </gml:Polygon>
+                    </TransportAdministrativeZone>
+                  </administrativeZones>
+                </OrganisationPart>
+              </parts>
+              
+              <!-- ALTERNATIVE CONSTRUCTION: Inherent responsibility definition -->
+              <ownResponsibilitySets>
+                <ResponsibilitySet version="1" id="NOG:ResponsibilitySet:2">
+                  <Name>Fare management på fellesstrekning Oslo-Lillehammer (inkludert i organsisasjonsinformasjonen)</Name>
+                  <roles>
+                    <ResponsibilityRoleAssignment id="NOG:ResponsibilityRoleAssignment:11" version="1">
+                      <DataRoleType>owns</DataRoleType>
+                      <StakeholderRoleType>FareManagement</StakeholderRoleType>
+                      <ResponsibleOrganisationRef ref="NOG:Operator:VYT" version="1"/>
+                      <ResponsibleAreaRef ref="NOG:TransportAdministrativeZone:1" version="1"/>
+                    </ResponsibilityRoleAssignment>
+                  </roles>
+                </ResponsibilitySet>
+              </ownResponsibilitySets>
+            </GeneralOrganisation>
+            
+            
+            <Operator id="NOG:Operator:VYT" version="1" responsibilitySetRef="NOG:ResponsibilitySet:2">
+              <CompanyNumber>917 374 988</CompanyNumber>
+              <Name>Vy Tog</Name>
+              <LegalName>VY TOG AS</LegalName>
+              <Description>Tidligere NSB ANBUD AS</Description>
+              <ContactDetails>
+                <Url>https://www.vy.no/kundeservice/hjelp-og-kontakt?item=2699</Url>
+              </ContactDetails>
+              <OrganisationType>operator</OrganisationType>
+              <Address>
+                <AddressLine1>Schweigaards gate 23</AddressLine1>
+                <Town>Oslo</Town>
+                <PostCode>0191</PostCode>
+              </Address>
+              <OperatorActivities>passenger</OperatorActivities>
+            </Operator>
+            
+          </organisations>
+          
+        </ResourceFrame>
+        
+        
+        
+        <SiteFrame version="1" id="NSR:SiteFrame:1">
+          <stopPlaces>
+            <StopPlace version="1" id="NSR:StopPlace:1">
+              <Name>Demo</Name>
+              <quays>
+                <Quay version="1" id="NSR:Quay:1"/>
+              </quays>
+            </StopPlace>
+            <StopPlace version="1" id="NSR:StopPlace:2">
+              <Name>Demo</Name>
+              <quays>
+                <Quay version="1" id="NSR:Quay:2"/>
+              </quays>
+            </StopPlace>
+          </stopPlaces>
+        </SiteFrame>
+
+
+        <ServiceCalendarFrame version="1" id="VYG:ServiceCalendarFrame:1">
+          <!-- placeholder -->
+        </ServiceCalendarFrame>
+
+
+        <ServiceFrame version="1" id="VYG:ServiceFrame:1">
+          <routePoints>
+            <RoutePoint version="1" id="VYG:RoutePoint:1">
+              <projections>
+                <PointProjection version="1" id="ENT:PointProjection:1">
+                  <ProjectToPointRef version="1" ref="VYG:ScheduledStopPoint:1"/>
+                </PointProjection>
+              </projections>
+            </RoutePoint>
+            <RoutePoint version="1" id="VYG:RoutePoint:2">
+              <projections>
+                <PointProjection version="1" id="ENT:PointProjection:2">
+                  <ProjectToPointRef version="1" ref="VYG:ScheduledStopPoint:1"/>
+                </PointProjection>
+              </projections>
+            </RoutePoint>
+          </routePoints>
+
+          <routeLinks>
+            <RouteLink version="1" id="ENT:RouteLink:1">
+              <Distance>100</Distance>
+              <FromPointRef ref="VYG:RoutePoint:1"/>
+              <ToPointRef ref="VYG:RoutePoint:2"/>
+            </RouteLink>
+          </routeLinks>
+
+          <routes>
+            <Route version="1" id="VYG:Route:1">
+              <Name>Demo</Name>
+              <LineRef ref="VYG:Line:1" version="1"/>
+              <DirectionType>outbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute version="1" id="ENT:PointOnRoute:1" order="1">
+                  <RoutePointRef version="1" ref="VYG:RoutePoint:1"/>
+                </PointOnRoute>
+                <PointOnRoute version="1" id="ENT:PointOnRoute:2" order="2">
+                  <RoutePointRef version="1" ref="VYG:RoutePoint:2"/>
+                </PointOnRoute>
+              </pointsInSequence>
+            </Route>
+          </routes>
+
+
+          <commonSections>
+            
+            <!-- Alternative with ScheduledStopPoints -->
+            <CommonSection id="ENT:CommonSection:Vy" version="1">
+              <Name>VY</Name>
+              <pointsOnSection>
+                <PointOnSection id="ENT:PointOnSection:1" version="1" order="1">
+                  <!-- Oslo -->
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:1"/> 
+                </PointOnSection>
+                <PointOnSection id="ENT:PointOnSection:2" version="1" order="2">
+                  <!-- Lillehammer -->
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:2"/> 
+                </PointOnSection>
+              </pointsOnSection>
+            </CommonSection>
+            <CommonSection id="ENT:CommonSection:SJ-NORD" version="1">
+              <Name>SJ NORD</Name>
+              <pointsOnSection>
+                <PointOnSection id="ENT:PointOnSection:3" version="1" order="1">
+                  <!-- Lillehammer -->
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:2"/> 
+                </PointOnSection>
+                <PointOnSection id="ENT:PointOnSection:4" version="1" order="2">
+                  <!-- Dombås -->
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:3"/> 
+                </PointOnSection>
+              </pointsOnSection>
+            </CommonSection>
+            
+            <!-- Alternative with RailwayPoints (not yet defined per Nordic NeTEx Profile -->
+            <CommonSection id="VYG:CommonSection:Vy" version="1" responsibilitySetRef="ENT:ResponsibilitySet:VYT-Oslo-Lillehammer">
+              <Name>VY</Name>
+              <pointsOnSection>
+                <PointOnSection id="VYG:PointOnSection:1" version="1" order="1">
+                  <RailwayPointRef ref="Oslo"/>
+                </PointOnSection>
+                <PointOnSection id="VYG:PointOnSection:2" version="1" order="2">
+                  <RailwayPointRef ref="Lillehammer"/>
+                </PointOnSection>
+              </pointsOnSection>
+            </CommonSection>
+            <CommonSection id="SJN:CommonSection:SJ-NORD" version="1" responsibilitySetRef="ENT:ResponsibilitySet:SJ-Oslo-Lillehammer-IKKE-IMPLEMENTERT">
+              <Name>SJ NORD</Name>
+              <pointsOnSection>
+                <PointOnSection id="SJN:PointOnSection:1" version="1" order="1">
+                  <RailwayPointRef ref="Dombås"/>
+                </PointOnSection>
+                <PointOnSection id="SJN:PointOnSection:2" version="1" order="2">
+                  <RailwayPointRef ref="Lillehammer"/>
+                </PointOnSection>
+              </pointsOnSection>
+            </CommonSection>
+            
+          </commonSections>
+
+
+          <lines>
+            <Line id="VYG:Line:1" version="1">
+              <Name>DEMO</Name>
+              <PublicCode>41</PublicCode>
+              <OperatorRef ref="VYG:Operator:1"/>
+              <RepresentedByGroupRef ref="VYG:Network:1"/>
+
+
+              <!-- (arbeidshypotese -->
+              <!-- her trenger vi (trolig) referanse til LineNetwork -->
+              <!-- eller mer presist, LineSection skal defineres selvstendig, og en Line kan ha en eller flere LineSection -->
+
+
+            </Line>
+          </lines>
+
+
+
+          <lineNetworks>
+            <LineNetwork version="1" id="tfl:LineNetwork:LG_NTN" responsibilitySetRef="ENT:ResponsibilitySet:VYT-Oslo-Lillehammer">
+              <Name>Northern Line</Name>
+              <LineRef ref="VYG:Line:1" version="1"/>
+              <!-- Trolig irrelevant, siden en section skal brukes for flere Line -->
+              <sections>
+                <LineSection version="1" id="ENT:PointOnLineSection:1">
+                  <pointsOnSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:0" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:DN2"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:1" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:WN1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:2" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:SD1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:3" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:BY1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:4" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:BC1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:5" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:LM1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:6" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:PS1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:7" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:PC1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:8" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:PN1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:9" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:KW1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:10" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:VL1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:11" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:NG1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:12" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:LO3"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:13" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:MB5"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:14" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:HX4"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:15" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:SQ1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:16" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:CR2"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:17" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:DG1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:18" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:RR1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:19" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:US4"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:20" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:TC1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:21" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:TN1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:22" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:SH1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:23" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:FP1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:24" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:CY1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:25" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:GT1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:26" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:FY1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:27" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:YC1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:28" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:FN1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:29" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:OP1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:30" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:AW1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:31" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:BT1"/>
+                    </PointOnLineSection>
+                  </pointsOnSection>
+                </LineSection>
+
+                <LineSection version="1" id="ENT:PointOnLineSection:2">
+                  <pointsOnSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:0" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:DN2"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:1" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:WN1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:2" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:SD1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:3" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:BY1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:4" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:BC1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:5" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:LM1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:6" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:PS1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:7" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:PC1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:8" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:PN1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:9" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:KW1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:10" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:VL1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:11" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:NG1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:12" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:AC3"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:13" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:OR1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:14" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:NB1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:15" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:NK4"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:16" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:GT3"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:17" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:DS1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:18" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:GL1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:19" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:SX4"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:20" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:US2"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:21" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:TN2"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:22" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:FM1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:23" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:ZP1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:24" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:TD1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:25" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:GN1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:26" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:TX1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:27" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:CL1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:28" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:ND1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:29" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:TK1"/>
+                    </PointOnLineSection>
+                    <PointOnLineSection id="ENT:PointOnLineSection:30" version="1">
+                      <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:GW1"/>
+                    </PointOnLineSection>
+                  </pointsOnSection>
+                </LineSection>
+              </sections>
+            </LineNetwork>
+          </lineNetworks>
+
+
+          <scheduledStopPoints>
+            <ScheduledStopPoint version="1" id="NSR:ScheduledStopPoint:1"/>
+            <!-- ScheduledStopPoint ID skal legges til i NSR -->
+            <ScheduledStopPoint version="1" id="NSR:ScheduledStopPoint:2"/>
+            <ScheduledStopPoint version="1" id="NSR:ScheduledStopPoint:3"/>
+            <ScheduledStopPoint version="1" id="VYG:ScheduledStopPoint:4"/>
+            <ScheduledStopPoint version="1" id="VYG:ScheduledStopPoint:5"/>
+          </scheduledStopPoints>
+
+
+          <stopAssignments>
+            <PassengerStopAssignment version="1" id="ENT:PassengerStopAssignment:1" order="1">
+              <ScheduledStopPointRef version="1" ref="NSR:ScheduledStopPoint:1"/>
+              <StopPlaceRef version="1" ref="NSR:StopPlace:1"/>
+              <QuayRef version="1" ref="NSR:Quay:1"/>
+            </PassengerStopAssignment>
+            <PassengerStopAssignment version="1" id="ENT:PassengerStopAssignment:2" order="2">
+              <ScheduledStopPointRef version="1" ref="NSR:ScheduledStopPoint:2"/>
+              <StopPlaceRef version="1" ref="NSR:StopPlace:2"/>
+              <QuayRef version="1" ref="NSR:Quay:2"/>
+            </PassengerStopAssignment>
+
+            <!-- etc... -->
+            
+            <!-- supplementary example for assigning to Vehicle/Train/Entrance/BoardingPosition -->
+            <!-- 
+              NB: 
+                TrainStopAssignment is documented as "Assignment of a scheduled train stop point to a STOP PLACE and quay. etc."
+                but does not actually have a reference to neither Quay nor StopPlace (only to BoardingPosition from Site elements)
+              I.e. must indirectly be assigned with a PassengerStopAssignmentRef or vice versa 
+              (or implicitly, per profile in the case, if assigned to the same ScheduledStopPoint ID) 
+            -->
+            <TrainStopAssignment id="VYG:TrainStopAssignment:1" version="1" order="1">
+              <FareScheduledStopPointRef ref="ref"></FareScheduledStopPointRef>
+              <PassengerStopAssignmentRef ref="ENT:PassengerStopAssignment:3" version="1"/> <!-- only for demonstration purpose -->
+              <BoardingPositionRef ref="ref-to-external-id"/>
+              <EntranceToVehicle>yes</EntranceToVehicle> <!-- incorrectly implemented in NeTEx? (SIRI refers with ID) -->
+            </TrainStopAssignment>
+            
+            <!-- FareScheduledStopPoint assignments -->
+            <PassengerStopAssignment id="ENT:PassengerStopAssignment:3" version="1" order="1">
+              <FareScheduledStopPointRef ref="VYG:FareScheduledStopPoint:1" version="1"/>
+              <StopPlaceRef version="1" ref="NSR:StopPlace:1"/>
+              <trainElements>
+                <TrainStopAssignmentRef ref="VYG:TrainStopAssignment:1" version="1"/> <!-- only for demonstration purpose -->
+              </trainElements>
+            </PassengerStopAssignment>
+            <PassengerStopAssignment id="ENT:PassengerStopAssignment:4" version="1" order="1">
+              <FareScheduledStopPointRef ref="VYG:FareScheduledStopPoint:2" version="1"/>
+              <StopPlaceRef version="1" ref="NSR:StopPlace:2"/>
+            </PassengerStopAssignment>
+            
+          </stopAssignments>
+
+        </ServiceFrame>
+
+
+
+
+        <FareFrame id="ENT:FareFrame:1" version="1">
+          
+          <!-- 
+            FareScheduledStopPoint =
+            A specialisation of SCHEDULED STOP POINT describing a stop with fare accounting and routing characteristics.
+          -->
+          
+          <fareScheduledStopPoints>
+            
+            <FareScheduledStopPoint id="VYG:FareScheduledStopPoint:1" version="1" responsibilitySetRef="VYG:ResponsibilitySet:1">
+              <Name>Oslo</Name>
+              <tariffZones>
+                <TariffZoneRef ref="ref"/> <!-- possible, but should rather be derived from NSR -->
+              </tariffZones>
+              <StopType>railStation</StopType>
+              <VehicleModes>rail bus</VehicleModes>
+            </FareScheduledStopPoint>
+            
+            <FareScheduledStopPoint id="VYG:FareScheduledStopPoint:2" version="1" responsibilitySetRef="VYG:ResponsibilitySet:1">
+              <Name>Lillehammer</Name>
+              <StopType>railStation</StopType>
+              <VehicleModes>rail bus</VehicleModes>
+            </FareScheduledStopPoint>
+            
+          </fareScheduledStopPoints>
+          
+          
+          <fareSections>
+            
+            <!-- Alternativ 1: Som referanse til eksplisitt FareScheduledStopPoints -->
+            <FareSection id="VYG:FareSection:1" version="1" responsibilitySetRef="ENT:ResponsibilitySet:VYT-Oslo-Lillehammer">
+              <Name>VY</Name>
+              <!-- ikke definert farePointsInPattern i eksempelet, foreløpig er dette relevant for geografisk strekke ikke kjøremønster? -->
+              <pointsOnSection>
+                <PointOnSection id="ENT:PointOnSection:4" version="1" order="1">
+                  <!-- Oslo -->
+                  <FareScheduledStopPointRef ref="VYG:FareScheduledStopPoint:1" version="1"/> 
+                </PointOnSection>
+                <PointOnSection id="ENT:PointOnSection:5" version="1" order="2">
+                  <!-- Lillehammer -->
+                  <FareScheduledStopPointRef ref="VYG:FareScheduledStopPoint:2" version="1"/> 
+                </PointOnSection>
+              </pointsOnSection>
+              <!--JourneyPatternRef ref="NSB:JourneyPattern:1"/--> <!-- dvs. neppe relevant? -->
+              <!-- FromPointInPatternRef ref="VYG:FarePointInPattern:1" version="1" /--> <!-- (ikke definert) -->
+              <!-- ToPointInPatternRef ref="VYG:FarePointInPattern:1" version="1" /--> <!-- (ikke definert) -->
+            </FareSection>
+            
+            
+            <!-- Alternativ 2: Som referanse til vanlig ScheduledStopPoints (gyldig, men ikke like semantisk presist) -->
+            <FareSection id="VYG:FareSection:2" version="1" responsibilitySetRef="ENT:ResponsibilitySet:VYT-Oslo-Lillehammer">
+              <Name>VY</Name>
+              <pointsOnSection>
+                <PointOnSection id="ENT:PointOnSection:6" version="1" order="1">
+                  <!-- Oslo -->
+                  <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:1" version="1"/> 
+                </PointOnSection>
+                <PointOnSection id="ENT:PointOnSection:7" version="1" order="2">
+                  <!-- Lillehammer -->
+                  <ScheduledStopPointRef ref="NSR:ScheduledStopPoint:2" version="1"/> 
+                </PointOnSection>
+              </pointsOnSection>
+              <JourneyPatternRef ref="NSB:JourneyPattern:1"/> <!-- dvs. neppe relevant? -->
+              <!-- FromPointInPatternRef ref="VYG:FarePointInPattern:1" version="1" /-->
+              <!-- ToPointInPatternRef ref="VYG:FarePointInPattern:1" version="1" /-->
+            </FareSection>
+            
+          </fareSections>
+          
+        </FareFrame>
+
+      </frames>
+    </CompositeFrame>
+  </dataObjects>
+</PublicationDelivery>

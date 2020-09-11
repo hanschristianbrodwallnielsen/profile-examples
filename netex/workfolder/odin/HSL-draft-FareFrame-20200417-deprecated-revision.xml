@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery 
+  xmlns="http://www.netex.org.uk/netex"
+  xmlns:gis="http://www.opengis.net/gml/3.2" 
+  xmlns:siri="http://www.siri.org.uk/siri"
+  version="1.10:NO-NeTEx-fares:0.9">
+
+    <PublicationTimestamp>2020-04-28T22:00:00</PublicationTimestamp>
+    <ParticipantRef>LMJ_HSL</ParticipantRef>
+
+    <Description>Example of simple point to point fares</Description>
+    <!--- =============== RESULTS =========== -->
+    <dataObjects>
+
+        <CompositeFrame version="1" id="myfares:DTA@z2Z">
+            <validityConditions>
+                <ValidBetween>
+                    <FromDate>2011-01-01T00:00:00Z</FromDate>
+                    <ToDate>2011-07-01T00:00:00Z</ToDate>
+                </ValidBetween>
+            </validityConditions>
+
+            <codespaces>
+                <Codespace id="HSL">
+                    <Xmlns>HSL</Xmlns>
+                    <XmlnsUrl>http://www.hsl.fi/</XmlnsUrl>
+                    <Description>Helsingin seudun liikenne</Description>
+                </Codespace>
+            </codespaces>
+
+            <FrameDefaults>
+                <DefaultCodespaceRef ref="HSL"/>
+                <DefaultLocale>
+                    <TimeZone>EET</TimeZone>
+                    <SummerTimeZone>EEST</SummerTimeZone>
+                    <DefaultLanguage>fi</DefaultLanguage>
+                    <languages>
+                        <LanguageUsage>
+                            <Language>fi</Language>
+                            <LanguageUse>allUses</LanguageUse>
+                        </LanguageUsage>
+                        <LanguageUsage>
+                            <Language>se</Language>
+                            <LanguageUse>understood</LanguageUse>
+                        </LanguageUsage>
+                        <!--
+                        <LanguageUsage>
+                            <Language>en</Language>
+                            <LanguageUse>understood</LanguageUse>
+                        </LanguageUsage>
+                        -->
+                </languages>
+                </DefaultLocale>
+                <DefaultLocationSystem>EPSG:4326</DefaultLocationSystem>
+                <DefaultSystemOfUnits>SiKilometresAndMetres</DefaultSystemOfUnits>
+                <DefaultCurrency>EUR</DefaultCurrency>
+            </FrameDefaults>
+            
+            
+            <frames>
+
+                <FareFrame id="HSL:FareFrame:1" version="1">
+
+                    <geographicalUnits>
+                        <GeographicalUnit id="HSL:GeographicalUnit:zones" version="1">
+                            <Name>Zones</Name>
+                        </GeographicalUnit>
+                    </geographicalUnits>
+                    
+
+                    <geographicalIntervals>
+                        <GeographicalInterval id="HSL:geographicalInterval:Zone1" version="1">
+                            <Name>Zone 1</Name>
+                            <!-- Check NetEx specs for StartGeographicalValue -->
+                            <StartGeographicalValue>0.1</StartGeographicalValue>
+                            <EndGeographicalValue>1</EndGeographicalValue>
+                            <NumberOfUnits>1</NumberOfUnits>
+                            <IntervalType>tariffZone</IntervalType>
+                            <GeographicalUnitRef ref="HSL:GeographicalUnit:zones" version="1"/>
+                        </GeographicalInterval>
+                        <GeographicalInterval id="HSL:geographicalInterval:Zone2" version="1">
+                            <Name>Zone 2</Name>
+                            <StartGeographicalValue>1.1</StartGeographicalValue>
+                            <EndGeographicalValue>2</EndGeographicalValue>
+                            <NumberOfUnits>1</NumberOfUnits>
+                            <IntervalType>tariffZone</IntervalType>
+                            <GeographicalUnitRef ref="HSL:GeographicalUnit:zones" version="1"/>
+                        </GeographicalInterval>
+                        <GeographicalInterval id="HSL:geographicalInterval:Zone3" version="1">
+                            <Name>Zone 3</Name>
+                            <StartGeographicalValue>3.1</StartGeographicalValue>
+                            <EndGeographicalValue>3</EndGeographicalValue>
+                            <NumberOfUnits>1</NumberOfUnits>
+                            <IntervalType>tariffZone</IntervalType>
+                            <GeographicalUnitRef ref="HSL:GeographicalUnit:zones" version="1"/>
+                        </GeographicalInterval>
+                        <GeographicalInterval id="HSL:geographicalInterval:Zone4" version="1">
+                            <Name>Zone 4</Name>
+                            <StartGeographicalValue>4.1</StartGeographicalValue>
+                            <EndGeographicalValue>4</EndGeographicalValue>
+                            <NumberOfUnits>1</NumberOfUnits>
+                            <IntervalType>tariffZone</IntervalType>
+                            <GeographicalUnitRef ref="HSL:GeographicalUnit:zones" version="1"/>
+                        </GeographicalInterval>
+
+
+
+
+                        <!--- EXAMPLE: GeographicalInterval related pricing -->
+                        <GeographicalInterval id="HSL:geographicalInterval:ZoneXYZ" version="1">
+                            <Name>Zone XYZ</Name>
+                            <NumberOfUnits>1</NumberOfUnits>
+                            <IntervalType>tariffZone</IntervalType>
+                            <GeographicalUnitRef ref="HSL:GeographicalUnit:zones" version="1"/>
+                            <prices>
+                                <!-- EITHER... -->
+                                <CellRef ref="HSL:Cell:1" version="1"/>
+                            </prices>
+                        </GeographicalInterval>
+                    </geographicalIntervals>
+
+                    <geographicalStructureFactors>
+                        <!-- Ref NeTEx part 3: "﻿GeographicalStructureFactor - The value of a GEOGRAPHICAL INTERVAL" -->
+                        <GeographicalStructureFactor id="HSL:GeographicalStructureFactor:1"
+                            version="1">
+                            <fareTables>
+                                <!-- ..OR -->
+                                <FareTableRef ref="HSL:FareTable:Single" version="1"/>
+                            </fareTables>
+                            <GeographicalIntervalRef ref="HSL:geographicalInterval:ZoneXYZ" version="1"/>
+                        </GeographicalStructureFactor>
+                    </geographicalStructureFactors>
+
+
+
+
+
+
+
+                    <!-- 
+                        REMARK:
+                        
+                        A bit unclear from the data the purpose of specified limitations, 
+                        i.e. if the should be separate Parameters (modeled as individual GenericParameterAssignment) 
+                        or combined for specifying the same FareStructureElement.
+                        
+                        For this reason they have been structured as separate GenericParameterAssignment within a separate FaresStructureElement
+                        rather than adding all to the <limitations> of the original FareStructureElement
+                        (for easier restructuring, if this proposal does not fit the intended purpose) 
+                    -->
+
+                    <fareStructureElements>
+
+                        <FareStructureElement id="HSL:FareStructureElement:ZoneInterval" version="1">
+                            <geographicalIntervals>
+                                <GeographicalInterval id="HSL:GeographicalInterval:1Zone"
+                                    version="1">
+                                    <!-- Figure out to describe zone combos, the number of zones is not relevant -->
+                                    <Name>1 Zone</Name>
+                                    <StartGeographicalValue>0</StartGeographicalValue>
+                                    <EndGeographicalValue>1</EndGeographicalValue>
+                                    <NumberOfUnits>1</NumberOfUnits>
+                                    <IntervalType>tariffZone</IntervalType>
+                                </GeographicalInterval>
+                                <GeographicalInterval id="HSL:GeographicalInterval:2Zones"
+                                    version="1">
+                                    <Name>2 Zones</Name>
+                                    <StartGeographicalValue>1</StartGeographicalValue>
+                                    <EndGeographicalValue>2</EndGeographicalValue>
+                                    <NumberOfUnits>1</NumberOfUnits>
+                                    <IntervalType>tariffZone</IntervalType>
+                                </GeographicalInterval>
+                                <GeographicalInterval id="HSL:GeographicalInterval:3Zones"
+                                    version="1">
+                                    <Name>3 Zones</Name>
+                                    <StartGeographicalValue>2</StartGeographicalValue>
+                                    <EndGeographicalValue>3</EndGeographicalValue>
+                                    <NumberOfUnits>1</NumberOfUnits>
+                                    <IntervalType>tariffZone</IntervalType>
+                                </GeographicalInterval>
+                            </geographicalIntervals>
+                        </FareStructureElement>
+
+
+
+                        <FareStructureElement id="HSL:FareStructureElement:1" version="1">
+                            <GenericParameterAssignment
+                                id="HSL:GenericParameterAssignment:Cancellation" version="1"
+                                order="0">
+                                <limitations>
+                                    <!-- Cancelling describes HOW TO CANCEL (when allowed), 
+                                        i.e. redundant per next limitation Refunding 
+                                        (which given this is probably not correcly defined?) -->
+                                    <Cancelling id="HSL:Cancelling:1" version="1">
+                                        <!--
+                                        <Name> no cancellation </Name>
+                                        <BookingArrangements>
+                                            <BookingMethods>online</BookingMethods>
+                                        </BookingArrangements>
+                                        -->
+                                    </Cancelling>
+                                </limitations>
+                            </GenericParameterAssignment>
+                        </FareStructureElement>
+
+                        <FareStructureElement id="HSL:FareStructureElement:2" version="1">
+                            <GenericParameterAssignment
+                                id="HSL:GenericParameterAssignment:Refunding" version="1" order="0">
+                                <limitations>
+                                    <Refunding version="1" id="HSL:Refunding:NotAllowed">
+                                        <Name> No refund </Name>
+                                        <!-- see comment above regarding NO CANCELLATION -->
+                                        <Allowed>none</Allowed>
+                                        <ExchangableUntilDuration>PT4H</ExchangableUntilDuration>
+                                        <RefundType>cancellation</RefundType>
+                                    </Refunding>
+                                </limitations>
+                            </GenericParameterAssignment>
+                        </FareStructureElement>
+
+                        <FareStructureElement id="HSL:FareStructureElement:3" version="1">
+                            <GenericParameterAssignment
+                                id="HSL:GenericParameterAssignment:UsagePeriod" version="1"
+                                order="0">
+                                <limitations>
+                                    <UsageValidityPeriod version="1"
+                                        id="HSL:UsageValidityPeriod:1Hour">
+                                        <!-- Depends on the zone combo -->
+                                        <Name> 1 Hour </Name>
+                                        <UsageTrigger>startOutboundRide</UsageTrigger>
+                                        <!-- Either from purchase or a set time within 24 hrs -->
+                                        <UsageEnd>standardDuration</UsageEnd>
+                                        <StandardDuration>PT1H</StandardDuration>
+                                        <!-- Depends on the zone combo -->
+                                    </UsageValidityPeriod>
+                                </limitations>
+                            </GenericParameterAssignment>
+                        </FareStructureElement>
+
+                        <FareStructureElement id="HSL:FareStructureElement:4" version="1">
+                            <GenericParameterAssignment
+                                id="HSL:GenericParameterAssignment:UsageFrequency" version="1"
+                                order="0">
+                                <limitations>
+                                    <FrequencyOfUse version="1" id="HSL:FrequencyOfUse:SingelTrip">
+                                        <Name>Single</Name>
+                                        <FrequencyOfUseType>unlimited</FrequencyOfUseType>
+                                    </FrequencyOfUse>
+                                </limitations>
+                            </GenericParameterAssignment>
+                        </FareStructureElement>
+
+                        <FareStructureElement id="HSL:FareStructureElement:5" version="1">
+                            <GenericParameterAssignment
+                                id="HSL:GenericParameterAssignment:Interchanging" version="1"
+                                order="0">
+                                <limitations>
+                                    <Interchanging version="1" id="HSL:Interchanging:CanInterchange">
+                                        <Name>Interchange possible</Name>
+                                        <CanInterchange>true</CanInterchange>
+                                    </Interchanging>
+                                </limitations>
+                            </GenericParameterAssignment>
+                        </FareStructureElement>
+
+                        <FareStructureElement id="HSL:FareStructureElement:6" version="1">
+                            <GenericParameterAssignment
+                                id="HSL:GenericParameterAssignment:UserProfile" version="1"
+                                order="0">
+                                <limitations>
+                                    <UserProfile id="HSL:UserProfile:Adult" version="1">
+                                        <Name> Adult </Name>
+                                        <UserType>adult</UserType>
+                                        <MinimumAge>18</MinimumAge>
+                                        <MaximumAge>67</MaximumAge>
+                                    </UserProfile>
+                                </limitations>
+                            </GenericParameterAssignment>
+                        </FareStructureElement>
+
+                        <FareStructureElement id="HSL:FareStructureElement:7" version="1">
+                            <GenericParameterAssignment
+                                id="HSL:GenericParameterAssignment:PurchaseWindow" version="1"
+                                order="0">
+                                <limitations>
+                                    <PurchaseWindow version="1" id="HSL:PurchaseWindow:1Day">
+                                        <Name> 1 Day purchase window </Name>
+                                        <PurchaseWhen>advanceAndDayOfTravel</PurchaseWhen>
+                                        <MaximumPeriodBeforeDeparture> PT24H
+                                        </MaximumPeriodBeforeDeparture>
+                                    </PurchaseWindow>
+                                </limitations>
+                            </GenericParameterAssignment>
+                        </FareStructureElement>
+                    </fareStructureElements>
+
+
+
+                    <validableElements>
+                        <ValidableElement id="HSL:ValidableElement:SingleRide" version="1">
+                            <fareStructureElements>
+                                <FareStructureElementRef ref="HSL:FareStructureElement:ZoneInterval" version="1"/>
+                            </fareStructureElements>
+                        </ValidableElement>
+                    </validableElements>
+
+
+                    <fareProducts>
+                        <PreassignedFareProduct id="HSL:PreassignedFareProduct:Single" version="1">
+                            <Name> Single Ticket</Name>
+                            <Description> A single ticket </Description>
+
+                            <!-- proposal (added by Entur) -->
+                            <fareTables>
+                                <FareTableRef ref="HSL:FareTable:Single" version="1"/>
+                            </fareTables>
+
+                            <ChargingMomentType>beforeTravel</ChargingMomentType>
+                            <!-- prepaid -->
+                            <validityParameterAssignments>
+                                <GenericParameterAssignment
+                                    id="HSL:GenericParameterAssignment:Cancellation" version="1"
+                                    order="1">
+                                    <limitations>
+                                        <CancellingRef ref="HSL:Cancelling:1" version="1"/>
+                                        <InterchangingRef ref="HSL:Interchanging:CanInterchange" version="1"/>
+                                    </limitations>
+                                </GenericParameterAssignment>
+                            </validityParameterAssignments>
+                            <accessRightsInProduct>
+                                <AccessRightInProduct id="HSL:AccessRightInProduct:Single"
+                                    version="1" order="1">
+                                    <ValidableElementRef ref="HSL:ValidableElement:SingleRide" version="1"/>
+                                </AccessRightInProduct>
+                            </accessRightsInProduct>
+                        </PreassignedFareProduct>
+                    </fareProducts>
+
+
+                    <fareTables>
+                        <!-- Price depends on the zone combo -->
+                        <FareTable id="HSL:FareTable:Single" version="1">
+                            <cells>
+                                <Cell id="HSL:Cell:1" version="1" order="1">
+                                    <!-- FareProduct related pricing -->
+                                    <FareProductPrice id="HSL:FareProductPrice:1" version="1">
+                                        <Amount>35</Amount>
+                                    </FareProductPrice>
+                                </Cell>
+
+                                <!-- other alternatives -->
+                                <Cell id="HSL:Cell:2" version="1" order="2">
+                                    <!-- SalesOfferPackage related pricing -->
+                                    <SalesOfferPackagePrice id="HSL:SalesOfferPackagePrice:1" version="1">
+                                        <Amount>54</Amount>
+                                        <SalesOfferPackageElementRef ref="SalesOfferPackage:Single" version="1"/>
+                                    </SalesOfferPackagePrice>
+                                </Cell>
+                            </cells>
+
+                            <!--
+                                Commented out from the original file due to invalid XML, 
+                                a PriceableObject is "An element that may have a FARE PRICE." 
+                                (an abstract data type, can be implemented as e.g. a FareStructureElement)
+                            -->
+                            <!--
+                            <cells>    
+                                <Cell>
+                                    <PriceableObject
+                                        <id> "HSL:GeographicalInterval:1Zone" </id>
+                                        <version> "HSL:Version:V1" </version>
+                                        </PriceableObject>
+                                        <FarePrice>
+                                            <Amount> 35 </Amount>
+                                        </FarePrice>
+                                </Cell>
+                                <Cell>
+                                    <PriceableObjectRef>
+                                        <id> "HSL:GeographicalInterval:2Zones" </id>
+                                        <version> "HSL:Version:V1" </version>
+                                    </PriceableObjectRef>
+                                    <FarePrice>
+                                        <Amount> 54 </Amount>
+                                    </FarePrice>
+                                </Cell>  
+                            </cells>
+                            -->
+                        </FareTable>
+                    </fareTables>
+
+
+                    <distributionChannels>
+                        <DistributionChannel id="HSL:DistributionChannel:MobileTerminal" version="1">
+                            <Name>Mobile Terminal for onboard</Name>
+                            <DistributionChannelType>onBoard</DistributionChannelType>
+                            <OrganisationRef ref="HSL:Organisation:HSL"/> <!-- as defined externally -->
+                            <PaymentMethods>creditCard mobilePhone</PaymentMethods>
+                            <DistributionRights>sell</DistributionRights>
+                        </DistributionChannel>
+                    </distributionChannels>
+
+
+                    <salesOfferPackages>
+                        <SalesOfferPackage id="HSL:SalesOfferPackage:Single" version="1">
+                            <salesOfferPackageElements>
+                                <SalesOfferPackageElement id="HSL:SalesOfferPackageElement"
+                                    version="1" order="1">
+                                    <FareProductRef ref="HSL:PreassignedFareProduct:Single" version="1"/>
+                                </SalesOfferPackageElement>
+                            </salesOfferPackageElements>
+                        </SalesOfferPackage>
+                    </salesOfferPackages>
+
+
+                    <distributionAssignments>
+                        <DistributionAssignment id="HSL:DistributionAssignment:1" version="1"
+                            order="1">
+                            <SalesOfferPackageRef ref="HSL:SalesPackagerOffer:Single"/>
+                            <DistributionRights>sell</DistributionRights>
+                            <DistributionChannelRef ref="HSL:DistributionChannel:MobileTerminal" version="1"/>
+                            <DistributionChannelType>mobileDevice</DistributionChannelType>
+                            <OrganisationRef ref="HSL:Authority:HSL"/> <!-- as defined externally -->
+                        </DistributionAssignment>
+                    </distributionAssignments>
+                </FareFrame>
+            </frames>
+
+
+        </CompositeFrame>
+    </dataObjects>
+</PublicationDelivery>
