@@ -1,9 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-
 <!-- 
 
-CONNECTING JOUREY AND VEHICLE / TRAIN:
+CONNECTING JOURNEY AND VEHICLE / TRAIN:
 
 
 Vehicle(Type) and/or Train should be referenced from Journey:
@@ -28,6 +27,19 @@ Supplementary info:
 * Vehicle has TrainRef + actualVehicleEquipments (has EuroClass Code but NO TransportMode/-Submode, as well as some physical info e.g. HasLiftOrRamp)
 * Train has Capacities + Facilities (and physical type elements similar to Vehicle)
 * TrainElement has Capacities + Facilities and Equipments
+
+
+
+For changing Train (TrainElement order) there are currently two alternatives
+
+1) To swap VehicleOrientation (e.g. in Kristiansand) using <journeyParts> on the ServiceJourney
+
+  ServiceJourney - parts - JourneyPart 1 w/ VehicleOrientation "true" (forward)
+  ServiceJourney - parts - JourneyPart 2 w/ VehicleOrientation "false" (reversed)
+  
+2) Specify ONE ServiceJourney PER PART (each with its own TrainRef) and use CoupledJourney 
+  NB: <journeys> list does NOT have "order", i.e. must be derived from TimetabledPassingTime
+
 
 -->
 
@@ -107,9 +119,9 @@ Supplementary info:
           <TypeOfEquipmentRef version="1" ref="NTO:TypeOfEquipment:RegularSeating"/>
         </SeatingEquipment>
       </equipments>
-      
 
-      
+
+
       <vehicleTypes>
         
         <!-- Generic VehicleType -->
@@ -129,7 +141,7 @@ Supplementary info:
         
         
         <!-- Specific VehicleType: Train -->
-        <Train version="1" id="NTO:Train:Flirt">
+        <Train version="1" id="NTO:Train:Flirt-1">
           <!-- consolidated capasity -->
           <capacities>
             <PassengerCapacityRef version="1" ref="NTO:PassengerCapacity:Premium"/>
@@ -139,15 +151,6 @@ Supplementary info:
             </PassengerCapacity>
           </capacities>
           
-          <components>
-            <TrainComponent version="1" id="NTO:TrainComponent:1" order="1">
-              <TrainElementRef version="1" ref="NTO:TrainElement:1"/>
-            </TrainComponent>
-          </components>
-        </Train>
-        
-        
-        <Train version="1" id="SJN:Train:Flirt-1">
           <components>
             <TrainComponent version="1" id="NTO:TrainComponent:BMb74" order="1">
               <Label>BMb74</Label>
@@ -171,6 +174,7 @@ Supplementary info:
             </TrainComponent>
           </components>
         </Train>
+        
         
         <Train version="1" id="SJN:Train:Flirt-2">
           <components>
@@ -528,6 +532,7 @@ Supplementary info:
         
         
         <TimetableFrame version="1" id="NSB:TimetableFrame:4145999">
+          
           <vehicleJourneys>
             <VehicleJourney version="1" id="NSB:VehicleJourney:1-3922-61">
               <!-- placeholder -->
@@ -572,43 +577,105 @@ Supplementary info:
               
               <OperatorRef ref="NSB:Operator:503"/>
               <LineRef ref="NSB:Line:41" version="1"/>
-
+              
+              
+              <!-- SKAL IKKE BRUKES ? 
+                (eksempel <trainNumbers> uansett flyttet til fritstaende liste lenger ned i TimetableFrame) -->
+              
               <!-- Referanse til operativt transportnummer -->
-              <!-- SKAL IKKE BRUKES ? -->
-
-              <!-- 
-              <trainNumbers>
+              <!--trainNumbers>
                 <TrainNumberRef ref="NSB:TrainNumber:1" version="1"/>
-              </trainNumbers>
-              -->
+              </trainNumbers-->
 
               <passingTimes>
-                <TimetabledPassingTime version="1"
-                  id="NSB:TimetabledPassingTime:686e98f9-e0ea-46c8-a208-e0ebb80d9315">
+                <TimetabledPassingTime version="1" id="NSB:TimetabledPassingTime:686e98f9-e0ea-46c8-a208-e0ebb80d9315">
                   <StopPointInJourneyPatternRef ref="NSB:StopPointInJourneyPattern:1-1105-1" version="1"/>
                   <DepartureTime>08:25:00</DepartureTime>
                 </TimetabledPassingTime>
-                <TimetabledPassingTime version="1"
-                  id="NSB:TimetabledPassingTime:592a9671-027e-42b6-aae3-c5938212ed5e">
+                <TimetabledPassingTime version="1" id="NSB:TimetabledPassingTime:592a9671-027e-42b6-aae3-c5938212ed5e">
                   <StopPointInJourneyPatternRef ref="NSB:StopPointInJourneyPattern:1-1105-2" version="1"/>
                   <ArrivalTime>08:38:00</ArrivalTime>
                   <DepartureTime>08:39:00</DepartureTime>
                 </TimetabledPassingTime>
-                <TimetabledPassingTime version="1"
-                  id="NSB:TimetabledPassingTime:119b896c-1054-4db1-9776-276d48e44431">
+                <TimetabledPassingTime version="1" id="NSB:TimetabledPassingTime:119b896c-1054-4db1-9776-276d48e44431">
                   <StopPointInJourneyPatternRef ref="NSB:StopPointInJourneyPattern:1-1105-3" version="1"/>
                   <ArrivalTime>08:45:00</ArrivalTime>
                   <DepartureTime>08:46:00</DepartureTime>
                 </TimetabledPassingTime>
-                <TimetabledPassingTime version="1"
-                  id="NSB:TimetabledPassingTime:da2cb9d1-3efb-4928-9402-8bd02b489a19">
+                <TimetabledPassingTime version="1" id="NSB:TimetabledPassingTime:da2cb9d1-3efb-4928-9402-8bd02b489a19">
                   <StopPointInJourneyPatternRef ref="NSB:StopPointInJourneyPattern:1-1105-4" version="1"/>
                   <ArrivalTime>08:58:00</ArrivalTime>
                 </TimetabledPassingTime>
               </passingTimes>
+              
+              <parts>
+                
+                <!-- opprinnelig retning -->
+                <JourneyPart id="NSB:JourneyPart:1" version="1">
+                  
+                  <!-- TWO PROBLEMS with TrainNumber:
+                    1) Cannot add/refer TrainNumber (also) for a Train object
+                    2) There is no Train-to-TrainNumber assignment datatype, i.e. only Journey and JourneyPart can refer TrainNumber(s)
+                  -->
+                  <TrainNumberRef ref="ref"/>
+                  
+                  <StartTime>08:46:00</StartTime>
+                  <EndTime>12:46:00</EndTime>
+                  <!-- PROBLEM with VehicleOrientation: Single ServiceJourney requires ENGINE TrainElement to be left out of the Train (i.e. EXCLUDE engine TrainComponent) -->
+                  <VehicleOrientation>true</VehicleOrientation> <!-- true = forward -->
+                </JourneyPart>
+                
+                <!-- snudd retning -->
+                <JourneyPart id="NSB:JourneyPart:2" version="1">
+                  <StartTime>12:46:00</StartTime>
+                  <EndTime>16:46:00</EndTime>
+                  <VehicleOrientation>false</VehicleOrientation> <!-- true = forward -->
+                </JourneyPart>
+                
+              </parts>
             </ServiceJourney>
 
           </vehicleJourneys>
+          
+          
+          <!-- 
+            Not relevant(?)
+            
+            Assumes as not, as the use-case does not involve coupling JourneyParts into a (for a section) combined train
+            (i.e. running multiple ServiceJourney parts as the same Train for a given section)
+          --> 
+          <!--journeyPartCouples>
+            <JourneyPartCouple order="">
+              <StartTime></StartTime>
+              <EndTime></EndTime>
+              <FromStopPointRef ref=""></FromStopPointRef>
+              <ToStopPointRef ref=""></ToStopPointRef>
+              <MainPartRef ref=""></MainPartRef>
+              <BlockRef ref=""></BlockRef>
+            </JourneyPartCouple>
+          </journeyPartCouples-->
+          
+          
+          <trainNumbers>
+            <TrainNumber id="NSB:TrainNumber:1" version="1">
+              <ForProduction>NSB-TrainNumber-1</ForProduction>
+            </TrainNumber>
+          </trainNumbers>
+          
+          
+          <!-- Alternativt med to separate ServiceJourneys (må definere to Trains med TrainElements i hver sin konfigurasjon/rekkefolge) -->
+          <coupledJourneys>
+            <CoupledJourney id="NSB:CoupledJourney:1" version="1">
+              <journeys>
+                <VehicleJourneyRef ref="NSB:ServiceJourney:1-3922-61" version="1" />
+                <VehicleJourneyRef ref="NSB:ServiceJourney:1-3922-62-ikke-delt-opp-i-dette-eksempelet" />
+                <DatedVehicleJourneyRef ref="kan-brukes-tilsvarende-som-vanlig-VehicleJourneyRef"/>
+                <!-- strengt tatt burde det bli mulig med eksplisitt (Dated)ServiceJourneyRef her i tillegg,
+                  for det blir mye mer tydelig hvis man senere skal referere til ikke-passasjertransport jf. VehicleScheduleFrame - blocks - TrainBlock - blockParts -->
+              </journeys>
+            </CoupledJourney>
+          </coupledJourneys>
+          
 
           
           
