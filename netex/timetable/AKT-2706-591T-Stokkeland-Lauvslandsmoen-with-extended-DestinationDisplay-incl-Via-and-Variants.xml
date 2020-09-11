@@ -31,7 +31,7 @@ version="1.12:NO-NeTEx-networktimetable:1.4">
           <routes>
             <Route version="1" id="AKT:Route:AKT_2706_1">
               <Name>Stokkeland - Lauvslandsmoen</Name>
-              <ShortName>Stokkeland - Lauvslandsmoen</ShortName>
+              <ShortName>Stokkeland-Lauvslandsmoen</ShortName>
               <LineRef ref="AKT:Line:AKT_2706" version="1"/>
               <DirectionType>inbound</DirectionType>
               <pointsInSequence>
@@ -84,7 +84,7 @@ version="1.12:NO-NeTEx-networktimetable:1.4">
             
             <!-- incl change of DestinationDisplay en route (see JourneyPattern at Stubstad) -->
             <DestinationDisplay version="1" id="AKT:DestinationDisplay:AKT_2706-enroute-via">
-              <Name>Stubstad-Kilen-Lauvlandsmoen (enroute)</Name>
+              <Name>Stubstad-Kilen-Lauvlandsmoen (en route)</Name>
               <SideText>Lauvlandsmoen</SideText>
               <FrontText>Lauvlandsmoen</FrontText>
               <vias>
@@ -124,15 +124,15 @@ version="1.12:NO-NeTEx-networktimetable:1.4">
                   <DestinationDisplayVariantMediaType>other</DestinationDisplayVariantMediaType>
                   <FrontText>Stubstad-Kilen-Lauvlandsmoen</FrontText>
                 </DestinationDisplayVariant>
-                <!-- Full text incl vias to display in full web-clients (same text as print, constructed this way due to limitations in the XSD) -->
+                <!-- Full text incl vias to display in full web-clients (same text as print, defined twice due to limitations in the XSD) -->
                 <DestinationDisplayVariant>
                   <DestinationDisplayVariantMediaType>web</DestinationDisplayVariantMediaType>
-                  <FrontText>Fra Stokkeland til Lauvlandsmoen via Stubstad og Kilen</FrontText>
+                  <FrontText>From Stokkeland to Lauvlandsmoen via Stubstad ahd Kilen</FrontText>
                 </DestinationDisplayVariant>
-                <!-- Full text incl vias to display in full web-clients (same text as web, constructed this way due to limitations in the XSD) -->
+                <!-- Full text incl vias to display in print (same text as web, defined twice due to limitations in the XSD) -->
                 <DestinationDisplayVariant>
                   <DestinationDisplayVariantMediaType>printed</DestinationDisplayVariantMediaType>
-                  <FrontText>Fra Stokkeland til Lauvlandsmoen via Stubstad og Kilen</FrontText>
+                  <FrontText>From Stokkeland to Lauvlandsmoen via Stubstad ahd Kilen</FrontText>
                 </DestinationDisplayVariant>
               </variants>
             </DestinationDisplay>
@@ -140,16 +140,14 @@ version="1.12:NO-NeTEx-networktimetable:1.4">
             
             <!-- Sample use of combined Via and DestinationDisplayVariants (though not utilized in the JourneyPattern of this dataset) -->
             <DestinationDisplay version="1" id="AKT:DestinationDisplay:AKT_2706-via-og-variants">
-              <Name>Stubstad-Kilen-Lauvlandsmoen (start)</Name>
+              <Name>Stubstad-Kilen-Lauvlandsmoen</Name>
               <FrontText>Lauvlandsmoen</FrontText>
               <vias>
                 <Via>
                   <DestinationDisplayRef ref="AKT:DestinationDisplay:AKT_2706-3-variant" version="1" />
-                  <RoutePointRef ref="AKT:PointOnRoute:405191"/> <!-- redundant, men kan angis hvis behov -->
                 </Via>
                 <Via>
                   <DestinationDisplayRef ref="AKT:DestinationDisplay:AKT_2706-6-variant" version="1" />
-                  <RoutePointRef ref="AKT:RoutePoint:AKT_1017673600"/> <!-- redundant, men kan angis hvis behov -->
                 </Via>
               </vias>
               <variants>
