@@ -676,8 +676,6 @@ For changing Train (TrainElement order) there are currently two alternatives
             </CoupledJourney>
           </coupledJourneys>
           
-
-          
           
         </TimetableFrame>
       </frames>
