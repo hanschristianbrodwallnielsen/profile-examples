@@ -41,7 +41,7 @@
         </Train>
 </vehicleTypes>
 
-<Train version="0" id="GOA:Train:73A-B">
+<Train version="0" id="GOA:Train:Type7-A">
           <components>
             <TrainComponent version="0" id="GOA:TrainComponent:EL18" order="1">
               <Label>EL18</Label>
