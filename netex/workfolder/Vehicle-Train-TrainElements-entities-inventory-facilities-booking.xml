@@ -60,17 +60,23 @@ For changing Train (TrainElement order) there are currently two alternatives
   <dataObjects>
 
 
-    <VehicleScheduleFrame created="2019-08-17T00:50:24.905" version="1" id="NSB:VehicleScheduleFrame:4145997"> 
+    <VehicleScheduleFrame created="2019-08-17T00:50:24" version="1" id="NSB:VehicleScheduleFrame:4145997"> 
       <!-- placeholder -->
     </VehicleScheduleFrame>
 
 
-    <GeneralFrame created="2019-08-17T00:50:24.905" version="1" id="NSB:GeneralFrame:4145997">
+    <GeneralFrame created="2019-08-17T00:50:24" version="1" id="NSB:GeneralFrame:4145997">
       <!-- placeholder -->
     </GeneralFrame>
 
 
-    <ResourceFrame created="2019-08-17T00:50:24.905" version="1" id="NSB:ResourceFrame:4145997"> 
+    <ResourceFrame created="2019-08-17T00:50:24" version="1" id="NSB:ResourceFrame:4145997"> 
+      <ValidBetween>
+        <FromDate>2019-09-11T00:00:00</FromDate>
+        <ToDate>2021-12-31T23:59:59</ToDate>
+      </ValidBetween>
+      
+      
       <typesOfValue>
         <TypeOfEquipment version="1" id="NTO:TypeOfEquipment:PremiumSeating">
           <PrivateCode>PremiumSeating</PrivateCode>
@@ -634,7 +640,18 @@ For changing Train (TrainElement order) there are currently two alternatives
                 
               </parts>
             </ServiceJourney>
-
+            
+            
+            <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:1-3922-61-date-2020-12-31">
+              <JourneyPatternRef ref="NSB:JourneyPattern:1-1105" version="1"/>
+              
+              <TrainRef ref="SJN:Train:Flirt-2"/> <!-- SJN just as a technical example due to defined within this file -->
+              
+              <ServiceJourneyRef ref="NSB:ServiceJourney:1-3922-61"/>
+              <OperatingDayRef ref="NSB:OperatingDay:2020-12-31"/>
+            </DatedServiceJourney>
+            
+            
           </vehicleJourneys>
           
           
