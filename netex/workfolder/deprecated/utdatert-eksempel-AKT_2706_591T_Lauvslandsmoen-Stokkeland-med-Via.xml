@@ -1,4 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
+
+
+<!-- 
+Gammel versjon av eksempelet (dvs. DEPRECATED): 
+Filen har blir ryddet og redundant innholdet tatt bort, samt oversatt til engelsk; ny versjon ligger under /netex/timetable i github.
+-->
+
+
 <PublicationDelivery 
 xmlns="http://www.netex.org.uk/netex" 
 xmlns:gml="http://www.opengis.net/gml/3.2" 
