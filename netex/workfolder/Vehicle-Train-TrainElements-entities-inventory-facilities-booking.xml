@@ -206,6 +206,7 @@ For changing Train (TrainElement order) there are currently two alternatives
             </TrainComponent>
           </components>
         </Train>
+
       </vehicleTypes>
       
       
@@ -646,6 +647,11 @@ For changing Train (TrainElement order) there are currently two alternatives
               <JourneyPatternRef ref="NSB:JourneyPattern:1-1105" version="1"/>
               
               <TrainRef ref="SJN:Train:Flirt-2"/> <!-- SJN just as a technical example due to defined within this file -->
+              
+              <parts>
+                <JourneyPartRef ref="NSB:JourneyPart:1" version="1"/>
+                <JourneyPartRef ref="NSB:JourneyPart:2" version="1"/>
+              </parts>
               
               <ServiceJourneyRef ref="NSB:ServiceJourney:1-3922-61"/>
               <OperatingDayRef ref="NSB:OperatingDay:2020-12-31"/>
