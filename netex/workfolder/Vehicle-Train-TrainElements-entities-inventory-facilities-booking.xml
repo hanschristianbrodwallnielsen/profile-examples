@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
+
 <!-- 
 
 CONNECTING JOURNEY AND VEHICLE / TRAIN:
@@ -40,11 +41,7 @@ For changing Train (TrainElement order) there are currently two alternatives
 2) Specify ONE ServiceJourney PER PART (each with its own TrainRef) and use CoupledJourney 
   NB: <journeys> list does NOT have "order", i.e. must be derived from TimetabledPassingTime
 
-
 -->
-
-
-
 
 
 <PublicationDelivery 
@@ -55,8 +52,8 @@ For changing Train (TrainElement order) there are currently two alternatives
   
 
   <PublicationTimestamp>2019-08-19T00:31:39.669</PublicationTimestamp>
-  <ParticipantRef>RB</ParticipantRef>
-  <Description>Eksempel</Description>
+  <ParticipantRef>ENT</ParticipantRef>
+  <Description>Materiell-eksempel</Description>
   <dataObjects>
 
 
@@ -76,12 +73,30 @@ For changing Train (TrainElement order) there are currently two alternatives
         <ToDate>2021-12-31T23:59:59</ToDate>
       </ValidBetween>
       
+      <codespaces>
+        <Codespace id="ent">
+          <Xmlns>ENT</Xmlns>
+          <XmlnsUrl>http://www.rutebanken.org/ns/ent</XmlnsUrl>
+          <Description>Entur AS</Description>
+        </Codespace>
+        <Codespace id="nmr">
+          <Xmlns>NMR</Xmlns>
+          <XmlnsUrl>http://www.rutebanken.org/ns/nmr</XmlnsUrl>
+          <Description>Nasjonalt materiellregister</Description>
+        </Codespace>
+        <Codespace id="nog">
+          <Xmlns>NOG</Xmlns>
+          <XmlnsUrl>http://www.rutebanken.org/ns/nog</XmlnsUrl>
+          <Description>Nasjonalt Organisasjons-Register</Description>
+        </Codespace>
+      </codespaces>
+      
       
       <typesOfValue>
-        <TypeOfEquipment version="1" id="NTO:TypeOfEquipment:PremiumSeating">
+        <TypeOfEquipment version="1" id="NMR:TypeOfEquipment:PremiumSeating">
           <PrivateCode>PremiumSeating</PrivateCode>
         </TypeOfEquipment>
-        <TypeOfEquipment version="1" id="NTO:TypeOfEquipment:RegularSeating">
+        <TypeOfEquipment version="1" id="NMR:TypeOfEquipment:RegularSeating">
           <PrivateCode>RegularSeating</PrivateCode>
         </TypeOfEquipment>
       </typesOfValue>
@@ -93,36 +108,36 @@ For changing Train (TrainElement order) there are currently two alternatives
       <equipments>
         
         <!-- pervertering av firergruppe sete, premium klasse (Komfort?), v.h.a. derivedFromObjectRef -->
-        <SeatingEquipment version="1" id="NTO:SeatingEquipment:Group1">
+        <SeatingEquipment version="1" id="NMR:SeatingEquipment:Group1">
           
           <!-- TODO -->
           <!-- PassengerSeatRef = type ValidityParameter = Setenummer -->
           
-          <TypeOfEquipmentRef version="1" ref="NTO:TypeOfEquipment:PremiumSeating"/>
+          <TypeOfEquipmentRef version="1" ref="NMR:TypeOfEquipment:PremiumSeating"/>
           <Seats>4</Seats>
         </SeatingEquipment>
         <!-- gruppe -->
-        <SeatingEquipment version="1" id="NTO:SeatingEquipment:1" derivedFromObjectRef="NTO:SeatingEquipment:Group1">
+        <SeatingEquipment version="1" id="NMR:SeatingEquipment:1" derivedFromObjectRef="NMR:SeatingEquipment:Group1">
           <PublicCode>Sete 1</PublicCode>
         </SeatingEquipment>
-        <SeatingEquipment version="1" id="NTO:SeatingEquipment:2" derivedFromObjectRef="NTO:SeatingEquipment:Group1">
+        <SeatingEquipment version="1" id="NMR:SeatingEquipment:2" derivedFromObjectRef="NMR:SeatingEquipment:Group1">
           <PublicCode>Sete 2</PublicCode>
         </SeatingEquipment>
-        <SeatingEquipment version="1" id="NTO:SeatingEquipment:3" derivedFromObjectRef="NTO:SeatingEquipment:Group1">
+        <SeatingEquipment version="1" id="NMR:SeatingEquipment:3" derivedFromObjectRef="NMR:SeatingEquipment:Group1">
           <PublicCode>Sete 3</PublicCode>
         </SeatingEquipment>
-        <SeatingEquipment version="1" id="NTO:SeatingEquipment:4" derivedFromObjectRef="NTO:SeatingEquipment:Group1">
+        <SeatingEquipment version="1" id="NMR:SeatingEquipment:4" derivedFromObjectRef="NMR:SeatingEquipment:Group1">
           <PublicCode>Sete 4</PublicCode>
         </SeatingEquipment>
         
         <!-- ikke firergruppe, standard klasse -->
-        <SeatingEquipment version="1" id="NTO:SeatingEquipment:5">
+        <SeatingEquipment version="1" id="NMR:SeatingEquipment:5">
           <PublicCode>Sete 5</PublicCode>
-          <TypeOfEquipmentRef version="1" ref="NTO:TypeOfEquipment:RegularSeating"/>
+          <TypeOfEquipmentRef version="1" ref="NMR:TypeOfEquipment:RegularSeating"/>
         </SeatingEquipment>
-        <SeatingEquipment version="1" id="NTO:SeatingEquipment:6">
+        <SeatingEquipment version="1" id="NMR:SeatingEquipment:6">
           <PublicCode>Sete 6</PublicCode>
-          <TypeOfEquipmentRef version="1" ref="NTO:TypeOfEquipment:RegularSeating"/>
+          <TypeOfEquipmentRef version="1" ref="NMR:TypeOfEquipment:RegularSeating"/>
         </SeatingEquipment>
       </equipments>
 
@@ -130,16 +145,14 @@ For changing Train (TrainElement order) there are currently two alternatives
 
       <vehicleTypes>
         
-        
-        
         <!-- Generic VehicleType -->
-        <VehicleType version="1" id="NTO:VehicleType:Buss">
+        <VehicleType version="1" id="NMR:VehicleType:Buss">
           <capacities>
-            <PassengerCapacity id="NTO:PassengerCapacity:Premium">
+            <PassengerCapacity id="NMR:PassengerCapacity:Premium">
               <FareClass>premiumClass</FareClass>
               <SeatingCapacity>50</SeatingCapacity>
             </PassengerCapacity>
-            <PassengerCapacity id="NTO:PassengerCapacity:Standard">
+            <PassengerCapacity id="NMR:PassengerCapacity:Standard">
               <FareClass>standardClass</FareClass>
               <SeatingCapacity>250</SeatingCapacity>
             </PassengerCapacity>
@@ -147,87 +160,86 @@ For changing Train (TrainElement order) there are currently two alternatives
         </VehicleType>
         
         
-        
         <!-- Specific VehicleType: Train -->
-        <Train version="1" id="NTO:Train:Flirt-1">
+        <Train version="1" id="NMR:Train:Flirt-1">
           <!-- consolidated capasity -->
           <capacities>
-            <PassengerCapacityRef version="1" ref="NTO:PassengerCapacity:Premium"/>
-            <PassengerCapacity id="NTO:PassengerCapacity:TrainStandard">
+            <PassengerCapacityRef version="1" ref="NMR:PassengerCapacity:Premium"/>
+            <PassengerCapacity id="NMR:PassengerCapacity:TrainStandard">
               <FareClass>standardClass</FareClass>
               <SeatingCapacity>250</SeatingCapacity>
             </PassengerCapacity>
           </capacities>
           
           <components>
-            <TrainComponent version="1" id="NTO:TrainComponent:BMb74" order="1">
+            <TrainComponent version="1" id="NMR:TrainComponent:BMb74" order="1">
               <Label>BMb74</Label>
-              <TrainElementRef version="1" ref="NTO:TrainElement:BMb74"/>
+              <TrainElementRef version="1" ref="NMR:TrainElement:BMb74"/>
               <OperationalOrientation>forwards</OperationalOrientation>
             </TrainComponent>
-            <TrainComponent version="1" id="NTO:TrainComponent:BPb74" order="2">
+            <TrainComponent version="1" id="NMR:TrainComponent:BPb74" order="2">
               <Label>BPb74</Label>
-              <TrainElementRef version="1" ref="NTO:TrainElement:BPb74"/>
+              <TrainElementRef version="1" ref="NMR:TrainElement:BPb74"/>
               <OperationalOrientation>forwards</OperationalOrientation>
             </TrainComponent>
-            <TrainComponent version="1" id="NTO:TrainComponent:BCMU74" order="3">
+            <TrainComponent version="1" id="NMR:TrainComponent:BCMU74" order="3">
               <Label>BCMU74</Label>
-              <TrainElementRef version="1" ref="NTO:TrainElement:BCMU74"/>
+              <TrainElementRef version="1" ref="NMR:TrainElement:BCMU74"/>
               <OperationalOrientation>forwards</OperationalOrientation>
             </TrainComponent>
-            <TrainComponent version="1" id="NTO:TrainComponent:BPa74" order="4">
+            <TrainComponent version="1" id="NMR:TrainComponent:BPa74" order="4">
               <Label>BPa74</Label>
-              <TrainElementRef version="1" ref="NTO:TrainElement:BPa74"/>
+              <TrainElementRef version="1" ref="NMR:TrainElement:BPa74"/>
               <OperationalOrientation>forwards</OperationalOrientation>
             </TrainComponent>
-            <TrainComponent version="1" id="NTO:TrainComponent:BMa74" order="5">
+            <TrainComponent version="1" id="NMR:TrainComponent:BMa74" order="5">
               <Label>BMa74</Label>
-              <TrainElementRef version="1" ref="NTO:TrainElement:BMa74"/>
+              <TrainElementRef version="1" ref="NMR:TrainElement:BMa74"/>
               <OperationalOrientation>forwards</OperationalOrientation>
             </TrainComponent>
           </components>
         </Train>
         
         
-        <Train version="1" id="NTO:Train:Flirt-2">
+        <Train version="1" id="NMR:Train:Flirt-2">
           <components>
-            <TrainComponent version="1" id="NTO:TrainComponent:BMa74" order="1">
+            <TrainComponent version="1" id="NMR:TrainComponent:BMa74" order="1">
               <Label>BMa74</Label>
-              <TrainElementRef version="1" ref="NTO:TrainElement:BMa74"/>
+              <TrainElementRef version="1" ref="NMR:TrainElement:BMa74"/>
               <OperationalOrientation>backwards</OperationalOrientation>
             </TrainComponent>
-            <TrainComponent version="1" id="NTO:TrainComponent:BPa74" order="2">
+            <TrainComponent version="1" id="NMR:TrainComponent:BPa74" order="2">
               <Label>BPa74</Label>
-              <TrainElementRef version="1" ref="NTO:TrainElement:BPa74"/>
+              <TrainElementRef version="1" ref="NMR:TrainElement:BPa74"/>
               <OperationalOrientation>backwards</OperationalOrientation>
             </TrainComponent>
-            <TrainComponent version="1" id="NTO:TrainComponent:BCMU74-v2" order="3">
+            <TrainComponent version="1" id="NMR:TrainComponent:BCMU74-v2" order="3">
               <Label>BCMU74</Label>
-              <TrainElementRef version="1" ref="NTO:TrainElement:BCMU74"/>
+              <TrainElementRef version="1" ref="NMR:TrainElement:BCMU74"/>
               <OperationalOrientation>backwards</OperationalOrientation>
             </TrainComponent>
-            <TrainComponent version="1" id="NTO:TrainComponent:BPb74" order="4">
+            <TrainComponent version="1" id="NMR:TrainComponent:BPb74" order="4">
               <Label>BPb74</Label>
-              <TrainElementRef version="1" ref="NTO:TrainElement:BPb74"/>
+              <TrainElementRef version="1" ref="NMR:TrainElement:BPb74"/>
               <OperationalOrientation>backwards</OperationalOrientation>
             </TrainComponent>
-            <TrainComponent version="1" id="NTO:TrainComponent:BMb74" order="5">
+            <TrainComponent version="1" id="NMR:TrainComponent:BMb74" order="5">
               <Label>BMb74</Label>
-              <TrainElementRef version="1" ref="NTO:TrainElement:BMb74"/>
+              <TrainElementRef version="1" ref="NMR:TrainElement:BMb74"/>
               <OperationalOrientation>backwards</OperationalOrientation>
             </TrainComponent>
           </components>
         </Train>
         
         
-        <CompoundTrain id="NTO:CompoundTrain:1" version="1">
+        <CompoundTrain id="NMR:CompoundTrain:1" version="1">
           <components>
-            <TrainInCompoundTrain id="NTO:TrainInCompoundTrain:1" version="1">
-              <TrainRef ref="NTO:Train:Flirt-1" version="1"/> 
+            <TrainInCompoundTrain id="NMR:TrainInCompoundTrain:1" version="1">
+              <TrainRef ref="NMR:Train:Flirt-1" version="1"/> 
               <ReversedOrientation>false</ReversedOrientation>
             </TrainInCompoundTrain>
-            <TrainInCompoundTrain id="NTO:TrainInCompoundTrain:2" version="1">
-              <TrainRef ref="NTO:Train:Flirt-1" version="1"/>
+            <TrainInCompoundTrain id="NMR:TrainInCompoundTrain:2" version="1">
+              <TrainRef ref="NMR:Train:Flirt-1" version="1"/>
               
               <ReversedOrientation>true</ReversedOrientation>
               <!-- NB: Må definere ekstremt entydig i profil hva disse kombinasjonene skal bety, 
@@ -243,10 +255,10 @@ For changing Train (TrainElement order) there are currently two alternatives
       
       <vehicles>
         
-        <Vehicle id="NTO:Vehicle:1" version="1">
+        <Vehicle id="NMR:Vehicle:1" version="1">
           <!-- XSD:choice -->
           <!--
-          <TrainRef ref="NTO:Train:Flirt" version="1"/>
+          <TrainRef ref="NMR:Train:Flirt" version="1"/>
           <VehicleTypeRef ref="ref"></VehicleTypeRef>
           -->
           <actualVehicleEquipments>
@@ -254,27 +266,25 @@ For changing Train (TrainElement order) there are currently two alternatives
           </actualVehicleEquipments>
         </Vehicle>
         
-        <TrainElement version="1" id="NTO:TrainElement:1">
+        <TrainElement version="1" id="NMR:TrainElement:1">
           <FareClasses>premiumClass standardClass</FareClasses>
 
           <!-- capasity per element-->
           <capacities>
-            <PassengerCapacity id="NTO:PassengerCapacity:Premium">
+            <PassengerCapacity id="NMR:PassengerCapacity:Premium">
               <FareClass>premiumClass</FareClass>
               <SeatingCapacity>50</SeatingCapacity>
             </PassengerCapacity>
-            <PassengerCapacity id="NTO:PassengerCapacity:Standard">
+            <PassengerCapacity id="NMR:PassengerCapacity:Standard">
               <FareClass>standardClass</FareClass>
               <SeatingCapacity>250</SeatingCapacity>
             </PassengerCapacity>
           </capacities>
           
-          
-          
           <!-- Accomodation related facilities: NeTEx part 3 - ﻿7.4.2.3 Fare Facility (page 111) -->
           
           <facilities>
-            <ServiceFacilitySet id="NTO:ServiceFacilityList:1" version="1">
+            <ServiceFacilitySet id="NMR:ServiceFacilityList:1" version="1">
               <CateringFacilityList>foodVendingMachine beverageVendingMachine</CateringFacilityList>
               <AccommodationFacilityList>seating </AccommodationFacilityList>
               <accommodations>
@@ -285,8 +295,6 @@ For changing Train (TrainElement order) there are currently two alternatives
             </ServiceFacilitySet>
           </facilities>
           
-          
-          
           <!-- TODO: 
             
             PassengerAssignable / PassengerBookable
@@ -295,41 +303,41 @@ For changing Train (TrainElement order) there are currently two alternatives
             
             Trengs en -PassengerSeating equipment- AMENITY / CONVENIENCE / COMPLIANCE (i.e. BOOKABLE feature) -->
           
-          
           <equipments>
             
             <!-- gruppe -->
-            <SeatingEquipmentRef version="1" ref="NTO:SeatingEquipment:Group1"/>
+            <SeatingEquipmentRef version="1" ref="NMR:SeatingEquipment:Group1"/>
             <!-- vanlige seter -->
-            <SeatingEquipmentRef version="1" ref="NTO:SeatingEquipment:5"/>
-            <SeatingEquipmentRef version="1" ref="NTO:SeatingEquipment:6"/>
+            <SeatingEquipmentRef version="1" ref="NMR:SeatingEquipment:5"/>
+            <SeatingEquipmentRef version="1" ref="NMR:SeatingEquipment:6"/>
           </equipments>
           
         </TrainElement>
         
         
+        
         <!-- Dummy TrainElements for references from TrainComponents -->
-        <TrainElement version="1" id="NTO:TrainElement:BPa74">
+        <TrainElement version="1" id="NMR:TrainElement:BPa74">
           <Name>Flirt</Name>
         </TrainElement>
-        <TrainElement version="1" id="NTO:TrainElement:BMb74">
+        <TrainElement version="1" id="NMR:TrainElement:BMb74">
           <Name>Flirt</Name>
         </TrainElement>
-        <TrainElement version="1" id="NTO:TrainElement:BPb74">
+        <TrainElement version="1" id="NMR:TrainElement:BPb74">
           <Name>Flirt</Name>
         </TrainElement>
-        <TrainElement version="1" id="NTO:TrainElement:BCMU74">
+        <TrainElement version="1" id="NMR:TrainElement:BCMU74">
           <Name>Flirt</Name>
         </TrainElement>
-        <TrainElement version="1" id="NTO:TrainElement:BMa74">
+        <TrainElement version="1" id="NMR:TrainElement:BMa74">
           <Name>Flirt</Name>
         </TrainElement>
         
         
-        <Vehicle version="1" id="NTO:Vehicle:Flirt">
-          <OperatorRef ref="XXX:Operator:XXX"/>
+        <Vehicle version="1" id="NMR:Vehicle:Flirt">
+          <OperatorRef ref="NOG:Operator:0"/>
           
-          <VehicleTypeRef version="1" ref="NTO:VehicleType:Buss"/>
+          <VehicleTypeRef version="1" ref="NMR:VehicleType:Buss"/>
         </Vehicle>
       </vehicles>
       
@@ -343,6 +351,9 @@ For changing Train (TrainElement order) there are currently two alternatives
       </groupsOfEntities>
       
     </ResourceFrame>
+
+
+
 
 
     <CompositeFrame created="2019-08-17T00:50:24.905" version="1" id="NSB:CompositeFrame:4145997">
@@ -372,7 +383,7 @@ For changing Train (TrainElement order) there are currently two alternatives
       
       
       <frames>
-        <SiteFrame version="1" id="ENT:SiteFrame:1">
+        <SiteFrame version="1" id="NSR:SiteFrame:1">
           <stopPlaces>
             <StopPlace version="1" id="NSR:StopPlace:1">
               <Name>Demo</Name>
@@ -676,7 +687,7 @@ For changing Train (TrainElement order) there are currently two alternatives
             <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:1-3922-61-date-2020-12-31">
               <JourneyPatternRef ref="NSB:JourneyPattern:1-1105" version="1"/>
               
-              <TrainRef ref="NTO:Train:Flirt-2"/> <!-- SJN just as a technical example due to defined within this file -->
+              <TrainRef ref="NMR:Train:Flirt-2"/> <!-- SJN just as a technical example due to defined within this file -->
               
               <parts>
                 <JourneyPartRef ref="NSB:JourneyPart:1" version="1"/>
