@@ -299,9 +299,15 @@
                 <UserProfile id="ENT:UserProfile:StudentFare" version="1">
                     <Name lang="no">Student</Name>
                     <Description>Students below 33 years</Description>
+                    <priceGroups>
+                        <PriceGroupRef ref="ref"/>
+                    </priceGroups>
                     <UserType>student</UserType>
                     <ProofRequired>studentCard</ProofRequired>
                     <DiscountBasis>discount</DiscountBasis>
+                    <companionProfiles>
+                        <CompanionProfileRef ref="ENT:CompanionProfile:1" version="1"/>
+                    </companionProfiles>
                 </UserProfile>
                 <UsageValidityPeriod id="ENT:UsageValidityPeriod:1" version="1">
                     <Name>UsageValidityPeriod</Name>
@@ -364,8 +370,13 @@
                 </PenaltyPolicy>
                 <GroupTicket id="ENT:GroupTicket:1" version="1">
                     <Name>RUT:TariffZone</Name>
+                    <MinimumNumberOfCardHolders>1</MinimumNumberOfCardHolders>
+                    <companionProfiles>
+                        <CompanionProfileRef ref="ENT:CompanionProfile:1" version="1"/>
+                    </companionProfiles>
                 </GroupTicket>
                 <CompanionProfile id="ENT:CompanionProfile:1" version="1">
+                    
                     <CompanionRelationshipType></CompanionRelationshipType>
                     <MaximumNumberOfPersons>1</MaximumNumberOfPersons>
                     <DiscountBasis>none</DiscountBasis>

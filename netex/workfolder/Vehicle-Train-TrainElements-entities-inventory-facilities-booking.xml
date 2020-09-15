@@ -130,6 +130,8 @@ For changing Train (TrainElement order) there are currently two alternatives
 
       <vehicleTypes>
         
+        
+        
         <!-- Generic VehicleType -->
         <VehicleType version="1" id="NTO:VehicleType:Buss">
           <capacities>
@@ -161,51 +163,79 @@ For changing Train (TrainElement order) there are currently two alternatives
             <TrainComponent version="1" id="NTO:TrainComponent:BMb74" order="1">
               <Label>BMb74</Label>
               <TrainElementRef version="1" ref="NTO:TrainElement:BMb74"/>
+              <OperationalOrientation>forwards</OperationalOrientation>
             </TrainComponent>
             <TrainComponent version="1" id="NTO:TrainComponent:BPb74" order="2">
               <Label>BPb74</Label>
               <TrainElementRef version="1" ref="NTO:TrainElement:BPb74"/>
+              <OperationalOrientation>forwards</OperationalOrientation>
             </TrainComponent>
             <TrainComponent version="1" id="NTO:TrainComponent:BCMU74" order="3">
               <Label>BCMU74</Label>
               <TrainElementRef version="1" ref="NTO:TrainElement:BCMU74"/>
+              <OperationalOrientation>forwards</OperationalOrientation>
             </TrainComponent>
             <TrainComponent version="1" id="NTO:TrainComponent:BPa74" order="4">
               <Label>BPa74</Label>
               <TrainElementRef version="1" ref="NTO:TrainElement:BPa74"/>
+              <OperationalOrientation>forwards</OperationalOrientation>
             </TrainComponent>
             <TrainComponent version="1" id="NTO:TrainComponent:BMa74" order="5">
               <Label>BMa74</Label>
               <TrainElementRef version="1" ref="NTO:TrainElement:BMa74"/>
+              <OperationalOrientation>forwards</OperationalOrientation>
             </TrainComponent>
           </components>
         </Train>
         
         
-        <Train version="1" id="SJN:Train:Flirt-2">
+        <Train version="1" id="NTO:Train:Flirt-2">
           <components>
             <TrainComponent version="1" id="NTO:TrainComponent:BMa74" order="1">
               <Label>BMa74</Label>
               <TrainElementRef version="1" ref="NTO:TrainElement:BMa74"/>
+              <OperationalOrientation>backwards</OperationalOrientation>
             </TrainComponent>
             <TrainComponent version="1" id="NTO:TrainComponent:BPa74" order="2">
               <Label>BPa74</Label>
               <TrainElementRef version="1" ref="NTO:TrainElement:BPa74"/>
+              <OperationalOrientation>backwards</OperationalOrientation>
             </TrainComponent>
             <TrainComponent version="1" id="NTO:TrainComponent:BCMU74-v2" order="3">
               <Label>BCMU74</Label>
               <TrainElementRef version="1" ref="NTO:TrainElement:BCMU74"/>
+              <OperationalOrientation>backwards</OperationalOrientation>
             </TrainComponent>
             <TrainComponent version="1" id="NTO:TrainComponent:BPb74" order="4">
               <Label>BPb74</Label>
               <TrainElementRef version="1" ref="NTO:TrainElement:BPb74"/>
+              <OperationalOrientation>backwards</OperationalOrientation>
             </TrainComponent>
             <TrainComponent version="1" id="NTO:TrainComponent:BMb74" order="5">
               <Label>BMb74</Label>
               <TrainElementRef version="1" ref="NTO:TrainElement:BMb74"/>
+              <OperationalOrientation>backwards</OperationalOrientation>
             </TrainComponent>
           </components>
         </Train>
+        
+        
+        <CompoundTrain id="NTO:CompoundTrain:1" version="1">
+          <components>
+            <TrainInCompoundTrain id="NTO:TrainInCompoundTrain:1" version="1">
+              <TrainRef ref="NTO:Train:Flirt-1" version="1"/> 
+              <ReversedOrientation>false</ReversedOrientation>
+            </TrainInCompoundTrain>
+            <TrainInCompoundTrain id="NTO:TrainInCompoundTrain:2" version="1">
+              <TrainRef ref="NTO:Train:Flirt-1" version="1"/>
+              
+              <ReversedOrientation>true</ReversedOrientation>
+              <!-- NB: Må definere ekstremt entydig i profil hva disse kombinasjonene skal bety, 
+                i dette tilfellet et train med alle TrainComponent: backwards, deretter hele Train har ReversedOrientation "true" -->
+            
+            </TrainInCompoundTrain>
+          </components>
+        </CompoundTrain>
 
       </vehicleTypes>
       
@@ -646,7 +676,7 @@ For changing Train (TrainElement order) there are currently two alternatives
             <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:1-3922-61-date-2020-12-31">
               <JourneyPatternRef ref="NSB:JourneyPattern:1-1105" version="1"/>
               
-              <TrainRef ref="SJN:Train:Flirt-2"/> <!-- SJN just as a technical example due to defined within this file -->
+              <TrainRef ref="NTO:Train:Flirt-2"/> <!-- SJN just as a technical example due to defined within this file -->
               
               <parts>
                 <JourneyPartRef ref="NSB:JourneyPart:1" version="1"/>
