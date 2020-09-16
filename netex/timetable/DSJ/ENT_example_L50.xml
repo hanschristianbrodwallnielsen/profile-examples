@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!-- TrainPlan NeTEx interface version=1.1.1.5 -->
 <!-- Extract made from Folder(s) R20 between 2020-03-30-Mon and 2021-03-29-Mon -->
 <PublicationDelivery 
@@ -405,6 +405,27 @@
                   <Value>771</Value>
                 </KeyValue>
               </keyList>
+                <VehicleTypeRef ref="GOA:Train:73A"/>
+                <parts>
+                    <JourneyPart id="GOA:JourneyPart:X">
+                        <VehicleOrientation>true</VehicleOrientation>
+                    </JourneyPart>
+                    <JourneyPart id="GOA:JourneyPart:Y">
+                        <VehicleOrientation>false</VehicleOrientation>
+                    </JourneyPart>
+                </parts>
+                <VehicleTypeRef ref="GOA:Train:73A"/>
+                <parts>
+                    <JourneyPart id="GOA:JourneyPart:X">
+                        <VehicleOrientation>true</VehicleOrientation>
+                    </JourneyPart>
+                </parts>
+                <VehicleTypeRef ref="GOA:Train:73A"/>
+                <parts>
+                    <JourneyPart id="GOA:JourneyPart:X">
+                        <VehicleOrientation>false</VehicleOrientation>
+                    </JourneyPart>
+                </parts>
               <Name>771</Name>
               <Description>771 [07:25 : OSL-STV]</Description>
               <PrivateCode>771</PrivateCode>
