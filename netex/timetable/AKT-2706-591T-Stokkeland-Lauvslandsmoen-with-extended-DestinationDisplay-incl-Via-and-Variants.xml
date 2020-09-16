@@ -1,0 +1,290 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!-- 
+  Sample route Stokkeland - Lauvslandsmoen for usage of DestinationDisplay according to Nordic NeTEx Profile
+-->
+
+<PublicationDelivery 
+xmlns="http://www.netex.org.uk/netex" 
+xmlns:gml="http://www.opengis.net/gml/3.2" 
+xmlns:siri="http://www.siri.org.uk/siri" 
+version="1.12:NO-NeTEx-networktimetable:1.4">
+  
+  <PublicationTimestamp>2020-09-11T18:14:11</PublicationTimestamp>
+  <ParticipantRef>AKT</ParticipantRef>
+  <Description>Stokkeland - Lauvslandsmoen</Description>
+  <dataObjects>
+    <CompositeFrame id="AKT:CompositeFrame:405202" version="1" created="2020-09-11T18:14:00">
+      <validityConditions>
+        <AvailabilityCondition version="1" id="AKT:AvailabilityCondition:405185">
+          <FromDate>2020-09-11T00:00:00</FromDate>
+          <ToDate>2021-09-11T00:00:00</ToDate>
+        </AvailabilityCondition>
+      </validityConditions>
+      
+      <!-- Codespaces / FrameDefaults have been removed from the sample -->
+      <!-- Organisation info (Authority, Operator), Calendar data and RoutePoints are defined in external dataset -->
+      
+      <frames>
+        <ServiceFrame version="1" id="AKT:ServiceFrame:405203">
+          
+          <routes>
+            <Route version="1" id="AKT:Route:AKT_2706_1">
+              <Name>Stokkeland - Lauvslandsmoen</Name>
+              <ShortName>Stokkeland-Lauvslandsmoen</ShortName>
+              <LineRef ref="AKT:Line:AKT_2706" version="1"/>
+              <DirectionType>inbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="3" version="1" id="AKT:PointOnRoute:405188">
+                  <Description>Stubstad</Description>
+                  <RoutePointRef ref="AKT:RoutePoint:AKT_1017671400"/>
+                </PointOnRoute>
+                <PointOnRoute order="6" version="1" id="AKT:PointOnRoute:405191">
+                  <Description>Kilen</Description>
+                  <RoutePointRef ref="AKT:RoutePoint:AKT_1017673600"/>
+                </PointOnRoute>
+              </pointsInSequence>
+            </Route>
+          </routes>
+          
+          
+          <lines>
+            <Line version="1" id="AKT:Line:AKT_2706">
+              <Name>Stokkeland-Lauvlandsmoen</Name>
+              <TransportMode>bus</TransportMode>
+              <TransportSubmode>
+                <BusSubmode>localBus</BusSubmode>
+              </TransportSubmode>
+              <PublicCode>591T</PublicCode>
+              <PrivateCode>2705</PrivateCode>
+              <OperatorRef ref="AKT:Operator:110"/>
+              <RepresentedByGroupRef ref="AKT:Network:AKTNett"/>
+            </Line>
+          </lines>
+          
+          
+          <destinationDisplays>            
+            
+            <!-- using Via -->
+            <DestinationDisplay version="1" id="AKT:DestinationDisplay:AKT_2706-start-via">
+              <Name>Stubstad-Kilen-Lauvlandsmoen (start)</Name>
+              <SideText>Lauvlandsmoen</SideText>
+              <FrontText>Lauvlandsmoen</FrontText>
+              <vias>
+                <Via>
+                  <DestinationDisplayRef ref="AKT:DestinationDisplay:AKT_2706-3" version="1" />
+                  <RoutePointRef ref="AKT:PointOnRoute:405191"/> <!-- (can be relevant in more complex scenarios) -->
+                </Via>
+                <Via>
+                  <DestinationDisplayRef ref="AKT:DestinationDisplay:AKT_2706-6" version="1" />
+                  <RoutePointRef ref="AKT:RoutePoint:AKT_1017673600"/> <!-- (redundant) -->
+                </Via>
+              </vias>
+            </DestinationDisplay>
+            
+            <!-- incl change of DestinationDisplay en route (see JourneyPattern at Stubstad) -->
+            <DestinationDisplay version="1" id="AKT:DestinationDisplay:AKT_2706-enroute-via">
+              <Name>Stubstad-Kilen-Lauvlandsmoen (en route)</Name>
+              <SideText>Lauvlandsmoen</SideText>
+              <FrontText>Lauvlandsmoen</FrontText>
+              <vias>
+                <Via>
+                  <DestinationDisplayRef ref="AKT:DestinationDisplay:AKT_2706-6" version="1" />
+                  <RoutePointRef ref="AKT:RoutePoint:AKT_1017673600"/> <!-- (redundant) -->
+                </Via>
+              </vias>
+            </DestinationDisplay>
+            
+            <DestinationDisplay version="1" id="AKT:DestinationDisplay:AKT_2706-3">
+              <Name>Stubstad</Name>
+              <SideText>Stubstad</SideText>
+              <FrontText>Stubstad</FrontText>
+            </DestinationDisplay>
+            
+            <DestinationDisplay version="1" id="AKT:DestinationDisplay:AKT_2706-6">
+              <Name>Kilen</Name>
+              <SideText>Kilen</SideText>
+              <FrontText>Kilen</FrontText>
+            </DestinationDisplay>
+            
+            
+            <!-- Sample use of DestinationDisplayVariants (though not utilized in the JourneyPattern of this dataset) -->
+            <DestinationDisplay version="1" id="AKT:DestinationDisplay:AKT_2706">
+              <Name>Stubstad-Kilen-Lauvlandsmoen</Name>
+              <SideText>Lauvlandsmoen via Stubstad-Kilen</SideText>
+              <FrontText>Lauvlandsmoen via Stubstad-Kilen</FrontText>
+              <variants>
+                <!-- Shortened text to fit small mobile device -->
+                <DestinationDisplayVariant>
+                  <DestinationDisplayVariantMediaType>mobile</DestinationDisplayVariantMediaType>
+                  <FrontText>Lauvlandsmoen</FrontText> <!-- i.e. text to display for this particular DestinationDisplayVariant -->
+                </DestinationDisplayVariant>
+                <!-- Semi-shortened text to display in e.g. real-time monitors -->
+                <DestinationDisplayVariant>
+                  <DestinationDisplayVariantMediaType>other</DestinationDisplayVariantMediaType>
+                  <FrontText>Stubstad-Kilen-Lauvlandsmoen</FrontText>
+                </DestinationDisplayVariant>
+                <!-- Full text incl vias to display in full web-clients (same text as print, defined twice due to limitations in the XSD) -->
+                <DestinationDisplayVariant>
+                  <DestinationDisplayVariantMediaType>web</DestinationDisplayVariantMediaType>
+                  <FrontText>From Stokkeland to Lauvlandsmoen via Stubstad ahd Kilen</FrontText>
+                </DestinationDisplayVariant>
+                <!-- Full text incl vias to display in print (same text as web, defined twice due to limitations in the XSD) -->
+                <DestinationDisplayVariant>
+                  <DestinationDisplayVariantMediaType>printed</DestinationDisplayVariantMediaType>
+                  <FrontText>From Stokkeland to Lauvlandsmoen via Stubstad ahd Kilen</FrontText>
+                </DestinationDisplayVariant>
+              </variants>
+            </DestinationDisplay>
+            
+            
+            <!-- Sample use of combined Via and DestinationDisplayVariants (though not utilized in the JourneyPattern of this dataset) -->
+            <DestinationDisplay version="1" id="AKT:DestinationDisplay:AKT_2706-via-og-variants">
+              <Name>Stubstad-Kilen-Lauvlandsmoen</Name>
+              <FrontText>Lauvlandsmoen</FrontText>
+              <vias>
+                <Via>
+                  <DestinationDisplayRef ref="AKT:DestinationDisplay:AKT_2706-3-variant" version="1" />
+                </Via>
+                <Via>
+                  <DestinationDisplayRef ref="AKT:DestinationDisplay:AKT_2706-6-variant" version="1" />
+                </Via>
+              </vias>
+              <variants>
+                <DestinationDisplayVariant>
+                  <DestinationDisplayVariantMediaType>mobile</DestinationDisplayVariantMediaType>
+                  <FrontText>Lauvl.</FrontText>
+                </DestinationDisplayVariant>
+              </variants>
+            </DestinationDisplay>
+            
+            <DestinationDisplay version="1" id="AKT:DestinationDisplay:AKT_2706-3-variant">
+              <FrontText>Stubstad</FrontText>
+              <variants>
+                <DestinationDisplayVariant>
+                  <DestinationDisplayVariantMediaType>mobile</DestinationDisplayVariantMediaType>
+                  <FrontText>Stub.</FrontText>
+                </DestinationDisplayVariant>
+              </variants>
+            </DestinationDisplay>
+            
+            <DestinationDisplay version="1" id="AKT:DestinationDisplay:AKT_2706-6-variant">
+              <FrontText>Kilen</FrontText>
+              <variants>
+                <DestinationDisplayVariant>
+                  <DestinationDisplayVariantMediaType>mobile</DestinationDisplayVariantMediaType>
+                  <FrontText>Kil.</FrontText>
+                </DestinationDisplayVariant>
+              </variants>
+            </DestinationDisplay>
+            
+          </destinationDisplays>
+          
+          
+          <journeyPatterns>
+            <JourneyPattern version="1" id="AKT:JourneyPattern:AKT_2706_2_1">
+              <Name>Stokkeland - Lauvslandsmoen</Name>
+              <RouteRef ref="AKT:Route:AKT_2706_1" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="AKT:StopPointInJourneyPattern:AKT_2706_2_1_1">
+                  <Description>Stokkeland snuplass</Description>
+                  <ScheduledStopPointRef ref="AKT:ScheduledStopPoint:AKT_1017669900"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="AKT:DestinationDisplay:AKT_2706-start-via" version="1"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="AKT:StopPointInJourneyPattern:AKT_2706_2_1_2">
+                  <Description>Grodal</Description>
+                  <ScheduledStopPointRef ref="AKT:ScheduledStopPoint:AKT_1017671200"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="1" id="AKT:StopPointInJourneyPattern:AKT_2706_2_1_3">
+                  <Description>Stubstad</Description>
+                  <ScheduledStopPointRef ref="AKT:ScheduledStopPoint:AKT_1017671400"/>
+                  
+                  <!-- change of DesinationDisplay enroute -->
+                  <DestinationDisplayRef ref="AKT:DestinationDisplay:AKT_2706-enroute-via" version="1"/>
+                  
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="4" version="1" id="AKT:StopPointInJourneyPattern:AKT_2706_2_1_4">
+                  <Description>Roysland</Description>
+                  <ScheduledStopPointRef ref="AKT:ScheduledStopPoint:AKT_1017671800"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="5" version="1" id="AKT:StopPointInJourneyPattern:AKT_2706_2_1_5">
+                  <Description>Askekjerran</Description>
+                  <ScheduledStopPointRef ref="AKT:ScheduledStopPoint:AKT_1017672800"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="6" version="1" id="AKT:StopPointInJourneyPattern:AKT_2706_2_1_6">
+                  <Description>Kilen</Description>
+                  <ScheduledStopPointRef ref="AKT:ScheduledStopPoint:AKT_1017673600"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="7" version="1" id="AKT:StopPointInJourneyPattern:AKT_2706_2_1_7">
+                  <Description>Brandsvoll</Description>
+                  <ScheduledStopPointRef ref="AKT:ScheduledStopPoint:AKT_1017674400"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="8" version="1" id="AKT:StopPointInJourneyPattern:AKT_2706_2_1_8">
+                  <Description>Lauvslandsmoen</Description>
+                  <ScheduledStopPointRef ref="AKT:ScheduledStopPoint:AKT_1017675200"/>
+                  <ForBoarding>false</ForBoarding>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+          </journeyPatterns>
+          
+        </ServiceFrame>
+        
+        
+        
+        <TimetableFrame version="1" id="AKT:TimetableFrame:405204">
+          <vehicleJourneys>
+            <ServiceJourney version="1" id="AKT:ServiceJourney:AKT_2706_2_1">
+              <Name>Lauvslandsmoen</Name>
+              <PrivateCode>12</PrivateCode>
+              <dayTypes>
+                <DayTypeRef ref="AKT:DayType:AKT_Cal2020042751678-Mar_Mon_09-Dec_Wed_23-Sa"/>
+              </dayTypes>
+              <JourneyPatternRef ref="AKT:JourneyPattern:AKT_2706_2_1" version="1"/>
+              <OperatorRef ref="AKT:Operator:110"/>
+              <LineRef ref="AKT:Line:AKT_2706" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="AKT:TimetabledPassingTime:AKT_2706_2_1_1">
+                  <StopPointInJourneyPatternRef ref="AKT:StopPointInJourneyPattern:AKT_2706_2_1_1" version="1"/>
+                  <DepartureTime>10:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="AKT:TimetabledPassingTime:AKT_2706_2_1_2">
+                  <StopPointInJourneyPatternRef ref="AKT:StopPointInJourneyPattern:AKT_2706_2_1_2" version="1"/>
+                  <DepartureTime>10:03:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="AKT:TimetabledPassingTime:AKT_2706_2_1_3">
+                  <StopPointInJourneyPatternRef ref="AKT:StopPointInJourneyPattern:AKT_2706_2_1_3" version="1"/>
+                  <DepartureTime>10:06:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="AKT:TimetabledPassingTime:AKT_2706_2_1_4">
+                  <StopPointInJourneyPatternRef ref="AKT:StopPointInJourneyPattern:AKT_2706_2_1_4" version="1"/>
+                  <DepartureTime>10:09:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="AKT:TimetabledPassingTime:AKT_2706_2_1_5">
+                  <StopPointInJourneyPatternRef ref="AKT:StopPointInJourneyPattern:AKT_2706_2_1_5" version="1"/>
+                  <DepartureTime>10:12:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="AKT:TimetabledPassingTime:AKT_2706_2_1_6">
+                  <StopPointInJourneyPatternRef ref="AKT:StopPointInJourneyPattern:AKT_2706_2_1_6" version="1"/>
+                  <DepartureTime>10:15:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="AKT:TimetabledPassingTime:AKT_2706_2_1_7">
+                  <StopPointInJourneyPatternRef ref="AKT:StopPointInJourneyPattern:AKT_2706_2_1_7" version="1"/>
+                  <DepartureTime>10:17:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="AKT:TimetabledPassingTime:AKT_2706_2_1_8">
+                  <StopPointInJourneyPatternRef ref="AKT:StopPointInJourneyPattern:AKT_2706_2_1_8" version="1"/>
+                  <ArrivalTime>10:20:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            
+            <!-- All other departures have been removed from this sample to minimize its size -->
+          
+          </vehicleJourneys>
+        </TimetableFrame>
+      </frames>
+    </CompositeFrame>
+  </dataObjects>
+</PublicationDelivery>
