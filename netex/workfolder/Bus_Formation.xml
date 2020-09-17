@@ -1,0 +1,12 @@
+<Train version="1" id="VYT:Bus:DOVREBUSSEN">
+    <components>
+        <TrainComponent version="1" id="VYT:LogicalElement:DOVREBUSSEN-LOWER" order="1">
+            <Label>DOVREBUSSEN-LOWER</Label>
+            <TrainElementRef version="1" ref="VYT:BasicElement:SETRA-S431DT-LOWER"/>
+        </TrainComponent>
+        <TrainComponent version="1" id="VYT:LogicalElement:DOVREBUSSEN-UPPER" order="2">
+            <Label>DOVREBUSSEN-UPPER</Label>
+            <TrainElementRef version="1" ref="VYT:BasicElement:SETRA-S431DT-UPPER"/>
+        </TrainComponent>
+    </components>
+</Train>
