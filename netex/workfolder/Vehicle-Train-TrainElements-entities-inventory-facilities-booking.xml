@@ -56,15 +56,18 @@ Q&A to CEN:
   ? Why no VehicleRef in Journey (relevant for DSJ) ? (Also relevant for futher questions below.)
   ? Why no OperationalDirectionRef?
       - Should this preferably be modelled with two Trains?
-      - Or with one JourneyPart w/ VehicleOrientation ?
+      - Or with a single JourneyPart w/ VehicleOrientation ?
     ALTERNATIVELY: Could preferrably the linking be Vehicle -> VehicleRef + OperationalOrientation ?
-  ? 
+  => 
+  If not possible to add/attribute Orientation, all derivations must be modelled 
+  + In practice all references must be to the specific variant, even when the only change is the direction/orientation
+  
   
   * TrainNumber:
     - How do you properly assign a Vehicle and a TrainNumber?
     Possibly misunderstood, but:
-      1) from what I have found you can add TrainNumbers to a Journey, and you can indirectly link/refer to a VehicleType 
-      2) yet cannot explicitly link a TrainNumber and an specific Vehicle? (See also questions above.)
+      A) It is possible to add TrainNumbers to a Journey, and indirectly link/refer to a VehicleType 
+      B) Yet a TrainNumber cannot explicitly be linked to a specific Vehicle? (See also questions above.)
   * How to correctly assign/refer a specific Vehicle/VehicleType for a JourneyPart?
   ! Would like to avoid CoupledJourney, as this is normally per timetable one Journey but the VehicleOrientation is switched en route.  
   
