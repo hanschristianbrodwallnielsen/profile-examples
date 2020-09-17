@@ -239,7 +239,7 @@ Q&A to CEN:
           </components>
         </Train>
 
-        <!-- Two level bus modelled as a train with two components -->
+        <!-- Two level bus modelled as a train with two components. -->
         <Train version="1" id="VYT:Bus:DOVREBUSSEN">
           <components>
             <TrainComponent version="1" id="VYT:LogicalElement:DOVREBUSSEN-LOWER" order="1">
