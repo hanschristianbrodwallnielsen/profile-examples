@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <PublicationDelivery 
   xmlns:gis="http://www.opengis.net/gml/3.2"
   xmlns:siri="http://www.siri.org.uk/siri" 
@@ -66,6 +66,45 @@
               <OrganisationType>authority</OrganisationType>
             </Authority>
           </organisations>
+            <vehicleTypes>
+                    <Train version="1" id="GOA:Train:73A">
+                        <components>
+                            <TrainComponent version="0" id="GOA:TrainComponent:BFM73A" order="1">
+                                <Label>BFM73A</Label>
+                                <TrainElementRef version="0" ref="NTO:TrainElement:BFM73A-GOA"/> 
+                            </TrainComponent>
+                            <TrainComponent version="0" id="GOA:TrainComponent:BMU73A" order="2">
+                                <Label>BMU73A</Label>
+                                <TrainElementRef version="0" ref="NTO:TrainElement:BMU73A-GOA"/>
+                            </TrainComponent>
+                            <TrainComponent version="0" id="GOA:TrainComponent:BFR73A" order="3">
+                                <Label>BFR73A</Label>
+                                <TrainElementRef version="0" ref="NTO:TrainElement:BFR73A-GOA"/>
+                            </TrainComponent>
+                            <TrainComponent version="0" id="GOA:TrainComponent:BM73A" order="4">
+                                <Label>BM73A</Label>
+                                <TrainElementRef version="0" ref="NTO:TrainElement:BM73A-GOA"/>
+                            </TrainComponent>
+                        </components>
+                    </Train>
+                <CompoundTrain id="GOA:CompoundTrain:73A-73A">
+                    <ReversingDirection>true</ReversingDirection>
+                    <components>
+                        <TrainInCompoundTrain order="1">
+                            <TrainRef ref="GOA:Train:73A"/>
+                            <OperationalOrientation>forwards</OperationalOrientation>
+                        </TrainInCompoundTrain>
+                        <TrainInCompoundTrain order="2">
+                            <TrainRef ref="GOA:Train:73A"/>
+                            <OperationalOrientation>forwards</OperationalOrientation>
+                        </TrainInCompoundTrain>
+                    </components>
+                </CompoundTrain>
+                <VehicleType version="1" id="GOA:VehicleType:BUS-1">
+                    <Name>Replacement Bus</Name>
+                    <PassengerCapacity>50</PassengerCapacity>
+                </VehicleType>
+            </vehicleTypes>
         </ResourceFrame>
         <!-- ====================== Shared Service Frame ====================== -->
         <ServiceFrame version="74" id="ENT:ServiceFrame:Shared">

@@ -41,7 +41,7 @@
         </Train>
 </vehicleTypes>
 
-<Train version="0" id="GOA:Train:Type7-A">
+<Train version="0" id="GOA:Train:Type7-N-A">
           <components>
             <TrainComponent version="0" id="GOA:TrainComponent:EL18" order="1">
               <Label>EL18</Label>
@@ -74,6 +74,43 @@
 			<TrainComponent version="0" id="GOA:TrainComponent:WLAB2-3" order="8">
               <Label>WLAB2-3</Label>
               <TrainElementRef version="0" ref="NTO:TrainElement:WLAB2-3"/>
+            </TrainComponent>
+          </components>
+        </Train>
+</vehicleTypes>
+<Train version="0" id="GOA:Train:Type7-N-B">
+          <components>
+            <TrainComponent version="0" id="GOA:TrainComponent:EL18" order="1">
+              <Label>EL18</Label>
+              <TrainElementRef version="0" ref="NTO:TrainElement:EL18"/>
+            </TrainComponent>
+            <TrainComponent version="0" id="GOA:TrainComponent:WLAB2-3" order="2">
+              <Label>WLAB2-3</Label>
+              <TrainElementRef version="0" ref="NTO:TrainElement:WLAB2-3"/>
+            </TrainComponent>
+            <TrainComponent version="0" id="GOA:TrainComponent:WLAB2-2" order="3">
+              <Label>WLAB2-2</Label>
+              <TrainElementRef version="0" ref="NTO:TrainElement:WLAB2-2"/>
+            </TrainComponent>
+            <TrainComponent version="0" id="GOA:TrainComponent:WLAB2-1" order="4">
+              <Label>WLAB2-1</Label>
+              <TrainElementRef version="0" ref="NTO:TrainElement:WLAB2-1"/>
+            </TrainComponent>
+			 <TrainComponent version="0" id="GOA:TrainComponent:FR7-3" order="5">
+              <Label>FR7-3</Label>
+              <TrainElementRef version="0" ref="NTO:TrainElement:FR7-3"/>
+            </TrainComponent>
+			 <TrainComponent version="0" id="GOA:TrainComponent:BC7-1" order="6">
+              <Label>BC7-1</Label>
+              <TrainElementRef version="0" ref="NTO:TrainElement:BC7-1"/>
+            </TrainComponent>
+			 <TrainComponent version="0" id="GOA:TrainComponent:B7-5" order="7">
+              <Label>B7-5</Label>
+              <TrainElementRef version="0" ref="NTO:TrainElement:B7-5"/>
+            </TrainComponent>
+			<TrainComponent version="0" id="GOA:TrainComponent:A7-1" order="8">
+              <Label>A7-1</Label>
+              <TrainElementRef version="0" ref="NTO:TrainElement:A7-1"/>
             </TrainComponent>
           </components>
         </Train>
