@@ -31,15 +31,51 @@ Supplementary info:
 
 
 
-For changing Train (TrainElement order) there are currently two alternatives
+For swapping Train or TrainElement order/orientation, there are some alternatives (may be extended per Change Requests):
 
 1) To swap VehicleOrientation (e.g. in Kristiansand) using <journeyParts> on the ServiceJourney
 
-  ServiceJourney - parts - JourneyPart 1 w/ VehicleOrientation "true" (forward)
-  ServiceJourney - parts - JourneyPart 2 w/ VehicleOrientation "false" (reversed)
+  ServiceJourney - parts - JourneyPart w/ (turned) VehicleOrientation "true" (forward) / "false" (reversed)
+  
+  PS: Having only ONE part is technically ok
+  
   
 2) Specify ONE ServiceJourney PER PART (each with its own TrainRef) and use CoupledJourney 
   NB: <journeys> list does NOT have "order", i.e. must be derived from TimetabledPassingTime
+  PS: Vehicle or VehicleType/Train should have ReversingDirection = "true"
+  
+  
+3) TrainComponent having OperationalOrientation "forwards" / "backwards" / "unknown"
+  OR TrainInCompundTrain having OperationalOrientation and/or ReversedOrientation "true" / "false"
+  
+  
+TODO:
+  ? 
+  
+Q&A to CEN:
+  ? Why no VehicleRef in Journey (relevant for DSJ) ? (Also relevant for futher questions below.)
+  ? Why no OperationalDirectionRef?
+      - Should this preferably be modelled with two Trains?
+      - Or with one JourneyPart w/ VehicleOrientation ?
+    ALTERNATIVELY: Could preferrably the linking be Vehicle -> VehicleRef + OperationalOrientation ?
+  ? 
+  
+  * TrainNumber:
+    - How do you properly assign a Vehicle and a TrainNumber?
+    Possibly misunderstood, but:
+      1) from what I have found you can add TrainNumbers to a Journey, and you can indirectly link/refer to a VehicleType 
+      2) yet cannot explicitly link a TrainNumber and an specific Vehicle? (See also questions above.)
+  * How to correctly assign/refer a specific Vehicle/VehicleType for a JourneyPart?
+  ! Would like to avoid CoupledJourney, as this is normally per timetable one Journey but the VehicleOrientation is switched en route.  
+  
+  * TrainInCompoundTrain:
+    - OperationalOrientation =﻿"Orientation of the TRAIN." (i.e. implicitly orientation of the Train IN COMPOUND TRAIN !? )
+       + Why does not the CompoundTrain itself have a Orientation (only its TrainsInCompoundTrain) ?
+    vs.
+    - ReversedOrientation
+    => How to interpret when both values are defined? (Even worse if JourneyPart has VehicleOrientation)
+  
+  Would appreciate help on best practice modelling here, in particular for use in / referral from Journey, to reduce some potential complexity...
 
 -->
 
@@ -236,15 +272,17 @@ For changing Train (TrainElement order) there are currently two alternatives
           <components>
             <TrainInCompoundTrain id="NMR:TrainInCompoundTrain:1" version="1">
               <TrainRef ref="NMR:Train:Flirt-1" version="1"/> 
+              <OperationalOrientation>forwards</OperationalOrientation>
               <ReversedOrientation>false</ReversedOrientation>
             </TrainInCompoundTrain>
             <TrainInCompoundTrain id="NMR:TrainInCompoundTrain:2" version="1">
               <TrainRef ref="NMR:Train:Flirt-1" version="1"/>
-              
+              <OperationalOrientation>backwards</OperationalOrientation>
               <ReversedOrientation>true</ReversedOrientation>
+              
               <!-- NB: Må definere ekstremt entydig i profil hva disse kombinasjonene skal bety, 
                 i dette tilfellet et train med alle TrainComponent: backwards, deretter hele Train har ReversedOrientation "true" -->
-            
+              
             </TrainInCompoundTrain>
           </components>
         </CompoundTrain>
@@ -256,6 +294,7 @@ For changing Train (TrainElement order) there are currently two alternatives
       <vehicles>
         
         <Vehicle id="NMR:Vehicle:1" version="1">
+          <TrainRef ref="ref"></TrainRef>
           <!-- XSD:choice -->
           <!--
           <TrainRef ref="NMR:Train:Flirt" version="1"/>
@@ -623,6 +662,8 @@ For changing Train (TrainElement order) there are currently two alternatives
               <TrainRef ref=""></TrainRef>
               -->
               
+              <TrainRef ref="" ></TrainRef>
+              
               <OperatorRef ref="NSB:Operator:503"/>
               <LineRef ref="NSB:Line:41" version="1"/>
               
@@ -691,7 +732,6 @@ For changing Train (TrainElement order) there are currently two alternatives
               
               <parts>
                 <JourneyPartRef ref="NSB:JourneyPart:1" version="1"/>
-                <JourneyPartRef ref="NSB:JourneyPart:2" version="1"/>
               </parts>
               
               <ServiceJourneyRef ref="NSB:ServiceJourney:1-3922-61"/>
