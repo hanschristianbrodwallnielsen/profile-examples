@@ -48,7 +48,7 @@
               </codespaces>
 			  <responsibilitySets>
 				<ResponsibilitySet id="ENT:ResponsibilitySet:VYG" version="1">
-				<Name>Ansvarlig takstmyndighet fra Kongsberg til Lillehammer</Name>
+				<Name>Ansvarlig takstmyndighet Vy</Name>
 				<roles>
 					<ResponsibilityRoleAssignment id="ENT:ResponsibilityRoleAssignment:1" version="1">
 					<DataRoleType>owns</DataRoleType>
@@ -57,7 +57,7 @@
 				</roles>
 				</ResponsibilitySet>
 				<ResponsibilitySet id="ENT:ResponsibilitySet:SJN" version="1">
-				<Name>Ansvarlig takstmyndighet fra Dombås til Lillehammer</Name>
+				<Name>Ansvarlig takstmyndighet SJN</Name>
 				<roles>
 					<ResponsibilityRoleAssignment id="ENT:ResponsibilityRoleAssignment:2" version="1">
 					<DataRoleType>owns</DataRoleType>
@@ -69,21 +69,48 @@
               </ResourceFrame>
         <ServiceFrame version="1" id="ENT:ServiceFrame:1">
             <commonSections>
-                <CommonSection version="1" id="ENT:CommonSection:VY" responsibilitySetRef="ENT:ResponsibilitySet:VYG">
-                    <Name>Vy</Name>
-                    <pointsOnSection>
-                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:LHM">
-                            <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:LHM"/>
-                        </PointOnSection>
-                        <PointOnSection order="2" version="1" id="ENT:PointOnSection:OSL">
+                <CommonSection version="1" id="ENT:CommonSection:VY-Vest" responsibilitySetRef="ENT:ResponsibilitySet:VYG">
+                    <ValidBetween>
+                        <FromDate></FromDate>
+                        <ToDate></ToDate>
+                    </ValidBetween>
+                    <Name>Vy Oslo S - Kongsberg</Name>
+                    <ShortName>VY1</ShortName>
+                    <Description>Fellestrekning</Description>
+                    <pointsOnSection></pointsOnSection>
+                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:OSL-VY-Vest">
                             <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:OSL"/>
                         </PointOnSection>
-                        <PointOnSection order="3" version="1" id="ENT:PointOnSection:KBG">
+                        <PointOnSection order="2" version="1" id="ENT:PointOnSection:KBG-VY-Vest">
                             <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:KBG"/>
                         </PointOnSection>
                     </pointsOnSection>
                 </CommonSection>
+                <CommonSection version="1" id="ENT:CommonSection:VY-Nord" responsibilitySetRef="ENT:ResponsibilitySet:VYG">
+                    <ValidBetween>
+                        <FromDate>2020-06-01</FromDate>
+                        <ToDate>2021-06-01</ToDate>
+                    </ValidBetween>
+                    <Name>Vy Oslo S - Lillehammer</Name>
+                    <ShortName>VY2</ShortName>
+                    <Description>Fellesstrekning</Description>
+                    <pointsOnSection>
+                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:LHM-VY-Nord">
+                            <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:LHM"/>
+                        </PointOnSection>
+                        <PointOnSection order="2" version="1" id="ENT:PointOnSection:OSL-VY-Nord">
+                            <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:OSL"/>
+                        </PointOnSection>
+                    </pointsOnSection>
+                </CommonSection>
                 <CommonSection version="1" id="ENT:CommonSection:SJN" responsibilitySetRef="ENT:ResponsibilitySet:SJN">
+                    <ValidBetween>
+                        <FromDate>2020-06-01</FromDate>
+                        <ToDate>2021-06-01</ToDate>
+                    </ValidBetween>
+                    <Name>SJN Oslo S - Lillehammer</Name>
+                    <ShortName>SJN1</ShortName>
+                    <Description>Fellesstrekning og takstsamarbeid</Description>
                     <pointsOnSection>
                         <PointOnSection order="1" version="1" id="ENT:PointOnSection:DOM">
                             <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:DOM"/>
