@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
 
-<!-- 
+<!--
 
 CONNECTING JOURNEY AND VEHICLE / TRAIN:
 
 
 Vehicle(Type) and/or Train should be referenced from Journey:
 
-  Vehicle/ServiceJourney -> either TrainRef or VehicleTypeRef 
-  
-  
+  Vehicle/ServiceJourney -> either TrainRef or VehicleTypeRef
+
+
   TEMPORARY COMMENT:
      Should add VehicleRef, at lest in Dated[type]Journey
-    
+
      Current implementation does not make much sence, as VehicleType disables the ability to link a (set of) journey(s) to an actual vehicle,
      e.g. implemented per Operator set of Vehicle and/or Train objects.
-     This makes even less sense concidering the fact that a Train is a Vehicle. 
-     
+     This makes even less sense concidering the fact that a Train is a Vehicle.
+
 
 Structuring of Vehicle and/or Train:
 
@@ -36,59 +36,59 @@ For swapping Train or TrainElement order/orientation, there are some alternative
 1) To swap VehicleOrientation (e.g. in Kristiansand) using <journeyParts> on the ServiceJourney
 
   ServiceJourney - parts - JourneyPart w/ (turned) VehicleOrientation "true" (forward) / "false" (reversed)
-  
+
   PS: Having only ONE part is technically ok
-  
-  
-2) Specify ONE ServiceJourney PER PART (each with its own TrainRef) and use CoupledJourney 
+
+
+2) Specify ONE ServiceJourney PER PART (each with its own TrainRef) and use CoupledJourney
   NB: <journeys> list does NOT have "order", i.e. must be derived from TimetabledPassingTime
   PS: Vehicle or VehicleType/Train should have ReversingDirection = "true"
-  
-  
+
+
 3) TrainComponent having OperationalOrientation "forwards" / "backwards" / "unknown"
   OR TrainInCompundTrain having OperationalOrientation and/or ReversedOrientation "true" / "false"
-  
-  
+
+
 TODO:
-  ? 
-  
+  ?
+
 Q&A to CEN:
   ? Why no VehicleRef in Journey (relevant for DSJ) ? (Also relevant for futher questions below.)
   ? Why no OperationalDirectionRef?
       - Should this preferably be modelled with two Trains?
       - Or with a single JourneyPart w/ VehicleOrientation ?
     ALTERNATIVELY: Could preferrably the linking be Vehicle -> VehicleRef + OperationalOrientation ?
-  => 
-  If not possible to add/attribute Orientation, all derivations must be modelled 
+  =>
+  If not possible to add/attribute Orientation, all derivations must be modelled
   + In practice all references must be to the specific variant, even when the only change is the direction/orientation
-  
-  
+
+
   * TrainNumber:
     - How do you properly assign a Vehicle and a TrainNumber?
     Possibly misunderstood, but:
-      A) It is possible to add TrainNumbers to a Journey, and indirectly link/refer to a VehicleType 
+      A) It is possible to add TrainNumbers to a Journey, and indirectly link/refer to a VehicleType
       B) Yet a TrainNumber cannot explicitly be linked to a specific Vehicle? (See also questions above.)
   * How to correctly assign/refer a specific Vehicle/VehicleType for a JourneyPart?
-  ! Would like to avoid CoupledJourney, as this is normally per timetable one Journey but the VehicleOrientation is switched en route.  
-  
+  ! Would like to avoid CoupledJourney, as this is normally per timetable one Journey but the VehicleOrientation is switched en route.
+
   * TrainInCompoundTrain:
     - OperationalOrientation =﻿"Orientation of the TRAIN." (i.e. implicitly orientation of the Train IN COMPOUND TRAIN !? )
        + Why does not the CompoundTrain itself have a Orientation (only its TrainsInCompoundTrain) ?
     vs.
     - ReversedOrientation
     => How to interpret when both values are defined? (Even worse if JourneyPart has VehicleOrientation)
-  
+
   Would appreciate help on best practice modelling here, in particular for use in / referral from Journey, to reduce some potential complexity...
 
 -->
 
 
-<PublicationDelivery 
+<PublicationDelivery
   xmlns="http://www.netex.org.uk/netex"
-  xmlns:gis="http://www.opengis.net/gml/3.2" 
+  xmlns:gis="http://www.opengis.net/gml/3.2"
   xmlns:siri="http://www.siri.org.uk/siri"
   version="1.09:NO-NeTEx-networktimetable:1.3">
-  
+
 
   <PublicationTimestamp>2019-08-19T00:31:39.669</PublicationTimestamp>
   <ParticipantRef>ENT</ParticipantRef>
@@ -96,7 +96,7 @@ Q&A to CEN:
   <dataObjects>
 
 
-    <VehicleScheduleFrame created="2019-08-17T00:50:24" version="1" id="NSB:VehicleScheduleFrame:4145997"> 
+    <VehicleScheduleFrame created="2019-08-17T00:50:24" version="1" id="NSB:VehicleScheduleFrame:4145997">
       <!-- placeholder -->
     </VehicleScheduleFrame>
 
@@ -106,12 +106,12 @@ Q&A to CEN:
     </GeneralFrame>
 
 
-    <ResourceFrame created="2019-08-17T00:50:24" version="1" id="NSB:ResourceFrame:4145997"> 
+    <ResourceFrame created="2019-08-17T00:50:24" version="1" id="NSB:ResourceFrame:4145997">
       <ValidBetween>
         <FromDate>2019-09-11T00:00:00</FromDate>
         <ToDate>2021-12-31T23:59:59</ToDate>
       </ValidBetween>
-      
+
       <codespaces>
         <Codespace id="ent">
           <Xmlns>ENT</Xmlns>
@@ -129,8 +129,8 @@ Q&A to CEN:
           <Description>Nasjonalt Organisasjons-Register</Description>
         </Codespace>
       </codespaces>
-      
-      
+
+
       <typesOfValue>
         <TypeOfEquipment version="1" id="NMR:TypeOfEquipment:PremiumSeating">
           <PrivateCode>PremiumSeating</PrivateCode>
@@ -139,19 +139,19 @@ Q&A to CEN:
           <PrivateCode>RegularSeating</PrivateCode>
         </TypeOfEquipment>
       </typesOfValue>
-      
-      
+
+
       <!-- SeatingEquipment: NeTEx part 1 - ﻿8.4.8.7.3.5 SeatingEquipment – Model Element (page 776) -->
-      
+
 
       <equipments>
-        
+
         <!-- pervertering av firergruppe sete, premium klasse (Komfort?), v.h.a. derivedFromObjectRef -->
         <SeatingEquipment version="1" id="NMR:SeatingEquipment:Group1">
-          
+
           <!-- TODO -->
           <!-- PassengerSeatRef = type ValidityParameter = Setenummer -->
-          
+
           <TypeOfEquipmentRef version="1" ref="NMR:TypeOfEquipment:PremiumSeating"/>
           <Seats>4</Seats>
         </SeatingEquipment>
@@ -168,7 +168,7 @@ Q&A to CEN:
         <SeatingEquipment version="1" id="NMR:SeatingEquipment:4" derivedFromObjectRef="NMR:SeatingEquipment:Group1">
           <PublicCode>Sete 4</PublicCode>
         </SeatingEquipment>
-        
+
         <!-- ikke firergruppe, standard klasse -->
         <SeatingEquipment version="1" id="NMR:SeatingEquipment:5">
           <PublicCode>Sete 5</PublicCode>
@@ -183,7 +183,7 @@ Q&A to CEN:
 
 
       <vehicleTypes>
-        
+
         <!-- Generic VehicleType -->
         <VehicleType version="1" id="NMR:VehicleType:Buss">
           <capacities>
@@ -197,8 +197,8 @@ Q&A to CEN:
             </PassengerCapacity>
           </capacities>
         </VehicleType>
-        
-        
+
+
         <!-- Specific VehicleType: Train -->
         <Train version="1" id="NMR:Train:Flirt-1">
           <!-- consolidated capasity -->
@@ -209,7 +209,7 @@ Q&A to CEN:
               <SeatingCapacity>250</SeatingCapacity>
             </PassengerCapacity>
           </capacities>
-          
+
           <components>
             <TrainComponent version="1" id="NMR:TrainComponent:BMb74" order="1">
               <Label>BMb74</Label>
@@ -238,8 +238,22 @@ Q&A to CEN:
             </TrainComponent>
           </components>
         </Train>
-        
-        
+
+        <!-- Two level bus modelled as a train with two components -->
+        <Train version="1" id="VYT:Bus:DOVREBUSSEN">
+          <components>
+            <TrainComponent version="1" id="VYT:LogicalElement:DOVREBUSSEN-LOWER" order="1">
+              <Label>DOVREBUSSEN-LOWER</Label>
+              <TrainElementRef version="1" ref="VYT:BasicElement:SETRA-S431DT-LOWER"/>
+            </TrainComponent>
+            <TrainComponent version="1" id="VYT:LogicalElement:DOVREBUSSEN-UPPER" order="2">
+              <Label>DOVREBUSSEN-UPPER</Label>
+              <TrainElementRef version="1" ref="VYT:BasicElement:SETRA-S431DT-UPPER"/>
+            </TrainComponent>
+          </components>
+        </Train>
+
+
         <Train version="1" id="NMR:Train:Flirt-2">
           <components>
             <TrainComponent version="1" id="NMR:TrainComponent:BMa74" order="1">
@@ -269,12 +283,12 @@ Q&A to CEN:
             </TrainComponent>
           </components>
         </Train>
-        
-        
+
+
         <CompoundTrain id="NMR:CompoundTrain:1" version="1">
           <components>
             <TrainInCompoundTrain id="NMR:TrainInCompoundTrain:1" version="1">
-              <TrainRef ref="NMR:Train:Flirt-1" version="1"/> 
+              <TrainRef ref="NMR:Train:Flirt-1" version="1"/>
               <OperationalOrientation>forwards</OperationalOrientation>
               <ReversedOrientation>false</ReversedOrientation>
             </TrainInCompoundTrain>
@@ -282,20 +296,20 @@ Q&A to CEN:
               <TrainRef ref="NMR:Train:Flirt-1" version="1"/>
               <OperationalOrientation>backwards</OperationalOrientation>
               <ReversedOrientation>true</ReversedOrientation>
-              
-              <!-- NB: Må definere ekstremt entydig i profil hva disse kombinasjonene skal bety, 
+
+              <!-- NB: Må definere ekstremt entydig i profil hva disse kombinasjonene skal bety,
                 i dette tilfellet et train med alle TrainComponent: backwards, deretter hele Train har ReversedOrientation "true" -->
-              
+
             </TrainInCompoundTrain>
           </components>
         </CompoundTrain>
 
       </vehicleTypes>
-      
-      
-      
+
+
+
       <vehicles>
-        
+
         <Vehicle id="NMR:Vehicle:1" version="1">
           <TrainRef ref="ref"></TrainRef>
           <!-- XSD:choice -->
@@ -307,7 +321,7 @@ Q&A to CEN:
             <AssistanceServiceRef ref="ref"/>
           </actualVehicleEquipments>
         </Vehicle>
-        
+
         <TrainElement version="1" id="NMR:TrainElement:1">
           <FareClasses>premiumClass standardClass</FareClasses>
 
@@ -322,9 +336,9 @@ Q&A to CEN:
               <SeatingCapacity>250</SeatingCapacity>
             </PassengerCapacity>
           </capacities>
-          
+
           <!-- Accomodation related facilities: NeTEx part 3 - ﻿7.4.2.3 Fare Facility (page 111) -->
-          
+
           <facilities>
             <ServiceFacilitySet id="NMR:ServiceFacilityList:1" version="1">
               <CateringFacilityList>foodVendingMachine beverageVendingMachine</CateringFacilityList>
@@ -336,28 +350,28 @@ Q&A to CEN:
               </accommodations>
             </ServiceFacilitySet>
           </facilities>
-          
-          <!-- TODO: 
-            
+
+          <!-- TODO:
+
             PassengerAssignable / PassengerBookable
             Assignable
             Bookable
-            
+
             Trengs en -PassengerSeating equipment- AMENITY / CONVENIENCE / COMPLIANCE (i.e. BOOKABLE feature) -->
-          
+
           <equipments>
-            
+
             <!-- gruppe -->
             <SeatingEquipmentRef version="1" ref="NMR:SeatingEquipment:Group1"/>
             <!-- vanlige seter -->
             <SeatingEquipmentRef version="1" ref="NMR:SeatingEquipment:5"/>
             <SeatingEquipmentRef version="1" ref="NMR:SeatingEquipment:6"/>
           </equipments>
-          
+
         </TrainElement>
-        
-        
-        
+
+
+
         <!-- Dummy TrainElements for references from TrainComponents -->
         <TrainElement version="1" id="NMR:TrainElement:BPa74">
           <Name>Flirt</Name>
@@ -374,16 +388,16 @@ Q&A to CEN:
         <TrainElement version="1" id="NMR:TrainElement:BMa74">
           <Name>Flirt</Name>
         </TrainElement>
-        
-        
+
+
         <Vehicle version="1" id="NMR:Vehicle:Flirt">
           <OperatorRef ref="NOG:Operator:0"/>
-          
+
           <VehicleTypeRef version="1" ref="NMR:VehicleType:Buss"/>
         </Vehicle>
       </vehicles>
-      
-      
+
+
       <groupsOfEntities>
         <GeneralGroupOfEntities id="ENT:GeneralGroupOfEntities:1" version="1">
           <members>
@@ -391,7 +405,7 @@ Q&A to CEN:
           </members>
         </GeneralGroupOfEntities>
       </groupsOfEntities>
-      
+
     </ResourceFrame>
 
 
@@ -421,9 +435,9 @@ Q&A to CEN:
           <DefaultLanguage>no</DefaultLanguage>
         </DefaultLocale>
       </FrameDefaults>
-      
-      
-      
+
+
+
       <frames>
         <SiteFrame version="1" id="NSR:SiteFrame:1">
           <stopPlaces>
@@ -435,13 +449,13 @@ Q&A to CEN:
             </StopPlace>
           </stopPlaces>
         </SiteFrame>
-        
-        
+
+
         <ServiceCalendarFrame version="1" id="NSB:ServiceCalendarFrame:1">
           <dayTypes>
             <DayType version="1" id="NSB:DayType:2020-01-02"/>
             <DayType version="1" id="NSB:DayType:2020-01-03"/>
-          </dayTypes>  
+          </dayTypes>
           <operatingDays>
             <OperatingDay id="NSB:OperatingDay:2020-01-02" version="1">
               <CalendarDate>2020-01-02</CalendarDate>
@@ -462,8 +476,8 @@ Q&A to CEN:
             </DayTypeAssignment>
           </dayTypeAssignments>
         </ServiceCalendarFrame>
-        
-        
+
+
         <ServiceFrame version="1" id="NSB:ServiceFrame:4145998">
           <routePoints>
             <RoutePoint version="1" id="NSB:RoutePoint:1">
@@ -481,7 +495,7 @@ Q&A to CEN:
               </projections>
             </RoutePoint>
           </routePoints>
-          
+
           <routeLinks>
             <RouteLink version="1" id="ENT:RouteLink:1">
               <Distance>100</Distance>
@@ -489,8 +503,8 @@ Q&A to CEN:
               <ToPointRef ref="NSB:RoutePoint:2"/>
             </RouteLink>
           </routeLinks>
-          
-          
+
+
           <routes>
             <Route version="1" id="NSB:Route:1-1105">
               <Name>Oslo S - Drammen stasjon</Name>
@@ -526,11 +540,11 @@ Q&A to CEN:
                   <RoutePointRef version="1" ref="NSB:RoutePoint:2"/>
                 </PointOnRoute>
               </pointsInSequence>
-            </Route>  
+            </Route>
           </routes>
-          
-         
-          
+
+
+
           <lines>
             <Line version="1" id="NSB:Line:41">
               <Name>Bergensbanen</Name>
@@ -543,13 +557,13 @@ Q&A to CEN:
               <RepresentedByGroupRef ref="NSB:Network:1"/>
             </Line>
           </lines>
-          
+
           <scheduledStopPoints>
             <ScheduledStopPoint version="1" id="ENT:ScheduledStopPoint:1">
             </ScheduledStopPoint>
             <ScheduledStopPoint version="1" id="ENT:ScheduledStopPoint:2"/>
           </scheduledStopPoints>
-          
+
           <stopAssignments>
             <PassengerStopAssignment version="1" id="ENT:PassengerStopAssignment:1" order="1">
               <ScheduledStopPointRef version="1" ref="ENT:ScheduledStopPoint:1"/>
@@ -562,7 +576,7 @@ Q&A to CEN:
               <QuayRef version="1" ref="NSR:Quay:1"/>
             </PassengerStopAssignment>
           </stopAssignments>
-          
+
           <journeyPatterns>
             <JourneyPattern version="1" id="NSB:JourneyPattern:1-1105">
               <Name>Oslo S - Drammen stasjon</Name>
@@ -618,16 +632,16 @@ Q&A to CEN:
             </JourneyPattern>
           </journeyPatterns>
         </ServiceFrame>
-        
-        
-        
+
+
+
         <TimetableFrame version="1" id="NSB:TimetableFrame:4145999">
-          
+
           <vehicleJourneys>
             <VehicleJourney version="1" id="NSB:VehicleJourney:1-3922-61">
               <!-- placeholder -->
             </VehicleJourney>
-            
+
             <ServiceJourney version="1" id="NSB:ServiceJourney:1-3922-61">
               <keyList>
                 <KeyValue>
@@ -658,22 +672,22 @@ Q&A to CEN:
                 <DayTypeRef ref="NSB:DayType:29"/>
               </dayTypes>
               <JourneyPatternRef ref="NSB:JourneyPattern:1-1105" version="1"/>
-              
+
               <!-- XSD:choice -->
               <!--
               <VehicleTypeRef ref=""></VehicleTypeRef>
               <TrainRef ref=""></TrainRef>
               -->
-              
+
               <TrainRef ref="" ></TrainRef>
-              
+
               <OperatorRef ref="NSB:Operator:503"/>
               <LineRef ref="NSB:Line:41" version="1"/>
-              
-              
-              <!-- SKAL IKKE BRUKES ? 
+
+
+              <!-- SKAL IKKE BRUKES ?
                 (eksempel <trainNumbers> uansett flyttet til fritstaende liste lenger ned i TimetableFrame) -->
-              
+
               <!-- Referanse til operativt transportnummer -->
               <!--trainNumbers>
                 <TrainNumberRef ref="NSB:TrainNumber:1" version="1"/>
@@ -699,58 +713,58 @@ Q&A to CEN:
                   <ArrivalTime>08:58:00</ArrivalTime>
                 </TimetabledPassingTime>
               </passingTimes>
-              
+
               <parts>
-                
+
                 <!-- opprinnelig retning -->
                 <JourneyPart id="NSB:JourneyPart:1" version="1">
-                  
+
                   <!-- TWO PROBLEMS with TrainNumber:
                     1) Cannot add/refer TrainNumber (also) for a Train object
                     2) There is no Train-to-TrainNumber assignment datatype, i.e. only Journey and JourneyPart can refer TrainNumber(s)
                   -->
                   <TrainNumberRef ref="ref"/>
-                  
+
                   <StartTime>08:46:00</StartTime>
                   <EndTime>12:46:00</EndTime>
                   <!-- PROBLEM with VehicleOrientation: Single ServiceJourney requires ENGINE TrainElement to be left out of the Train (i.e. EXCLUDE engine TrainComponent) -->
                   <VehicleOrientation>true</VehicleOrientation> <!-- true = forward -->
                 </JourneyPart>
-                
+
                 <!-- snudd retning -->
                 <JourneyPart id="NSB:JourneyPart:2" version="1">
                   <StartTime>12:46:00</StartTime>
                   <EndTime>16:46:00</EndTime>
                   <VehicleOrientation>false</VehicleOrientation> <!-- true = forward -->
                 </JourneyPart>
-                
+
               </parts>
             </ServiceJourney>
-            
-            
+
+
             <DatedServiceJourney version="1" id="NSB:DatedServiceJourney:1-3922-61-date-2020-12-31">
               <JourneyPatternRef ref="NSB:JourneyPattern:1-1105" version="1"/>
-              
+
               <TrainRef ref="NMR:Train:Flirt-2"/> <!-- SJN just as a technical example due to defined within this file -->
-              
+
               <parts>
                 <JourneyPartRef ref="NSB:JourneyPart:1" version="1"/>
               </parts>
-              
+
               <ServiceJourneyRef ref="NSB:ServiceJourney:1-3922-61"/>
               <OperatingDayRef ref="NSB:OperatingDay:2020-12-31"/>
             </DatedServiceJourney>
-            
-            
+
+
           </vehicleJourneys>
-          
-          
-          <!-- 
+
+
+          <!--
             Not relevant(?)
-            
+
             Assumes as not, as the use-case does not involve coupling JourneyParts into a (for a section) combined train
             (i.e. running multiple ServiceJourney parts as the same Train for a given section)
-          --> 
+          -->
           <!--journeyPartCouples>
             <JourneyPartCouple order="">
               <StartTime></StartTime>
@@ -761,15 +775,15 @@ Q&A to CEN:
               <BlockRef ref=""></BlockRef>
             </JourneyPartCouple>
           </journeyPartCouples-->
-          
-          
+
+
           <trainNumbers>
             <TrainNumber id="NSB:TrainNumber:1" version="1">
               <ForProduction>NSB-TrainNumber-1</ForProduction>
             </TrainNumber>
           </trainNumbers>
-          
-          
+
+
           <!-- Alternativt med to separate ServiceJourneys (må definere to Trains med TrainElements i hver sin konfigurasjon/rekkefolge) -->
           <coupledJourneys>
             <CoupledJourney id="NSB:CoupledJourney:1" version="1">
@@ -782,8 +796,8 @@ Q&A to CEN:
               </journeys>
             </CoupledJourney>
           </coupledJourneys>
-          
-          
+
+
         </TimetableFrame>
       </frames>
     </CompositeFrame>
