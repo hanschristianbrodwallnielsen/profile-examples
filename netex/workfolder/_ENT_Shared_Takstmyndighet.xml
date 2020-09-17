@@ -57,6 +57,10 @@
 				</roles>
 				</ResponsibilitySet>
 				<ResponsibilitySet id="ENT:ResponsibilitySet:SJN" version="1">
+                    <ValidBetween>
+                        <FromDate></FromDate>
+                        <ToDate></ToDate>
+                    </ValidBetween>
 				<Name>Ansvarlig takstmyndighet SJN</Name>
 				<roles>
 					<ResponsibilityRoleAssignment id="ENT:ResponsibilityRoleAssignment:2" version="1">
@@ -103,7 +107,7 @@
                         </PointOnSection>
                     </pointsOnSection>
                 </CommonSection>
-                <CommonSection version="1" id="ENT:CommonSection:SJN" responsibilitySetRef="ENT:ResponsibilitySet:SJN">
+                <CommonSection version="1" id="ENT:CommonSection:SJN-Nord" responsibilitySetRef="ENT:ResponsibilitySet:SJN">
                     <ValidBetween>
                         <FromDate>2020-06-01</FromDate>
                         <ToDate>2021-06-01</ToDate>
@@ -112,10 +116,25 @@
                     <ShortName>SJN1</ShortName>
                     <Description>Fellesstrekning og takstsamarbeid</Description>
                     <pointsOnSection>
-                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:DOM">
+                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:DOM-SJN-Nord">
                             <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:DOM"/>
                         </PointOnSection>
-                        <PointOnSection order="2" version="1" id="ENT:PointOnSection:LHM-2">
+                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:OTA-SJN-Nord">
+                            <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:OTA"/>
+                        </PointOnSection>
+                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:VIN-SJN-Nord">
+                            <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:VIN"/>
+                        </PointOnSection>
+                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:RBU-SJN-Nord">
+                            <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:RBU"/>
+                        </PointOnSection>
+                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:KVI-SJN-Nord">
+                            <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:KVI"/>
+                        </PointOnSection>
+                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:HSS-SJN-Nord">
+                            <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:HSS"/>
+                        </PointOnSection>
+                        <PointOnSection order="2" version="1" id="ENT:PointOnSection:LHM-SJN-Nord">
                             <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:LHM"/>
                         </PointOnSection>
                     </pointsOnSection>
@@ -134,6 +153,21 @@
             <ScheduledStopPoint version="1" id="ENT:ScheduledStopPoint:DOM">
               <Name>Dombås</Name>
             </ScheduledStopPoint>
+            <ScheduledStopPoint version="1" id="ENT:ScheduledStopPoint:OTA">
+                <Name>Otta</Name>
+            </ScheduledStopPoint>
+              <ScheduledStopPoint version="1" id="ENT:ScheduledStopPoint:VIN">
+                  <Name>Vinstra</Name>
+              </ScheduledStopPoint>
+              <ScheduledStopPoint version="1" id="ENT:ScheduledStopPoint:RBU">
+                  <Name>Ringebu</Name>
+              </ScheduledStopPoint>
+              <ScheduledStopPoint version="1" id="ENT:ScheduledStopPoint:KVI">
+                  <Name>Kvitfjell</Name>
+              </ScheduledStopPoint>
+              <ScheduledStopPoint version="1" id="ENT:ScheduledStopPoint:HSS">
+                  <Name>Hunderfossen</Name>
+              </ScheduledStopPoint>
           </scheduledStopPoints>
           <stopAssignments>
             <PassengerStopAssignment order="0" version="1" id="ENT:PassengerStopAssignment:OSL">
@@ -151,6 +185,26 @@
               <PassengerStopAssignment order="0" version="1" id="ENT:PassengerStopAssignment:DOM">
                   <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:DOM" version="1"/>
                   <StopPlaceRef ref="NSR:StopPlace:645"/>
+              </PassengerStopAssignment>
+              <PassengerStopAssignment order="0" version="1" id="ENT:PassengerStopAssignment:OTA">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:OTA" version="1"/>
+                  <StopPlaceRef ref="NSR:StopPlace:4"/>
+              </PassengerStopAssignment>
+              <PassengerStopAssignment order="0" version="1" id="ENT:PassengerStopAssignment:VIN">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:VIN" version="1"/>
+                  <StopPlaceRef ref="NSR:StopPlace:425"/>
+              </PassengerStopAssignment>
+              <PassengerStopAssignment order="0" version="1" id="ENT:PassengerStopAssignment:RBU">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:RBU" version="1"/>
+                  <StopPlaceRef ref="NSR:StopPlace:17"/>
+              </PassengerStopAssignment>
+              <PassengerStopAssignment order="0" version="1" id="ENT:PassengerStopAssignment:KVI">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:KVI" version="1"/>
+                  <StopPlaceRef ref="NSR:StopPlace:59129"/>
+              </PassengerStopAssignment>
+              <PassengerStopAssignment order="0" version="1" id="ENT:PassengerStopAssignment:HSS">
+                  <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:HSS" version="1"/>
+                  <StopPlaceRef ref="NSR:StopPlace:274"/>
               </PassengerStopAssignment>
           </stopAssignments>
         </ServiceFrame>
