@@ -80,6 +80,17 @@ Q&A to CEN:
 
   Would appreciate help on best practice modelling here, in particular for use in / referral from Journey, to reduce some potential complexity...
 
+
+ALERT:
+(see NeTex part 1 -﻿7.7.11.3.2)
+VehicleType – Model Element
+"A classification of public transport vehicles according to the vehicle scheduling requirements in
+mode and capacity (e.g. standard bus, double-deck, etc.)."
+
+BUT THERE SEEMINGLY IS _NO_ WAY TO EXPLICITLY DEFINE NEITHER TRANSPORT MODE NOR PHYSICAL/SPATIAL LAYOUT OF SAID CAPACITIES.
+I.e. have found now way to define a Vehicle/VehicleType to be double-deck. Not even Train.
+
+
 -->
 
 
@@ -238,20 +249,51 @@ Q&A to CEN:
             </TrainComponent>
           </components>
         </Train>
+        
 
+        <!-- VARELAGER revision 0 -->
         <!-- Two level bus modelled as a train with two components. -->
         <Train version="1" id="VYT:Bus:DOVREBUSSEN">
           <components>
             <TrainComponent version="1" id="VYT:LogicalElement:DOVREBUSSEN-LOWER" order="1">
               <Label>DOVREBUSSEN-LOWER</Label>
-              <TrainElementRef version="1" ref="VYT:BasicElement:SETRA-S431DT-LOWER"/>
+              <TrainElementRef ref="VYT:TrainElement:SETRA-S431DT-LOWER" version="1"/>
             </TrainComponent>
             <TrainComponent version="1" id="VYT:LogicalElement:DOVREBUSSEN-UPPER" order="2">
               <Label>DOVREBUSSEN-UPPER</Label>
-              <TrainElementRef version="1" ref="VYT:BasicElement:SETRA-S431DT-UPPER"/>
+              <TrainElementRef ref="VYT:TrainElement:SETRA-S431DT-UPPER" version="1"/>
             </TrainComponent>
           </components>
         </Train>
+        
+        
+        <!-- VARELAGER revision 1 -->
+        <VehicleType id="VYT:VehicleType:1" version="1">    
+          <Description>SETRA-S431DT-LOWER</Description>
+          <PrivateCode>DOVREBUSSEN-LOWER</PrivateCode>
+          <EuroClass>Fuel related UNECE based vehicle categories and/or EU defined passenger car categories, recommended usage in NeTEx not documented</EuroClass>
+          <capacities>
+            <PassengerCapacity id="VYT:PassengerCapacity:1" version="1">
+              <FareClass>any</FareClass> <!-- DUMMY TEST DATA -->
+            </PassengerCapacity>
+          </capacities>
+          <facilities>
+            <ServiceFacilitySet id="VYT:ServiceFacilitySet" version="1">
+              <accommodations>
+                <Accommodation id="x" version="y">
+                  <Name>dummy</Name>
+                </Accommodation>
+              </accommodations>
+            </ServiceFacilitySet>
+          </facilities>
+        </VehicleType>
+        
+        <VehicleType id="VYT:VehicleType:2" version="1">
+          <Description>SETRA-S431DT-UPPER</Description>
+          <PrivateCode>DOVREBUSSEN-UPPER</PrivateCode>
+        </VehicleType>
+        
+
 
 
         <Train version="1" id="NMR:Train:Flirt-2">
@@ -342,12 +384,12 @@ Q&A to CEN:
           <facilities>
             <ServiceFacilitySet id="NMR:ServiceFacilityList:1" version="1">
               <CateringFacilityList>foodVendingMachine beverageVendingMachine</CateringFacilityList>
-              <AccommodationFacilityList>seating </AccommodationFacilityList>
-              <accommodations>
+              <AccommodationFacilityList>seating</AccommodationFacilityList>
+              <!--accommodations>
                 <Accommodation id="ENT:Accomodation:1" version="1">
                   <BerthFacility>both</BerthFacility>
                 </Accommodation>
-              </accommodations>
+              </accommodations-->
             </ServiceFacilitySet>
           </facilities>
 
@@ -388,7 +430,27 @@ Q&A to CEN:
         <TrainElement version="1" id="NMR:TrainElement:BMa74">
           <Name>Flirt</Name>
         </TrainElement>
-
+        
+        
+        
+        <!-- VARELAGER revision 0 (added for completeness / XSD validation) -->
+        <!-- Dummy TrainElements for references from TrainComponents -->
+        <TrainElement id="VYT:TrainElement:SETRA-S431DT-LOWER" version="1">
+          <Name>DOVREBUSSEN-LOWER</Name>
+          <Description>SETRA-S431DT-LOWER</Description>
+        </TrainElement>
+        <TrainElement id="VYT:TrainElement:SETRA-S431DT-UPPER" version="1">
+          <Name>DOVREBUSSEN-UPPER</Name>
+          <Description>SETRA-S431DT-UPPER</Description>
+        </TrainElement>
+        
+        <!-- VARELAGER revision 1 -->
+        <Vehicle id="VYT:Vehicle:1" version="1">
+          <PrivateCode>DOVREBUSSEN</PrivateCode>
+          <VehicleTypeRef ref="VYT:VehicleType:1" version="1"/>
+        </Vehicle>
+        
+        
 
         <Vehicle version="1" id="NMR:Vehicle:Flirt">
           <OperatorRef ref="NOG:Operator:0"/>
