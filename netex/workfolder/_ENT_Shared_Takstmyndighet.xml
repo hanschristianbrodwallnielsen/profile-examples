@@ -102,6 +102,36 @@
                         <PointOnSection order="1" version="1" id="ENT:PointOnSection:LHM-VY-Nord">
                             <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:LHM"/>
                         </PointOnSection>
+                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:MLV-VY-Nord">
+                            <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:MLV"/>
+                        </PointOnSection>
+                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:BRD-VY-Nord">
+                            <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:BRD"/>
+                        </PointOnSection>
+                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:HMR-VY-Nord">
+                            <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:HMR"/>
+                        </PointOnSection>
+                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:STG-VY-Nord">
+                            <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:STG"/>
+                        </PointOnSection>
+                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:TAN-VY-Nord">
+                            <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:TAN"/>
+                        </PointOnSection>
+                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:EVL-VY-Nord">
+                            <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:EVL"/>
+                        </PointOnSection>
+                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:EVV-VY-Nord">
+                            <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:EVV"/>
+                        </PointOnSection>
+                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:GAR-VY-Nord">
+                            <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:GAR"/>
+                        </PointOnSection>
+                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:KLO-VY-Nord">
+                            <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:KLO"/>
+                        </PointOnSection>
+                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:LLS-VY-Nord">
+                            <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:LLS"/>
+                        </PointOnSection>
                         <PointOnSection order="2" version="1" id="ENT:PointOnSection:OSL-VY-Nord">
                             <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:OSL"/>
                         </PointOnSection>
@@ -119,22 +149,22 @@
                         <PointOnSection order="1" version="1" id="ENT:PointOnSection:DOM-SJN-Nord">
                             <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:DOM"/>
                         </PointOnSection>
-                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:OTA-SJN-Nord">
+                        <PointOnSection order="2" version="1" id="ENT:PointOnSection:OTA-SJN-Nord">
                             <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:OTA"/>
                         </PointOnSection>
-                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:VIN-SJN-Nord">
+                        <PointOnSection order="3" version="1" id="ENT:PointOnSection:VIN-SJN-Nord">
                             <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:VIN"/>
                         </PointOnSection>
-                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:RBU-SJN-Nord">
+                        <PointOnSection order="4" version="1" id="ENT:PointOnSection:RBU-SJN-Nord">
                             <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:RBU"/>
                         </PointOnSection>
-                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:KVI-SJN-Nord">
+                        <PointOnSection order="5" version="1" id="ENT:PointOnSection:KVI-SJN-Nord">
                             <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:KVI"/>
                         </PointOnSection>
-                        <PointOnSection order="1" version="1" id="ENT:PointOnSection:HSS-SJN-Nord">
+                        <PointOnSection order="6" version="1" id="ENT:PointOnSection:HSS-SJN-Nord">
                             <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:HSS"/>
                         </PointOnSection>
-                        <PointOnSection order="2" version="1" id="ENT:PointOnSection:LHM-SJN-Nord">
+                        <PointOnSection order="7" version="1" id="ENT:PointOnSection:LHM-SJN-Nord">
                             <ScheduledStopPointRef ref="ENT:ScheduledStopPoint:LHM"/>
                         </PointOnSection>
                     </pointsOnSection>
